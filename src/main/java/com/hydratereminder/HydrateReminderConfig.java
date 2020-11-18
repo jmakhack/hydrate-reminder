@@ -13,8 +13,8 @@ public interface HydrateReminderConfig extends Config
 	int INTERVAL_LIMIT_MAX = 120;
 
 	@Range(
-			min = INTERVAL_LIMIT_MIN,
-			max = INTERVAL_LIMIT_MAX
+		min = INTERVAL_LIMIT_MIN,
+		max = INTERVAL_LIMIT_MAX
 	)
 
 	@ConfigItem(
@@ -43,10 +43,10 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "hydrateReminderChatMessageType",
-			name = "Chat type",
-			description = "Sets the type of chat message sent by hydrate reminder",
-			position = 4
+		keyName = "hydrateReminderChatMessageType",
+		name = "Chat type",
+		description = "Sets the type of chat message sent by hydrate reminder",
+		position = 4
 	)
 
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
@@ -55,10 +55,10 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "hydrateReminderComputerNotificationEnabled",
-			name = "Computer notification",
-			description = "Sets the hydrate reminder to be sent as a computer notification",
-			position = 5
+		keyName = "hydrateReminderComputerNotificationEnabled",
+		name = "Computer notification",
+		description = "Sets the hydrate reminder to be sent as a computer notification",
+		position = 5
 	)
 
 	default boolean hydrateReminderComputerNotificationEnabled()
