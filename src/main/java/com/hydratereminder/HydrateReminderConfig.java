@@ -34,10 +34,10 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageEnabled",
 		name = "Chat notification",
 		description = "Sets the hydrate reminder to be sent as a game chat message",
-		position = 3
+		position = 2
 	)
 
-	default boolean hydrateReminderGameChatMessageEnabled()
+	default boolean hydrateReminderChatMessageEnabled()
 	{
 		return true;
 	}
@@ -46,7 +46,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageType",
 		name = "Chat type",
 		description = "Sets the type of chat message sent by hydrate reminder",
-		position = 4
+		position = 3
 	)
 
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
@@ -58,7 +58,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderComputerNotificationEnabled",
 		name = "Computer notification",
 		description = "Sets the hydrate reminder to be sent as a computer notification",
-		position = 5
+		position = 4
 	)
 
 	default boolean hydrateReminderComputerNotificationEnabled()

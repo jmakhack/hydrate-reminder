@@ -91,7 +91,7 @@ public class HydrateReminderPlugin extends Plugin
 		if (lastHydrateInstant.plus(hydrateReminderDuration).compareTo(Instant.now()) < 0)
 		{
 			final String hydrateReminderMessage = String.format("It's time for a quick hydration break, %s.", client.getLocalPlayer().getName());
-			if (config.hydrateReminderGameChatMessageEnabled())
+			if (config.hydrateReminderChatMessageEnabled())
 			{
 				final ChatMessageType chatMessageType = getChatNotificationMessageType();
 				final String chatMessageSender = chatMessageType == ChatMessageType.FRIENDSCHAT ? "HydrateReminder" : "";
