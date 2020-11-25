@@ -2,7 +2,7 @@
 
 Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle.
 
-Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue.
+Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue.
 
 
 Make sure to ensure that no newly added functionality goes against [Jagex's rules](https://secure.runescape.com/m=news/another-message-about-unofficial-clients?oldschool=1).  
