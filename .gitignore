@@ -1,9 +1,11 @@
-.gradle
-build
+.classpath
 .idea/
+.github/
+.gradle
 .project
 .settings/
-.classpath
+
+build
 nbactions.xml
 nb-configuration.xml
 nbproject/
