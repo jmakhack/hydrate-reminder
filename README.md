@@ -35,7 +35,7 @@ Detailed instructions on how to achieve this can be found on the official wiki g
 
 
 ## Code of Conduct
-Hydarate Reminder is governed by the [Contributor Covenant v 1.4](CODE_OF_CONDUCT.md).
+Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
 
 ## License
 Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
