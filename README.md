@@ -1,9 +1,30 @@
 # OSRS Hydrate Reminder Plugin
 
-![Hydrate Reminder](https://i.imgur.com/bztOLOO.png)
+<p align="center">
+    <img src="https://i.imgur.com/bztOLOO.png" />
+</p>
 
-It is always of critical importantance to keep hydrated.
+<p align="center">
+    <a href="#" alt="Repo Size">
+        <img src="https://img.shields.io/github/repo-size/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+    <a href="https://github.com/jmakhack/hydrate-reminder/issues" alt="Open Issues">
+        <img src="https://img.shields.io/github/issues/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+    <a href="https://github.com/jmakhack/hydrate-reminder/blob/master/LICENSE" alt="License">
+        <img src="https://img.shields.io/github/license/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+    <a href="https://github.com/jmakhack/hydrate-reminder/releases" alt="Version">
+        <img src="https://img.shields.io/github/v/release/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+    <a href="https://github.com/jmakhack/hydrate-reminder/releases" alt="Release Date">
+        <img src="https://img.shields.io/github/release-date/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+</p>
 
+<br/>
+
+It is always of critical importantance to keep hydrated.  
 Never forget to drink water while exploring the world of Old School RuneScape ever again!
 
 
