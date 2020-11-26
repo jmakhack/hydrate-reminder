@@ -1,5 +1,3 @@
-# OSRS Hydrate Reminder Plugin
-
 <p align="center">
     <img src="https://i.imgur.com/bztOLOO.png" />
 </p>
