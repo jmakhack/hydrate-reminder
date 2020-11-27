@@ -17,7 +17,7 @@ Are there any caveats to note?
 ## Testing Details
 <!---
 Please describe in detail how you tested your changes.
-Include what operating system was used in testing.
+Include what Operating System and RuneLite version was used in testing.
 Describe the plugin configurations that this change was tested with.
 -->
 Operating System: 
