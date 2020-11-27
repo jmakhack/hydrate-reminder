@@ -21,6 +21,7 @@ Include what operating system was used in testing.
 Describe the plugin configurations that this change was tested with.
 -->
 Operating System: 
+RuneLite Version: 
 
 ## Screenshots
 <!---
