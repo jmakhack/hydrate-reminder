@@ -39,6 +39,13 @@ This plugin is designed for use within the open source RuneLite OSRS client whic
 To install the plugin, start up the RuneLite client and search for the Hydrate Reminder plugin in the Plugin Hub.
 Detailed instructions on how to achieve this can be found on the official wiki guide found [here](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub).
 
+## Contributing
+
+Anyone is welcome to contribute to this project repository in any capacity.  
+Before contributing to this project, please go through the [How to Contribute](CONTRIBUTING.md) guide to understand expectations for this project.
+
+Other useful resources include the [RuneLite wiki](https://github.com/runelite/runelite/wiki) and [OSRSBox's Writing RuneLite Plugins](https://www.osrsbox.com/blog/2018/08/10/writing-runelite-plugins-part-1-building/) blog post.  
+It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) development environment for this project.
 
 ## Code of Conduct
 Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
