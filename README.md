@@ -3,6 +3,9 @@
 </p>
 
 <p align="center">
+    <a href="https://github.com/jmakhack/hydrate-reminder/actions?query=workflow%3A%22Java+CI+with+Gradle%22" alt="Build Status">
+        <img src="https://img.shields.io/github/workflow/status/jmakhack/hydrate-reminder/Java%20CI%20with%20Gradle?style=for-the-badge" />
+    </a>
     <a href="#" alt="Repo Size">
         <img src="https://img.shields.io/github/repo-size/jmakhack/hydrate-reminder?style=for-the-badge" />
     </a>
