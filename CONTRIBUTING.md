@@ -23,5 +23,6 @@ Always write a clear and concise commit message for your commits. One-line messa
     > A paragraph describing what changed and its impact."
 
 ## Coding Conventions
+When adding new classes, methods, and fields, please add the appropriate JavaDocs to keep the codebase in an easily maintainable state.
 
-There are no formal, documented coding conventions for this project to follow, but please take a look at the existing code under [src/main/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/main/java/com/hydratereminder) and follow the existing conventions.
+Otherwise, there are no formal, documented coding conventions for this project to follow, but please take a look at the existing code under [src/main/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/main/java/com/hydratereminder) and follow the existing conventions.
