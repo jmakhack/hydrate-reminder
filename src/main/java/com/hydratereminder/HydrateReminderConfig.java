@@ -6,61 +6,95 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.Range;
 import net.runelite.client.config.Units;
 
+/**
+ * <p>Configuration options interface for the Hydrate Reminder plugin
+ * </p>
+ * <p>Please see the {@link net.runelite.client.config.Config} class for true identity
+ * </p>
+ * @author jmakhack
+ */
 @ConfigGroup("hydratereminder")
 public interface HydrateReminderConfig extends Config
 {
+	/**
+	 * Minimum settable number of minutes per interval
+	 */
 	int INTERVAL_LIMIT_MIN = 1;
+
+	/**
+	 * Maximum settable number of minutes per interval
+	 */
 	int INTERVAL_LIMIT_MAX = 120;
 
+	/**
+	 * <p>Allows the player to set a hydrate reminder interval in minutes anywhere
+	 * between INTERVAL_LIMIT_MIN and INTERVAL_LIMIT_MAX
+	 * </p>
+	 * @return the number of minutes per hydrate reminder interval
+	 * @since 1.0.0
+	 */
 	@Range(
 		min = INTERVAL_LIMIT_MIN,
 		max = INTERVAL_LIMIT_MAX
 	)
-
 	@ConfigItem(
 		keyName = "hydrateReminderInterval",
 		name = "Hydrate Interval",
 		description = "The time interval between each hydrate reminder",
 		position = 1
 	)
-
 	@Units(Units.MINUTES)
 	default int hydrateReminderInterval()
 	{
 		return 30;
 	}
 
+	/**
+	 * <p>Allows the player to enable/disable chat message reminders
+	 * </p>
+	 * @return true if chat message reminders are enabled
+	 * @since 1.0.0
+	 */
 	@ConfigItem(
 		keyName = "hydrateReminderChatMessageEnabled",
 		name = "Chat notification",
 		description = "Sets the hydrate reminder to be sent as a game chat message",
 		position = 2
 	)
-
 	default boolean hydrateReminderChatMessageEnabled()
 	{
 		return true;
 	}
 
+	/**
+	 * <p>Allows the player to set the type of chat message reminder
+	 * </p>
+	 * @return the type of chat message to send reminders with
+	 * @since 1.0.0
+	 */
 	@ConfigItem(
 		keyName = "hydrateReminderChatMessageType",
 		name = "Chat type",
 		description = "Sets the type of chat message sent by hydrate reminder",
 		position = 3
 	)
-
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
 	{
 		return HydrateReminderChatMessageType.GAMEMESSAGE;
 	}
 
+	/**
+	 * <p>Allows the player to enable/disable computer tray notification reminders
+	 * </p>
+	 * @return true if computer tray notification reminders are enabled
+	 * @since 1.0.0
+	 */
 	@ConfigItem(
 		keyName = "hydrateReminderComputerNotificationEnabled",
 		name = "Computer notification",
 		description = "Sets the hydrate reminder to be sent as a computer notification",
 		position = 4
 	)
-
 	default boolean hydrateReminderComputerNotificationEnabled()
 	{
 		return true;

@@ -16,31 +16,173 @@ import net.runelite.client.Notifier;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
+/**
+ * <p>The main plugin logic for the Hydrate Reminder plugin
+ * </p>
+ * <p>Please see the {@link net.runelite.client.plugins.Plugin} class for true identity
+ * </p>
+ * @author jmakhack
+ */
 @Slf4j
 @PluginDescriptor(
 	name = "Hydrate Reminder",
 	description = "Reminds players to take a hydration break on a set interval",
 	tags = { "hydrate", "health", "reminder", "hydration", "water", "break", "notification" }
 )
-
 public class HydrateReminderPlugin extends Plugin
 {
+	/**
+	 * Hydrate Reminder text to display
+	 */
+	private static final String HYDRATE_BREAK_TEXT = "It's time for a quick hydration break";
+
+	/**
+	 * Username of Hydrate Reminder plugin to display in chatbox
+	 */
+	private static final String HYDRATE_REMINDER_USERNAME = "HydrateReminder";
+
+	/**
+	 * RuneLite client object
+	 */
 	@Inject
 	private Client client;
 
+	/**
+	 * Configuration settings for Hydrate Reminder plugin
+	 */
 	@Inject
 	private HydrateReminderConfig config;
 
+	/**
+	 * Notifier object for managing computer tray notifications
+	 */
 	@Inject
 	private Notifier notifier;
 
+	/**
+	 * The last instant at which a hydrate reminder was dispatched
+	 */
 	private Instant lastHydrateInstant;
 
+	/**
+	 * <p>Provides the configuration for the Hydrate Reminder plugin
+	 * </p>
+	 * @return Hydrate Reminder configuration
+	 * @since 1.0.0
+	 */
+	@Provides
+	HydrateReminderConfig provideConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(HydrateReminderConfig.class);
+	}
+
+	/**
+	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval
+	 * </p>
+	 * @since 1.0.0
+	 */
+	@Subscribe
+	public void onGameStateChanged(GameStateChanged gameStateChanged)
+	{
+		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
+		{
+			resetHydrateReminderTimeInterval();
+			log.debug("Hydrate Reminder plugin interval timer started");
+		}
+	}
+
+	/**
+	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
+	 * to send out the configured messages to the player and to reset the interval
+	 * </p>
+	 * @since 1.0.0
+	 */
+	@Subscribe
+	public void onGameTick(GameTick event)
+	{
+		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
+		final Instant nextHydrateReminderInstant = lastHydrateInstant.plus(hydrateReminderDuration);
+		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
+		{
+			handleHydrateReminderDispatch();
+			resetHydrateReminderTimeInterval();
+		}
+	}
+
+	/**
+	 * <p>Resets the time interval used for calculating hydrate reminder message dispatching
+	 * </p>
+	 * @since 1.0.0
+	 */
 	private void resetHydrateReminderTimeInterval()
 	{
 		lastHydrateInstant = Instant.now();
 	}
 
+	/**
+	 * <p>Handles the dispatching of hydrate reminders to the appropriate methods that send
+	 * the different hydrate reminder message types to the player
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydrateReminderDispatch()
+	{
+		final String hydrateReminderMessage = getHydrateReminderMessage();
+		if (config.hydrateReminderChatMessageEnabled())
+		{
+			sendHydrateReminderChatMessage(hydrateReminderMessage);
+		}
+		if (config.hydrateReminderComputerNotificationEnabled())
+		{
+			sendHydrateReminderNotification(hydrateReminderMessage);
+		}
+	}
+
+	/**
+	 * <p>Generates the hydrate reminder message to display to the player
+	 * </p>
+	 * @return the hydrate reminder message to display to the player
+	 * @since 1.1.0
+	 */
+	private String getHydrateReminderMessage()
+	{
+		final String playerName = client.getLocalPlayer().getName();
+		return String.format("%s, %s", HYDRATE_BREAK_TEXT, playerName);
+	}
+
+	/**
+	 * <p>Sends a hydrate reminder message to the player via the ingame chat box
+	 * </p>
+	 * @param message the hydrate reminder message to display to the player
+	 * @since 1.1.0
+	 */
+	private void sendHydrateReminderChatMessage(String message)
+	{
+		final ChatMessageType chatMessageType = getChatNotificationMessageType();
+		final String chatMessageSender = chatMessageType == ChatMessageType.FRIENDSCHAT ?
+				HYDRATE_REMINDER_USERNAME : "";
+		client.addChatMessage(chatMessageType, "", message, chatMessageSender);
+		log.debug(String.format("Successfully sent chat notification of type: %s", chatMessageType.toString()));
+	}
+
+	/**
+	 * <p>Sends a hydrate reminder message to the player via computer tray notification
+	 * </p>
+	 * @param message the hydrate reminder message to display to the player
+	 * @since 1.1.0
+	 */
+	private void sendHydrateReminderNotification(String message)
+	{
+		notifier.notify(message);
+		log.debug("Successfully sent computer notification");
+	}
+
+	/**
+	 * <p>Generates the type of chat message to send to the player
+	 * </p>
+	 * @return the type of chat message to send to the player
+	 * @since 1.0.0
+	 */
 	private ChatMessageType getChatNotificationMessageType()
 	{
 		ChatMessageType chatMessageType;
@@ -60,56 +202,5 @@ public class HydrateReminderPlugin extends Plugin
 				break;
 		}
 		return chatMessageType;
-	}
-
-	@Override
-	protected void startUp() throws Exception
-	{
-		log.info("Hydrate Reminder plugin started");
-	}
-
-	@Override
-	protected void shutDown() throws Exception
-	{
-		log.info("Hydrate Reminder plugin stopped");
-	}
-
-	@Subscribe
-	public void onGameStateChanged(GameStateChanged gameStateChanged)
-	{
-		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
-		{
-			resetHydrateReminderTimeInterval();
-			log.info("Hydrate Reminder plugin interval timer started");
-		}
-	}
-
-	@Subscribe
-	public void onGameTick(GameTick event)
-	{
-		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
-		if (lastHydrateInstant.plus(hydrateReminderDuration).compareTo(Instant.now()) < 0)
-		{
-			final String hydrateReminderMessage = String.format("It's time for a quick hydration break, %s.", client.getLocalPlayer().getName());
-			if (config.hydrateReminderChatMessageEnabled())
-			{
-				final ChatMessageType chatMessageType = getChatNotificationMessageType();
-				final String chatMessageSender = chatMessageType == ChatMessageType.FRIENDSCHAT ? "HydrateReminder" : "";
-				client.addChatMessage(chatMessageType, "", hydrateReminderMessage, chatMessageSender);
-				log.info(String.format("Successfully sent chat notification of type: %s", chatMessageType.toString()));
-			}
-			if (config.hydrateReminderComputerNotificationEnabled())
-			{
-				notifier.notify(hydrateReminderMessage);
-				log.info("Successfully sent computer notification");
-			}
-			resetHydrateReminderTimeInterval();
-		}
-	}
-
-	@Provides
-	HydrateReminderConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(HydrateReminderConfig.class);
 	}
 }
