@@ -15,7 +15,7 @@ def runeLiteVersion = '1.6.32'
 apply plugin: 'java'
 
 dependencies {
-	implementation 'org.junit:junit-bom:5.2.0'
+	implementation 'org.junit:junit-bom:5.7.0'
 }
 
 dependencies {
