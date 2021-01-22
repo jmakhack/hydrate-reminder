@@ -10,7 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-def runeLiteVersion = '1.6.37'
+def runeLiteVersion = '1.6.36'
 
 apply plugin: 'java'
 
