@@ -3,6 +3,11 @@ package com.hydratereminder;
 import com.google.inject.Provides;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
@@ -34,8 +39,27 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * Hydrate Reminder text to display
 	 */
-	private static final String HYDRATE_BREAK_TEXT = "It's time for a quick hydration break";
+	private static final List<String> HYDRATE_BREAK_TEXT_LIST = 
+			Collections.unmodifiableList(
+				    new ArrayList<String>() {{
+				        add("It's time for a quick hydration break");
+				        add("70% of the human brain is water so take a hydration break");
+				        add("Dehydration causes fatigue, take a quick hydration break");
+				        add("Drink water!");
+				        add("Drink water to stay healthy");
+				        add("Hey you, drink some water");
+				    }});
 
+	/**
+	 * Use an instance of Random to generate a stream of pseudorandom numbers
+	 */
+    private static Random randomGenerator = new Random();
+
+    /**
+     * Use random generator to randomly choose one of the hydrate reminder messages
+     */
+    private static String HYDRATE_BREAK_TEXT = HYDRATE_BREAK_TEXT_LIST.get(randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size()));
+    
 	/**
 	 * Username of Hydrate Reminder plugin to display in chatbox
 	 */
