@@ -18,6 +18,16 @@
         "design",
         "ideas"
       ]
+    },
+    {
+      "login": "sosnovska",
+      "name": "sosnovska",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11365065?v=4",
+      "profile": "https://github.com/sosnovska",
+      "contributions": [
+        "projectManagement",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
