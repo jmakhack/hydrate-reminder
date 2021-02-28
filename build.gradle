@@ -20,7 +20,7 @@ dependencies {
 	implementation 'org.junit:junit-bom:5.2.0'
 
 	testImplementation 'org.jmockit:jmockit:1.8'
-	testImplementation 'junit:junit:4.13.1'
+	testImplementation 'junit:junit:4.13.2'
 	testImplementation 'org.slf4j:slf4j-simple:1.7.30'
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion, {
 		exclude group: 'ch.qos.logback', module: 'logback-classic'
