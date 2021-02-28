@@ -1,7 +1,4 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
     <img src="https://i.imgur.com/bztOLOO.png" />
 </p>
 
@@ -23,6 +20,9 @@
     </a>
     <a href="https://github.com/jmakhack/hydrate-reminder/releases" alt="Release Date">
         <img src="https://img.shields.io/github/release-date/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+    <a href="#contributors-" alt="All Contributors">
+        <img src="https://img.shields.io/github/all-contributors/jmakhack/hydrate-reminder?style=for-the-badge" />
     </a>
     <a href="https://matias.ma/nsfw/" alt="Made With Love">
         <img src="https://img.shields.io/badge/Made%20With%20Love-(%E2%97%8F%E2%99%A1%E2%88%80%E2%99%A1))%E3%83%BE%E2%98%86*%E3%80%82-blueviolet?style=for-the-badge" />
@@ -53,6 +53,9 @@ It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) de
 ## Code of Conduct
 Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
 
+## License
+Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -62,16 +65,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/jmakhack"><img src="https://avatars.githubusercontent.com/u/1442227?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Mak</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Tests">⚠️</a> <a href="#maintenance-jmakhack" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Documentation">📖</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Code">💻</a> <a href="#design-jmakhack" title="Design">🎨</a> <a href="#ideas-jmakhack" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/jmakhack"><img src="https://avatars.githubusercontent.com/u/1442227?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Mak</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Tests">⚠️</a> <a href="#maintenance-jmakhack" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Documentation">📖</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-## License
-Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
