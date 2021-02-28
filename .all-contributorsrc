@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "jmakhack",
+      "name": "Josh Mak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1442227?v=4",
+      "profile": "https://github.com/jmakhack",
+      "contributions": [
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "hydrate-reminder",
+  "projectOwner": "jmakhack",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
