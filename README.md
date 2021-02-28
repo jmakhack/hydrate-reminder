@@ -53,12 +53,9 @@ It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) de
 ## Code of Conduct
 Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
 
-## License
-Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
+## Contributors ✨
 
-## Maintainers
-[jmakhack](https://github.com/jmakhack) | Creator
-
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -74,15 +71,7 @@ Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
