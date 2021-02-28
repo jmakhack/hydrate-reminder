@@ -55,3 +55,8 @@ Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
 
 ## Maintainers
 [jmakhack](https://github.com/jmakhack) | Creator
+
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
