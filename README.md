@@ -65,12 +65,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/jmakhack"><img src="https://avatars.githubusercontent.com/u/1442227?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Mak</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Tests">⚠️</a> <a href="#maintenance-jmakhack" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Documentation">📖</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jmakhack"><img src="https://avatars.githubusercontent.com/u/1442227?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Mak</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Tests">⚠️</a> <a href="#maintenance-jmakhack" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Documentation">📖</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Code">💻</a> <a href="#design-jmakhack" title="Design">🎨</a> <a href="#ideas-jmakhack" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/features/security"><img src="https://avatars.githubusercontent.com/u/27347476?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dependabot</b></sub></a><br /><a href="#maintenance-dependabot" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
