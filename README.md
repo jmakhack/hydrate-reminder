@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
     <img src="https://i.imgur.com/bztOLOO.png" />
 </p>
@@ -63,6 +63,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/jmakhack"><img src="https://avatars.githubusercontent.com/u/1442227?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Mak</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Tests">⚠️</a> <a href="#maintenance-jmakhack" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Documentation">📖</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jmakhack" title="Code">💻</a> <a href="#design-jmakhack" title="Design">🎨</a> <a href="#ideas-jmakhack" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/sosnovska"><img src="https://avatars.githubusercontent.com/u/11365065?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sosnovska</b></sub></a><br /><a href="#projectManagement-sosnovska" title="Project Management">📆</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sosnovska" title="Code">💻</a></td>
   </tr>
 </table>
 
