@@ -10,17 +10,17 @@ repositories {
 	mavenCentral()
 }
 
-def runeLiteVersion = '1.6.36'
+def runeLiteVersion = '1.7.1'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
 
-	compileOnly 'org.projectlombok:lombok:1.18.16'
-	annotationProcessor 'org.projectlombok:lombok:1.18.4'
+	compileOnly 'org.projectlombok:lombok:1.18.18'
+	annotationProcessor 'org.projectlombok:lombok:1.18.18'
 	implementation 'org.junit:junit-bom:5.2.0'
 
 	testImplementation 'org.jmockit:jmockit:1.8'
-	testImplementation 'junit:junit:4.13.1'
+	testImplementation 'junit:junit:4.13.2'
 	testImplementation 'org.slf4j:slf4j-simple:1.7.30'
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion, {
 		exclude group: 'ch.qos.logback', module: 'logback-classic'
@@ -33,7 +33,6 @@ test {
 
 group = 'com.hydratereminder'
 version = '1.0.1'
-sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
