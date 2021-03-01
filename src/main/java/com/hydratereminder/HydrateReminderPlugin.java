@@ -1,6 +1,5 @@
 package com.hydratereminder;
 
-import com.google.inject.Provides;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -9,15 +8,18 @@ import java.util.List;
 import java.util.Random;
 
 import javax.inject.Inject;
+
+import com.google.inject.Provides;
+
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
-import net.runelite.api.GameState;
+import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.Notifier;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
@@ -50,16 +52,6 @@ public class HydrateReminderPlugin extends Plugin
 				        add("Hey you, drink some water");
 				    }});
 
-	/**
-	 * Use an instance of Random to generate a stream of pseudorandom numbers
-	 */
-    private static Random randomGenerator = new Random();
-
-    /**
-     * Use random generator to randomly choose one of the hydrate reminder messages
-     */
-    private static String HYDRATE_BREAK_TEXT = HYDRATE_BREAK_TEXT_LIST.get(randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size()));
-    
 	/**
 	 * Username of Hydrate Reminder plugin to display in chatbox
 	 */
@@ -163,15 +155,20 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Generates the hydrate reminder message to display to the player
+	 * <p>Generates the hydrate reminder message to display to the player by choosing random 
+	 * element from the list of available messages.
 	 * </p>
 	 * @return the hydrate reminder message to display to the player
 	 * @since 1.1.0
 	 */
 	private String getHydrateReminderMessage()
 	{
+
+		Random randomGenerator = new Random();
 		final String playerName = client.getLocalPlayer().getName();
-		return String.format("%s, %s", HYDRATE_BREAK_TEXT, playerName);
+		String hydrateReminderMessage = HYDRATE_BREAK_TEXT_LIST.get(
+				randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size()));
+		return String.format("%s, %s", hydrateReminderMessage, playerName);
 	}
 
 	/**
