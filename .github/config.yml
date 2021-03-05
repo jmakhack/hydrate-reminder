@@ -1,13 +1,16 @@
 newIssueWelcomeComment: >
   Thanks for your contribution in creating this hydrate-reminder issue!
+  If you like what we're building here, please give our project a star.
   ![https://media.giphy.com/media/eng1F85OwyqQe6JHc2/giphy.gif](https://media.giphy.com/media/eng1F85OwyqQe6JHc2/giphy.gif)
 
 newPRWelcomeComment: >
-  Thanks for opening this pull request for hydrate-reminder! Please wait shortly for someone to review.
+  Thanks for opening this pull request for hydrate-reminder!
+  Please wait shortly for someone to review.
   ![https://media.giphy.com/media/JVBV02JFVmWrut9H8j/giphy.gif](https://media.giphy.com/media/JVBV02JFVmWrut9H8j/giphy.gif)
 
 firstPRMergeComment: >
   Congrats on merging your first pull request to hydrate-reminder!
+  Please give our project a star if you like what we are building here.
   ![https://media.giphy.com/media/6RbEFpsxCOVOBUoJc4/giphy.gif](https://media.giphy.com/media/6RbEFpsxCOVOBUoJc4/giphy.gif)
   
 sentimentBotToxicityThreshold: .7
