@@ -10,7 +10,9 @@ If adding any third party dependencies, follow the guide found at [plugin-hub](h
 
 ## Testing
 
-As of 11/25/2020 (Hydrate Reminder v1.0.1), there are no automated tests setup for this project. Until automated tests are setup, make sure to test the build thoroughly before submitting a pull request. Each pull request build will also be tested thoroughly by the reviewer.
+They hydrate-reminder project contains jUnit tests located in [src/test/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/test/java/com/hydratereminder). Please ensure that all the unit tests are passing before submitting a change. If the unit tests are failing as a result of a code change, identify why the test is failing and either fix the newly written code or update the test if it is no longer valid. Adding new unit tests for new features/enhancements is strongly encouraged but not strictly required (a separate testing task will be opened if not needed).
+
+When a new pull request is opened, the unit tests are run automatically as part of the pre-merge pipeline for every update to ensure that they are all passing before merging in the code. New code changes are not allowed to be merged into the master branch until all tests are passing. The unit tests are also run on a nightly basis to ensure the project's stable condition. The current build status can be viewed on the [README](https://github.com/jmakhack/hydrate-reminder/blob/master/README.md) as a badge. Manual testing is also done as a final step before every release as a sanity check of the plugin's quality.
 
 ## Submitting Changes
 

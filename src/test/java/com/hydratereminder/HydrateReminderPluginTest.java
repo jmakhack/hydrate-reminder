@@ -19,6 +19,7 @@ import org.junit.Test;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.time.Instant;
+import java.util.List;
 
 @RunWith(JMockit.class)
 public class HydrateReminderPluginTest
@@ -278,9 +279,9 @@ public class HydrateReminderPluginTest
             result = playerName;
             times = 1;
         }};
-        final String hydrateText = getField(plugin, "HYDRATE_BREAK_TEXT");
+        final List<String> hydrateMessageList = getField(plugin, "HYDRATE_BREAK_TEXT_LIST");
         final String message = invoke(plugin, "getHydrateReminderMessage");
-        assertEquals(String.format("%s, %s", hydrateText, playerName), message);
+        assertTrue(hydrateMessageList.contains(message.replace(", OSRSplayer42", "")));
     }
 
     @Test
