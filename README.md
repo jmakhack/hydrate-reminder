@@ -40,6 +40,8 @@ Never forget to drink water while exploring the world of Old School RuneScape ev
 
 ## Installation Instructions
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b00c9012cdf04f5788cdc4fe2a194f9b)](https://app.codacy.com/gh/jmakhack/hydrate-reminder?utm_source=github.com&utm_medium=referral&utm_content=jmakhack/hydrate-reminder&utm_campaign=Badge_Grade_Settings)
+
 This plugin is designed for use within the open source RuneLite OSRS client which can be downloaded [here](https://runelite.net/).
 
 To install the plugin, start up the RuneLite client and search for the Hydrate Reminder plugin in the Plugin Hub.
