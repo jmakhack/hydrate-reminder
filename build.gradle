@@ -15,7 +15,7 @@ def runeLiteVersion = '1.7.1'
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
 
-	compileOnly 'org.projectlombok:lombok:1.18.18'
+	compileOnly 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.18'
 	implementation 'org.junit:junit-bom:5.2.0'
 
