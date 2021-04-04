@@ -26,4 +26,6 @@ Always write a clear and concise commit message for your commits. One-line messa
 ## Coding Conventions
 When adding new classes, methods, and fields, please add the appropriate JavaDocs to keep the codebase in an easily maintainable state.
 
+[Codacy](https://app.codacy.com/gh/jmakhack/hydrate-reminder/dashboard) is used to measure the overall code quality of hydrate-reminder. The goal is to keep the code quality score at an A level, never allowing it to dip below B.
+
 Otherwise, there are no formal, documented coding conventions for this project to follow, but please take a look at the existing code under [src/main/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/main/java/com/hydratereminder) and follow the existing conventions.
