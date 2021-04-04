@@ -1,9 +1,9 @@
 package com.hydratereminder;
 
-import mockit.*;
-import static mockit.Deencapsulation.*;
-import static org.junit.Assert.*;
-
+import mockit.Expectations;
+import mockit.Injectable;
+import mockit.Mocked;
+import mockit.Tested;
 import mockit.integration.junit4.JMockit;
 import net.runelite.api.*;
 import net.runelite.api.Point;
@@ -20,6 +20,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.time.Instant;
 import java.util.List;
+
+import static mockit.Deencapsulation.*;
+import static org.junit.Assert.*;
 
 @RunWith(JMockit.class)
 public class HydrateReminderPluginTest
@@ -241,6 +244,7 @@ public class HydrateReminderPluginTest
             times = 1;
         }};
         invoke(plugin, "handleHydrateReminderDispatch");
+
     }
 
     @Test
