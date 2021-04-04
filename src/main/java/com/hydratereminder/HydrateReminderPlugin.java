@@ -87,7 +87,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * @since 1.0.0
 	 */
 	@Provides
-	HydrateReminderConfig provideConfig(ConfigManager configManager)
+	protected HydrateReminderConfig provideConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(HydrateReminderConfig.class);
 	}

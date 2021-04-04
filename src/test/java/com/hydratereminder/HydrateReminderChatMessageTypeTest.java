@@ -1,7 +1,7 @@
 package com.hydratereminder;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.*;
+import org.junit.Test;
 
 public class HydrateReminderChatMessageTypeTest
 {
