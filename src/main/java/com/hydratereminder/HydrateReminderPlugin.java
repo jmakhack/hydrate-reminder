@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
@@ -41,7 +42,7 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * Hydrate Reminder text to display
 	 */
-	private static final List<String> HYDRATE_BREAK_TEXT_LIST = 
+	private static final List<String> HYDRATE_BREAK_TEXT_LIST =
 			Collections.unmodifiableList(
 				    new ArrayList<String>() {{
 				        add("It's time for a quick hydration break");
@@ -105,6 +106,44 @@ public class HydrateReminderPlugin extends Plugin
 			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
+	}
+
+	/**
+	 * <p>Handles any chat commands inputted by the player
+	 * </p>
+	 * @since 1.1.0
+	 */
+	@Subscribe
+	public void onCommandExecuted(CommandExecuted commandExecuted)
+    {
+		if (commandExecuted.getCommand().equals("hydrate"))
+		{
+			final String[] args = commandExecuted.getArguments();
+			if (args.length > 0)
+			{
+				if (args[0].equals("next"))
+				{
+					handleHydrateNextCommand();
+				}
+			}
+		}
+	}
+
+	/**
+	 * <p>Handle the hydrate next command by generating a chat message displaying the amount of time
+	 * until the next hydrate break
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydrateNextCommand()
+	{
+		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
+		final Instant nextHydrateReminderInstant = lastHydrateInstant.plus(hydrateReminderDuration);
+		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
+		final String timeString = String.format("%s hours %s minutes %s seconds until next hydrate break",
+				timeUntilNextBreak.toHoursPart(), timeUntilNextBreak.toMinutesPart(),
+				timeUntilNextBreak.toSecondsPart());
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
 	}
 
 	/**

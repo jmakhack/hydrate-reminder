@@ -48,6 +48,13 @@ public class HydrateReminderPluginTest
         public WorldPoint getWorldLocation() { return null; }
         public LocalPoint getLocalLocation() { return null; }
         public void setIdlePoseAnimation(int animation) {}
+        public int getIdleRotateLeft() { return 0; }
+        public int getIdleRotateRight() { return 0; }
+        public int getWalkAnimation() { return 0; }
+        public int getWalkRotateLeft() { return 0; }
+        public int getWalkRotateRight() { return 0; }
+        public int getWalkRotate180() { return 0; }
+        public int getRunAnimation() { return 0; }
         public void setPoseAnimation(int animation) {}
         public int getOrientation() { return 0; }
         public int getAnimation() { return 0; }
