@@ -20,6 +20,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
@@ -41,14 +42,14 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private static final List<String> HYDRATE_BREAK_TEXT_LIST =
 			Collections.unmodifiableList(
-				    new ArrayList<String>() {{
-				        add("It's time for a quick hydration break");
-				        add("70% of the human brain is water so take a hydration break");
-				        add("Dehydration causes fatigue, take a quick hydration break");
-				        add("Drink water!");
-				        add("Drink water to stay healthy");
-				        add("Hey you, drink some water");
-				    }});
+					new ArrayList<>() {{
+						add("It's time for a quick hydration break");
+						add("70% of the human brain is water so take a hydration break");
+						add("Dehydration causes fatigue, take a quick hydration break");
+						add("Drink water!");
+						add("Drink water to stay healthy");
+						add("Hey you, drink some water");
+					}});
 
 	/**
 	 * Username of Hydrate Reminder plugin to display in chatbox
@@ -119,7 +120,7 @@ public class HydrateReminderPlugin extends Plugin
 		if (commandExecuted.getCommand().equalsIgnoreCase("hydrate"))
 		{
 			final String[] args = commandExecuted.getArguments();
-			if (args.length > 0)
+			if (ArrayUtils.isNotEmpty(args))
 			{
 				switch (args[0].toLowerCase())
 				{
@@ -216,7 +217,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 
 		Random randomGenerator = new Random();
-		final String playerName = client.getLocalPlayer().getName();
+		final String playerName = Objects.requireNonNull(client.getLocalPlayer()).getName();
 		String hydrateReminderMessage = HYDRATE_BREAK_TEXT_LIST.get(
 				randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size()));
 		return String.format("%s, %s", hydrateReminderMessage, playerName);
