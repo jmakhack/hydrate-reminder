@@ -116,14 +116,16 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
     {
-		if (commandExecuted.getCommand().equals("hydrate"))
+		if (commandExecuted.getCommand().equalsIgnoreCase("hydrate"))
 		{
 			final String[] args = commandExecuted.getArguments();
 			if (args.length > 0)
 			{
-				if (args[0].equals("next"))
+				switch (args[0].toLowerCase())
 				{
-					handleHydrateNextCommand();
+					case "next":
+						handleHydrateNextCommand();
+						break;
 				}
 			}
 		}
