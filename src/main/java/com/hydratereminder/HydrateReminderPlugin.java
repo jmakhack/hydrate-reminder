@@ -2,10 +2,7 @@ package com.hydratereminder;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import javax.inject.Inject;
 
@@ -84,6 +81,7 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * <p>Provides the configuration for the Hydrate Reminder plugin
 	 * </p>
+	 * @param configManager the plugin configuration manager
 	 * @return Hydrate Reminder configuration
 	 * @since 1.0.0
 	 */
@@ -96,6 +94,7 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval
 	 * </p>
+	 * @param gameStateChanged the change game state event
 	 * @since 1.0.0
 	 */
 	@Subscribe
@@ -109,8 +108,9 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Handles any chat commands inputted by the player
+	 * <p>Handles any chat commands inputted by the player, executed in the form of ::hydrate [args]
 	 * </p>
+	 * @param commandExecuted the chat executed command
 	 * @since 1.1.0
 	 */
 	@Subscribe
@@ -139,8 +139,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void handleHydrateNextCommand()
 	{
-		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
-		final Instant nextHydrateReminderInstant = lastHydrateInstant.plus(hydrateReminderDuration);
+		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
 		final String timeString = String.format("%s hours %s minutes %s seconds until next hydrate break",
 				timeUntilNextBreak.toHoursPart(), timeUntilNextBreak.toMinutesPart(),
@@ -152,18 +151,29 @@ public class HydrateReminderPlugin extends Plugin
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
 	 * to send out the configured messages to the player and to reset the interval
 	 * </p>
+	 * @param event game tick event
 	 * @since 1.0.0
 	 */
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
-		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
-		final Instant nextHydrateReminderInstant = lastHydrateInstant.plus(hydrateReminderDuration);
+		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
 		}
+	}
+
+	/**
+	 * <p>Calculates the next instant at which the next hydrate reminder should be sent out
+	 * </p>
+	 * @return the instant to send the next hydrate reminder on
+	 */
+	private Instant getNextHydrateReminderInstant()
+	{
+		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
+		return lastHydrateInstant.plus(hydrateReminderDuration);
 	}
 
 	/**
@@ -196,7 +206,7 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Generates the hydrate reminder message to display to the player by choosing random 
+	 * <p>Generates the hydrate reminder message to display to the player by choosing random
 	 * element from the list of available messages.
 	 * </p>
 	 * @return the hydrate reminder message to display to the player
