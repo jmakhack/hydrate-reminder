@@ -84,10 +84,13 @@ public class HydrateReminderPluginTest
             commandExecuted.getCommand();
             result = "hydration";
             times = 1;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+        new Verifications()
+        {{
             invoke(plugin, "handleHydrateNextCommand");
             times = 0;
         }};
-        plugin.onCommandExecuted(commandExecuted);
     }
 
     @Test
@@ -101,10 +104,13 @@ public class HydrateReminderPluginTest
             commandExecuted.getArguments();
             result = new String[] {};
             times = 1;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+        new Verifications()
+        {{
             invoke(plugin, "handleHydrateNextCommand");
             times = 0;
         }};
-        plugin.onCommandExecuted(commandExecuted);
     }
 
     @Test
@@ -118,10 +124,13 @@ public class HydrateReminderPluginTest
             commandExecuted.getArguments();
             result = new String[] { "start" };
             times = 1;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+        new Verifications()
+        {{
             invoke(plugin, "handleHydrateNextCommand");
             times = 0;
         }};
-        plugin.onCommandExecuted(commandExecuted);
     }
 
     @Test
@@ -135,10 +144,14 @@ public class HydrateReminderPluginTest
             commandExecuted.getArguments();
             result = new String[] { "NEXT" };
             times = 1;
+        }};
+        setField(plugin, "lastHydrateInstant", Instant.now());
+        plugin.onCommandExecuted(commandExecuted);
+        new Verifications()
+        {{
             invoke(plugin, "handleHydrateNextCommand");
             times = 1;
         }};
-        plugin.onCommandExecuted(commandExecuted);
     }
 
     @Test
@@ -152,10 +165,14 @@ public class HydrateReminderPluginTest
             commandExecuted.getArguments();
             result = new String[] { "next" };
             times = 1;
+        }};
+        setField(plugin, "lastHydrateInstant", Instant.now());
+        plugin.onCommandExecuted(commandExecuted);
+        new Verifications()
+        {{
             invoke(plugin, "handleHydrateNextCommand");
             times = 1;
         }};
-        plugin.onCommandExecuted(commandExecuted);
     }
 
     @Test
@@ -167,10 +184,13 @@ public class HydrateReminderPluginTest
             invoke(plugin, "getNextHydrateReminderInstant");
             result = now.plusSeconds(4000);
             times = 1;
+        }};
+        invoke(plugin, "handleHydrateNextCommand");
+        new Verifications()
+        {{
             client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", withSubstring("1 hours 6 minutes"), null);
             times = 1;
         }};
-        invoke(plugin, "handleHydrateNextCommand");
     }
 
     @Test
@@ -356,10 +376,13 @@ public class HydrateReminderPluginTest
             invoke(plugin, "getChatNotificationMessageType");
             result = messageType;
             times = 1;
+        }};
+        invoke(plugin, "sendHydrateReminderChatMessage", message);
+        new Verifications()
+        {{
             client.addChatMessage(messageType, "",message, "");
             times = 1;
         }};
-        invoke(plugin, "sendHydrateReminderChatMessage", message);
     }
 
     @Test
@@ -372,21 +395,25 @@ public class HydrateReminderPluginTest
             invoke(plugin, "getChatNotificationMessageType");
             result = messageType;
             times = 1;
+        }};
+        invoke(plugin, "sendHydrateReminderChatMessage", message);
+        new Verifications()
+        {{
             client.addChatMessage(messageType, "",message, username);
             times = 1;
         }};
-        invoke(plugin, "sendHydrateReminderChatMessage", message);
     }
 
     @Test
     public void testSendHydrateReminderNotification()
     {
         final String message = "Break to Hydrate";
-        new Expectations(plugin) {{
+        invoke(plugin, "sendHydrateReminderNotification", message);
+        new Verifications()
+        {{
             notifier.notify(message);
             times = 1;
         }};
-        invoke(plugin, "sendHydrateReminderNotification", message);
     }
 
     @Test
