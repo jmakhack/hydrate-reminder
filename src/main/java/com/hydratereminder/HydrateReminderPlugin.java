@@ -42,7 +42,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private static final List<String> HYDRATE_BREAK_TEXT_LIST =
 			Collections.unmodifiableList(
-					new ArrayList<>() {{
+					new ArrayList<String>() {{
 						add("It's time for a quick hydration break");
 						add("70% of the human brain is water so take a hydration break");
 						add("Dehydration causes fatigue, take a quick hydration break");
@@ -145,9 +145,11 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
+		final int hours = Math.toIntExact(timeUntilNextBreak.toHours());
+		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
+		final int seconds = Math.toIntExact(timeUntilNextBreak.toSeconds() % 60);
 		final String timeString = String.format("%s hours %s minutes %s seconds until next hydrate break",
-				timeUntilNextBreak.toHoursPart(), timeUntilNextBreak.toMinutesPart(),
-				timeUntilNextBreak.toSecondsPart());
+				hours, minutes, seconds);
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
 	}
 
