@@ -37,7 +37,6 @@
 It is always of critical importantance to keep hydrated.  
 Never forget to drink water while exploring the world of Old School RuneScape ever again!
 
-
 ## Installation Instructions
 
 This plugin is designed for use within the open source RuneLite OSRS client which can be downloaded [here](https://runelite.net/).
