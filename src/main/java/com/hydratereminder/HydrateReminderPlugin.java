@@ -127,6 +127,9 @@ public class HydrateReminderPlugin extends Plugin
 					case "next":
 						handleHydrateNextCommand();
 						break;
+					default:
+						log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
+						break;
 				}
 			}
 		}
