@@ -4,6 +4,8 @@ Hey, it's nice to see fellow software developers interested in contributing to a
 
 Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue.
 
+When making any code changes, please make sure to run the build using [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).
+
 Make sure to ensure that no newly added functionality goes against [Jagex's rules](https://secure.runescape.com/m=news/another-message-about-unofficial-clients?oldschool=1).  
 If adding any third party dependencies, follow the guide found at [plugin-hub](https://github.com/runelite/plugin-hub#third-party-dependencies).
 
