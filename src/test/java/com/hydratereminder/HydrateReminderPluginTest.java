@@ -1,23 +1,15 @@
 package com.hydratereminder;
 
-import mockit.Expectations;
-import mockit.Injectable;
-import mockit.Mocked;
-import mockit.Tested;
+import mockit.*;
 import mockit.integration.junit4.JMockit;
 import net.runelite.api.*;
-import net.runelite.api.Point;
-import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.coords.WorldArea;
-import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.time.Instant;
 import java.util.List;
 
@@ -38,59 +30,6 @@ public class HydrateReminderPluginTest
 
     @Tested
     private HydrateReminderPlugin plugin;
-
-    static final class PlayerImpl implements Player {
-        public int getCombatLevel() { return 0; }
-        public String getName() { return null; }
-        public Actor getInteracting() { return null; }
-        public int getHealthRatio() { return 0; }
-        public int getHealthScale() { return 0; }
-        public WorldPoint getWorldLocation() { return null; }
-        public LocalPoint getLocalLocation() { return null; }
-        public void setIdlePoseAnimation(int animation) {}
-        public int getIdleRotateLeft() { return 0; }
-        public int getIdleRotateRight() { return 0; }
-        public int getWalkAnimation() { return 0; }
-        public int getWalkRotateLeft() { return 0; }
-        public int getWalkRotateRight() { return 0; }
-        public int getWalkRotate180() { return 0; }
-        public int getRunAnimation() { return 0; }
-        public void setPoseAnimation(int animation) {}
-        public int getOrientation() { return 0; }
-        public int getAnimation() { return 0; }
-        public int getPoseAnimation() { return 0; }
-        public int getIdlePoseAnimation() { return 0; }
-        public void setAnimation(int animation) {}
-        public void setActionFrame(int actionFrame) {}
-        public int getGraphic() { return 0; }
-        public void setGraphic(int graphic) {}
-        public void setSpotAnimFrame(int spotAnimFrame) {}
-        public Polygon getCanvasTilePoly() { return null; }
-        public Point getCanvasTextLocation(Graphics2D graphics, String text, int zOffset) { return null; }
-        public Point getCanvasImageLocation(BufferedImage image, int zOffset) { return null; }
-        public Point getCanvasSpriteLocation(SpritePixels sprite, int zOffset) { return null; }
-        public Point getMinimapLocation() { return null; }
-        public int getLogicalHeight() { return 0; }
-        public Shape getConvexHull() { return null; }
-        public WorldArea getWorldArea() { return null; }
-        public String getOverheadText() { return null; }
-        public void setOverheadText(String overheadText) {}
-        public boolean isDead() { return false; }
-        public PlayerComposition getPlayerComposition() { return null; }
-        public Polygon[] getPolygons() { return new Polygon[0]; }
-        public int getTeam() { return 0; }
-        public boolean isFriendsChatMember() { return false; }
-        public boolean isFriend() { return false; }
-        public HeadIcon getOverheadIcon() { return null; }
-        public SkullIcon getSkullIcon() { return null; }
-        public Model getModel() { return null; }
-        public int getModelHeight() { return 0; }
-        public void setModelHeight(int modelHeight) {}
-        public void draw(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash) {}
-        public Node getNext() { return null; }
-        public Node getPrevious() { return null; }
-        public long getHash() { return 0; }
-    };
 
     @Test
     public void testProvideConfig(@Mocked ConfigManager configManager)
@@ -138,6 +77,103 @@ public class HydrateReminderPluginTest
     }
 
     @Test
+    public void testOnCommandExecutedInvalidCommand(@Mocked CommandExecuted commandExecuted)
+    {
+        new Expectations(plugin)
+        {{
+            commandExecuted.getCommand();
+            result = "hydration";
+            times = 1;
+            invoke(plugin, "handleHydrateNextCommand");
+            times = 0;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+    }
+
+    @Test
+    public void testOnCommandExecutedEmptyArguments(@Mocked CommandExecuted commandExecuted)
+    {
+        new Expectations(plugin)
+        {{
+            commandExecuted.getCommand();
+            result = "hydrate";
+            times = 1;
+            commandExecuted.getArguments();
+            result = new String[] {};
+            times = 1;
+            invoke(plugin, "handleHydrateNextCommand");
+            times = 0;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+    }
+
+    @Test
+    public void testOnCommandExecutedInvalidArguments(@Mocked CommandExecuted commandExecuted)
+    {
+        new Expectations(plugin)
+        {{
+            commandExecuted.getCommand();
+            result = "hydrate";
+            times = 1;
+            commandExecuted.getArguments();
+            result = new String[] { "start" };
+            times = 1;
+            invoke(plugin, "handleHydrateNextCommand");
+            times = 0;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+    }
+
+    @Test
+    public void testOnCommandExecutedUppercase(@Mocked CommandExecuted commandExecuted)
+    {
+        new Expectations(plugin)
+        {{
+            commandExecuted.getCommand();
+            result = "HYDRATE";
+            times = 1;
+            commandExecuted.getArguments();
+            result = new String[] { "NEXT" };
+            times = 1;
+            invoke(plugin, "handleHydrateNextCommand");
+            times = 1;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+    }
+
+    @Test
+    public void testOnCommandExecutedNext(@Mocked CommandExecuted commandExecuted)
+    {
+        new Expectations(plugin)
+        {{
+            commandExecuted.getCommand();
+            result = "hydrate";
+            times = 1;
+            commandExecuted.getArguments();
+            result = new String[] { "next" };
+            times = 1;
+            invoke(plugin, "handleHydrateNextCommand");
+            times = 1;
+        }};
+        plugin.onCommandExecuted(commandExecuted);
+    }
+
+    @Test
+    public void testHandleHydrateNextCommand()
+    {
+        final Instant now = Instant.now();
+        new Expectations(plugin)
+        {{
+            invoke(plugin, "getNextHydrateReminderInstant");
+            result = now.plusSeconds(4000);
+            times = 1;
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", withSubstring("1 hours 6 minutes"), null);
+            times = 1;
+        }};
+        invoke(plugin, "handleHydrateNextCommand");
+    }
+
+    @Test
     public void testOnGameTickIntervalReached()
     {
         new Expectations(plugin)
@@ -172,6 +208,22 @@ public class HydrateReminderPluginTest
         plugin.onGameTick(null);
         final Instant resetInstant = getField(plugin, "lastHydrateInstant");
         assertEquals(now, resetInstant);
+    }
+
+    @Test
+    public void testGetNextHydrateReminderInstant()
+    {
+        new Expectations(plugin)
+        {{
+            config.hydrateReminderInterval();
+            result = 5;
+            times = 1;
+        }};
+        final Instant now = Instant.now();
+        setField(plugin, "lastHydrateInstant", now);
+        final Instant nextInstant = invoke(plugin, "getNextHydrateReminderInstant");
+        assertTrue(nextInstant.compareTo(now) > 0);
+        assertTrue(nextInstant.compareTo(now.plusSeconds(360)) < 0);
     }
 
     @Test
@@ -278,15 +330,15 @@ public class HydrateReminderPluginTest
     }
 
     @Test
-    public void testGetHydrateReminderMessage(@Mocked PlayerImpl player)
+    public void testGetHydrateReminderMessage(@Mocked Player playerMock)
     {
         final String playerName = "OSRSplayer42";
-        new Expectations(player)
+        new Expectations()
         {{
             client.getLocalPlayer();
-            result = player;
+            result = playerMock;
             times = 1;
-            player.getName();
+            playerMock.getName();
             result = playerName;
             times = 1;
         }};

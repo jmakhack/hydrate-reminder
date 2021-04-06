@@ -170,6 +170,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * <p>Calculates the next instant at which the next hydrate reminder should be sent out
 	 * </p>
 	 * @return the instant to send the next hydrate reminder on
+	 * @since 1.1.0
 	 */
 	private Instant getNextHydrateReminderInstant()
 	{
