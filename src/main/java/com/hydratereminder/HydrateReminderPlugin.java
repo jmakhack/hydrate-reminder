@@ -2,10 +2,7 @@ package com.hydratereminder;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import javax.inject.Inject;
 
@@ -15,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
@@ -22,6 +20,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
@@ -41,16 +40,16 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * Hydrate Reminder text to display
 	 */
-	private static final List<String> HYDRATE_BREAK_TEXT_LIST = 
+	private static final List<String> HYDRATE_BREAK_TEXT_LIST =
 			Collections.unmodifiableList(
-				    new ArrayList<String>() {{
-				        add("It's time for a quick hydration break");
-				        add("70% of the human brain is water so take a hydration break");
-				        add("Dehydration causes fatigue, take a quick hydration break");
-				        add("Drink water!");
-				        add("Drink water to stay healthy");
-				        add("Hey you, drink some water");
-				    }});
+					new ArrayList<String>() {{
+						add("It's time for a quick hydration break");
+						add("70% of the human brain is water so take a hydration break");
+						add("Dehydration causes fatigue, take a quick hydration break");
+						add("Drink water!");
+						add("Drink water to stay healthy");
+						add("Hey you, drink some water");
+					}});
 
 	/**
 	 * Username of Hydrate Reminder plugin to display in chatbox
@@ -83,6 +82,7 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * <p>Provides the configuration for the Hydrate Reminder plugin
 	 * </p>
+	 * @param configManager the plugin configuration manager
 	 * @return Hydrate Reminder configuration
 	 * @since 1.0.0
 	 */
@@ -95,6 +95,7 @@ public class HydrateReminderPlugin extends Plugin
 	/**
 	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval
 	 * </p>
+	 * @param gameStateChanged the change game state event
 	 * @since 1.0.0
 	 */
 	@Subscribe
@@ -108,21 +109,78 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
+	 * <p>Handles any chat commands inputted by the player, executed in the form of ::hydrate [args]
+	 * </p>
+	 * @param commandExecuted the chat executed command
+	 * @since 1.1.0
+	 */
+	@Subscribe
+	public void onCommandExecuted(CommandExecuted commandExecuted)
+    {
+		if (commandExecuted.getCommand().equalsIgnoreCase("hydrate"))
+		{
+			final String[] args = commandExecuted.getArguments();
+			if (ArrayUtils.isNotEmpty(args))
+			{
+				switch (args[0].toLowerCase())
+				{
+					case "next":
+						handleHydrateNextCommand();
+						break;
+					default:
+						log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
+						break;
+				}
+			}
+		}
+	}
+
+	/**
+	 * <p>Handle the hydrate next command by generating a chat message displaying the amount of time
+	 * until the next hydrate break
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydrateNextCommand()
+	{
+		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
+		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
+		final int hours = Math.toIntExact(timeUntilNextBreak.toHours());
+		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
+		final int seconds = Math.toIntExact((timeUntilNextBreak.toMillis() / 1000) % 60);
+		final String timeString = String.format("%s hours %s minutes %s seconds until next hydrate break",
+				hours, minutes, seconds);
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
+	}
+
+	/**
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
 	 * to send out the configured messages to the player and to reset the interval
 	 * </p>
+	 * @param event game tick event
 	 * @since 1.0.0
 	 */
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
-		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
-		final Instant nextHydrateReminderInstant = lastHydrateInstant.plus(hydrateReminderDuration);
+		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
 		}
+	}
+
+	/**
+	 * <p>Calculates the next instant at which the next hydrate reminder should be sent out
+	 * </p>
+	 * @return the instant to send the next hydrate reminder on
+	 * @since 1.1.0
+	 */
+	private Instant getNextHydrateReminderInstant()
+	{
+		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
+		return lastHydrateInstant.plus(hydrateReminderDuration);
 	}
 
 	/**
@@ -155,7 +213,7 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Generates the hydrate reminder message to display to the player by choosing random 
+	 * <p>Generates the hydrate reminder message to display to the player by choosing random
 	 * element from the list of available messages.
 	 * </p>
 	 * @return the hydrate reminder message to display to the player
@@ -165,7 +223,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 
 		Random randomGenerator = new Random();
-		final String playerName = client.getLocalPlayer().getName();
+		final String playerName = Objects.requireNonNull(client.getLocalPlayer()).getName();
 		String hydrateReminderMessage = HYDRATE_BREAK_TEXT_LIST.get(
 				randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size()));
 		return String.format("%s, %s", hydrateReminderMessage, playerName);
