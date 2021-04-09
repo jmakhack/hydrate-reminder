@@ -127,6 +127,9 @@ public class HydrateReminderPlugin extends Plugin
 					case "next":
 						handleHydrateNextCommand();
 						break;
+					case "prev":
+						handleHydratePrevCommand();
+						break;
 					default:
 						log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
 						break;
@@ -149,6 +152,23 @@ public class HydrateReminderPlugin extends Plugin
 		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeUntilNextBreak.toMillis() / 1000) % 60);
 		final String timeString = String.format("%s hours %s minutes %s seconds until next hydrate break",
+				hours, minutes, seconds);
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
+	}
+
+	/**
+	 * <p>Handle the hydrate prev command by generating a chat message displaying the amount of time
+	 * since the last hydrate break
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydratePrevCommand()
+	{
+		final Duration timeSinceLastBreak = Duration.between(lastHydrateInstant, Instant.now());
+		final int hours = Math.toIntExact(timeSinceLastBreak.toHours());
+		final int minutes = Math.toIntExact(timeSinceLastBreak.toMinutes() % 60);
+		final int seconds = Math.toIntExact((timeSinceLastBreak.toMillis() / 1000) % 60);
+		final String timeString = String.format("%s hours %s minutes %s seconds since last hydrate break",
 				hours, minutes, seconds);
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
 	}
