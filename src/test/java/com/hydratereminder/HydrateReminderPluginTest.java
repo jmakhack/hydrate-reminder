@@ -178,17 +178,30 @@ public class HydrateReminderPluginTest
     @Test
     public void testHandleHydrateNextCommand()
     {
-        final Instant now = Instant.now();
         new Expectations(plugin)
         {{
             invoke(plugin, "getNextHydrateReminderInstant");
-            result = now.plusSeconds(4000);
+            result = Instant.now().plusSeconds(4000);
             times = 1;
         }};
         invoke(plugin, "handleHydrateNextCommand");
         new Verifications()
         {{
-            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", withSubstring("1 hours 6 minutes"), null);
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
+                    withSubstring("1 hours 6 minutes"), null);
+            times = 1;
+        }};
+    }
+
+    @Test
+    public void testHandleHydratePrevCommand()
+    {
+        setField(plugin, "lastHydrateInstant", Instant.now().minusSeconds(5000));
+        invoke(plugin, "handleHydratePrevCommand");
+        new Verifications()
+        {{
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
+                    withSubstring("1 hours 23 minutes"), null);
             times = 1;
         }};
     }
@@ -196,16 +209,16 @@ public class HydrateReminderPluginTest
     @Test
     public void testOnGameTickIntervalReached()
     {
+        final Instant now = Instant.now();
         new Expectations(plugin)
         {{
-            config.hydrateReminderInterval();
-            result = 0;
+            invoke(plugin, "getNextHydrateReminderInstant");
+            result = now.minusSeconds(10000);
             times = 1;
             invoke(plugin, "handleHydrateReminderDispatch");
             result = null;
             times = 1;
         }};
-        final Instant now = Instant.now();
         setField(plugin, "lastHydrateInstant", now);
         plugin.onGameTick(null);
         final Instant resetInstant = getField(plugin, "lastHydrateInstant");
