@@ -151,7 +151,7 @@ public class HydrateReminderPlugin extends Plugin
 		final int hours = Math.toIntExact(timeUntilNextBreak.toHours());
 		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeUntilNextBreak.toMillis() / 1000) % 60);
-		final String timeString = String.format("%s hours %s minutes %s seconds until next hydrate break",
+		final String timeString = String.format("%s hours %s minutes %s seconds until the next hydrate break",
 				hours, minutes, seconds);
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
 	}
@@ -168,7 +168,7 @@ public class HydrateReminderPlugin extends Plugin
 		final int hours = Math.toIntExact(timeSinceLastBreak.toHours());
 		final int minutes = Math.toIntExact(timeSinceLastBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeSinceLastBreak.toMillis() / 1000) % 60);
-		final String timeString = String.format("%s hours %s minutes %s seconds since last hydrate break",
+		final String timeString = String.format("%s hours %s minutes %s seconds since the last hydrate break",
 				hours, minutes, seconds);
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
 	}
