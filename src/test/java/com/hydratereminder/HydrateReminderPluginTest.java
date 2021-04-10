@@ -209,16 +209,16 @@ public class HydrateReminderPluginTest
     @Test
     public void testOnGameTickIntervalReached()
     {
+        final Instant now = Instant.now();
         new Expectations(plugin)
         {{
-            config.hydrateReminderInterval();
-            result = 0;
+            invoke(plugin, "getNextHydrateReminderInstant");
+            result = now.minusSeconds(10000);
             times = 1;
             invoke(plugin, "handleHydrateReminderDispatch");
             result = null;
             times = 1;
         }};
-        final Instant now = Instant.now();
         setField(plugin, "lastHydrateInstant", now);
         plugin.onGameTick(null);
         final Instant resetInstant = getField(plugin, "lastHydrateInstant");
