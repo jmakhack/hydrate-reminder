@@ -39,7 +39,7 @@ public interface HydrateReminderConfig extends Config
 	)
 	@ConfigItem(
 		keyName = "hydrateReminderInterval",
-		name = "Hydrate Interval",
+		name = "Hydrate interval",
 		description = "The time interval between each hydrate reminder",
 		position = 1
 	)
@@ -96,6 +96,23 @@ public interface HydrateReminderConfig extends Config
 		position = 4
 	)
 	default boolean hydrateReminderComputerNotificationEnabled()
+	{
+		return true;
+	}
+
+	/**
+	 * <p>Allows the player to enable/disable the hydrate login welcome message
+	 * </p>
+	 * @return true if the welcome message is to be enabled
+	 * @since 1.1.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderWelcomeMessageEnabled",
+			name = "Welcome message",
+			description = "Sets whether or not the welcome message should be displayed",
+			position = 5
+	)
+	default boolean hydrateReminderWelcomeMessageEnabled()
 	{
 		return true;
 	}

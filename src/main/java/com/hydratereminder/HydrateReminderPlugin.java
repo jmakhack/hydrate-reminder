@@ -38,7 +38,7 @@ import org.apache.commons.lang3.ArrayUtils;
 public class HydrateReminderPlugin extends Plugin
 {
 	/**
-	 * Hydrate Reminder text to display
+	 * Hydrate Reminder interval break text to display
 	 */
 	private static final List<String> HYDRATE_BREAK_TEXT_LIST =
 			Collections.unmodifiableList(
@@ -49,6 +49,26 @@ public class HydrateReminderPlugin extends Plugin
 						add("Drink water!");
 						add("Drink water to stay healthy");
 						add("Hey you, drink some water");
+					}});
+
+	/**
+	 * Hydrate Reminder startup welcome text to display
+	 */
+	private static final List<String> HYDRATE_WELCOME_TEXT_LIST =
+			Collections.unmodifiableList(
+					new ArrayList<String>() {{
+						add("Don't forget to stay hydrated.");
+						add("Type \"::hydrate help\" in chat to view available commands.");
+						add("Stay cool. Stay awesome. Stay hydrated.");
+						add("Keep calm and stay hydrated.");
+						add("Cheers to staying hydrated!");
+						add("Keep the geyser titans happy by staying hydrated.");
+						add("Hydration is love. Hydration is life.");
+						add("Out of water? Cast humidify to stay hydrated.");
+						add("It costs zero water runes to stay hydrated.");
+						add("Check out the hydrate commands by typing \"::hydrate help\" in chat.");
+						add("A hydrated adventurer is an unstoppable adventurer.");
+						add("It's dangerous to go alone. Stay hydrated!");
 					}});
 
 	/**
@@ -103,7 +123,8 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval
+	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval and
+	 * displays the hydrate welcome message
 	 * </p>
 	 * @param gameStateChanged the change game state event
 	 * @since 1.0.0
@@ -115,7 +136,31 @@ public class HydrateReminderPlugin extends Plugin
 		{
 			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
+			if (config.hydrateReminderWelcomeMessageEnabled())
+			{
+				new Timer().schedule(new TimerTask()
+				{
+					@Override
+					public void run()
+					{
+						sendHydrateWelcomeChatMessage();
+					}
+				}, 500L);
+			}
 		}
+	}
+
+	/**
+	 * <p>Sends a random hydrate welcome message in chat
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void sendHydrateWelcomeChatMessage()
+	{
+		Random randomGenerator = new Random();
+		String hydrateWelcomeMessage = HYDRATE_WELCOME_TEXT_LIST.get(
+				randomGenerator.nextInt(HYDRATE_WELCOME_TEXT_LIST.size()));
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", hydrateWelcomeMessage, null);
 	}
 
 	/**
@@ -149,6 +194,8 @@ public class HydrateReminderPlugin extends Plugin
 						case HELP:
 							handleHydrateHelpCommand();
 							break;
+						default:
+							throw new IllegalArgumentException();
 					}
 				}
 				catch (IllegalArgumentException e)
@@ -300,7 +347,6 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private String getHydrateReminderMessage()
 	{
-
 		Random randomGenerator = new Random();
 		final String playerName = Objects.requireNonNull(client.getLocalPlayer()).getName();
 		String hydrateReminderMessage = HYDRATE_BREAK_TEXT_LIST.get(
