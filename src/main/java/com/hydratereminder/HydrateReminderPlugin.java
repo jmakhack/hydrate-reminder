@@ -57,6 +57,11 @@ public class HydrateReminderPlugin extends Plugin
 	private static final String HYDRATE_REMINDER_USERNAME = "HydrateReminder";
 
 	/**
+	 * Prefix for all chat commands in RuneLite
+	 */
+	private static final String RUNELITE_COMMAND_PREFIX = "::";
+
+	/**
 	 * Main command name for the Hydrate Reminder plugin
 	 */
 	private static final String HYDRATE_COMMAND_NAME = "hydrate";
@@ -148,8 +153,10 @@ public class HydrateReminderPlugin extends Plugin
 				}
 				catch (IllegalArgumentException e)
 				{
-					log.warn(String.format("%s is not a supported argument for the %s command",
-							args[0], HYDRATE_COMMAND_NAME));
+					final String invalidArgString = String.format("%s%s %s is not a valid command",
+							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, args[0]);
+					client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", invalidArgString, null);
+					handleHydrateHelpCommand();
 				}
 			}
 		}
@@ -220,7 +227,8 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			commandList.append(arg.toString());
 		}
-		final String helpString = String.format("Available commands: ::%s %s", HYDRATE_COMMAND_NAME, commandList);
+		final String helpString = String.format("Available commands: %s%s %s",
+				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, commandList);
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", helpString, null);
 	}
 
