@@ -123,7 +123,8 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval
+	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval and
+	 * displays the hydrate welcome message
 	 * </p>
 	 * @param gameStateChanged the change game state event
 	 * @since 1.0.0
@@ -135,12 +136,17 @@ public class HydrateReminderPlugin extends Plugin
 		{
 			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
-			new Timer().schedule(new TimerTask() {
-				@Override
-				public void run() {
-					sendHydrateWelcomeChatMessage();
-				}
-			}, 500L);
+			if (config.hydrateReminderWelcomeMessageEnabled())
+			{
+				new Timer().schedule(new TimerTask()
+				{
+					@Override
+					public void run()
+					{
+						sendHydrateWelcomeChatMessage();
+					}
+				}, 500L);
+			}
 		}
 	}
 
