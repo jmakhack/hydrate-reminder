@@ -130,6 +130,9 @@ public class HydrateReminderPlugin extends Plugin
 					case "prev":
 						handleHydratePrevCommand();
 						break;
+					case "reset":
+						handleHydrateResetCommand();
+						break;
 					default:
 						log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
 						break;
@@ -171,6 +174,19 @@ public class HydrateReminderPlugin extends Plugin
 		final String timeString = String.format("%s hours %s minutes %s seconds since the last hydrate break",
 				hours, minutes, seconds);
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", timeString, null);
+	}
+
+	/**
+	 * <p>Handle the hydrate reset command by resetting the current hydrate interval and displaying
+	 * a reset success message in chat
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydrateResetCommand()
+	{
+		resetHydrateReminderTimeInterval();
+		final String resetString = "Hydrate reminder interval has been successfully reset";
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", resetString, null);
 	}
 
 	/**
