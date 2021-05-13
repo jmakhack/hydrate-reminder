@@ -57,6 +57,16 @@ public class HydrateReminderPlugin extends Plugin
 	private static final String HYDRATE_REMINDER_USERNAME = "HydrateReminder";
 
 	/**
+	 * Prefix for all chat commands in RuneLite
+	 */
+	private static final String RUNELITE_COMMAND_PREFIX = "::";
+
+	/**
+	 * Main command name for the Hydrate Reminder plugin
+	 */
+	private static final String HYDRATE_COMMAND_NAME = "hydrate";
+
+	/**
 	 * RuneLite client object
 	 */
 	@Inject
@@ -117,25 +127,36 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
     {
-		if (commandExecuted.getCommand().equalsIgnoreCase("hydrate"))
+		if (commandExecuted.getCommand().equalsIgnoreCase(HYDRATE_COMMAND_NAME))
 		{
 			final String[] args = commandExecuted.getArguments();
 			if (ArrayUtils.isNotEmpty(args))
 			{
-				switch (args[0].toLowerCase())
+				try
 				{
-					case "next":
-						handleHydrateNextCommand();
-						break;
-					case "prev":
-						handleHydratePrevCommand();
-						break;
-					case "reset":
-						handleHydrateResetCommand();
-						break;
-					default:
-						log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
-						break;
+					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.valueOf(args[0].toUpperCase());
+					switch (arg)
+					{
+						case NEXT:
+							handleHydrateNextCommand();
+							break;
+						case PREV:
+							handleHydratePrevCommand();
+							break;
+						case RESET:
+							handleHydrateResetCommand();
+							break;
+						case HELP:
+							handleHydrateHelpCommand();
+							break;
+					}
+				}
+				catch (IllegalArgumentException e)
+				{
+					final String invalidArgString = String.format("%s%s %s is not a valid command",
+							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, args[0]);
+					client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", invalidArgString, null);
+					handleHydrateHelpCommand();
 				}
 			}
 		}
@@ -187,6 +208,28 @@ public class HydrateReminderPlugin extends Plugin
 		resetHydrateReminderTimeInterval();
 		final String resetString = "Hydrate reminder interval has been successfully reset";
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", resetString, null);
+	}
+
+	/**
+	 * <p>Handle the hydrate help command by displaying all available command arguments
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydrateHelpCommand()
+	{
+		final StringBuilder commandList = new StringBuilder();
+		final String listSeparator = ", ";
+		for (HydrateReminderCommandArgs arg : HydrateReminderCommandArgs.values())
+		{
+			if (commandList.length() > 0)
+			{
+				commandList.append(listSeparator);
+			}
+			commandList.append(arg.toString());
+		}
+		final String helpString = String.format("Available commands: %s%s %s",
+				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, commandList);
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", helpString, null);
 	}
 
 	/**
