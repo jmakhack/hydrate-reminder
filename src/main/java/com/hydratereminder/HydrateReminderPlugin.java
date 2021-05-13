@@ -141,8 +141,13 @@ public class HydrateReminderPlugin extends Plugin
 						case RESET:
 							handleHydrateResetCommand();
 							break;
+						case HELP:
+							handleHydrateHelpCommand();
+							break;
 					}
-				} catch (IllegalArgumentException e) {
+				}
+				catch (IllegalArgumentException e)
+				{
 					log.warn(String.format("%s is not a supported argument for the %s command",
 							args[0], HYDRATE_COMMAND_NAME));
 				}
@@ -196,6 +201,27 @@ public class HydrateReminderPlugin extends Plugin
 		resetHydrateReminderTimeInterval();
 		final String resetString = "Hydrate reminder interval has been successfully reset";
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", resetString, null);
+	}
+
+	/**
+	 * <p>Handle the hydrate help command by displaying all available command arguments
+	 * </p>
+	 * @since 1.1.0
+	 */
+	private void handleHydrateHelpCommand()
+	{
+		final StringBuilder commandList = new StringBuilder();
+		final String listSeparator = ", ";
+		for (HydrateReminderCommandArgs arg : HydrateReminderCommandArgs.values())
+		{
+			if (commandList.length() > 0)
+			{
+				commandList.append(listSeparator);
+			}
+			commandList.append(arg.toString());
+		}
+		final String helpString = String.format("Available commands: ::%s %s", HYDRATE_COMMAND_NAME, commandList);
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", helpString, null);
 	}
 
 	/**
