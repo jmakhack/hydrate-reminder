@@ -57,6 +57,11 @@ public class HydrateReminderPlugin extends Plugin
 	private static final String HYDRATE_REMINDER_USERNAME = "HydrateReminder";
 
 	/**
+	 * Main command name for the Hydrate Reminder plugin
+	 */
+	private static final String HYDRATE_COMMAND_NAME = "hydrate";
+
+	/**
 	 * RuneLite client object
 	 */
 	@Inject
@@ -117,7 +122,7 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
     {
-		if (commandExecuted.getCommand().equalsIgnoreCase("hydrate"))
+		if (commandExecuted.getCommand().equalsIgnoreCase(HYDRATE_COMMAND_NAME))
 		{
 			final String[] args = commandExecuted.getArguments();
 			if (ArrayUtils.isNotEmpty(args))
@@ -138,7 +143,8 @@ public class HydrateReminderPlugin extends Plugin
 							break;
 					}
 				} catch (IllegalArgumentException e) {
-					log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
+					log.warn(String.format("%s is not a supported argument for the %s command",
+							args[0], HYDRATE_COMMAND_NAME));
 				}
 			}
 		}
