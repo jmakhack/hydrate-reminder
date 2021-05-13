@@ -122,20 +122,23 @@ public class HydrateReminderPlugin extends Plugin
 			final String[] args = commandExecuted.getArguments();
 			if (ArrayUtils.isNotEmpty(args))
 			{
-				switch (args[0].toLowerCase())
+				try
 				{
-					case "next":
-						handleHydrateNextCommand();
-						break;
-					case "prev":
-						handleHydratePrevCommand();
-						break;
-					case "reset":
-						handleHydrateResetCommand();
-						break;
-					default:
-						log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
-						break;
+					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.valueOf(args[0].toUpperCase());
+					switch (arg)
+					{
+						case NEXT:
+							handleHydrateNextCommand();
+							break;
+						case PREV:
+							handleHydratePrevCommand();
+							break;
+						case RESET:
+							handleHydrateResetCommand();
+							break;
+					}
+				} catch (IllegalArgumentException e) {
+					log.warn(String.format("%s is not a supported argument for the hydrate command", args[0]));
 				}
 			}
 		}
