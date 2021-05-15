@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, Josh Mak <jmakhack@protonmail.com>
+ * Copyright (c) 2021, jmakhack <https://github.com/jmakhack>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
