@@ -71,6 +71,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/sosnovska"><img src="https://avatars.githubusercontent.com/u/11365065?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sosnovska</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sosnovska" title="Tests">⚠️</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sosnovska" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/features/security"><img src="https://avatars.githubusercontent.com/u/27347476?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dependabot</b></sub></a><br /><a href="#maintenance-dependabot" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://allcontributors.org"><img src="https://avatars.githubusercontent.com/u/46410174?v=4?s=100" width="100px;" alt=""/><br /><sub><b>All Contributors</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=all-contributors" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/EmmanuelOlofintuyi"><img src="https://avatars.githubusercontent.com/u/46730204?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Emmanuel Olofintuyi</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=EmmanuelOlofintuyi" title="Documentation">📖</a></td>
   </tr>
 </table>
 
