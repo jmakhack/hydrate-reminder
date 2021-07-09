@@ -139,6 +139,12 @@ public class HydrateReminderPlugin extends Plugin
 	private int hydrateEmojiId = -1;
 
 	/**
+	 * True when game tick is the first one after login
+	 * Used to check if welcome message should be sent
+	 */
+	private Boolean isFirstGameTick = true;
+
+	/**
 	 * <p>Provides the configuration for the Hydrate Reminder plugin
 	 * </p>
 	 * @param configManager the plugin configuration manager
@@ -163,20 +169,10 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
+			isFirstGameTick = true;
 			loadHydrateEmoji();
 			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
-			if (config.hydrateReminderWelcomeMessageEnabled())
-			{
-				new Timer().schedule(new TimerTask()
-				{
-					@Override
-					public void run()
-					{
-						sendHydrateWelcomeChatMessage();
-					}
-				}, 500L);
-			}
 		}
 	}
 
@@ -347,6 +343,11 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
+		if (isFirstGameTick && config.hydrateReminderWelcomeMessageEnabled())
+		{
+			sendHydrateWelcomeChatMessage();
+			isFirstGameTick = false;
+		}
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{

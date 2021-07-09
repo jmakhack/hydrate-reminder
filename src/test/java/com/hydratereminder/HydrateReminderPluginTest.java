@@ -237,6 +237,7 @@ public class HydrateReminderPluginTest
             times = 0;
         }};
         final Instant now = Instant.now();
+        setField(plugin, "isFirstGameTick", false);
         setField(plugin, "lastHydrateInstant", now);
         plugin.onGameTick(null);
         final Instant resetInstant = getField(plugin, "lastHydrateInstant");
