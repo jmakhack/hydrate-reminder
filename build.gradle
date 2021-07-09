@@ -17,7 +17,7 @@ dependencies {
 
 	compileOnly 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.18'
-	implementation 'org.junit:junit-bom:5.2.0'
+	implementation 'org.junit:junit-bom:5.7.2'
 
 	testImplementation 'org.jmockit:jmockit:1.8'
 	testImplementation 'junit:junit:4.13.2'
