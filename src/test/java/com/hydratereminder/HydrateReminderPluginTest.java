@@ -72,7 +72,7 @@ public class HydrateReminderPluginTest
         Instant now = getField(plugin, "lastHydrateInstant");
         plugin.onGameStateChanged(gameStateChanged);
         Instant resetInstant = getField(plugin, "lastHydrateInstant");
-        assertEquals(null, resetInstant);
+        assertNotEquals(null, resetInstant);
         assertEquals(now, resetInstant);
     }
 
@@ -260,9 +260,9 @@ public class HydrateReminderPluginTest
     }
 
     @Test
-    public void testResetHydrateReminderTimeInterval()
-    {
+    public void testResetHydrateReminderTimeInterval() throws InterruptedException {
         final Instant now = getField(plugin, "lastHydrateInstant");
+        Thread.sleep(100);
         invoke(plugin, "resetHydrateReminderTimeInterval");
         final Instant resetInstant = getField(plugin, "lastHydrateInstant");
         assertNotEquals(null, resetInstant);
@@ -389,13 +389,10 @@ public class HydrateReminderPluginTest
             invoke(plugin, "getChatNotificationMessageType");
             result = messageType;
             times = 1;
-        }};
-        invoke(plugin, "sendHydrateReminderChatMessage", message);
-        new Verifications()
-        {{
-            client.addChatMessage(messageType, "",message, "");
+            invoke(plugin, "sendHydrateEmojiChatMessage", messageType, message);
             times = 1;
         }};
+        invoke(plugin, "sendHydrateReminderChatMessage", message);
     }
 
     @Test
@@ -403,18 +400,14 @@ public class HydrateReminderPluginTest
     {
         final ChatMessageType messageType = ChatMessageType.FRIENDSCHAT;
         final String message = "Hydrate now";
-        final String username = getField(plugin, "HYDRATE_REMINDER_USERNAME");
         new Expectations(plugin) {{
             invoke(plugin, "getChatNotificationMessageType");
             result = messageType;
             times = 1;
-        }};
-        invoke(plugin, "sendHydrateReminderChatMessage", message);
-        new Verifications()
-        {{
-            client.addChatMessage(messageType, "",message, username);
+            invoke(plugin, "sendHydrateEmojiChatMessage", messageType, message);
             times = 1;
         }};
+        invoke(plugin, "sendHydrateReminderChatMessage", message);
     }
 
     @Test
