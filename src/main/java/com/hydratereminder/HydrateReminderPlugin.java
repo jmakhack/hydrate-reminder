@@ -72,11 +72,17 @@ public class HydrateReminderPlugin extends Plugin
 			Collections.unmodifiableList(
 					new ArrayList<String>() {{
 						add("It's time for a quick hydration break");
-						add("70% of the human brain is water so take a hydration break");
-						add("Dehydration causes fatigue, take a quick hydration break");
-						add("Drink water!");
-						add("Drink water to stay healthy");
-						add("Hey you, drink some water");
+						add("Dehydration causes fatigue so take a hydration break");
+						add("It's time to drink some good ol' water");
+						add("Stay healthy by taking a hydration break");
+						add("Time to glug, glug, glug some water");
+						add("It is now time to take a hydration break");
+						add("Time to hydrate");
+						add("Power up with a hydration break now");
+						add("Got water? It's time to hydrate");
+						add("Cheers to this hydration break");
+						add("Hydration time is now");
+						add("Fuel up with a hydration break");
 					}});
 
 	/**
@@ -410,7 +416,7 @@ public class HydrateReminderPlugin extends Plugin
 		final String playerName = Objects.requireNonNull(client.getLocalPlayer()).getName();
 		final String hydrateReminderMessage = HYDRATE_BREAK_TEXT_LIST.get(
 				randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size()));
-		return String.format("%s, %s", hydrateReminderMessage, playerName);
+		return String.format("%s, %s.", hydrateReminderMessage, playerName);
 	}
 
 	/**
