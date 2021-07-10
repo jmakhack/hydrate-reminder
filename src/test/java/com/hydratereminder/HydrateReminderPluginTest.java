@@ -378,7 +378,7 @@ public class HydrateReminderPluginTest
         }};
         final List<String> hydrateMessageList = getField(plugin, "HYDRATE_BREAK_TEXT_LIST");
         final String message = invoke(plugin, "getHydrateReminderMessage");
-        assertTrue(hydrateMessageList.contains(message.replace(", OSRSplayer42", "")));
+        assertTrue(hydrateMessageList.contains(message.replace(", OSRSplayer42.", "")));
     }
 
     @Test
