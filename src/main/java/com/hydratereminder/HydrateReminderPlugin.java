@@ -196,7 +196,7 @@ public class HydrateReminderPlugin extends Plugin
 			final IndexedSprite[] newModIcons = Arrays.copyOf(modIcons, modIcons.length + 1);
 			try
 			{
-				final BufferedImage hydrateIcon = ImageUtil.loadImageResource(getClass(), "cup_of_water.png");
+				final BufferedImage hydrateIcon = ImageUtil.loadImageResource(getClass(), "water_icon.png");
 				final IndexedSprite hydrateSprite = ImageUtil.getImageIndexedSprite(hydrateIcon, client);
 				newModIcons[modIcons.length] = hydrateSprite;
 			}
