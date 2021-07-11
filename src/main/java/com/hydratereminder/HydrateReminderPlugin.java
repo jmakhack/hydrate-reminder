@@ -173,7 +173,7 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
+		if (gameStateChanged.getGameState() == GameState.LOGGING_IN)
 		{
 			isFirstGameTick = true;
 			loadHydrateEmoji();
