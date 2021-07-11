@@ -40,7 +40,7 @@ Never forget to drink water while exploring the world of Old School RuneScape ev
 ![hydrate_water_dance](https://user-images.githubusercontent.com/1442227/125190916-7ff58a00-e1f4-11eb-8566-1a10561c7fee.gif)
 
 
-## Plugin Functionality (v1.1.0)
+## Plugin Features (v1.1.0)
 
 Get a friendly reminder every x minutes to take a quick hydration break.
 
