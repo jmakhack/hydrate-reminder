@@ -61,7 +61,7 @@ Configure a variety of hydration reminders settings such as:
 -  Welcome message
     -  Enable/Disable
 
-![hydrate_config](https://user-images.githubusercontent.com/1442227/125190266-1b84fb80-e1f1-11eb-862d-c41044a2f4f6.png)
+![hydrate_configuration](https://user-images.githubusercontent.com/1442227/125193135-ca303880-e1ff-11eb-9084-108e7e519530.png)
 
 <hr/>
             
