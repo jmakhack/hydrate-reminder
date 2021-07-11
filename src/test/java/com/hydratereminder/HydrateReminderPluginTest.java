@@ -45,12 +45,12 @@ public class HydrateReminderPluginTest
     }
 
     @Test
-    public void testOnGameStateChangedLogIn(@Mocked GameStateChanged gameStateChanged)
+    public void testOnGameStateChangedLoggingIn(@Mocked GameStateChanged gameStateChanged)
     {
         new Expectations()
         {{
             gameStateChanged.getGameState();
-            result = GameState.LOGGED_IN;
+            result = GameState.LOGGING_IN;
             times = 1;
         }};
         Instant now = getField(plugin, "lastHydrateInstant");
@@ -61,7 +61,7 @@ public class HydrateReminderPluginTest
     }
 
     @Test
-    public void testOnGameStateChangedNotLogIn(@Mocked GameStateChanged gameStateChanged)
+    public void testOnGameStateChangedNotLoggingIn(@Mocked GameStateChanged gameStateChanged)
     {
         new Expectations()
         {{
