@@ -34,15 +34,54 @@
 
 <br/>
 
-It is always of critical importantance to keep hydrated.  
+Adventurers, it is always of critical importantance to keep hydrated.  
 Never forget to drink water while exploring the world of Old School RuneScape ever again!
+
+![hydrate_water_dance](https://user-images.githubusercontent.com/1442227/125190916-7ff58a00-e1f4-11eb-8566-1a10561c7fee.gif)
+
+## Plugin Features (v1.1.0)
+
+Get a friendly reminder every x minutes to take a quick hydration break.
+
+![hydrate_reminders](https://user-images.githubusercontent.com/1442227/125190578-bfbb7200-e1f2-11eb-9691-0d72419e4626.png)
+
+<hr/>
+
+Configure a variety of hydrate reminder settings such as:
+-   Hydrate reminder interval length
+    -   Between 1 - 120 minutes
+-   Notification types
+    -   Chat message notification
+        -   Game message notification
+        -   Broadcast message notification
+        -   Public chat notification
+        -   Clan chat notification
+    -   Computer tray notification
+-   Welcome message
+    -   Enable/Disable
+
+![hydrate_configuration](https://user-images.githubusercontent.com/1442227/125193135-ca303880-e1ff-11eb-9084-108e7e519530.png)
+
+<hr/>
+            
+Use a variety of optional builtin chat commands to enhance the hydrate reminder experience:
+-   `::hydrate help`
+    -   Displays the list of available commands
+-   `::hydrate next`
+    -   Displays the amount of time until the next hydrate reminder
+-   `::hydrate prev`
+    -   Displays the amount of time since the previous hydrate reminder
+-   `::hydrate reset`
+    -   Resets the current hydrate reminder interval
+
+![hydrate_commands](https://user-images.githubusercontent.com/1442227/125190282-2c357180-e1f1-11eb-9ed3-9b64e60ecf4f.png)
 
 ## Installation Instructions
 
-This plugin is designed for use within the open source RuneLite OSRS client which can be downloaded [here](https://runelite.net/).
+This plugin is designed for use within the open source [RuneLite OSRS client](https://runelite.net/) which is free to download.
 
-To install the plugin, start up the RuneLite client and search for the Hydrate Reminder plugin in the Plugin Hub.
-Detailed instructions on how to achieve this can be found on the official wiki guide found [here](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub).
+To install the plugin, start up the RuneLite client and search for the Hydrate Reminder plugin in the Plugin Hub.\
+Detailed instructions on how to achieve this can be found on the [RuneLite wiki](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub).
 
 ## Contributing
 
