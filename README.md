@@ -39,7 +39,6 @@ Never forget to drink water while exploring the world of Old School RuneScape ev
 
 ![hydrate_water_dance](https://user-images.githubusercontent.com/1442227/125190916-7ff58a00-e1f4-11eb-8566-1a10561c7fee.gif)
 
-
 ## Plugin Features (v1.1.0)
 
 Get a friendly reminder every x minutes to take a quick hydration break.
@@ -48,32 +47,32 @@ Get a friendly reminder every x minutes to take a quick hydration break.
 
 <hr/>
 
-Configure a variety of hydration reminders settings such as:
--  Hydration reminder interval length
-    -  Between 1 - 120 minutes 
--  Notification types
-    -  Chat message notification
-        - Game message notification
-        - Broadcast message notification
-        - Public chat notification
-        - Clan chat notification
-    -  Computer tray notification
--  Welcome message
-    -  Enable/Disable
+Configure a variety of hydrate reminder settings such as:
+ - Hydrate reminder interval length
+     - Between 1 - 120 minutes
+ - Notification types
+     - Chat message notification
+          - Game message notification
+          - Broadcast message notification
+          - Public chat notification
+          - Clan chat notification
+     - Computer tray notification
+ - Welcome message
+     - Enable/Disable
 
 ![hydrate_configuration](https://user-images.githubusercontent.com/1442227/125193135-ca303880-e1ff-11eb-9084-108e7e519530.png)
 
 <hr/>
             
 Use a variety of optional builtin chat commands to enhance the hydrate reminder experience:
--  `::hydrate help`
-    -  Displays the list of available commands
--  `::hydrate next`
-    -  Displays the amount of time until the next hydrate reminder
--  `::hydrate prev`
-    -  Displays the amount of time since the previous hydrate reminder
--  `::hydrate reset`
-    -  Resets the current hydrate reminder interval
+ - `::hydrate help`
+     - Displays the list of available commands
+ - `::hydrate next`
+     - Displays the amount of time until the next hydrate reminder
+ - `::hydrate prev`
+     - Displays the amount of time since the previous hydrate reminder
+ - `::hydrate reset`
+     - Resets the current hydrate reminder interval
 
 ![hydrate_commands](https://user-images.githubusercontent.com/1442227/125190282-2c357180-e1f1-11eb-9ed3-9b64e60ecf4f.png)
 
