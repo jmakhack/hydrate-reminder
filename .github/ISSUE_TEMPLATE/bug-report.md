@@ -7,24 +7,38 @@ assignees: ''
 
 ---
 
-**Describe the bug**
+## Bug Description
+<!---
 A clear and concise description of what the bug is.
+-->
 
-**To Reproduce**
+## Steps to Reproduce
+<!---
 Steps to reproduce the behavior:
 1.  Go to '...'
 2.  Click on '....'
 3.  See error
+-->
 
-**Expected Behavior**
-A clear and concise description of what you expected to happen.
+## Expected Behavior
+<!---
+A clear and concise description of what is expected to happen.
+-->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Screenshots
+<!---
+If applicable, add screenshots to help further explain the issue.
+-->
 
-**Environment**
-Operating System: \[e.g. Windows 10\]
-RuneLite Version: \[e.g. 1.6.32\]
+## Environment
+<!---
+Include what Operating System and RuneLite version was used in discovering this bug.
+Include any other relevant environment details if applicable.
+-->
+Operating System: 
+RuneLite Version: 
 
-**Additional context**
-Add any other context about the problem here.
+## Additional Context
+<!---
+Add any other context about the issue here.
+-->
