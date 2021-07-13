@@ -15,24 +15,19 @@ def runeLiteVersion = '1.7.15'
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
 
-	compileOnly 'org.projectlombok:lombok:1.18.20'
-	annotationProcessor 'org.projectlombok:lombok:1.18.18'
-	implementation 'org.junit:junit-bom:5.2.0'
+	compileOnly 'org.projectlombok:lombok:1.18.4'
+	annotationProcessor 'org.projectlombok:lombok:1.18.4'
 
-	testImplementation 'org.jmockit:jmockit:1.8'
-	testImplementation 'junit:junit:4.13.2'
-	testImplementation 'org.slf4j:slf4j-simple:1.7.31'
+	testImplementation 'junit:junit:4.12'
+	testImplementation 'org.slf4j:slf4j-simple:1.7.12'
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion, {
 		exclude group: 'ch.qos.logback', module: 'logback-classic'
 	}
 }
 
-test {
-	jvmArgs "-javaagent:${classpath.find { it.name.contains("jmockit") }.absolutePath}"
-}
-
 group = 'com.hydratereminder'
-version = '1.0.1'
+version = '1.1.0'
+sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
