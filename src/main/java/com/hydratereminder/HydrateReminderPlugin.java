@@ -282,8 +282,7 @@ public class HydrateReminderPlugin extends Plugin
 		final int hours = Math.toIntExact(timeUntilNextBreak.toHours());
 		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeUntilNextBreak.toMillis() / 1000) % 60);
-		final String timeString = String.format("%s hours %s minutes %s seconds until the next hydrate break",
-				hours, minutes, seconds);
+		final String timeString = timeDisplay(hours, minutes, seconds);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, timeString);
 	}
 
@@ -299,9 +298,25 @@ public class HydrateReminderPlugin extends Plugin
 		final int hours = Math.toIntExact(timeSinceLastBreak.toHours());
 		final int minutes = Math.toIntExact(timeSinceLastBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeSinceLastBreak.toMillis() / 1000) % 60);
-		final String timeString = String.format("%s hours %s minutes %s seconds since the last hydrate break",
-				hours, minutes, seconds);
+		final String timeString = timeDisplay(hours, minutes, seconds);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, timeString);
+	}
+
+	/**
+	 * <p>Handle the String formatting of the specified time.</p>
+	 * @param hours
+	 * @param minutes
+	 * @param seconds
+	 * @return Time in a string format
+	 * @since 1.1.1
+	 */
+	String timeDisplay(int hours, int minutes, int seconds) {
+		String hoursRepresentation = hours > 1 ? hours + " hours" : hours + " hour";
+		String minutesRepresentation = minutes > 1 ? minutes + " minutes" : minutes + " minute";
+		String secondesRepresentation = seconds > 1 ? seconds + " secondes" : seconds + " second";
+		String timeDisplayString = String.format("%s %s %s until the next hydrate break",
+				hoursRepresentation, minutesRepresentation, secondesRepresentation);
+		return timeDisplayString;
 	}
 
 	/**
