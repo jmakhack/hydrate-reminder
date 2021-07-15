@@ -311,9 +311,9 @@ public class HydrateReminderPlugin extends Plugin
 	 * @since 1.1.1
 	 */
 	String timeDisplay(int hours, int minutes, int seconds) {
-		String hoursRepresentation = hours == 1 ? hours + " hours" : hours + " hour";
-		String minutesRepresentation = minutes == 1 ? minutes + " minutes" : minutes + " minute";
-		String secondesRepresentation = seconds == 1 ? seconds + " secondes" : seconds + " second";
+		String hoursRepresentation = hours != 1 ? hours + " hours" : hours + " hour";
+		String minutesRepresentation = minutes != 1 ? minutes + " minutes" : minutes + " minute";
+		String secondesRepresentation = seconds != 1 ? seconds + " secondes" : seconds + " second";
 		String timeDisplayString = String.format("%s %s %s until the next hydrate break",
 				hoursRepresentation, minutesRepresentation, secondesRepresentation);
 		return timeDisplayString;
