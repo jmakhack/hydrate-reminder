@@ -53,6 +53,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "medkhabt",
+      "name": "LOUKHNATI Mohamed Khalil",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34715586?v=4",
+      "profile": "https://github.com/medkhabt",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
