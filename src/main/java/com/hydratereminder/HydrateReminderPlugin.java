@@ -465,10 +465,6 @@ public class HydrateReminderPlugin extends Plugin
 		final String hydrateEmoji = String.format("<img=%d>", hydrateEmojiId);
 		final StringBuilder hydrateMessage = new StringBuilder();
 		String sender = hydrateEmoji;
-		if (type == ChatMessageType.BROADCAST)
-		{
-			hydrateMessage.append(" ");
-		}
 		if (type != ChatMessageType.FRIENDSCHAT)
 		{
 			hydrateMessage.append(hydrateEmoji);
