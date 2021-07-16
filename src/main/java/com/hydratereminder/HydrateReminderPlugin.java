@@ -319,15 +319,13 @@ public class HydrateReminderPlugin extends Plugin
 			timeDisplayBuilder.append(hours != 1 ? hours + " hours " : hours + " hour ");
 		}
 
-		if(minutes > 0)
+		if(minutes > 0 || hours > 0)
 		{
 			timeDisplayBuilder.append(minutes != 1 ? minutes + " minutes " : minutes + " minute ");
 		}
 
-		if(seconds > 0)
-		{
-			timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds " : seconds + " second ");
-		}
+		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds " : seconds + " second ");
+
 
 		timeDisplayBuilder.append("until the next hydrate break");
 
