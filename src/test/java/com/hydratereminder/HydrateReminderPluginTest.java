@@ -1,4 +1,9 @@
-//package com.hydratereminder;
+package com.hydratereminder;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 //
 //import mockit.*;
 //import mockit.integration.junit4.JMockit;
@@ -436,3 +441,13 @@
 //        assertEquals(ChatMessageType.BROADCAST, messageType);
 //    }
 //}
+public class HydrateReminderPluginTest {
+    private final HydrateReminderPlugin hydrateReminderPlugin = new HydrateReminderPlugin();
+
+    @Test
+    public void shouldReturnCorrectStringFormatOfTheTime(){
+        assertEquals("1 hour 1 minute 1 second until the next hydrate break", hydrateReminderPlugin.timeDisplay(1,1,1));
+        assertEquals("19 hours 15 minutes 39 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(19, 15, 39));
+        assertEquals("0 hours 15 minutes 39 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(0, 15, 39));
+    }
+}
