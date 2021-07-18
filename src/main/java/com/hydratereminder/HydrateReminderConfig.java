@@ -52,6 +52,23 @@ public interface HydrateReminderConfig extends Config
 	int INTERVAL_LIMIT_MAX = 120;
 
 	/**
+	 * <p>Allows the player to enable/disable the hydrate login welcome message
+	 * </p>
+	 * @return true if the welcome message is to be enabled
+	 * @since 1.1.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderWelcomeMessageEnabled",
+			name = "Welcome message",
+			description = "Sets whether or not the welcome message should be displayed",
+			position = 1
+	)
+	default boolean hydrateReminderWelcomeMessageEnabled()
+	{
+		return true;
+	}
+
+	/**
 	 * <p>Allows the player to set a hydrate reminder interval in minutes anywhere
 	 * between INTERVAL_LIMIT_MIN and INTERVAL_LIMIT_MAX
 	 * </p>
@@ -66,7 +83,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderInterval",
 		name = "Hydrate interval",
 		description = "The time interval between each hydrate reminder",
-		position = 1
+		position = 2
 	)
 	@Units(Units.MINUTES)
 	default int hydrateReminderInterval()
@@ -83,8 +100,8 @@ public interface HydrateReminderConfig extends Config
 	@ConfigItem(
 		keyName = "hydrateReminderChatMessageEnabled",
 		name = "Chat notification",
-		description = "Sets the hydrate reminder to be sent as a game chat message",
-		position = 2
+		description = "Sets the hydrate reminder to be sent as a chat message",
+		position = 3
 	)
 	default boolean hydrateReminderChatMessageEnabled()
 	{
@@ -101,7 +118,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageType",
 		name = "Chat type",
 		description = "Sets the type of chat message sent by hydrate reminder",
-		position = 3
+		position = 4
 	)
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
 	{
@@ -118,26 +135,9 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderComputerNotificationEnabled",
 		name = "Computer notification",
 		description = "Sets the hydrate reminder to be sent as a computer notification",
-		position = 4
+		position = 5
 	)
 	default boolean hydrateReminderComputerNotificationEnabled()
-	{
-		return true;
-	}
-
-	/**
-	 * <p>Allows the player to enable/disable the hydrate login welcome message
-	 * </p>
-	 * @return true if the welcome message is to be enabled
-	 * @since 1.1.0
-	 */
-	@ConfigItem(
-			keyName = "hydrateReminderWelcomeMessageEnabled",
-			name = "Welcome message",
-			description = "Sets whether or not the welcome message should be displayed",
-			position = 5
-	)
-	default boolean hydrateReminderWelcomeMessageEnabled()
 	{
 		return true;
 	}
