@@ -450,6 +450,6 @@ public class HydrateReminderPluginTest {
         assertEquals("19 hours 15 minutes 39 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(19, 15, 39));
         assertEquals("15 minutes 39 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(0, 15, 39));
         assertEquals("1 hour 0 minutes 0 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(1, 0, 0));
-		assertEquals("0 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(0, 0, 0));
+	assertEquals("0 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(0, 0, 0));
     }
 }
