@@ -310,13 +310,26 @@ public class HydrateReminderPlugin extends Plugin
 	 * @return Time in a string format
 	 * @since 1.1.1
 	 */
-	public String timeDisplay(int hours, int minutes, int seconds) {
-		String hoursRepresentation = hours != 1 ? hours + " hours" : hours + " hour";
-		String minutesRepresentation = minutes != 1 ? minutes + " minutes" : minutes + " minute";
-		String secondsRepresentation = seconds != 1 ? seconds + " seconds" : seconds + " second";
-		String timeDisplayString = String.format("%s %s %s until the next hydrate break",
-				hoursRepresentation, minutesRepresentation, secondsRepresentation);
-		return timeDisplayString;
+	public String timeDisplay(int hours, int minutes, int seconds) 
+	{
+		StringBuilder timeDisplayBuilder = new StringBuilder();
+
+		if(hours > 0)
+		{
+			timeDisplayBuilder.append(hours != 1 ? hours + " hours " : hours + " hour ");
+		}
+
+		if(minutes > 0 || hours > 0)
+		{
+			timeDisplayBuilder.append(minutes != 1 ? minutes + " minutes " : minutes + " minute ");
+		}
+
+		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds " : seconds + " second ");
+
+
+		timeDisplayBuilder.append("until the next hydrate break");
+
+		return timeDisplayBuilder.toString();
 	}
 
 	/**
