@@ -63,6 +63,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "neilrush",
+      "name": "Neil Rush",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31221793?v=4",
+      "profile": "https://github.com/neilrush",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
