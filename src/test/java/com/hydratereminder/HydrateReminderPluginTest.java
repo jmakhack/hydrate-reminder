@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import java.time.Duration;
+
 //
 //import mockit.*;
 //import mockit.integration.junit4.JMockit;
@@ -445,16 +447,17 @@ public class HydrateReminderPluginTest {
     private final HydrateReminderPlugin hydrateReminderPlugin = new HydrateReminderPlugin();
 
     @Test
-    public void shouldReturnCorrectStringFormatOfTheTime(){
-        assertEquals("1 hour 1 minute 1 second until the next hydration break.",
-                hydrateReminderPlugin.getTimeDisplay(1,1,1));
-        assertEquals("19 hours 15 minutes 39 seconds until the next hydration break.",
-                hydrateReminderPlugin.getTimeDisplay(19, 15, 39));
-        assertEquals("15 minutes 39 seconds until the next hydration break.",
-                hydrateReminderPlugin.getTimeDisplay(0, 15, 39));
-        assertEquals("1 hour 0 minutes 0 seconds until the next hydration break.",
-                hydrateReminderPlugin.getTimeDisplay(1, 0, 0));
-        assertEquals("0 seconds until the next hydration break.",
-                hydrateReminderPlugin.getTimeDisplay(0, 0, 0));
+    public void shouldReturnCorrectStringFormatOfTheTime()
+    {
+        assertEquals("1 hour 1 minute 1 second",
+                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(3661)));
+        assertEquals("19 hours 15 minutes 39 seconds",
+                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(69339)));
+        assertEquals("15 minutes 39 seconds",
+                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(939)));
+        assertEquals("1 hour 0 minutes 0 seconds",
+                hydrateReminderPlugin.getTimeDisplay(Duration.ofHours(1)));
+        assertEquals("0 seconds",
+                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(0)));
     }
 }

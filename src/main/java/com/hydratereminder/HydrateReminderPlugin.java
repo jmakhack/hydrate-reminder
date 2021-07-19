@@ -278,11 +278,9 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
-		final int hours = Math.toIntExact(timeUntilNextBreak.toHours());
-		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
-		final int seconds = Math.toIntExact((timeUntilNextBreak.toMillis() / 1000) % 60);
-		final String timeString = getTimeDisplay(hours, minutes, seconds);
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, timeString);
+		final String timeString = getTimeDisplay(timeUntilNextBreak);
+		final String message = timeString + " until the next hydration break.";
+		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
 	}
 
 	/**
@@ -294,35 +292,33 @@ public class HydrateReminderPlugin extends Plugin
 	private void handleHydratePrevCommand()
 	{
 		final Duration timeSinceLastBreak = Duration.between(lastHydrateInstant, Instant.now());
-		final int hours = Math.toIntExact(timeSinceLastBreak.toHours());
-		final int minutes = Math.toIntExact(timeSinceLastBreak.toMinutes() % 60);
-		final int seconds = Math.toIntExact((timeSinceLastBreak.toMillis() / 1000) % 60);
-		final String timeString = getTimeDisplay(hours, minutes, seconds);
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, timeString);
+		final String timeString = getTimeDisplay(timeSinceLastBreak);
+		final String message = timeString + " since the last hydration break.";
+		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
 	}
 
 	/**
 	 * <p>Handle the String formatting of the specified time.
 	 * </p>
-	 * @param hours number of hours
-	 * @param minutes number of minutes
-	 * @param seconds number of seconds
-	 * @return Time in a string format
+	 * @param duration duration to extract time from
+	 * @return the time in string format
 	 * @since 1.1.1
 	 */
-	protected String getTimeDisplay(int hours, int minutes, int seconds)
+	protected String getTimeDisplay(Duration duration)
 	{
-		StringBuilder timeDisplayBuilder = new StringBuilder();
-		if(hours > 0)
+		final int hours = Math.toIntExact(duration.toHours());
+		final int minutes = Math.toIntExact(duration.toMinutes() % 60);
+		final int seconds = Math.toIntExact((duration.toMillis() / 1000) % 60);
+		final StringBuilder timeDisplayBuilder = new StringBuilder();
+		if (hours > 0)
 		{
 			timeDisplayBuilder.append(hours != 1 ? hours + " hours " : hours + " hour ");
 		}
-		if(minutes > 0 || hours > 0)
+		if (minutes > 0 || hours > 0)
 		{
 			timeDisplayBuilder.append(minutes != 1 ? minutes + " minutes " : minutes + " minute ");
 		}
-		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds " : seconds + " second ");
-		timeDisplayBuilder.append("until the next hydration break.");
+		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds" : seconds + " second");
 		return timeDisplayBuilder.toString();
 	}
 
