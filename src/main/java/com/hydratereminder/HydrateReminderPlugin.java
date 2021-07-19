@@ -176,7 +176,6 @@ public class HydrateReminderPlugin extends Plugin
 		if (gameStateChanged.getGameState() == GameState.LOGGING_IN)
 		{
 			isFirstGameTick = true;
-			loadHydrateEmoji();
 			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
@@ -374,6 +373,10 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		if (isFirstGameTick && config.hydrateReminderWelcomeMessageEnabled())
 		{
+			if (hydrateEmojiId == -1)
+			{
+				loadHydrateEmoji();
+			}
 			sendHydrateWelcomeChatMessage();
 			isFirstGameTick = false;
 		}
