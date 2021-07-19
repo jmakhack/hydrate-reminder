@@ -446,10 +446,15 @@ public class HydrateReminderPluginTest {
 
     @Test
     public void shouldReturnCorrectStringFormatOfTheTime(){
-        assertEquals("1 hour 1 minute 1 second until the next hydrate break", hydrateReminderPlugin.timeDisplay(1,1,1));
-        assertEquals("19 hours 15 minutes 39 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(19, 15, 39));
-        assertEquals("15 minutes 39 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(0, 15, 39));
-        assertEquals("1 hour 0 minutes 0 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(1, 0, 0));
-	assertEquals("0 seconds until the next hydrate break", hydrateReminderPlugin.timeDisplay(0, 0, 0));
+        assertEquals("1 hour 1 minute 1 second until the next hydration break.",
+                hydrateReminderPlugin.getTimeDisplay(1,1,1));
+        assertEquals("19 hours 15 minutes 39 seconds until the next hydration break.",
+                hydrateReminderPlugin.getTimeDisplay(19, 15, 39));
+        assertEquals("15 minutes 39 seconds until the next hydration break.",
+                hydrateReminderPlugin.getTimeDisplay(0, 15, 39));
+        assertEquals("1 hour 0 minutes 0 seconds until the next hydration break.",
+                hydrateReminderPlugin.getTimeDisplay(1, 0, 0));
+        assertEquals("0 seconds until the next hydration break.",
+                hydrateReminderPlugin.getTimeDisplay(0, 0, 0));
     }
 }

@@ -271,7 +271,7 @@ public class HydrateReminderPlugin extends Plugin
 
 	/**
 	 * <p>Handle the hydrate next command by generating a chat message displaying the amount of time
-	 * until the next hydrate break
+	 * until the next hydration break
 	 * </p>
 	 * @since 1.1.0
 	 */
@@ -282,13 +282,13 @@ public class HydrateReminderPlugin extends Plugin
 		final int hours = Math.toIntExact(timeUntilNextBreak.toHours());
 		final int minutes = Math.toIntExact(timeUntilNextBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeUntilNextBreak.toMillis() / 1000) % 60);
-		final String timeString = timeDisplay(hours, minutes, seconds);
+		final String timeString = getTimeDisplay(hours, minutes, seconds);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, timeString);
 	}
 
 	/**
 	 * <p>Handle the hydrate prev command by generating a chat message displaying the amount of time
-	 * since the last hydrate break
+	 * since the last hydration break
 	 * </p>
 	 * @since 1.1.0
 	 */
@@ -298,37 +298,32 @@ public class HydrateReminderPlugin extends Plugin
 		final int hours = Math.toIntExact(timeSinceLastBreak.toHours());
 		final int minutes = Math.toIntExact(timeSinceLastBreak.toMinutes() % 60);
 		final int seconds = Math.toIntExact((timeSinceLastBreak.toMillis() / 1000) % 60);
-		final String timeString = timeDisplay(hours, minutes, seconds);
+		final String timeString = getTimeDisplay(hours, minutes, seconds);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, timeString);
 	}
 
 	/**
-	 * <p>Handle the String formatting of the specified time.</p>
-	 * @param hours
-	 * @param minutes
-	 * @param seconds
+	 * <p>Handle the String formatting of the specified time.
+	 * </p>
+	 * @param hours number of hours
+	 * @param minutes number of minutes
+	 * @param seconds number of seconds
 	 * @return Time in a string format
 	 * @since 1.1.1
 	 */
-	public String timeDisplay(int hours, int minutes, int seconds) 
+	protected String getTimeDisplay(int hours, int minutes, int seconds)
 	{
 		StringBuilder timeDisplayBuilder = new StringBuilder();
-
 		if(hours > 0)
 		{
 			timeDisplayBuilder.append(hours != 1 ? hours + " hours " : hours + " hour ");
 		}
-
 		if(minutes > 0 || hours > 0)
 		{
 			timeDisplayBuilder.append(minutes != 1 ? minutes + " minutes " : minutes + " minute ");
 		}
-
 		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds " : seconds + " second ");
-
-
-		timeDisplayBuilder.append("until the next hydrate break");
-
+		timeDisplayBuilder.append("until the next hydration break.");
 		return timeDisplayBuilder.toString();
 	}
 
@@ -341,7 +336,7 @@ public class HydrateReminderPlugin extends Plugin
 	private void handleHydrateResetCommand()
 	{
 		resetHydrateReminderTimeInterval();
-		final String resetString = "Hydrate reminder interval has been successfully reset";
+		final String resetString = "Hydrate reminder interval has been successfully reset.";
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, resetString);
 	}
 
