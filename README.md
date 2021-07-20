@@ -39,7 +39,7 @@ Never forget to drink water while exploring the world of Old School RuneScape ev
 
 ![hydrate_water_dance](https://user-images.githubusercontent.com/1442227/125190916-7ff58a00-e1f4-11eb-8566-1a10561c7fee.gif)
 
-## Plugin Features (v1.1.0)
+## Plugin Features (v1.1.1)
 
 Get a friendly reminder every x minutes to take a quick hydration break.
 
@@ -48,6 +48,8 @@ Get a friendly reminder every x minutes to take a quick hydration break.
 <hr/>
 
 Configure a variety of hydrate reminder settings such as:
+-   Welcome message
+    -   Enable/Disable
 -   Hydrate reminder interval length
     -   Between 1 - 120 minutes
 -   Notification types
@@ -57,10 +59,8 @@ Configure a variety of hydrate reminder settings such as:
         -   Public chat notification
         -   Clan chat notification
     -   Computer tray notification
--   Welcome message
-    -   Enable/Disable
 
-![hydrate_configuration](https://user-images.githubusercontent.com/1442227/125193135-ca303880-e1ff-11eb-9084-108e7e519530.png)
+![Screen Shot 2021-07-19 at 7 46 18 PM](https://user-images.githubusercontent.com/1442227/126261031-6f1938fd-97bb-47b8-a2d1-3e7bfb64d038.png)
 
 <hr/>
             
@@ -74,7 +74,7 @@ Use a variety of optional builtin chat commands to enhance the hydrate reminder 
 -   `::hydrate reset`
     -   Resets the current hydrate reminder interval
 
-![hydrate_commands](https://user-images.githubusercontent.com/1442227/125190282-2c357180-e1f1-11eb-9ed3-9b64e60ecf4f.png)
+![Screen Shot 2021-07-19 at 9 20 09 PM](https://user-images.githubusercontent.com/1442227/126261372-20d9954c-62a5-47a8-bf20-75d86e5349f2.png)
 
 ## Installation Instructions
 
