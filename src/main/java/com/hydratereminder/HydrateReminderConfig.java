@@ -65,7 +65,7 @@ public interface HydrateReminderConfig extends Config
 	)
 	default boolean hydrateReminderWelcomeMessageEnabled()
 	{
-		return true;
+		return false;
 	}
 
 	/**
@@ -88,7 +88,7 @@ public interface HydrateReminderConfig extends Config
 	@Units(Units.MINUTES)
 	default int hydrateReminderInterval()
 	{
-		return 30;
+		return 20;
 	}
 
 	/**
@@ -139,6 +139,6 @@ public interface HydrateReminderConfig extends Config
 	)
 	default boolean hydrateReminderComputerNotificationEnabled()
 	{
-		return true;
+		return false;
 	}
 }
