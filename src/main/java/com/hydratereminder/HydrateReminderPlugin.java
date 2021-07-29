@@ -437,6 +437,7 @@ public class HydrateReminderPlugin extends Plugin
 	private void resetHydrateReminderTimeInterval()
 	{
 		lastHydrateInstant = Optional.empty();
+		loginInstance = Instant.now(); 
 	}
 
 	/**
