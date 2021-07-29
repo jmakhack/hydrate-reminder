@@ -291,10 +291,20 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void handleHydratePrevCommand()
 	{
-		final Duration timeSinceLastBreak = Duration.between(lastHydrateInstant, Instant.now());
-		final String timeString = getTimeDisplay(timeSinceLastBreak);
-		final String message = timeString + " since the last hydration break.";
+		final Optional<Duration> timeSinceLastBreak = getDurationSinceLastBreak(Optional.of(this.lastHydrateInstant));
+//				Duration.between(lastHydrateInstant, Instant.now());
+//		final String timeString = getTimeDisplay(timeSinceLastBreak);
+		final String message = formatHandleHydratePrevCommand(timeSinceLastBreak);
+//		final String message = timeString + " since the last hydration break.";
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
+	}
+
+	protected String formatHandleHydratePrevCommand(Optional<Duration> timeSinceLastBreak) {
+		return "No hydration breaks have been taken yet.";
+	}
+
+	protected Optional<Duration> getDurationSinceLastBreak(Optional<Instant> lastHydrateInstant) {
+		return Optional.empty();
 	}
 
 	/**

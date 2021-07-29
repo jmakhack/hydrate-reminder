@@ -1,10 +1,12 @@
 package com.hydratereminder;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import java.time.Duration;
+import java.util.Optional;
 
 //
 //import mockit.*;
@@ -459,5 +461,18 @@ public class HydrateReminderPluginTest {
                 hydrateReminderPlugin.getTimeDisplay(Duration.ofHours(1)));
         assertEquals("0 seconds",
                 hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(0)));
+    }
+
+    @Test
+    public void shouldReturnDifferentMessageWhenThereIsNoTimeSinceLastBreak() {
+        final Optional<Duration> timeSinceLastBreak = Optional.empty();
+        final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
+        assertEquals("No hydration breaks have been taken yet.", prevCommandMessage);
+    }
+
+    @Test
+    public void shouldReturnNoDurationWhenThereIsNoLastBreak() {
+        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty());
+        assertTrue(!timeSinceLastBreak.isPresent());
     }
 }
