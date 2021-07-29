@@ -140,7 +140,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private Optional<Instant> lastHydrateInstant = Optional.empty();
 
-	private Instant loginInstance;
+	private Instant loginInstant;
 
 	/**
 	 * The id of the hydrate emoji
@@ -180,7 +180,7 @@ public class HydrateReminderPlugin extends Plugin
 		if (gameStateChanged.getGameState() == GameState.LOGGING_IN)
 		{
 			isFirstGameTick = true;
-			this.loginInstance = Instant.now();
+			this.loginInstant = Instant.now();
 			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
@@ -426,7 +426,7 @@ public class HydrateReminderPlugin extends Plugin
 		if(lastHydrateInstant.isPresent()) {
 			return lastHydrateInstant.get().plus(hydrateReminderDuration);
 		}
-		return this.loginInstance.plus(hydrateReminderDuration);
+		return this.loginInstant.plus(hydrateReminderDuration);
 	}
 
 	/**
@@ -437,7 +437,7 @@ public class HydrateReminderPlugin extends Plugin
 	private void resetHydrateReminderTimeInterval()
 	{
 		lastHydrateInstant = Optional.empty();
-		loginInstance = Instant.now(); 
+		loginInstant = Instant.now();
 	}
 
 	/**
