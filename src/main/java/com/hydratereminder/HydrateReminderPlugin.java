@@ -50,8 +50,6 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.ImageUtil;
 import org.apache.commons.lang3.ArrayUtils;
 
-import org.graalvm.compiler.nodes.calc.IntegerDivRemNode.Op;
-
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
  * </p>
