@@ -1,13 +1,11 @@
 package com.hydratereminder;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import java.time.Clock;
 import java.time.Duration;
-import java.time.Instant;
 import java.util.Optional;
 
 //
@@ -475,7 +473,7 @@ public class HydrateReminderPluginTest {
     @Test
     public void shouldReturnNoDurationWhenThereIsNoLastBreak() {
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty());
-        assertTrue(!timeSinceLastBreak.isPresent());
+        assertFalse(timeSinceLastBreak.isPresent());
     }
 
     @Test
