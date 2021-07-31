@@ -179,7 +179,6 @@ public class HydrateReminderPlugin extends Plugin
 		{
 			isFirstGameTick = true;
 			this.loginInstant = Instant.now();
-			resetHydrateReminderTimeInterval();
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
 	}
@@ -434,8 +433,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void resetHydrateReminderTimeInterval()
 	{
-		lastHydrateInstant = Optional.empty();
-		loginInstant = Instant.now();
+		lastHydrateInstant = Optional.of(Instant.now());
 	}
 
 	/**
