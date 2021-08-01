@@ -5,11 +5,12 @@ import org.junit.Test;
 
 public class HydrateReminderChatMessageTypeTest
 {
-
     @Test
-    public void testToString()
+    public void testChatMessageTypeToString()
     {
-        final String chatType = HydrateReminderChatMessageType.GAMEMESSAGE.toString();
-        assertEquals("Game Message", chatType);
+        assertEquals("Game Message", HydrateReminderChatMessageType.GAMEMESSAGE.toString());
+        assertEquals("Broadcast Message", HydrateReminderChatMessageType.BROADCASTMESSAGE.toString());
+        assertEquals("Public Chat", HydrateReminderChatMessageType.PUBLICCHAT.toString());
+        assertEquals("Clan Chat", HydrateReminderChatMessageType.CLANCHAT.toString());
     }
 }
