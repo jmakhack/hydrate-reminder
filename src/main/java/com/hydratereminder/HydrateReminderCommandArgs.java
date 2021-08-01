@@ -28,8 +28,6 @@ package com.hydratereminder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.annotation.Nullable;
-
 /**
  * <p>All command arguments that the Hydrate Reminder plugin supports
  * </p>
