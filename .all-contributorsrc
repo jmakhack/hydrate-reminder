@@ -73,6 +73,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "paulritzman",
+      "name": "Paul Ritzman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37886407?v=4",
+      "profile": "https://www.linkedin.com/in/paulritzman/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
