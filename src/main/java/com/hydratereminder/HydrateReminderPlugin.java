@@ -86,9 +86,9 @@ public class HydrateReminderPlugin extends Plugin
 						add("3... 2... 1... It's hydration time");
 						add("Feeling parched yet? It's hydration time");
 						add("Now would be a fantastic time to hydrate");
-						add("Water... you need... water...");
+						add("Water... you need... water");
 						add("Thirsty? Time to grab a drink");
-						add("Water: a liquid that is necessary for life. Why don't you drink some?");
+						add("Water: a liquid that is necessary for life. Why don't you drink some");
 						add("Hello, this is your reminder to take a hydration break");
 						add("Remember to stay hydrated");
 						add("What'cha drinking there? It's time to take another sip");
