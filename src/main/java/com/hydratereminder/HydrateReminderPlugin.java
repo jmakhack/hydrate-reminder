@@ -132,6 +132,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * Main command name for the Hydrate Reminder plugin
 	 */
 	private static final String HYDRATE_COMMAND_NAME = "hydrate";
+	private static final String HYDRATE_COMMAND_ALIAS = "hr";
 
 	/**
 	 * RuneLite client object
@@ -251,7 +252,8 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
     {
-		if (commandExecuted.getCommand().equalsIgnoreCase(HYDRATE_COMMAND_NAME))
+    	final String command = commandExecuted.getCommand();
+		if (command.equalsIgnoreCase(HYDRATE_COMMAND_NAME) || command.equalsIgnoreCase(HYDRATE_COMMAND_ALIAS))
 		{
 			final String[] args = commandExecuted.getArguments();
 			if (ArrayUtils.isNotEmpty(args))
@@ -262,15 +264,19 @@ public class HydrateReminderPlugin extends Plugin
 					switch (arg)
 					{
 						case NEXT:
+						case N:
 							handleHydrateNextCommand();
 							break;
 						case PREV:
+						case P:
 							handleHydratePrevCommand();
 							break;
 						case RESET:
+						case R:
 							handleHydrateResetCommand();
 							break;
 						case HELP:
+						case H:
 							handleHydrateHelpCommand();
 							break;
 						default:
@@ -397,8 +403,8 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			commandList.append(arg.toString());
 		}
-		final String helpString = String.format("Available commands: %s%s %s",
-				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, commandList);
+		final String helpString = String.format("Available commands: %s%s or ::%s %s",
+				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, HYDRATE_COMMAND_ALIAS, commandList);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
 	}
 
