@@ -115,6 +115,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/medkhabt"><img src="https://avatars.githubusercontent.com/u/34715586?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LOUKHNATI Mohamed Khalil</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=medkhabt" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=medkhabt" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/neilrush"><img src="https://avatars.githubusercontent.com/u/31221793?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Neil Rush</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=neilrush" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=neilrush" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/WELCOME"><img src="https://avatars.githubusercontent.com/u/234200?v=4?s=100" width="100px;" alt=""/><br /><sub><b>welcome</b></sub></a><br /><a href="#maintenance-welcome" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
