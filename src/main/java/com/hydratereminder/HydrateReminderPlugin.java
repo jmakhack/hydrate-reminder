@@ -289,6 +289,10 @@ public class HydrateReminderPlugin extends Plugin
 						case H:
 							handleHydrateHelpCommand();
 							break;
+						case TOTAL:
+						case T:
+							handleHydrateTotalCommand();
+							break;
 						default:
 							throw new IllegalArgumentException();
 					}
@@ -416,6 +420,18 @@ public class HydrateReminderPlugin extends Plugin
 		final String helpString = String.format("Available commands: %s%s or ::%s %s",
 				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, HYDRATE_COMMAND_ALIAS, commandList);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
+	}
+
+	/**
+	 * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken
+	 * </p>
+	 * @since 1.2.0
+	 */
+	private void handleHydrateTotalCommand() {
+		// TO DO: Output the overall total number of hydration breaks across sessions
+		final String totalString = String.format("Current session: %d hydration breaks.",
+				getCurrentSessionHydrationBreaks());
+		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, totalString);
 	}
 
 	/**
