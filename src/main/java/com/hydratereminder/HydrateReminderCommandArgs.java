@@ -41,10 +41,12 @@ public enum HydrateReminderCommandArgs
     PREV("prev"),
     RESET("reset"),
     HELP("help"),
+    TOTAL("total"),
     N("n"),
     P("p"),
     R("r"),
-    H("h");
+    H("h"),
+    T("t");
 
     /**
      * Command argument name

@@ -3,6 +3,7 @@ package com.hydratereminder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.time.Duration;
@@ -10,7 +11,25 @@ import java.util.Optional;
 
 public class HydrateReminderPluginTest {
 
-    private final HydrateReminderPlugin hydrateReminderPlugin = new HydrateReminderPlugin();
+    private HydrateReminderPlugin hydrateReminderPlugin;
+
+    @Before
+    public void setupHydrateReminderPlugin() {
+        hydrateReminderPlugin = new HydrateReminderPlugin();
+    }
+
+    @Test
+    public void init_ShouldReturnZeroHydrationBreaksForTheCurrentSession() {
+        assertEquals(0, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
+    }
+
+    @Test
+    public void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession() {
+        hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
+        hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
+        hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
+        assertEquals(3, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
+    }
 
     @Test
     public void shouldReturnCorrectStringFormatOfTheTime()

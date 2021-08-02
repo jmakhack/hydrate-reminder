@@ -135,6 +135,16 @@ public class HydrateReminderPlugin extends Plugin
 	private static final String HYDRATE_COMMAND_ALIAS = "hr";
 
 	/**
+	 *  Number by which to increment the number of hydration breaks each time a break occurs
+	 */
+	private static final int HYDRATION_BREAK_INCREMENT = 1;
+
+	/**
+	 * Number of total hydration breaks for the current session
+	 */
+	private int currentSessionHydrationBreaks = 0;
+
+	/**
 	 * RuneLite client object
 	 */
 	@Inject
@@ -279,6 +289,10 @@ public class HydrateReminderPlugin extends Plugin
 						case H:
 							handleHydrateHelpCommand();
 							break;
+						case TOTAL:
+						case T:
+							handleHydrateTotalCommand();
+							break;
 						default:
 							throw new IllegalArgumentException();
 					}
@@ -409,6 +423,18 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
+	 * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken
+	 * </p>
+	 * @since 1.2.0
+	 */
+	private void handleHydrateTotalCommand() {
+		// TO DO: Output the overall total number of hydration breaks across sessions
+		final String totalString = String.format("Current session: %d hydration breaks.",
+				getCurrentSessionHydrationBreaks());
+		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, totalString);
+	}
+
+	/**
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
 	 * to send out the configured messages to the player and to reset the interval
 	 * </p>
@@ -432,6 +458,7 @@ public class HydrateReminderPlugin extends Plugin
 		{
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
+			incrementCurrentSessionHydrationBreaks();
 		}
 	}
 
@@ -573,5 +600,36 @@ public class HydrateReminderPlugin extends Plugin
 				break;
 		}
 		return chatMessageType;
+	}
+
+	/**
+	 * <p>CurrentSessionHydrationBreaks is the number of hydration breaks that have occurred
+	 * during the current session. It has a default value of zero (0).
+	 * </p>
+	 * @return the number of hydration breaks taken during the current session
+	 * @since 1.2.0
+	 */
+	public int getCurrentSessionHydrationBreaks() {
+		return currentSessionHydrationBreaks;
+	}
+
+	/**
+	 * <p>CurrentSessionHydrationBreaks is the number of hydration breaks that have occurred
+	 * during the current session. It has a default value of zero (0).
+	 * </p>
+	 * @param numberOfBreaks the number of hydration breaks taken
+	 * @since 1.2.0
+	 */
+	public void setCurrentSessionHydrationBreaks(int numberOfBreaks) {
+		this.currentSessionHydrationBreaks = numberOfBreaks;
+	}
+
+	/**
+	 * <p>Calculates the number of hydration breaks taken during the current session
+	 * </p>
+	 * @since 1.2.0
+	 */
+	public void incrementCurrentSessionHydrationBreaks() {
+		setCurrentSessionHydrationBreaks(getCurrentSessionHydrationBreaks() + HYDRATION_BREAK_INCREMENT);
 	}
 }
