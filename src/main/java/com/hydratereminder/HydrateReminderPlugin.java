@@ -53,7 +53,7 @@ import org.apache.commons.lang3.ArrayUtils;
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
  * </p>
- * <p>Please see the {@link Plugin} class for true identity
+ * <p>Please see the {@link net.runelite.client.plugins.Plugin} class for true identity
  * </p>
  * @author jmakhack
  */
