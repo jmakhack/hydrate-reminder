@@ -53,7 +53,7 @@ import org.apache.commons.lang3.ArrayUtils;
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
  * </p>
- * <p>Please see the {@link net.runelite.client.plugins.Plugin} class for true identity
+ * <p>Please see the {@link Plugin} class for true identity
  * </p>
  * @author jmakhack
  */
@@ -133,6 +133,16 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private static final String HYDRATE_COMMAND_NAME = "hydrate";
 	private static final String HYDRATE_COMMAND_ALIAS = "hr";
+
+	/**
+	 *  Number by which to increment the number of hydration breaks each time a break occurs
+	 */
+	private static final int HYDRATION_BREAK_INCREMENT = 1;
+
+	/**
+	 * Number of total hydration breaks for the current session
+	 */
+	private int currentSessionHydrationBreaks = 0;
 
 	/**
 	 * RuneLite client object
@@ -432,6 +442,7 @@ public class HydrateReminderPlugin extends Plugin
 		{
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
+			incrementCurrentSessionHydrationBreaks();
 		}
 	}
 
@@ -573,5 +584,36 @@ public class HydrateReminderPlugin extends Plugin
 				break;
 		}
 		return chatMessageType;
+	}
+
+	/**
+	 * <p>CurrentSessionHydrationBreaks is the number of hydration breaks that have occurred
+	 * during the current session. It has a default value of zero (0).
+	 * </p>
+	 * @return the number of hydration breaks taken during the current session
+	 * @since 1.2.0
+	 */
+	public int getCurrentSessionHydrationBreaks() {
+		return currentSessionHydrationBreaks;
+	}
+
+	/**
+	 * <p>CurrentSessionHydrationBreaks is the number of hydration breaks that have occurred
+	 * during the current session. It has a default value of zero (0).
+	 * </p>
+	 * @param numberOfBreaks the number of hydration breaks taken
+	 * @since 1.2.0
+	 */
+	public void setCurrentSessionHydrationBreaks(int numberOfBreaks) {
+		this.currentSessionHydrationBreaks = numberOfBreaks;
+	}
+
+	/**
+	 * <p>Calculates the number of hydration breaks taken during the current session
+	 * </p>
+	 * @since 1.2.0
+	 */
+	public void incrementCurrentSessionHydrationBreaks() {
+		setCurrentSessionHydrationBreaks(getCurrentSessionHydrationBreaks() + HYDRATION_BREAK_INCREMENT);
 	}
 }
