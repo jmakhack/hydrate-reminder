@@ -429,8 +429,10 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void handleHydrateTotalCommand() {
 		// TO DO: Output the overall total number of hydration breaks across sessions
-		final String totalString = String.format("Current session: %d hydration breaks.",
-				getCurrentSessionHydrationBreaks());
+		final int numBreaks = getCurrentSessionHydrationBreaks();
+		final String breakText = numBreaks == 1 ? "break" : "breaks";
+		final String totalString = String.format("Current session: %d hydration %s.",
+				numBreaks, breakText);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, totalString);
 	}
 
