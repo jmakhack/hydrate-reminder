@@ -1,13 +1,12 @@
 package com.hydratereminder;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.time.Duration;
 import java.util.Optional;
+
+import static org.junit.Assert.*;
 
 public class HydrateReminderPluginTest {
 
@@ -19,7 +18,7 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void init_ShouldReturnZeroHydrationBreaksForTheCurrentSession() {
+    public void initShouldReturnZeroHydrationBreaksForTheCurrentSession() {
         assertEquals(0, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
     }
 
@@ -29,6 +28,19 @@ public class HydrateReminderPluginTest {
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         assertEquals(3, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
+    }
+
+    @Test
+    public void initShouldSetTheCorrectResetState() {
+        assertFalse(hydrateReminderPlugin.getCurrentResetState());
+    }
+
+    @Test
+    public void shouldSetTheCorrectResetState() {
+        hydrateReminderPlugin.setResetState(true);
+        assertTrue(hydrateReminderPlugin.getCurrentResetState());
+        hydrateReminderPlugin.setResetState(false);
+        assertFalse(hydrateReminderPlugin.getCurrentResetState());
     }
 
     @Test
