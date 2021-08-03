@@ -354,13 +354,14 @@ public class HydrateReminderPlugin extends Plugin
 	 * @since 1.2.0
 	 */
 	protected String formatHandleHydratePrevCommand(Optional<Duration> timeSinceLastBreak) {
-		if (getCurrentResetState())
-		{
-			return getTimeDisplay(timeSinceLastBreak.get()) + " since the last hydration interval reset.";
-		}
 		if (timeSinceLastBreak.isPresent())
 		{
-			return getTimeDisplay(timeSinceLastBreak.get()) + " since the last hydration break.";
+			final String timeString = getTimeDisplay(timeSinceLastBreak.get());
+			if (getCurrentResetState())
+			{
+				return timeString + " since the last hydration interval reset.";
+			}
+			return timeString + " since the last hydration break.";
 		}
 		return "No hydration breaks have been taken yet.";
 	}
@@ -464,13 +465,16 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
-		if (isFirstGameTick && config.hydrateReminderWelcomeMessageEnabled())
+		if (isFirstGameTick)
 		{
 			if (hydrateEmojiId == -1)
 			{
 				loadHydrateEmoji();
 			}
-			sendHydrateWelcomeChatMessage();
+			if (config.hydrateReminderWelcomeMessageEnabled())
+			{
+				sendHydrateWelcomeChatMessage();
+			}
 			isFirstGameTick = false;
 		}
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
