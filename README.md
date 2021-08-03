@@ -39,6 +39,8 @@ Never forget to drink water while exploring the world of Old School RuneScape ev
 
 ![hydrate_water_dance](https://user-images.githubusercontent.com/1442227/125190916-7ff58a00-e1f4-11eb-8566-1a10561c7fee.gif)
 
+Any questions, comments, and/or feedback? Fill out this [form](https://forms.gle/aZrqFvTP8LWZ1toi9).
+
 ## Plugin Features (v1.1.1)
 
 Get a friendly reminder every x minutes to take a quick hydration break.
@@ -93,6 +95,8 @@ Before contributing to this project, please go through the [How to Contribute](C
 Other useful resources include the [RuneLite wiki](https://github.com/runelite/runelite/wiki) and [OSRSBox's Writing RuneLite Plugins](https://www.osrsbox.com/blog/2018/08/10/writing-runelite-plugins-part-1-building/) blog post.  
 It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) development environment for this project.
 
+To contribute any ideas, bug reports, and feedback, submit an [issue](https://github.com/jmakhack/hydrate-reminder/issues) or fill out the [feedback form](https://forms.gle/aZrqFvTP8LWZ1toi9).
+
 ## Code of Conduct
 Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
 
@@ -117,7 +121,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/medkhabt"><img src="https://avatars.githubusercontent.com/u/34715586?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LOUKHNATI Mohamed Khalil</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=medkhabt" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=medkhabt" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/neilrush"><img src="https://avatars.githubusercontent.com/u/31221793?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Neil Rush</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=neilrush" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=neilrush" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://www.linkedin.com/in/paulritzman/"><img src="https://avatars.githubusercontent.com/u/37886407?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Ritzman</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=paulritzman" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/paulritzman/"><img src="https://avatars.githubusercontent.com/u/37886407?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Ritzman</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=paulritzman" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=paulritzman" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/roymw09"><img src="https://avatars.githubusercontent.com/u/60860251?v=4?s=100" width="100px;" alt=""/><br /><sub><b>roymw09</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=roymw09" title="Code">💻</a></td>
   </tr>
 </table>
