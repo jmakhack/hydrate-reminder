@@ -167,7 +167,16 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private Optional<Instant> lastHydrateInstant = Optional.empty();
 
+	/**
+	 * The instant at which the player logs in
+	 */
 	private Instant loginInstant;
+
+	/**
+	 * True when reset command has been triggered
+	 * Returns to false on next hydration break
+	 */
+	private Boolean hasBeenReset = false;
 
 	/**
 	 * The id of the hydrate emoji
@@ -207,6 +216,8 @@ public class HydrateReminderPlugin extends Plugin
 		if (gameStateChanged.getGameState() == GameState.LOGGING_IN)
 		{
 			isFirstGameTick = true;
+			setResetState(false);
+			lastHydrateInstant = Optional.empty();
 			this.loginInstant = Instant.now();
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
@@ -343,8 +354,14 @@ public class HydrateReminderPlugin extends Plugin
 	 * @since 1.2.0
 	 */
 	protected String formatHandleHydratePrevCommand(Optional<Duration> timeSinceLastBreak) {
-		if(timeSinceLastBreak.isPresent()) {
-			return getTimeDisplay(timeSinceLastBreak.get()) + " since the last hydration break.";
+		if (timeSinceLastBreak.isPresent())
+		{
+			final String timeString = getTimeDisplay(timeSinceLastBreak.get());
+			if (getCurrentResetState())
+			{
+				return timeString + " since the last hydration interval reset.";
+			}
+			return timeString + " since the last hydration break.";
 		}
 		return "No hydration breaks have been taken yet.";
 	}
@@ -356,7 +373,8 @@ public class HydrateReminderPlugin extends Plugin
 	 * @since 1.2.0
 	 */
 	protected Optional<Duration> getDurationSinceLastBreak(Optional<Instant> lastHydrateInstant) {
-		if(lastHydrateInstant.isPresent()) {
+		if (lastHydrateInstant.isPresent())
+		{
 			return Optional.of(Duration.between(lastHydrateInstant.get(), Instant.now()));
 		}
 		return Optional.empty();
@@ -396,6 +414,7 @@ public class HydrateReminderPlugin extends Plugin
 	private void handleHydrateResetCommand()
 	{
 		resetHydrateReminderTimeInterval();
+		setResetState(true);
 		final String resetString = "Hydrate reminder interval has been successfully reset.";
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, resetString);
 	}
@@ -446,18 +465,22 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
-		if (isFirstGameTick && config.hydrateReminderWelcomeMessageEnabled())
+		if (isFirstGameTick)
 		{
 			if (hydrateEmojiId == -1)
 			{
 				loadHydrateEmoji();
 			}
-			sendHydrateWelcomeChatMessage();
+			if (config.hydrateReminderWelcomeMessageEnabled())
+			{
+				sendHydrateWelcomeChatMessage();
+			}
 			isFirstGameTick = false;
 		}
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{
+			setResetState(false);
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
 			incrementCurrentSessionHydrationBreaks();
@@ -611,7 +634,8 @@ public class HydrateReminderPlugin extends Plugin
 	 * @return the number of hydration breaks taken during the current session
 	 * @since 1.2.0
 	 */
-	public int getCurrentSessionHydrationBreaks() {
+	public int getCurrentSessionHydrationBreaks()
+	{
 		return currentSessionHydrationBreaks;
 	}
 
@@ -622,7 +646,8 @@ public class HydrateReminderPlugin extends Plugin
 	 * @param numberOfBreaks the number of hydration breaks taken
 	 * @since 1.2.0
 	 */
-	public void setCurrentSessionHydrationBreaks(int numberOfBreaks) {
+	public void setCurrentSessionHydrationBreaks(int numberOfBreaks)
+	{
 		this.currentSessionHydrationBreaks = numberOfBreaks;
 	}
 
@@ -631,7 +656,32 @@ public class HydrateReminderPlugin extends Plugin
 	 * </p>
 	 * @since 1.2.0
 	 */
-	public void incrementCurrentSessionHydrationBreaks() {
+	public void incrementCurrentSessionHydrationBreaks()
+	{
 		setCurrentSessionHydrationBreaks(getCurrentSessionHydrationBreaks() + HYDRATION_BREAK_INCREMENT);
+	}
+
+	/**
+	 * <p>Gets the current reset state which is true if the hydration interval has been reset
+	 * and no breaks have occurred since then
+	 * </p>
+	 * @return true if hydration interval has just been reset, false otherwise
+	 * @since 1.2.0
+	 */
+	public Boolean getCurrentResetState()
+	{
+		return hasBeenReset;
+	}
+
+	/**
+	 * <p>Sets the current reset state which should be true if the hydration interval
+	 * has been reset and no breaks have occurred since then
+	 * </p>
+	 * @param state the reset state to set
+	 * @since 1.2.0
+	 */
+	public void setResetState(Boolean state)
+	{
+		hasBeenReset = state;
 	}
 }
