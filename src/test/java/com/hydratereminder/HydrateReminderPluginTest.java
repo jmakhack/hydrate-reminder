@@ -32,15 +32,15 @@ public class HydrateReminderPluginTest {
 
     @Test
     public void initShouldSetTheCorrectResetState() {
-        assertFalse(hydrateReminderPlugin.getCurrentResetState());
+        assertFalse(hydrateReminderPlugin.isResetState());
     }
 
     @Test
     public void shouldSetTheCorrectResetState() {
         hydrateReminderPlugin.setResetState(true);
-        assertTrue(hydrateReminderPlugin.getCurrentResetState());
+        assertTrue(hydrateReminderPlugin.isResetState());
         hydrateReminderPlugin.setResetState(false);
-        assertFalse(hydrateReminderPlugin.getCurrentResetState());
+        assertFalse(hydrateReminderPlugin.isResetState());
     }
 
     @Test
