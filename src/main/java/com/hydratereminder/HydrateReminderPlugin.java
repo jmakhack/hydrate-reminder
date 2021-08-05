@@ -202,15 +202,14 @@ public class HydrateReminderPlugin extends Plugin
 	private boolean resetState = false;
 
 	/**
-	 * <p>The id of the hydrate emoji which is
-	 * set to -1 if failed to load hydrate emoji sprite
+	 * <p>The id of the hydrate emoji
 	 * </p>
 	 * @param hydrateEmojiId the id for the hydrate emoji
 	 * @return id value of the hydrate emoji
 	 */
 	@Getter
 	@Setter
-	private int hydrateEmojiId = -1;
+	private Optional<Integer> hydrateEmojiId = Optional.empty();
 
 	/**
 	 * <p>True when game tick is the first one after login which is
@@ -278,7 +277,7 @@ public class HydrateReminderPlugin extends Plugin
 			{
 				log.warn("Failed to load hydrate emoji sprite", e);
 			}
-			setHydrateEmojiId(modIcons.length);
+			setHydrateEmojiId(Optional.of(modIcons.length));
 			client.setModIcons(newModIcons);
 			log.debug("Successfully loaded hydrate emoji sprite");
 		}
@@ -502,7 +501,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		if (isFirstGameTick())
 		{
-			if (getHydrateEmojiId() == -1)
+			if (!getHydrateEmojiId().isPresent())
 			{
 				loadHydrateEmoji();
 			}
@@ -605,12 +604,12 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void sendHydrateEmojiChatMessage(ChatMessageType type, String message)
 	{
-		if (getHydrateEmojiId() == -1)
+		if (!getHydrateEmojiId().isPresent())
 		{
 			client.addChatMessage(type, "", message, null);
 			return;
 		}
-		final String hydrateEmoji = String.format("<img=%d>", getHydrateEmojiId());
+		final String hydrateEmoji = String.format("<img=%d>", getHydrateEmojiId().get());
 		final StringBuilder hydrateMessage = new StringBuilder();
 		String sender = hydrateEmoji;
 		if (type != ChatMessageType.FRIENDSCHAT)
