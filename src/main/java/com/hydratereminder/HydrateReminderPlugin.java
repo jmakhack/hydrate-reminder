@@ -542,7 +542,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * </p>
 	 * @since 1.0.0
 	 */
-	private void resetHydrateReminderTimeInterval()
+	protected void resetHydrateReminderTimeInterval()
 	{
 		setLastHydrateInstant(Optional.of(Instant.now()));
 	}
