@@ -65,7 +65,7 @@ public interface HydrateReminderConfig extends Config
 	)
 	default boolean hydrateReminderWelcomeMessageEnabled()
 	{
-		return false;
+		return true;
 	}
 
 	/**

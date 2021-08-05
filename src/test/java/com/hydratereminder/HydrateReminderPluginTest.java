@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -32,15 +33,15 @@ public class HydrateReminderPluginTest {
 
     @Test
     public void initShouldSetTheCorrectResetState() {
-        assertFalse(hydrateReminderPlugin.getCurrentResetState());
+        assertFalse(hydrateReminderPlugin.isResetState());
     }
 
     @Test
     public void shouldSetTheCorrectResetState() {
         hydrateReminderPlugin.setResetState(true);
-        assertTrue(hydrateReminderPlugin.getCurrentResetState());
+        assertTrue(hydrateReminderPlugin.isResetState());
         hydrateReminderPlugin.setResetState(false);
-        assertFalse(hydrateReminderPlugin.getCurrentResetState());
+        assertFalse(hydrateReminderPlugin.isResetState());
     }
 
     @Test
@@ -66,9 +67,24 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
+    public void shouldReturnDifferentMessageWhenThereIsResetSinceLastBreak() {
+        final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofSeconds(645));
+        hydrateReminderPlugin.setResetState(true);
+        final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
+        assertEquals("10 minutes 45 seconds since the last hydration interval reset.", prevCommandMessage);
+    }
+
+    @Test
     public void shouldReturnNoDurationWhenThereIsNoLastBreak() {
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty());
         assertFalse(timeSinceLastBreak.isPresent());
+    }
+
+    @Test
+    public void shouldReturnDurationWhenThereIsLastBreak() {
+        final Optional<Instant> timeOfLastBreak = Optional.of(Instant.now());
+        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(timeOfLastBreak);
+        assertTrue(timeSinceLastBreak.isPresent());
     }
 
     @Test
@@ -76,6 +92,13 @@ public class HydrateReminderPluginTest {
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(130));
         final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
         assertEquals("2 hours 10 minutes 0 seconds since the last hydration break.", prevCommandMessage);
+    }
+
+    @Test
+    public void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred() {
+        assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
+        hydrateReminderPlugin.resetHydrateReminderTimeInterval();
+        assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
     }
 
 //    TODO: Need a static clock in hydrateReminderPlugin so i can mock it in the test to override Instant.now(Clock)
