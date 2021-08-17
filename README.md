@@ -27,7 +27,7 @@
     <a href="#contributors-" alt="All Contributors">
         <img src="https://img.shields.io/github/all-contributors/jmakhack/hydrate-reminder?style=for-the-badge" />
     </a>
-    <a href="https://matias.ma/nsfw/" alt="Made With Love">
+    <a href="https://youtu.be/9RHj8P1NsY0" alt="Made With Love">
         <img src="https://img.shields.io/badge/Made%20With%20Love-(%E2%97%8F%E2%99%A1%E2%88%80%E2%99%A1))%E3%83%BE%E2%98%86*%E3%80%82-blueviolet?style=for-the-badge" />
     </a>
 </p>
