@@ -37,20 +37,21 @@ import com.google.inject.Provides;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.ChatMessageType;
-import net.runelite.api.Client;
-import net.runelite.api.GameState;
-import net.runelite.api.IndexedSprite;
+import net.runelite.api.*;
 import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.ImageUtil;
 import org.apache.commons.lang3.ArrayUtils;
+
+import static net.runelite.api.ItemID.*;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
@@ -158,6 +159,28 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Inject
 	private Notifier notifier;
+
+	/**
+	 * Manager for Old School Runescape item data
+	 */
+	@Inject
+	private ItemManager itemManager;
+
+	/**
+	 * Manager for infoboxes that appear on overlay
+	 */
+	@Inject
+	private InfoBoxManager infoBoxManager;
+
+	/**
+	 * <p>The infobox timer that is rendered onto the overlay
+	 * </p>
+	 * @param hydrateReminderTimer hydrate reminder infobox timer
+	 * @return the hydrate reminder infobox timer
+	 */
+	@Getter
+	@Setter
+	private Optional<HydrateReminderTimer> hydrateReminderTimer = Optional.empty();
 
 	/**
 	 * <p>The number of hydration breaks that have occurred
@@ -481,7 +504,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * @since 1.2.0
 	 */
 	private void handleHydrateTotalCommand() {
-		// TO DO: Output the overall total number of hydration breaks across sessions
+		// TODO: Output the overall total number of hydration breaks across sessions
 		final int numBreaks = getCurrentSessionHydrationBreaks();
 		final String breakText = numBreaks == 1 ? "break" : "breaks";
 		final String totalString = String.format("Current session: %d hydration %s.",
@@ -509,6 +532,8 @@ public class HydrateReminderPlugin extends Plugin
 			{
 				sendHydrateWelcomeChatMessage();
 			}
+			removeHydrateReminderTimer();
+			createHydrateReminderTimer(CUP_OF_WATER);
 			setFirstGameTick(false);
 		}
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
@@ -522,12 +547,44 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
+	 * <p>Initializes a new hydrate reminder timer and renders it as an infobox on the
+	 * overlay given that one has not been initialized already
+	 * </p>
+	 * @param itemID id of the item to use as the infobox background
+	 * @since 1.2.0
+	 */
+	private void createHydrateReminderTimer(int itemID)
+	{
+		if (!getHydrateReminderTimer().isPresent())
+		{
+			final BufferedImage infoboxImage = itemManager.getImage(itemID);
+			final HydrateReminderTimer newTimer = new HydrateReminderTimer(this, infoboxImage);
+			setHydrateReminderTimer(Optional.of(newTimer));
+			infoBoxManager.addInfoBox(getHydrateReminderTimer().get());
+		}
+	}
+
+	/**
+	 * <p>Removes the currently initialized hydrate reminder timer if exists
+	 * </p>
+	 * @since 1.2.0
+	 */
+	private void removeHydrateReminderTimer()
+	{
+		if (hydrateReminderTimer.isPresent())
+		{
+			infoBoxManager.removeInfoBox(getHydrateReminderTimer().get());
+			hydrateReminderTimer = Optional.empty();
+		}
+	}
+
+	/**
 	 * <p>Calculates the next instant at which the next hydrate reminder should be sent out
 	 * </p>
 	 * @return the instant to send the next hydrate reminder on
 	 * @since 1.1.0
 	 */
-	private Instant getNextHydrateReminderInstant()
+	protected Instant getNextHydrateReminderInstant()
 	{
 		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
 		if(getLastHydrateInstant().isPresent()) {
