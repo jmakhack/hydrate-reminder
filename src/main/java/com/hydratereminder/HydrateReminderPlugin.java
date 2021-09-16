@@ -25,15 +25,7 @@
 
 package com.hydratereminder;
 
-import java.awt.image.BufferedImage;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.*;
-
-import javax.inject.Inject;
-
 import com.google.inject.Provides;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +43,12 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.ImageUtil;
 import org.apache.commons.lang3.ArrayUtils;
+
+import javax.inject.Inject;
+import java.awt.image.BufferedImage;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.*;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
@@ -123,6 +121,24 @@ public class HydrateReminderPlugin extends Plugin
 						add("Check out the hydrate commands by typing \"::hydrate help\" in chat.");
 						add("A hydrated adventurer is an unstoppable adventurer.");
 						add("It's dangerous to go alone. Stay hydrated!");
+						add("Welcome Traveller. Nothing hurts morale like dehydration! Remember to drink water.");
+						add("People who don't believe in magic have obviously never had water!");
+						add("You're 70% water. Don't forget to stay hydrated!");
+						add("\"Thousands have lived without love, not one without water.\" - W.J. Auden");
+						add("Having trouble focusing? Sounds like you need to drink some water ;)");
+						add("\"If there is magic on this planet, it is contained in water.\" - Loren Eiseley");
+						add("Feeling low on energy? Drink some water!");
+						add("Nothing like RuneScape and a tall glass of ice cold water!");
+						add("I suppose we'll allow tea... For now.");
+						add("Type \"::hydrate next\" to set a reminder to stay hydrated!");
+						add("Save key strokes by using the short hand \"::hr <command>\" instead of \"::hydrate <command>\"");
+						add("Imagine getting in a sword fight while dehydrated. What. A. Nightmare.");
+						add("Don't forget to stay hydrated while out and about!");
+						add("A wise traveler is a hydrated traveler.");
+						add("Welcome Traveller. Nothing hurts morale like dehydration! Remember to drink water.");
+						add("I once started a quest without adequate water. NEVER AGAIN.");
+						add("Welcome! Stay hydrated out there!");
+						add("Welcome traveler. Would it be rude to say you look a little thirsty?");
 					}});
 
 	/**
