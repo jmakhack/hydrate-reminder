@@ -121,7 +121,7 @@ public class HydrateReminderPlugin extends Plugin
 						add("Check out the hydrate commands by typing \"::hydrate help\" in chat.");
 						add("A hydrated adventurer is an unstoppable adventurer.");
 						add("It's dangerous to go alone. Stay hydrated!");
-						add("Welcome Traveller. Nothing hurts morale like dehydration! Remember to drink water.");
+						add("Welcome traveler. Nothing hurts morale like dehydration! Remember to drink water.");
 						add("People who don't believe in magic have obviously never had water!");
 						add("You're 70% water. Don't forget to stay hydrated!");
 						add("\"Thousands have lived without love, not one without water.\" - W.J. Auden");
@@ -130,12 +130,12 @@ public class HydrateReminderPlugin extends Plugin
 						add("Feeling low on energy? Drink some water!");
 						add("Nothing like RuneScape and a tall glass of ice cold water!");
 						add("I suppose we'll allow tea... For now.");
-						add("Type \"::hydrate next\" to set a reminder to stay hydrated!");
+						add("Type \"::hydrate next\" to view the time remaining until the next hydration break!");
 						add("Save key strokes by using the short hand \"::hr <command>\" instead of \"::hydrate <command>\"");
 						add("Imagine getting in a sword fight while dehydrated. What. A. Nightmare.");
 						add("Don't forget to stay hydrated while out and about!");
 						add("A wise traveler is a hydrated traveler.");
-						add("Welcome Traveller. Nothing hurts morale like dehydration! Remember to drink water.");
+						add("Remember to drink plenty of water!");
 						add("I once started a quest without adequate water. NEVER AGAIN.");
 						add("Welcome! Stay hydrated out there!");
 						add("Welcome traveler. Would it be rude to say you look a little thirsty?");
