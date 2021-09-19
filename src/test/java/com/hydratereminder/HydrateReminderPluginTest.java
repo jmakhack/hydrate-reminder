@@ -9,22 +9,26 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 
-public class HydrateReminderPluginTest {
+public class HydrateReminderPluginTest
+{
 
     private HydrateReminderPlugin hydrateReminderPlugin;
 
     @Before
-    public void setupHydrateReminderPlugin() {
+    public void setupHydrateReminderPlugin()
+    {
         hydrateReminderPlugin = new HydrateReminderPlugin();
     }
 
     @Test
-    public void initShouldReturnZeroHydrationBreaksForTheCurrentSession() {
+    public void initShouldReturnZeroHydrationBreaksForTheCurrentSession()
+    {
         assertEquals(0, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
     }
 
     @Test
-    public void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession() {
+    public void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession()
+    {
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
@@ -32,12 +36,14 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void initShouldSetTheCorrectResetState() {
+    public void initShouldSetTheCorrectResetState()
+    {
         assertFalse(hydrateReminderPlugin.isResetState());
     }
 
     @Test
-    public void shouldSetTheCorrectResetState() {
+    public void shouldSetTheCorrectResetState()
+    {
         hydrateReminderPlugin.setResetState(true);
         assertTrue(hydrateReminderPlugin.isResetState());
         hydrateReminderPlugin.setResetState(false);
@@ -60,14 +66,16 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldReturnDifferentMessageWhenThereIsNoTimeSinceLastBreak() {
+    public void shouldReturnDifferentMessageWhenThereIsNoTimeSinceLastBreak()
+    {
         final Optional<Duration> timeSinceLastBreak = Optional.empty();
         final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
         assertEquals("No hydration breaks have been taken yet.", prevCommandMessage);
     }
 
     @Test
-    public void shouldReturnDifferentMessageWhenThereIsResetSinceLastBreak() {
+    public void shouldReturnDifferentMessageWhenThereIsResetSinceLastBreak()
+    {
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofSeconds(645));
         hydrateReminderPlugin.setResetState(true);
         final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
@@ -75,27 +83,31 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldReturnNoDurationWhenThereIsNoLastBreak() {
+    public void shouldReturnNoDurationWhenThereIsNoLastBreak()
+    {
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty());
         assertFalse(timeSinceLastBreak.isPresent());
     }
 
     @Test
-    public void shouldReturnDurationWhenThereIsLastBreak() {
+    public void shouldReturnDurationWhenThereIsLastBreak()
+    {
         final Optional<Instant> timeOfLastBreak = Optional.of(Instant.now());
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(timeOfLastBreak);
         assertTrue(timeSinceLastBreak.isPresent());
     }
 
     @Test
-    public void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage() {
+    public void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage()
+    {
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(130));
         final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
         assertEquals("2 hours 10 minutes 0 seconds since the last hydration break.", prevCommandMessage);
     }
 
     @Test
-    public void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred() {
+    public void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred()
+    {
         assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
         hydrateReminderPlugin.resetHydrateReminderTimeInterval();
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
