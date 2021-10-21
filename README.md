@@ -125,6 +125,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/roymw09"><img src="https://avatars.githubusercontent.com/u/60860251?v=4?s=100" width="100px;" alt=""/><br /><sub><b>roymw09</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=roymw09" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/dcechano"><img src="https://avatars.githubusercontent.com/u/43017290?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dcechano</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=dcechano" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://nebocode.github.io"><img src="https://avatars.githubusercontent.com/u/17943735?v=4?s=100" width="100px;" alt=""/><br /><sub><b>NeboCode</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=NeboCode" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
