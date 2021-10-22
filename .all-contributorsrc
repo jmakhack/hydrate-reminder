@@ -120,6 +120,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "LiorBitton",
+      "name": "Lior Bitton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54041768?v=4",
+      "profile": "https://github.com/LiorBitton",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 5,
