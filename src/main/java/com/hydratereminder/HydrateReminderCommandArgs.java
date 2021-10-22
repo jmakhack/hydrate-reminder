@@ -60,4 +60,14 @@ public enum HydrateReminderCommandArgs
     {
         return getCommandArg();
     }
+
+    public static HydrateReminderCommandArgs getValue(String command)
+    {
+        for (HydrateReminderCommandArgs enumValue : HydrateReminderCommandArgs.values())
+        {
+            if (enumValue.getCommandArg() == command || enumValue.getCommandArgAbbr() == command)
+                return enumValue;
+        }
+        throw new IllegalArgumentException();
+    }
 }
