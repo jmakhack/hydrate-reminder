@@ -13,10 +13,21 @@ public class HydrateReminderCommandArgsTest
         assertEquals("reset", HydrateReminderCommandArgs.RESET.toString());
         assertEquals("help", HydrateReminderCommandArgs.HELP.toString());
         assertEquals("total", HydrateReminderCommandArgs.TOTAL.toString());
-        assertEquals("n", HydrateReminderCommandArgs.N.toString());
-        assertEquals("p", HydrateReminderCommandArgs.P.toString());
-        assertEquals("r", HydrateReminderCommandArgs.R.toString());
-        assertEquals("h", HydrateReminderCommandArgs.H.toString());
-        assertEquals("t", HydrateReminderCommandArgs.T.toString());
+    }
+
+    @Test
+    public void testAliases()
+    {
+        assertEquals("next", HydrateReminderCommandArgs.NEXT.getCommandArg());
+        assertEquals("prev", HydrateReminderCommandArgs.PREV.getCommandArg());
+        assertEquals("reset", HydrateReminderCommandArgs.RESET.getCommandArg());
+        assertEquals("help", HydrateReminderCommandArgs.HELP.getCommandArg());
+        assertEquals("total", HydrateReminderCommandArgs.TOTAL.getCommandArg());
+
+        assertEquals("n", HydrateReminderCommandArgs.NEXT.getCommandArgAbbr());
+        assertEquals("p", HydrateReminderCommandArgs.PREV.getCommandArgAbbr());
+        assertEquals("r", HydrateReminderCommandArgs.RESET.getCommandArgAbbr());
+        assertEquals("h", HydrateReminderCommandArgs.HELP.getCommandArgAbbr());
+        assertEquals("t", HydrateReminderCommandArgs.TOTAL.getCommandArgAbbr());
     }
 }
