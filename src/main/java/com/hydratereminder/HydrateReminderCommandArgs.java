@@ -37,21 +37,17 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum HydrateReminderCommandArgs
 {
-    NEXT("next"),
-    PREV("prev"),
-    RESET("reset"),
-    HELP("help"),
-    TOTAL("total"),
-    N("n"),
-    P("p"),
-    R("r"),
-    H("h"),
-    T("t");
+    NEXT("next", "n"),
+    PREV("prev", "p"),
+    RESET("reset", "r"),
+    HELP("help", "h"),
+    TOTAL("total", "t");
 
     /**
      * Command argument name
      */
     private final String commandArg;
+    private final String commandArgAbbr;
 
     /**
      * <p>Get the command argument name as a String
