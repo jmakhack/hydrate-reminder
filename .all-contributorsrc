@@ -110,6 +110,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hpa16",
+      "name": "Harini Pa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29160872?v=4",
+      "profile": "https://github.com/hpa16",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
