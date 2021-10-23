@@ -351,7 +351,7 @@ public class HydrateReminderPlugin extends Plugin
 			{
 				try
 				{
-					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.valueOf(args[0].toUpperCase());
+					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.getValue(args[0].toLowerCase());
 					switch (arg)
 					{
 						case NEXT:

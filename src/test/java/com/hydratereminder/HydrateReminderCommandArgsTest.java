@@ -30,4 +30,32 @@ public class HydrateReminderCommandArgsTest
         assertEquals("h", HydrateReminderCommandArgs.HELP.getCommandArgAbbr());
         assertEquals("t", HydrateReminderCommandArgs.TOTAL.getCommandArgAbbr());
     }
+
+    @Test
+    public void testGetValue()
+    {
+        assertEquals(HydrateReminderCommandArgs.NEXT, HydrateReminderCommandArgs.getValue("next"));
+        assertEquals(HydrateReminderCommandArgs.PREV, HydrateReminderCommandArgs.getValue("prev"));
+        assertEquals(HydrateReminderCommandArgs.RESET, HydrateReminderCommandArgs.getValue("reset"));
+        assertEquals(HydrateReminderCommandArgs.HELP, HydrateReminderCommandArgs.getValue("help"));
+        assertEquals(HydrateReminderCommandArgs.TOTAL, HydrateReminderCommandArgs.getValue("total"));
+
+        assertEquals(HydrateReminderCommandArgs.NEXT, HydrateReminderCommandArgs.getValue("n"));
+        assertEquals(HydrateReminderCommandArgs.PREV, HydrateReminderCommandArgs.getValue("p"));
+        assertEquals(HydrateReminderCommandArgs.RESET, HydrateReminderCommandArgs.getValue("r"));
+        assertEquals(HydrateReminderCommandArgs.HELP, HydrateReminderCommandArgs.getValue("h"));
+        assertEquals(HydrateReminderCommandArgs.TOTAL, HydrateReminderCommandArgs.getValue("t"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetValue_throwsIfNullCommand()
+    {
+        HydrateReminderCommandArgs.getValue(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetValue_throwsIfInvalidCommand()
+    {
+        HydrateReminderCommandArgs.getValue("dummy");
+    }
 }
