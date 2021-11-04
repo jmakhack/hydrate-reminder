@@ -50,10 +50,11 @@ Get a friendly reminder every x minutes to take a quick hydration break.
 <hr/>
 
 Configure a variety of hydrate reminder settings such as:
+
 -   Welcome message
     -   Enable/Disable
 -   Hydrate reminder interval length
-    -   Between 1 - 120 minutes
+    -   Between 1 - 90 minutes
 -   Notification types
     -   Chat message notification
         -   Game message notification
@@ -98,9 +99,11 @@ It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) de
 To contribute any ideas, bug reports, and feedback, submit an [issue](https://github.com/jmakhack/hydrate-reminder/issues) or fill out the [feedback form](https://forms.gle/aZrqFvTP8LWZ1toi9).
 
 ## Code of Conduct
+
 Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
 
 ## License
+
 Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
 
 ## Contributors ✨
