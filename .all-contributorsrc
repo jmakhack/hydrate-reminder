@@ -110,6 +110,25 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hpa16",
+      "name": "Harini Pa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29160872?v=4",
+      "profile": "https://github.com/hpa16",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "LiorBitton",
+      "name": "Lior Bitton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54041768?v=4",
+      "profile": "https://github.com/LiorBitton",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 5,

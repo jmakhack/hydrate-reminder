@@ -37,21 +37,17 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum HydrateReminderCommandArgs
 {
-    NEXT("next"),
-    PREV("prev"),
-    RESET("reset"),
-    HELP("help"),
-    TOTAL("total"),
-    N("n"),
-    P("p"),
-    R("r"),
-    H("h"),
-    T("t");
+    NEXT("next", "n"),
+    PREV("prev", "p"),
+    RESET("reset", "r"),
+    HELP("help", "h"),
+    TOTAL("total", "t");
 
     /**
      * Command argument name
      */
     private final String commandArg;
+    private final String commandArgAbbr;
 
     /**
      * <p>Get the command argument name as a String
@@ -63,5 +59,15 @@ public enum HydrateReminderCommandArgs
     public String toString()
     {
         return getCommandArg();
+    }
+
+    public static HydrateReminderCommandArgs getValue(String command)
+    {
+        for (HydrateReminderCommandArgs enumValue : HydrateReminderCommandArgs.values())
+        {
+            if (enumValue.getCommandArg() == command || enumValue.getCommandArgAbbr() == command)
+                return enumValue;
+        }
+        throw new IllegalArgumentException();
     }
 }

@@ -351,27 +351,22 @@ public class HydrateReminderPlugin extends Plugin
 			{
 				try
 				{
-					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.valueOf(args[0].toUpperCase());
+					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.getValue(args[0].toLowerCase());
 					switch (arg)
 					{
 						case NEXT:
-						case N:
 							handleHydrateNextCommand();
 							break;
 						case PREV:
-						case P:
 							handleHydratePrevCommand();
 							break;
 						case RESET:
-						case R:
 							handleHydrateResetCommand();
 							break;
 						case HELP:
-						case H:
 							handleHydrateHelpCommand();
 							break;
 						case TOTAL:
-						case T:
 							handleHydrateTotalCommand();
 							break;
 						default:
