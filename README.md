@@ -131,7 +131,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://nebocode.github.io"><img src="https://avatars.githubusercontent.com/u/17943735?v=4?s=100" width="100px;" alt=""/><br /><sub><b>NeboCode</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=NeboCode" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/hpa16"><img src="https://avatars.githubusercontent.com/u/29160872?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harini Pa</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=hpa16" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=hpa16" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/LiorBitton"><img src="https://avatars.githubusercontent.com/u/54041768?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lior Bitton</b></sub></a><br /><a href="#maintenance-LiorBitton" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/LiorBitton"><img src="https://avatars.githubusercontent.com/u/54041768?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lior Bitton</b></sub></a><br /><a href="#maintenance-LiorBitton" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=LiorBitton" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=LiorBitton" title="Documentation">📖</a></td>
   </tr>
 </table>
 
