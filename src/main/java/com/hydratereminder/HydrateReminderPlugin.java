@@ -536,6 +536,8 @@ public class HydrateReminderPlugin extends Plugin
 			createHydrateReminderTimer(CUP_OF_WATER);
 			setFirstGameTick(false);
 		}
+		removeHydrateReminderTimer();
+		createHydrateReminderTimer(config.hydrateReminderOverlayTimerImageTest());
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{
