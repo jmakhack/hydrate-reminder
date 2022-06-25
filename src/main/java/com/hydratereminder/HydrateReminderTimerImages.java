@@ -67,6 +67,12 @@ public enum HydrateReminderTimerImages
     WATER_RUNE_IMAGE("Water Rune", WATER_RUNE),
     WATER_TALISMAN_IMAGE("Water Talisman", WATER_TALISMAN),
     WATER_TIARA_IMAGE("Water Tiara", WATER_TIARA),
+    POND_IMAGE("Pond", POND),
+    SMALL_FOUNTAIN_IMAGE("Small Fountain", SMALL_FOUNTAIN),
+    LARGE_FOUNTAIN_IMAGE("Large Fountain", LARGE_FOUNTAIN),
+    POSH_FOUNTAIN_IMAGE("Posh Fountain", POSH_FOUNTAIN),
+    SINK_IMAGE("Sink", SINK),
+    WAKING_SLEEP_VIAL_IMAGE("Waking Sleep Vial", WAKING_SLEEP_VIAL),
 
     // TEA
     CUP_OF_TEA_IMAGE("Cup of Tea", CUP_OF_TEA),
@@ -79,9 +85,18 @@ public enum HydrateReminderTimerImages
     WHITE_PORCELAIN_TEAPOT_IMAGE("Porcelain Teapot", TEAPOT_7714),
     GOLDTRIMMED_PORCELAIN_TEAPOT("Gold-trimmed Teapot", TEAPOT_7726),
     TEA_LEAVES_IMAGE("Tea Leaves", TEA_LEAVES),
-
-    // ALCOHOLIC
+    CUP_OF_GREEN_TEA_IMAGE("Cup of Green Tea", CUP_OF_TEA_4242),
+    CUP_OF_WHITE_TEA_IMAGE("Cup of White Tea", CUP_OF_TEA_4243),
+    PORCELAIN_CUP_OF_GREEN_TEA_IMAGE("Porcelain Cup of Green Tea", CUP_OF_TEA_4245),
+    PORCELAIN_CUP_OF_WHITE_TEA_IMAGE("Porcelain Cup of White Tea", CUP_OF_TEA_4246),
     GUTHIX_REST_IMAGE("Guthix Rest", GUTHIX_REST4),
+    POT_OF_TEA_IMAGE("Pot of Tea", POT_OF_TEA_4),
+    GOLD_TEAPOT_IMAGE("Golden Teapot", POT_OF_TEA_4_7716),
+    CLAY_CUP_OF_TEA_IMAGE("Clay Cup of Tea", CUP_OF_TEA_7730),
+    PORCELAIN_CUP_OF_TEA_IMAGE("Porcelain Cup of Tea", CUP_OF_TEA_7733),
+    GOLDTRIMMED_CUP_OF_TEA("Gold-trimmed Cup of Tea", CUP_OF_TEA_7736),
+
+    // ALCOHOL
     KHALI_BREW_IMAGE("Khali Brew", KHALI_BREW),
     ASGARNIAN_ALE_IMAGE("Asgarnian Ale", ASGARNIAN_ALE),
     WIZARDS_MIND_BOMB_IMAGE("Wizards Mind Bomb", WIZARDS_MIND_BOMB),
@@ -108,10 +123,24 @@ public enum HydrateReminderTimerImages
     MOONLIGHT_MEAD_IMAGE("Moonlight Mead", MOONLIGHT_MEAD),
     KEG_OF_BEER_IMAGE("Keg of Beer", KEG_OF_BEER),
     BEER_TANKARD_IMAGE("Beer Tankard", BEER_TANKARD),
+    CHEFS_DELIGHT_IMAGE("Chef's Delight", CHEFS_DELIGHT),
+    SLAYERS_RESPITE_IMAGE("Slayer's Respite", SLAYERS_RESPITE),
+    KELDA_STOUT_IMAGE("Kelda Stout", KELDA_STOUT),
+    AHABS_BEER_IMAGE("Ahab's Beer", AHABS_BEER),
+    BRAINDEATH_RUM_IMAGE("Braindeath 'Rum'", BRAINDEATH_RUM),
+    DIRTY_BLAST_IMAGE("Dirty Blast", DIRTY_BLAST),
+    ASGOLDIAN_ALE_IMAGE("Asgoldian Ale", ASGOLDIAN_ALE),
+    CIDER_IMAGE("Cider", CIDER_7752),
+    BOTTLE_OF_WINE_IMAGE("Bottle of Wine", BOTTLE_OF_WINE),
+    BEER_BARREL_IMAGE("Beer Barrel", BEER_BARREL),
+    RUM_IMAGE("Rum", RUM),
 
-    // DRINKS
+    // DRINK
     BUCKET_OF_MILK_IMAGE("Bucket of Milk", BUCKET_OF_MILK),
     CHOCOLATEY_MILK_IMAGE("Chocolatey Milk", CHOCOLATEY_MILK),
+    COCONUT_MILK_IMAGE("Coconut Milk", COCONUT_MILK),
+    REDBERRY_JUICE_IMAGE("Redberry Juice", REDBERRY_JUICE),
+    MILKY_MIXTURE_IMAGE("Milky Mixture", MILKY_MIXTURE),
 
     // DRINK RELATED
     KETTLE_IMAGE("Kettle", KETTLE),
@@ -120,8 +149,9 @@ public enum HydrateReminderTimerImages
     VIAL_OF_TEARS_IMAGE("Vial of Tears", VIAL_OF_TEARS_FULL),
     SILVER_CUP_IMAGE("Silver Cup", SILVER_CUP),
     SILVER_BOTTLE_IMAGE("Silver Bottle", SILVER_BOTTLE),
+    TANKARD_IMAGE("Tankard", TANKARD),
 
-    // FOODS
+    // FOOD
     LIQUID_HONEY_IMAGE("Liquid Honey", LIQUID_HONEY),
     COOKING_POT_IMAGE("Cooking Pot", COOKING_POT),
     INCOMPLETE_STEW_IMAGE("Incomplete Stew", INCOMPLETE_STEW),
@@ -133,6 +163,14 @@ public enum HydrateReminderTimerImages
     BURNT_CURRY_IMAGE("Burnt Curry", BURNT_CURRY),
     POT_OF_CREAM_IMAGE("Pot of Cream", POT_OF_CREAM),
     OLIVE_OIL_IMAGE("Olive Oil", OLIVE_OIL4),
+    BANANA_STEW_IMAGE("Banana Stew", BANANA_STEW),
+    RED_HOT_SAUCE_IMAGE("Red Hot Sauce", RED_HOT_SAUCE),
+    WATERMELON_SLICE_IMAGE("Watermelon Slice", WATERMELON_SLICE),
+    SPICY_SAUCE_IMAGE("Spicy Sauce", SPICY_SAUCE),
+    BRULEE_IMAGE("Brulee", BRULEE),
+    SPICY_STEW_IMAGE("Spicy Stew", SPICY_STEW),
+    JUG_OF_VINEGAR_IMAGE("Jug of Vinegar", JUG_OF_VINEGAR),
+    POT_OF_VINEGAR_IMAGE("Pot of Vinegar", POT_OF_VINEGAR),
 
     // POTION
     POTION_IMAGE("Potion", POTION),
@@ -172,6 +210,12 @@ public enum HydrateReminderTimerImages
     SUPER_RESTORE_POTION_IMAGE("Super Restore Potion", SUPER_RESTORE4),
     AGILITY_POTION_IMAGE("Agility Potion", AGILITY_POTION4),
     MAGIC_POTION_IMAGE("Magic Potion", MAGIC_POTION4),
+    EXPOSIVE_POTION_IMAGE("Explosive Potion", EXPLOSIVE_POTION),
+    STRANGE_POTION_IMAGE("Strange Potion", STRANGE_POTION),
+    ANTIDOTE_IMAGE("Antidote", ANTIDOTE4),
+    PLANT_CURE_IMAGE("Plant Cure", PLANT_CURE_6468),
+    COMPOST_POTION_IMAGE("Compost Potion", COMPOST_POTION4),
+    TRUTH_SERUM_IMAGE("Truth Serum", TRUTH_SERUM),
 
     // DYE
     RED_DYE_IMAGE("Red Dye", RED_DYE),
@@ -180,20 +224,38 @@ public enum HydrateReminderTimerImages
     ORANGE_DYE_IMAGE("Orange Dye", ORANGE_DYE),
     GREEN_DYE_IMAGE("Green Dye", GREEN_DYE),
     PURPLE_DYE_IMAGE("Purple Dye", PURPLE_DYE),
+    BLACK_MUSHROOM_INK_IMAGE("Black Mushroom Ink", BLACK_MUSHROOM),
+    PINK_DYE_IMAGE("Pink Dye", PINK_DYE),
 
-    // RANDOM
+    // CHEMICAL
+    CUPRIC_SULFATE_IMAGE("Cupric Sulfate", CUPRIC_SULFATE),
+    ACETIC_ACID_IMAGE("Acetic Acid", ACETIC_ACID),
+    HAGS_POISON_IMAGE("Hags Poison", HAGS_POISON),
+    WEAPON_POISON_IMAGE("Weapon Poison", WEAPON_POISON_5940),
     RAT_POISON_IMAGE("Rat Poison", RAT_POISON),
     INSECT_REPELLENT_IMAGE("Insect Repellent", INSECT_REPELLENT),
-    BUCKET_OF_WAX_IMAGE("Bucket of Wax", BUCKET_OF_WAX),
-    WEAPON_POISON_IMAGE("Weapon Poison", WEAPON_POISON),
     POISON_CHALICE_IMAGE("Poison Chalice", POISON_CHALICE),
     POISON_IMAGE("Poison", POISON),
-    OIL_CAN_IMAGE("Oil Can", OIL_CAN),
     SULPHURIC_BROLINE_IMAGE("Sulphuric Broline", SULPHURIC_BROLINE),
-    BAILING_BUCKET_IMAGE("Bailing Bucket", BAILING_BUCKET_585),
     NITROGLYCERIN_IMAGE("Nitroglycerin", NITROGLYCERIN),
     MIXED_CHEMICALS_IMAGE("Mixed Chemicals", MIXED_CHEMICALS),
     CHEMICAL_COMPOUND_IMAGE("Chemical Compound", CHEMICAL_COMPOUND),
+    NAPHTHA_MIX_IMAGE("Naphtha Mix", NAPHTHA_MIX),
+    SERUM_IMAGE("Serum", SERUM_208_4),
+    GYPSUM_IMAGE("Gypsum", GYPSUM),
+    SODIUM_CHLORIDE_IMAGE("Sodium Chloride", SODIUM_CHLORIDE),
+    NITROUS_OXIDE_IMAGE("Nitrous Oxide", NITROUS_OXIDE),
+    VIAL_OF_LIQUID_IMAGE("Vial of Liquid", VIAL_OF_LIQUID),
+    TIN_ORE_POWDER_IMAGE("Tin Ore Powder", TIN_ORE_POWDER),
+    CUPRIC_ORE_POWDER_IMAGE("Cupric Ore Powder", CUPRIC_ORE_POWDER),
+    MIXTURE_IMAGE("Mixture", _MIXTURE),
+    TOXIC_NAPHTHA_IMAGE("Toxic Naphtha", TOXIC_NAPHTHA),
+    CAT_ANTIPOISON_IMAGE("Cat Antipoison", CAT_ANTIPOISON),
+
+    // OTHER
+    BUCKET_OF_WAX_IMAGE("Bucket of Wax", BUCKET_OF_WAX),
+    OIL_CAN_IMAGE("Oil Can", OIL_CAN),
+    BAILING_BUCKET_IMAGE("Bailing Bucket", BAILING_BUCKET_585),
     BLAMISH_SNAIL_SLIME_IMAGE("Blamish Snail Slime", BLAMISH_SNAIL_SLIME),
     BLAMISH_OIL_IMAGE("Blamish Oil", BLAMISH_OIL),
     BUCKET_OF_SAND_IMAGE("Bucket of Sand", BUCKET_OF_SAND),
@@ -201,11 +263,21 @@ public enum HydrateReminderTimerImages
     PUNGENT_POT_IMAGE("Pungent Pot", PUNGENT_POT),
     GOLDEN_POT_IMAGE("Golden Pot", GOLDEN_POT),
     WASHING_BOWL_IMAGE("Washing Bowl", WASHING_BOWL),
-    NAPHTHA_MIX_IMAGE("Naphtha Mix", NAPHTHA_MIX),
-    SERUM_IMAGE("Serum", SERUM_208_4),
     SACRED_OIL_IMAGE("Sacred Oil", SACRED_OIL4),
     FROZEN_BUCKET_IMAGE("Frozen Bucket", FROZEN_BUCKET),
-    FROZEN_JUG_IMAGE("Frozen Jug", FROZEN_JUG);
+    FROZEN_JUG_IMAGE("Frozen Jug", FROZEN_JUG),
+    WAX_IMAGE("Wax", WAX),
+    PUDDLE_OF_SLIME_IMAGE("Puddle of Slime", PUDDLE_OF_SLIME),
+    BUCKET_OF_SLIME_IMAGE("Bucket of Slime", BUCKET_OF_SLIME),
+    BLESSED_POT_IMAGE("Blessed Pot", BLESSED_POT_4667),
+    ICE_COOLER_IMAGE("Ice Cooler", ICE_COOLER),
+    SMOULDERING_POT_IMAGE("Smouldering Pot", SMOULDERING_POT),
+    SLOP_OF_COMPROMISE_IMAGE("Slop of Compromise", SLOP_OF_COMPROMISE),
+    BUCKET_OF_RUBBLE_IMAGE("Bucket of Rubble", BUCKET_OF_RUBBLE_7626),
+    BONE_IN_VINEGAR_IMAGE("Bone in Vinegar", BONE_IN_VINEGAR_7816),
+    BROKEN_CAULDRON_IMAGE("Broken Cauldron", BROKEN_CAULDRON),
+    MAGIC_GLUE_IMAGE("Magic Glue", MAGIC_GLUE),
+    WEIRD_GLOOP_IMAGE("Weird Gloop", WEIRD_GLOOP);
 
     /**
      * Description of the image
