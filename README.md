@@ -50,10 +50,11 @@ Get a friendly reminder every x minutes to take a quick hydration break.
 <hr/>
 
 Configure a variety of hydrate reminder settings such as:
+
 -   Welcome message
     -   Enable/Disable
 -   Hydrate reminder interval length
-    -   Between 1 - 120 minutes
+    -   Between 1 - 90 minutes
 -   Notification types
     -   Chat message notification
         -   Game message notification
@@ -98,9 +99,11 @@ It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) de
 To contribute any ideas, bug reports, and feedback, submit an [issue](https://github.com/jmakhack/hydrate-reminder/issues) or fill out the [feedback form](https://forms.gle/aZrqFvTP8LWZ1toi9).
 
 ## Code of Conduct
+
 Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.md).
 
 ## License
+
 Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
 
 ## Contributors ✨
@@ -123,6 +126,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/neilrush"><img src="https://avatars.githubusercontent.com/u/31221793?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Neil Rush</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=neilrush" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=neilrush" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/paulritzman/"><img src="https://avatars.githubusercontent.com/u/37886407?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Ritzman</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=paulritzman" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=paulritzman" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/roymw09"><img src="https://avatars.githubusercontent.com/u/60860251?v=4?s=100" width="100px;" alt=""/><br /><sub><b>roymw09</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=roymw09" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/dcechano"><img src="https://avatars.githubusercontent.com/u/43017290?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dcechano</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=dcechano" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://nebocode.github.io"><img src="https://avatars.githubusercontent.com/u/17943735?v=4?s=100" width="100px;" alt=""/><br /><sub><b>NeboCode</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=NeboCode" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/hpa16"><img src="https://avatars.githubusercontent.com/u/29160872?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harini Pa</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=hpa16" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=hpa16" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/LiorBitton"><img src="https://avatars.githubusercontent.com/u/54041768?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lior Bitton</b></sub></a><br /><a href="#maintenance-LiorBitton" title="Maintenance">🚧</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=LiorBitton" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=LiorBitton" title="Documentation">📖</a></td>
   </tr>
 </table>
 

@@ -92,6 +92,45 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "dcechano",
+      "name": "dcechano",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43017290?v=4",
+      "profile": "https://github.com/dcechano",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "NeboCode",
+      "name": "NeboCode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17943735?v=4",
+      "profile": "https://nebocode.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hpa16",
+      "name": "Harini Pa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29160872?v=4",
+      "profile": "https://github.com/hpa16",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "LiorBitton",
+      "name": "Lior Bitton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54041768?v=4",
+      "profile": "https://github.com/LiorBitton",
+      "contributions": [
+        "maintenance",
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 5,

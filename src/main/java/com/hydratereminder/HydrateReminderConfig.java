@@ -47,7 +47,7 @@ public interface HydrateReminderConfig extends Config
 	/**
 	 * Maximum settable number of minutes per interval
 	 */
-	int INTERVAL_LIMIT_MAX = 120;
+	int INTERVAL_LIMIT_MAX = 90;
 
 	/**
 	 * <p>Allows the player to enable/disable the hydrate login welcome message
