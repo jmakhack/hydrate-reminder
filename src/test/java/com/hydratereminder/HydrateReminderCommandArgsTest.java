@@ -48,13 +48,13 @@ public class HydrateReminderCommandArgsTest
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGetValue_throwsIfNullCommand()
+    public void testGetValueThrowsIfNullCommand()
     {
         HydrateReminderCommandArgs.getValue(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGetValue_throwsIfInvalidCommand()
+    public void testGetValueThrowsIfInvalidCommand()
     {
         HydrateReminderCommandArgs.getValue("dummy");
     }
