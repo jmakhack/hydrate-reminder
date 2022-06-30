@@ -143,7 +143,6 @@ public interface HydrateReminderConfig extends Config
 	/**
 	 * <p>Separates the overlay timer settings into its own config section
 	 * </p>
-	 * @return true if the overlay timer is enabled
 	 * @since 1.2.0
 	 */
 	@ConfigSection(
@@ -172,9 +171,9 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
-	 * <p>Allows the player to enable/disable the overlay timer
+	 * <p>Allows the player to select the text color of the overlay timer
 	 * </p>
-	 * @return true if the overlay timer is enabled
+	 * @return the color to use for the overlay timer text
 	 * @since 1.2.0
 	 */
 	@Alpha
@@ -191,9 +190,9 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
-	 * <p>Allows the player to set the type of chat message reminder
+	 * <p>Allows the player to set the image displayed on the overlay timer
 	 * </p>
-	 * @return the type of chat message to send reminders with
+	 * @return the image to display on the overlay timer
 	 * @since 1.2.0
 	 */
 	@ConfigItem(
@@ -206,21 +205,5 @@ public interface HydrateReminderConfig extends Config
 	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
 	{
 		return HydrateReminderTimerImages.CUP_OF_WATER_IMAGE;
-	}
-
-	@Range(
-			min = 0,
-			max = 26264
-	)
-	@ConfigItem(
-			keyName = "hydrateReminderOverlayTimerImageTest",
-			name = "Test",
-			description = "Test",
-			position = 9,
-			section = hydrateReminderTimerSection
-	)
-	default int hydrateReminderOverlayTimerImageTest()
-	{
-		return 4458;
 	}
 }

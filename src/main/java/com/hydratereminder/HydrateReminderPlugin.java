@@ -44,10 +44,13 @@ import net.runelite.client.util.ImageUtil;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.inject.Inject;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
+import java.util.List;
+
 import static net.runelite.api.ItemID.*;
 
 /**
@@ -542,12 +545,14 @@ public class HydrateReminderPlugin extends Plugin
 			{
 				sendHydrateWelcomeChatMessage();
 			}
-			removeHydrateReminderTimer();
-			createHydrateReminderTimer(CUP_OF_WATER);
 			setFirstGameTick(false);
 		}
-		removeHydrateReminderTimer();
-		createHydrateReminderTimer(config.hydrateReminderOverlayTimerImageTest());
+		// TODO: Improve resource management & performance by not having to remove and create the overlay timer on every game tick to apply updates
+		removeHydrateReminderOverlayTimer();
+		if (config.hydrateReminderOverlayTimerEnabled())
+		{
+			createHydrateReminderOverlayTimer();
+		}
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{
@@ -562,15 +567,16 @@ public class HydrateReminderPlugin extends Plugin
 	 * <p>Initializes a new hydrate reminder timer and renders it as an infobox on the
 	 * overlay given that one has not been initialized already
 	 * </p>
-	 * @param itemID id of the item to use as the infobox background
 	 * @since 1.2.0
 	 */
-	private void createHydrateReminderTimer(int itemID)
+	private void createHydrateReminderOverlayTimer()
 	{
 		if (!getHydrateReminderTimer().isPresent())
 		{
-			final BufferedImage infoboxImage = itemManager.getImage(itemID);
-			final HydrateReminderTimer newTimer = new HydrateReminderTimer(this, infoboxImage);
+			final int imageID = config.hydrateReminderOverlayTimerImage().getID();
+			final BufferedImage timerImage = itemManager.getImage(imageID);
+			final Color timerColor = config.hydrateReminderOverlayTimerTextColor();
+			final HydrateReminderTimer newTimer = new HydrateReminderTimer(this, timerImage, timerColor);
 			setHydrateReminderTimer(Optional.of(newTimer));
 			infoBoxManager.addInfoBox(getHydrateReminderTimer().get());
 		}
@@ -581,9 +587,9 @@ public class HydrateReminderPlugin extends Plugin
 	 * </p>
 	 * @since 1.2.0
 	 */
-	private void removeHydrateReminderTimer()
+	private void removeHydrateReminderOverlayTimer()
 	{
-		if (hydrateReminderTimer.isPresent())
+		if (getHydrateReminderTimer().isPresent())
 		{
 			infoBoxManager.removeInfoBox(getHydrateReminderTimer().get());
 			hydrateReminderTimer = Optional.empty();
