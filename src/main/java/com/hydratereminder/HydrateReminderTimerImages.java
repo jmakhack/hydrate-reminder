@@ -447,7 +447,7 @@ public enum HydrateReminderTimerImages
      * @return image ID
      * @since 1.2.0
      */
-    public int getImageID()
+    public int getID()
     {
         return getImageID();
     }
