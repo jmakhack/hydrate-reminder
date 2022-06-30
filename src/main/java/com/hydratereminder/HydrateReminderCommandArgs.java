@@ -28,6 +28,8 @@ package com.hydratereminder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Objects;
+
 /**
  * <p>All command arguments that the Hydrate Reminder plugin supports
  * </p>
@@ -61,11 +63,17 @@ public enum HydrateReminderCommandArgs
         return getCommandArg();
     }
 
+    /**
+     * <p>Get the enum value from a given command string
+     * </p>
+     * @param command chat command to get value for
+     * @since 1.1.0
+     */
     public static HydrateReminderCommandArgs getValue(String command)
     {
         for (HydrateReminderCommandArgs enumValue : HydrateReminderCommandArgs.values())
         {
-            if (enumValue.getCommandArg() == command || enumValue.getCommandArgAbbr() == command)
+            if (Objects.equals(enumValue.getCommandArg(), command) || Objects.equals(enumValue.getCommandArgAbbr(), command))
                 return enumValue;
         }
         throw new IllegalArgumentException();
