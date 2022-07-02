@@ -111,7 +111,7 @@ public enum HydrateReminderTimerImages
     GREENMANS_ALE_IMAGE("Greenmans Ale", GREENMANS_ALE),
     DRAGON_BITTER_IMAGE("Dragon Bitter", DRAGON_BITTER),
     DWARVEN_STOUT_IMAGE("Dwarven Stout", DWARVEN_STOUT),
-    GROG_IMAGE("Grog Image", GROG),
+    GROG_IMAGE("Grog", GROG),
     BEER_IMAGE("Beer", BEER),
     JUG_OF_WINE_IMAGE("Jug of Wine", JUG_OF_WINE),
     VODKA_IMAGE("Vodka", VODKA),
