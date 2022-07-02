@@ -5,7 +5,8 @@ import org.junit.Test;
 import static net.runelite.api.ItemID.*;
 import static org.junit.Assert.assertEquals;
 
-public class HydrateReminderTimerImagesTest {
+public class HydrateReminderTimerImagesTest
+{
     @Test
     public void testTimerImagesToString()
     {
