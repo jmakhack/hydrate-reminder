@@ -50,6 +50,18 @@ public interface HydrateReminderConfig extends Config
 	int INTERVAL_LIMIT_MAX = 90;
 
 	/**
+	 * <p>Separates the overlay timer settings into its own config section
+	 * </p>
+	 * @since 1.2.0
+	 */
+	@ConfigSection(
+			name = "Overlay Timer Display",
+			description = "Settings for Hydrate Reminder Overlay Timer",
+			position = 6
+	)
+	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
+
+	/**
 	 * <p>Allows the player to enable/disable the hydrate login welcome message
 	 * </p>
 	 * @return true if the welcome message is to be enabled
@@ -139,18 +151,6 @@ public interface HydrateReminderConfig extends Config
 	{
 		return false;
 	}
-
-	/**
-	 * <p>Separates the overlay timer settings into its own config section
-	 * </p>
-	 * @since 1.2.0
-	 */
-	@ConfigSection(
-			name = "Overlay Timer Display",
-			description = "Settings for Hydrate Reminder Overlay Timer",
-			position = 6
-	)
-	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
 
 	/**
 	 * <p>Allows the player to enable/disable the overlay timer
