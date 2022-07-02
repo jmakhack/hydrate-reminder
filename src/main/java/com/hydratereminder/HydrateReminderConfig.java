@@ -162,7 +162,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerEnabled",
 			name = "Timer Display",
 			description = "Sets the hydrate reminder to be sent as a computer notification",
-			position = 6,
+			position = 7,
 			section = hydrateReminderTimerSection
 	)
 	default boolean hydrateReminderOverlayTimerEnabled()
@@ -181,7 +181,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerTextColor",
 			name = "Text Color",
 			description = "Sets the text color of the timer display",
-			position = 7,
+			position = 8,
 			section = hydrateReminderTimerSection
 	)
 	default Color hydrateReminderOverlayTimerTextColor()
@@ -197,9 +197,9 @@ public interface HydrateReminderConfig extends Config
 	 */
 	@ConfigItem(
 			keyName = "hydrateReminderOverlayTimerImage",
-			name = "Image",
+			name = "Timer Image",
 			description = "Sets the background image of the timer display",
-			position = 8,
+			position = 9,
 			section = hydrateReminderTimerSection
 	)
 	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
