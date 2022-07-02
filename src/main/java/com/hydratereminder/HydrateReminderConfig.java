@@ -25,11 +25,9 @@
 
 package com.hydratereminder;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.Range;
-import net.runelite.client.config.Units;
+import net.runelite.client.config.*;
+
+import java.awt.*;
 
 /**
  * <p>Configuration options interface for the Hydrate Reminder plugin
@@ -50,6 +48,18 @@ public interface HydrateReminderConfig extends Config
 	 * Maximum settable number of minutes per interval
 	 */
 	int INTERVAL_LIMIT_MAX = 90;
+
+	/**
+	 * <p>Separates the overlay timer settings into its own config section
+	 * </p>
+	 * @since 1.2.0
+	 */
+	@ConfigSection(
+			name = "Overlay Timer Display",
+			description = "Settings for Hydrate Reminder Overlay Timer",
+			position = 6
+	)
+	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
 
 	/**
 	 * <p>Allows the player to enable/disable the hydrate login welcome message
@@ -140,5 +150,60 @@ public interface HydrateReminderConfig extends Config
 	default boolean hydrateReminderComputerNotificationEnabled()
 	{
 		return false;
+	}
+
+	/**
+	 * <p>Allows the player to enable/disable the overlay timer
+	 * </p>
+	 * @return true if the overlay timer is enabled
+	 * @since 1.2.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderOverlayTimerEnabled",
+			name = "Timer Display",
+			description = "Sets the hydrate reminder to be sent as a computer notification",
+			position = 7,
+			section = hydrateReminderTimerSection
+	)
+	default boolean hydrateReminderOverlayTimerEnabled()
+	{
+		return true;
+	}
+
+	/**
+	 * <p>Allows the player to select the text color of the overlay timer
+	 * </p>
+	 * @return the color to use for the overlay timer text
+	 * @since 1.2.0
+	 */
+	@Alpha
+	@ConfigItem(
+			keyName = "hydrateReminderOverlayTimerTextColor",
+			name = "Text Color",
+			description = "Sets the text color of the timer display",
+			position = 8,
+			section = hydrateReminderTimerSection
+	)
+	default Color hydrateReminderOverlayTimerTextColor()
+	{
+		return Color.WHITE;
+	}
+
+	/**
+	 * <p>Allows the player to set the image displayed on the overlay timer
+	 * </p>
+	 * @return the image to display on the overlay timer
+	 * @since 1.2.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderOverlayTimerImage",
+			name = "Timer Image",
+			description = "Sets the background image of the timer display",
+			position = 9,
+			section = hydrateReminderTimerSection
+	)
+	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
+	{
+		return HydrateReminderTimerImages.CUP_OF_WATER_IMAGE;
 	}
 }

@@ -66,14 +66,15 @@ public class HydrateReminderTimer extends InfoBox
      * </p>
      * @param plugin the plugin creating the timer
      * @param image the background image for the infobox
+     * @param timerColor the color to use for the timer text
      * @since 1.2.0
      */
-    HydrateReminderTimer(HydrateReminderPlugin plugin, BufferedImage image)
+    HydrateReminderTimer(HydrateReminderPlugin plugin, BufferedImage image, Color timerColor)
     {
         super(image, plugin);
         setPriority(InfoBoxPriority.MED);
         hydrateReminderPlugin = plugin;
-        textColor = Color.WHITE;
+        textColor = timerColor;
     }
 
     /**
