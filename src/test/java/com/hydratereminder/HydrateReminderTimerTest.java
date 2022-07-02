@@ -67,14 +67,14 @@ public class HydrateReminderTimerTest
     public void shouldDisplayMinutesAndSecondsWhenTimeLeftIsOverAMinute()
     {
         mockHydrateReminderPlugin.instant = Instant.now().plus(Duration.ofMinutes(90));
-        assertTrue(hydrateReminderTimer.getText().matches("^\\d\\d:\\d\\d"));
+        assertTrue(hydrateReminderTimer.getText().matches("^\\d\\d:\\d\\d$"));
     }
 
     @Test
     public void shouldDisplayZeroMinutesWhenTimeLeftIsUnderAMinute()
     {
         mockHydrateReminderPlugin.instant = Instant.now().plus(Duration.ofSeconds(45));
-        assertTrue(hydrateReminderTimer.getText().matches("0:\\d\\d"));
+        assertTrue(hydrateReminderTimer.getText().matches("^0:\\d\\d$"));
     }
 
     @Test
