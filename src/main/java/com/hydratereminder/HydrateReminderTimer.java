@@ -49,8 +49,6 @@ public class HydrateReminderTimer extends InfoBox
     /**
      * <p>The text color to display in the hydrate reminder infobox
      * </p>
-     * @param textColor infobox text color
-     * @return infobox text color
      */
     @Getter
     @Setter
@@ -59,7 +57,7 @@ public class HydrateReminderTimer extends InfoBox
     /**
      * Hydrate reminder plugin that created the timer
      */
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private final HydrateReminderPlugin hydrateReminderPlugin;
 
     /**
      * <p>Main constructor to initialize a new hydrate reminder timer
@@ -90,6 +88,6 @@ public class HydrateReminderTimer extends InfoBox
         final Duration timeRemaining = Duration.between(Instant.now(), endTime);
         final int seconds = (int) ((timeRemaining.toMillis() / 1000L) % 60);
         final int minutes = (int) (timeRemaining.toMillis() / 60000L);
-        return String.format("%d:%02d", minutes > 0 ? minutes : 0, seconds > 0 ? seconds : 0);
+        return String.format("%d:%02d", Math.max(minutes, 0), Math.max(seconds, 0));
     }
 }
