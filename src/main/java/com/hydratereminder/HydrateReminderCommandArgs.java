@@ -74,7 +74,9 @@ public enum HydrateReminderCommandArgs
         for (HydrateReminderCommandArgs enumValue : HydrateReminderCommandArgs.values())
         {
             if (Objects.equals(enumValue.getCommandArg(), command) || Objects.equals(enumValue.getCommandArgAbbr(), command))
+            {
                 return enumValue;
+            }
         }
         throw new IllegalArgumentException();
     }

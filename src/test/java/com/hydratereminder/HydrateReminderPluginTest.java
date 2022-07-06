@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 
 public class HydrateReminderPluginTest
 {
-
     private HydrateReminderPlugin hydrateReminderPlugin;
 
     @Before
@@ -115,7 +114,8 @@ public class HydrateReminderPluginTest
 
 //    TODO: Need a static clock in hydrateReminderPlugin so i can mock it in the test to override Instant.now(Clock)
 //    @Test
-//    public void shoudldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak() {
+//    public void shoudldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak()
+//    {
 //        final Instant lastBreakInstant = Instant.now(Clock.fixed())
 //        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak();
 //    }
