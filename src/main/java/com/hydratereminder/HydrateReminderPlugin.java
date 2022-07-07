@@ -394,7 +394,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void handleHydratePrevCommand()
 	{
-		final Optional<Duration> timeSinceLastBreak = getDurationSinceLastBreak(getLastHydrateInstant());
+		final Optional<Duration> timeSinceLastBreak = getDurationSinceLastBreak(getLastHydrateInstant(), Instant.now());
 		final String message = formatHandleHydratePrevCommand(timeSinceLastBreak);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
 	}
@@ -424,12 +424,13 @@ public class HydrateReminderPlugin extends Plugin
 	 * <p>Calculate the duration since the last break
 	 * </p>
 	 * @param lastHydrateInstant Optional Instant representing the lastHydrateInstant if it exists.
+	 * @param currentInstant Instant representing the current instant in time.
 	 * @return Optional Duration representing duration from last break till now, if not it is empty.
 	 * @since 1.2.0
 	 */
-	protected Optional<Duration> getDurationSinceLastBreak(Optional<Instant> lastHydrateInstant)
+	protected Optional<Duration> getDurationSinceLastBreak(Optional<Instant> lastHydrateInstant,Instant currentInstant)
 	{
-		return lastHydrateInstant.map(instant -> Duration.between(instant, Instant.now()));
+		return lastHydrateInstant.map(instant -> Duration.between(instant, currentInstant));
 	}
 
 	/**
