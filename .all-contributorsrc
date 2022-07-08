@@ -131,6 +131,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "goncalo-machado",
+      "name": "goncalo-machado",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66827806?v=4",
+      "profile": "https://github.com/goncalo-machado",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
