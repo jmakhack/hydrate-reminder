@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -84,7 +85,7 @@ public class HydrateReminderPluginTest
     @Test
     public void shouldReturnNoDurationWhenThereIsNoLastBreak()
     {
-        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty());
+        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty(), Instant.now());
         assertFalse(timeSinceLastBreak.isPresent());
     }
 
@@ -92,7 +93,7 @@ public class HydrateReminderPluginTest
     public void shouldReturnDurationWhenThereIsLastBreak()
     {
         final Optional<Instant> timeOfLastBreak = Optional.of(Instant.now());
-        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(timeOfLastBreak);
+        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(timeOfLastBreak, Instant.now());
         assertTrue(timeSinceLastBreak.isPresent());
     }
 
@@ -112,11 +113,17 @@ public class HydrateReminderPluginTest
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
     }
 
-//    TODO: Need a static clock in hydrateReminderPlugin so i can mock it in the test to override Instant.now(Clock)
-//    @Test
-//    public void shoudldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak()
-//    {
-//        final Instant lastBreakInstant = Instant.now(Clock.fixed())
-//        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak();
-//    }
+    @Test
+    public void shoudldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak()
+    {
+        Instant nowInstant = Instant.now();
+        Instant lastBreakInstant = nowInstant.minus(1, ChronoUnit.HOURS);
+
+        Duration expectedDuration = Duration.ofHours(1);
+
+        final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.of(lastBreakInstant), nowInstant);
+
+        assertEquals(expectedDuration, timeSinceLastBreak.get());
+
+    }
 }
