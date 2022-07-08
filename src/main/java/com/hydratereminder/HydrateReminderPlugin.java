@@ -140,6 +140,7 @@ public class HydrateReminderPlugin extends Plugin
 						add("I once started a quest without adequate water. NEVER AGAIN.");
 						add("Welcome! Stay hydrated out there!");
 						add("Welcome traveler. Would it be rude to say you look a little thirsty?");
+						add("\"Thousands have lived without love, not one without water\". ― W. H. Auden");
 					}});
 
 	/**
