@@ -140,6 +140,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "vlad-nitu",
+      "name": "Nitu Vlad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95694456?v=4",
+      "profile": "https://github.com/vlad-nitu",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
