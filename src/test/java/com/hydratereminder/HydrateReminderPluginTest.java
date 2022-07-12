@@ -36,6 +36,15 @@ public class HydrateReminderPluginTest
     }
 
     @Test
+    public void shouldIncrementNumberOfHydrationBreaksTakenByHydrateForTheCurrentSession()
+    {
+        hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
+        hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
+        hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
+        assertEquals(3, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
+    }
+
+    @Test
     public void initShouldSetTheCorrectResetState()
     {
         assertFalse(hydrateReminderPlugin.isResetState());
@@ -106,10 +115,18 @@ public class HydrateReminderPluginTest
     }
 
     @Test
-    public void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred()
+    public void shouldSetLastHydrateInstantAfterHydrateResetHasOccurred()
     {
         assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
         hydrateReminderPlugin.resetHydrateReminderTimeInterval();
+        assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
+    }
+
+    @Test
+    public void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred()
+    {
+        assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
+        hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
     }
 
