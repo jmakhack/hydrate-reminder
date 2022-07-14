@@ -5,6 +5,7 @@
 .project
 .settings/
 
+bin
 build
 nbactions.xml
 nb-configuration.xml

@@ -352,6 +352,7 @@ public class HydrateReminderPlugin extends Plugin
 							handleHydrateResetCommand();
 							break;
 						case HYDRATE:
+							handleHydrateHydrateCommand();
 							break;
 						case HELP:
 							handleHydrateHelpCommand();
