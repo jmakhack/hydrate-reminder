@@ -141,6 +141,9 @@ public class HydrateReminderPlugin extends Plugin
 						add("Welcome! Stay hydrated out there!");
 						add("Welcome traveler. Would it be rude to say you look a little thirsty?");
 						add("\"Thousands have lived without love, not one without water\". ― W. H. Auden");
+						add("It's possible to decant water into other containers, resulting in MORE HYDRATION!!!");
+						add("Aaah, nothing like a nice skinna water!");
+						add("It's possible to live several days without water, but not with this plugin");
 					}});
 
 	/**
