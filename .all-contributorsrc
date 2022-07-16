@@ -167,6 +167,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Diemarg",
+      "name": "Diemarg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47374512?v=4",
+      "profile": "https://github.com/Diemarg",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
