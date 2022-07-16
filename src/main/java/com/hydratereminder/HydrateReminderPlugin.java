@@ -354,6 +354,9 @@ public class HydrateReminderPlugin extends Plugin
 						case RESET:
 							handleHydrateResetCommand();
 							break;
+						case HYDRATE:
+							handleHydrateHydrateCommand();
+							break;
 						case HELP:
 							handleHydrateHelpCommand();
 							break;
@@ -474,6 +477,20 @@ public class HydrateReminderPlugin extends Plugin
 		setResetState(true);
 		final String resetString = "Hydrate reminder interval has been successfully reset.";
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, resetString);
+	}
+
+	/**
+	 * <p>Handle the hydrate "hydrate" command by resetting the current hydrate interval, increasing
+	 * hydration breaks taken during the session and displaying a hydration success message in chat
+	 * </p>
+	 * @since 2.0.0
+	 */
+	private void handleHydrateHydrateCommand()
+	{
+		hydrateBetweenHydrationBreaks();
+		setResetState(true);
+		final String hydratedString = "Successfully hydrated before reminder interval finished";
+		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydratedString);
 	}
 
 	/**
@@ -734,5 +751,16 @@ public class HydrateReminderPlugin extends Plugin
 	public void incrementCurrentSessionHydrationBreaks()
 	{
 		setCurrentSessionHydrationBreaks(getCurrentSessionHydrationBreaks() + HYDRATION_BREAK_INCREMENT);
+	}
+
+	/**
+	 * <p> Takes a hydration break before the interval is finished
+	 * </p>
+	 * @since 2.0.0
+	 */
+	public void hydrateBetweenHydrationBreaks()
+	{
+		incrementCurrentSessionHydrationBreaks();
+		resetHydrateReminderTimeInterval();
 	}
 }

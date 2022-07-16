@@ -42,6 +42,7 @@ public enum HydrateReminderCommandArgs
     NEXT("next", "n"),
     PREV("prev", "p"),
     RESET("reset", "r"),
+    HYDRATE("hydrate","hr"),
     HELP("help", "h"),
     TOTAL("total", "t");
 
