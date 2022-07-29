@@ -153,6 +153,23 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
+	 * <p>Allows the player to enable/disable the hydrate animation
+	 * </p>
+	 * @return true if the hydrate animation is to be enabled
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderWelcomeMessageEnabled",
+			name = "Hydrate animation",
+			description = "Sets whether or not the hydrate animation should be displayed",
+			position = 10
+	)
+	default boolean hydrateAnimationEnabled()
+	{
+		return true;
+	}
+
+	/**
 	 * <p>Allows the player to enable/disable the overlay timer
 	 * </p>
 	 * @return true if the overlay timer is enabled
