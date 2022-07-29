@@ -750,6 +750,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	public void incrementCurrentSessionHydrationBreaks()
 	{
+		playAnimationForLocalPlayer();
 		setCurrentSessionHydrationBreaks(getCurrentSessionHydrationBreaks() + HYDRATION_BREAK_INCREMENT);
 	}
 
@@ -763,4 +764,20 @@ public class HydrateReminderPlugin extends Plugin
 		incrementCurrentSessionHydrationBreaks();
 		resetHydrateReminderTimeInterval();
 	}
+
+	/**
+	 *
+	 * <p> Plays animation for player with given AnimationID
+	 * </p>
+	 * @since 2.0.0
+	 */
+	private void playAnimationForLocalPlayer()
+	{
+		if (config.hydrateAnimationEnabled())
+		{
+			final Player localPlayer = client.getLocalPlayer();
+			localPlayer.setAnimation(AnimationID.CONSUMING);
+		}
+	}
+
 }
