@@ -1,7 +1,14 @@
 package com.hydratereminder;
 
+import net.runelite.api.AnimationID;
+import net.runelite.api.Client;
+import net.runelite.api.Player;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -9,15 +16,30 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.mock;
 
+@RunWith(MockitoJUnitRunner.class)
 public class HydrateReminderPluginTest
 {
+    @Mock
+    private Client client;
+    @Mock
+    private HydrateReminderConfig config;
+    @InjectMocks
     private HydrateReminderPlugin hydrateReminderPlugin;
 
     @Before
-    public void setupHydrateReminderPlugin()
+    public void setup()
     {
-        hydrateReminderPlugin = new HydrateReminderPlugin();
+        setupDefaultConfiguration();
+    }
+
+    private void setupDefaultConfiguration() {
+        given(config.hydrateAnimationEnabled())
+                .willReturn(false);
     }
 
     @Test
@@ -142,5 +164,34 @@ public class HydrateReminderPluginTest
 
         assertEquals(expectedDuration, timeSinceLastBreak.get());
 
+    }
+
+    @Test
+    public void shouldPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigEnabled()
+    {
+        // given
+        final Player playerMock = mock(Player.class);
+        given(config.hydrateAnimationEnabled()).willReturn(true);
+        given(client.getLocalPlayer()).willReturn(playerMock);
+
+        // when
+        hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
+
+        // then
+        verify(client).getLocalPlayer();
+        verify(playerMock).setAnimation(AnimationID.CONSUMING);
+    }
+
+    @Test
+    public void shouldNotPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigDisabled()
+    {
+        // given
+        given(config.hydrateAnimationEnabled()).willReturn(false);
+
+        // when
+        hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
+
+        // then
+        verifyNoInteractions(client);
     }
 }
