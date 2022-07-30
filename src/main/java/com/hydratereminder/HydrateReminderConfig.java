@@ -67,7 +67,7 @@ public interface HydrateReminderConfig extends Config
 	 * @since 2.0.0
 	 */
 	@ConfigSection(
-			name = "Animation settings",
+			name = "Animation Settings",
 			description = "Settings for Hydrate Reminder Animations",
 			position = 7
 	)
