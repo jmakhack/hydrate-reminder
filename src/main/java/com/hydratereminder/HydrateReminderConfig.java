@@ -57,7 +57,7 @@ public interface HydrateReminderConfig extends Config
 	@ConfigSection(
 			name = "Overlay Timer Display",
 			description = "Settings for Hydrate Reminder Overlay Timer",
-			position = 6
+			position = 7
 	)
 	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
 
@@ -153,6 +153,23 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
+	 * <p>Allows the player to enable/disable the hydrate animation
+	 * </p>
+	 * @return true if the hydrate animation is to be enabled
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderWelcomeMessageEnabled",
+			name = "Hydrate animation",
+			description = "Sets whether or not the hydrate animation should be displayed",
+			position = 6
+	)
+	default boolean hydrateAnimationEnabled()
+	{
+		return true;
+	}
+
+	/**
 	 * <p>Allows the player to enable/disable the overlay timer
 	 * </p>
 	 * @return true if the overlay timer is enabled
@@ -162,7 +179,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerEnabled",
 			name = "Timer Display",
 			description = "Sets the hydrate reminder to be sent as a computer notification",
-			position = 7,
+			position = 8,
 			section = hydrateReminderTimerSection
 	)
 	default boolean hydrateReminderOverlayTimerEnabled()
@@ -181,7 +198,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerTextColor",
 			name = "Text Color",
 			description = "Sets the text color of the timer display",
-			position = 8,
+			position = 9,
 			section = hydrateReminderTimerSection
 	)
 	default Color hydrateReminderOverlayTimerTextColor()
@@ -199,7 +216,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerImage",
 			name = "Timer Image",
 			description = "Sets the background image of the timer display",
-			position = 9,
+			position = 10,
 			section = hydrateReminderTimerSection
 	)
 	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
