@@ -50,6 +50,17 @@ public interface HydrateReminderConfig extends Config
 	int INTERVAL_LIMIT_MAX = 90;
 
 	/**
+	 * <p>Separates the notification settings into its own config section
+	 * </p>
+	 * @since 2.0.0
+	 */
+	@ConfigSection(
+			name = "Notification Settings",
+			description = "Settings for Hydrate Reminder Notifications",
+			position = 3
+	)
+	String hydrateReminderNotificationsSection = "Hydrate Reminder Notification Settings";
+	/**
 	 * <p>Separates the overlay timer settings into its own config section
 	 * </p>
 	 * @since 1.2.0
@@ -111,7 +122,8 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageEnabled",
 		name = "Chat notification",
 		description = "Sets the hydrate reminder to be sent as a chat message",
-		position = 3
+		position = 3,
+		section = hydrateReminderNotificationsSection
 	)
 	default boolean hydrateReminderChatMessageEnabled()
 	{
@@ -128,7 +140,8 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageType",
 		name = "Chat type",
 		description = "Sets the type of chat message sent by hydrate reminder",
-		position = 4
+		position = 4,
+		section = hydrateReminderNotificationsSection
 	)
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
 	{
@@ -145,7 +158,8 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderComputerNotificationEnabled",
 		name = "Computer notification",
 		description = "Sets the hydrate reminder to be sent as a computer notification",
-		position = 5
+		position = 5,
+		section = hydrateReminderNotificationsSection
 	)
 	default boolean hydrateReminderComputerNotificationEnabled()
 	{
