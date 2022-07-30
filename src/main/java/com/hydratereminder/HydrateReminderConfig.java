@@ -55,7 +55,7 @@ public interface HydrateReminderConfig extends Config
 	 * @since 1.2.0
 	 */
 	@ConfigSection(
-			name = "Overlay Timer Display",
+			name = "Overlay Timer Settings",
 			description = "Settings for Hydrate Reminder Overlay Timer",
 			position = 7
 	)
