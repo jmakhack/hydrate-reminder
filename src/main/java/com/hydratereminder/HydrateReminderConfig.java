@@ -62,6 +62,18 @@ public interface HydrateReminderConfig extends Config
 	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
 
 	/**
+	 * <p>Separates the animation settings into its own config section
+	 * </p>
+	 * @since 2.0.0
+	 */
+	@ConfigSection(
+			name = "Animation Settings",
+			description = "Settings for Hydrate Reminder Animations",
+			position = 7
+	)
+	String hydrateReminderAnimationSection = "Hydrate Reminder Animation Settings";
+
+	/**
 	 * <p>Allows the player to enable/disable the hydrate login welcome message
 	 * </p>
 	 * @return true if the welcome message is to be enabled
@@ -162,7 +174,8 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderWelcomeMessageEnabled",
 			name = "Hydrate animation",
 			description = "Sets whether or not the hydrate animation should be displayed",
-			position = 6
+			position = 6,
+			section = hydrateReminderAnimationSection
 	)
 	default boolean hydrateAnimationEnabled()
 	{
