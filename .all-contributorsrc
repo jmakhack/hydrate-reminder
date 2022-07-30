@@ -177,6 +177,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "mslowiak",
+      "name": "Marcin Słowiak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18486535?v=4",
+      "profile": "https://github.com/mslowiak",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,

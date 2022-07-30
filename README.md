@@ -139,6 +139,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/TrevorJames95"><img src="https://avatars.githubusercontent.com/u/44034050?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TrevorJames95</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=TrevorJames95" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Kh1ng"><img src="https://avatars.githubusercontent.com/u/89691651?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kh1ng</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Kh1ng" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Diemarg"><img src="https://avatars.githubusercontent.com/u/47374512?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Diemarg</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Diemarg" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Diemarg" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/mslowiak"><img src="https://avatars.githubusercontent.com/u/18486535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marcin Słowiak</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=mslowiak" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=mslowiak" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
