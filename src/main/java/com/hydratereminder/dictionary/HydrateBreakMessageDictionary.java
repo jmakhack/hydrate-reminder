@@ -1,11 +1,13 @@
-package com.hydratereminder;
+package com.hydratereminder.dictionary;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class HydrateBreakMessageDictionary {
+import com.hydratereminder.HydrateReminderPersonalityType;
+
+public class HydrateBreakMessageDictionary {
 
     /**
      * Hydrate Reminder interval break text to display in straightforward form

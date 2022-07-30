@@ -51,7 +51,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.List;
 
-import static com.hydratereminder.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
+import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin

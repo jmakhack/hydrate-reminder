@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-enum HydrateReminderPersonalityType
+public enum HydrateReminderPersonalityType
 {
     STRAIGHTFORWARD("Straightforward"),
     FUN("Fun");
