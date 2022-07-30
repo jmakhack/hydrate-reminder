@@ -51,6 +51,8 @@ import java.time.Instant;
 import java.util.*;
 import java.util.List;
 
+import static com.hydratereminder.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
+
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
  * </p>
@@ -618,7 +620,8 @@ public class HydrateReminderPlugin extends Plugin
 	private String getHydrateReminderMessage()
 	{
 		final String playerName = Objects.requireNonNull(client.getLocalPlayer()).getName();
-		final String hydrateReminderMessage = HydrateBreakMessageDictionary.getRandomHydrateBreakMessage();
+		final HydrateReminderPersonalityType typeOfPersonality = config.hydrateReminderPersonalityType();
+		final String hydrateReminderMessage = getRandomHydrateBreakMessageForPersonality(typeOfPersonality);
 		return String.format("%s, %s.", hydrateReminderMessage, playerName);
 	}
 

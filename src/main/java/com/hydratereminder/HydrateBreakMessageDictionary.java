@@ -6,10 +6,20 @@ import java.util.Collections;
 import java.util.List;
 
 class HydrateBreakMessageDictionary {
+
     /**
-     * Hydrate Reminder interval break text to display
+     * Hydrate Reminder interval break text to display in straightforward form
      */
-    private static final List<String> HYDRATE_BREAK_TEXT_LIST =
+    private static final List<String> HYDRATE_BREAK_STRAIGHTFORWARD_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("It's time for a quick hydration break");
+                    }}
+            );
+    /**
+     * Hydrate Reminder interval break text to display in funny form
+     */
+    private static final List<String> HYDRATE_BREAK_FUNNY_TEXT_LIST =
             Collections.unmodifiableList(
                     new ArrayList<String>() {{
                         add("It's time for a quick hydration break");
@@ -42,12 +52,26 @@ class HydrateBreakMessageDictionary {
                         add("Time to take a break and hydrate");
                         add("Dehydration can cause you to feel dizzy and lightheaded, take a hydration break");
                         add("Dehydration can cause dry mouth, lips, and eyes. Take a hydration break");
-                    }});
+                    }}
+            );
 
-    public static String getRandomHydrateBreakMessage() {
-        final SecureRandom randomGenerator = new SecureRandom();
-        final int randomNumber = randomGenerator.nextInt(HYDRATE_BREAK_TEXT_LIST.size());
-        return HYDRATE_BREAK_TEXT_LIST.get(randomNumber);
+    public static String getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType personalityType)
+    {
+        String breakMessage;
+        switch (personalityType)
+        {
+            case STRAIGHTFORWARD:
+                breakMessage = HYDRATE_BREAK_STRAIGHTFORWARD_TEXT_LIST.get(0);
+                break;
+            case FUN:
+                final SecureRandom randomGenerator = new SecureRandom();
+                final int randomNumber = randomGenerator.nextInt(HYDRATE_BREAK_FUNNY_TEXT_LIST.size());
+                breakMessage = HYDRATE_BREAK_FUNNY_TEXT_LIST.get(randomNumber);
+                break;
+            default:
+                throw new IllegalStateException("Provided personality type is not supported");
+        }
+        return breakMessage;
     }
 
 }
