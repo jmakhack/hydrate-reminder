@@ -10,9 +10,9 @@ import com.hydratereminder.HydrateReminderPersonalityType;
 public class HydrateBreakMessageDictionary {
 
     /**
-     * Hydrate Reminder interval break text to display in straightforward form
+     * Hydrate Reminder interval break text to display in simple form
      */
-    private static final List<String> HYDRATE_BREAK_STRAIGHTFORWARD_TEXT_LIST =
+    private static final List<String> HYDRATE_BREAK_SIMPLE_TEXT_LIST =
             Collections.unmodifiableList(
                     new ArrayList<String>() {{
                         add("It's time for a quick hydration break");
@@ -62,8 +62,8 @@ public class HydrateBreakMessageDictionary {
         String breakMessage;
         switch (personalityType)
         {
-            case STRAIGHTFORWARD:
-                breakMessage = HYDRATE_BREAK_STRAIGHTFORWARD_TEXT_LIST.get(0);
+            case SIMPLE:
+                breakMessage = HYDRATE_BREAK_SIMPLE_TEXT_LIST.get(0);
                 break;
             case FUN:
                 final SecureRandom randomGenerator = new SecureRandom();

@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum HydrateReminderPersonalityType
 {
-    STRAIGHTFORWARD("Straightforward"),
+    SIMPLE("Simple"),
     FUN("Fun");
 
     private final String personalityType;

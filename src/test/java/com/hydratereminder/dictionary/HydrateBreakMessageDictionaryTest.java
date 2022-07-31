@@ -10,9 +10,9 @@ import static org.junit.Assert.assertNotEquals;
 public class HydrateBreakMessageDictionaryTest {
 
     @Test
-    public void shouldChooseStraightforwardMessageWhenTheTypeIsStraightforward() {
+    public void shouldChooseSimpleMessageWhenTheTypeIsSimple() {
         // given
-        final HydrateReminderPersonalityType personalityType = HydrateReminderPersonalityType.STRAIGHTFORWARD;
+        final HydrateReminderPersonalityType personalityType = HydrateReminderPersonalityType.SIMPLE;
         final String expectedMessage = "It's time for a quick hydration break";
 
         // when
