@@ -26,6 +26,7 @@
 package com.hydratereminder;
 
 import com.google.inject.Provides;
+import com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -283,9 +284,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void sendHydrateWelcomeChatMessage()
 	{
-		final Random randomGenerator = new Random();
-		final String hydrateWelcomeMessage = HYDRATE_WELCOME_TEXT_LIST.get(
-				randomGenerator.nextInt(HYDRATE_WELCOME_TEXT_LIST.size()));
+		final String hydrateWelcomeMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydrateWelcomeMessage);
 	}
 
