@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+    <a href="https://runelite.net/plugin-hub/show/hydrate-reminder" alt="Plugin Rank">
+        <img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fi.pluginhub.info%2Fshields%2Frank%2Fplugin%2Fhydrate-reminder" />
+    </a>
+    <a href="https://runelite.net/plugin-hub/show/hydrate-reminder" alt="Total Installs">
+        <img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fi.pluginhub.info%2Fshields%2Finstalls%2Fplugin%2Fhydrate-reminder" />
+    </a>
     <a href="https://github.com/jmakhack/hydrate-reminder/actions?query=workflow%3A%22Java+CI+with+Gradle%22" alt="Build Status">
         <img src="https://img.shields.io/github/workflow/status/jmakhack/hydrate-reminder/Java%20CI%20with%20Gradle?style=for-the-badge" />
     </a>
@@ -26,6 +32,9 @@
     </a>
     <a href="#contributors-" alt="All Contributors">
         <img src="https://img.shields.io/github/all-contributors/jmakhack/hydrate-reminder?style=for-the-badge" />
+    </a>
+    <a href="https://github.com/jmakhack/hydrate-reminder/stargazers" alt="Stars">
+        <img src="https://img.shields.io/github/stars/jmakhack/hydrate-reminder?color=orange&style=for-the-badge" />
     </a>
     <a href="https://youtu.be/3q5qD5Dv9_o" alt="Made With Love">
         <img src="https://img.shields.io/badge/Made%20With%20Love-(%E2%97%8F%E2%99%A1%E2%88%80%E2%99%A1))%E3%83%BE%E2%98%86*%E3%80%82-blueviolet?style=for-the-badge" />
