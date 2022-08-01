@@ -52,6 +52,7 @@ import java.util.*;
 import java.util.List;
 
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
+import static com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary.getRandomWelcomeMessage;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
@@ -283,9 +284,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	private void sendHydrateWelcomeChatMessage()
 	{
-		final Random randomGenerator = new Random();
-		final String hydrateWelcomeMessage = HYDRATE_WELCOME_TEXT_LIST.get(
-				randomGenerator.nextInt(HYDRATE_WELCOME_TEXT_LIST.size()));
+		final String hydrateWelcomeMessage = getRandomWelcomeMessage();
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydrateWelcomeMessage);
 	}
 
