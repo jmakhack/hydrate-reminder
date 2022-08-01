@@ -250,4 +250,22 @@ public interface HydrateReminderConfig extends Config
 	{
 		return HydrateReminderTimerImages.CUP_OF_WATER_IMAGE;
 	}
+
+	/**
+	 * <p>Allows the player to set the type of his personality based on which he will receive personalized messages
+	 * </p>
+	 * @return the type of personality
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderPersonalityType",
+			name = "Personality type",
+			description = "Sets the type of personality by which different messages will be displayed when hydrating",
+			position = 11
+	)
+	default HydrateReminderPersonalityType hydrateReminderPersonalityType()
+	{
+		return HydrateReminderPersonalityType.FUN;
+	}
+
 }
