@@ -370,7 +370,7 @@ public class HydrateReminderPlugin extends Plugin
 				catch (IllegalArgumentException e)
 				{
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
-							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, args[0]);
+							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
 					sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, invalidArgString);
 					handleHydrateHelpCommand();
 				}
@@ -510,8 +510,8 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			commandList.append(arg.toString());
 		}
-		final String helpString = String.format("Available commands: %s%s or ::%s %s",
-				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, HYDRATE_COMMAND_ALIAS, commandList);
+		final String helpString = String.format("Available commands: ::%s %s",
+				HYDRATE_COMMAND_ALIAS, commandList);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
 	}
 
