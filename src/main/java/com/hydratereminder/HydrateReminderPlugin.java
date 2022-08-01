@@ -75,7 +75,7 @@ public class HydrateReminderPlugin extends Plugin
 			Collections.unmodifiableList(
 					new ArrayList<String>() {{
 						add("Don't forget to stay hydrated.");
-						add("Type \"::hydrate help\" in chat to view available commands.");
+						add("Type \"::hr help\" in chat to view available commands.");
 						add("Stay cool. Stay awesome. Stay hydrated.");
 						add("Keep calm and stay hydrated.");
 						add("Cheers to staying hydrated!");
@@ -83,7 +83,7 @@ public class HydrateReminderPlugin extends Plugin
 						add("Hydration is love. Hydration is life.");
 						add("Out of water? Cast humidify to stay hydrated.");
 						add("It costs zero water runes to stay hydrated.");
-						add("Check out the hydrate commands by typing \"::hydrate help\" in chat.");
+						add("Check out the hydrate commands by typing \"::hr help\" in chat.");
 						add("A hydrated adventurer is an unstoppable adventurer.");
 						add("It's dangerous to go alone. Stay hydrated!");
 						add("Welcome traveler. Nothing hurts morale like dehydration! Remember to drink water.");
@@ -95,8 +95,8 @@ public class HydrateReminderPlugin extends Plugin
 						add("Feeling low on energy? Drink some water!");
 						add("Nothing like RuneScape and a tall glass of ice cold water!");
 						add("I suppose we'll allow tea... For now.");
-						add("Type \"::hydrate next\" to view the time remaining until the next hydration break!");
-						add("Save key strokes by using the short hand \"::hr <command>\" instead of \"::hydrate <command>\"");
+						add("Type \"::hr next\" to view the time remaining until the next hydration break!");
+						add("Save key strokes by using the short hand \"::hr <command>\" instead of \"::hr <command>\"");
 						add("Imagine getting in a sword fight while dehydrated. What. A. Nightmare.");
 						add("Don't forget to stay hydrated while out and about!");
 						add("A wise traveler is a hydrated traveler.");
@@ -290,7 +290,7 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Handles any chat commands inputted by the player, executed in the form of ::hydrate [args]
+	 * <p>Handles any chat commands inputted by the player, executed in the form of ::hr [args]
 	 * </p>
 	 * @param commandExecuted the chat executed command
 	 * @since 1.1.0
@@ -334,7 +334,7 @@ public class HydrateReminderPlugin extends Plugin
 				catch (IllegalArgumentException e)
 				{
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
-							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, args[0]);
+							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
 					sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, invalidArgString);
 					handleHydrateHelpCommand();
 				}
@@ -474,8 +474,8 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			commandList.append(arg.toString());
 		}
-		final String helpString = String.format("Available commands: %s%s or ::%s %s",
-				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_NAME, HYDRATE_COMMAND_ALIAS, commandList);
+		final String helpString = String.format("Available commands: ::%s %s",
+				HYDRATE_COMMAND_ALIAS, commandList);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
 	}
 
