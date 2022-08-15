@@ -18,7 +18,6 @@ A list of acceptance criteria and/or goals that need to be fulfilled
 in order to consider this task completed.
 -->
 
-
 ## Additional Notes
 <!---
 Add any other notes regarding the task if needed.
