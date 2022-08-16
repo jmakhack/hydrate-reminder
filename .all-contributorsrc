@@ -208,6 +208,16 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "sohamangoes",
+      "name": "Soham Basu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35619727?v=4",
+      "profile": "https://github.com/sohamangoes",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,

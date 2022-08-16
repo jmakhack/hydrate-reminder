@@ -153,6 +153,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/FinnPixel"><img src="https://avatars.githubusercontent.com/u/16624990?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Finn Frölich</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=FinnPixel" title="Code">💻</a> <a href="#maintenance-FinnPixel" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/sohamangoes"><img src="https://avatars.githubusercontent.com/u/35619727?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Soham Basu</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sohamangoes" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sohamangoes" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
