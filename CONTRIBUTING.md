@@ -35,18 +35,18 @@ Otherwise, there are no formal, documented coding conventions for this project t
 
 ## Frequently Asked Questions
 
-#### Why is it that when I try to run the project, the RuneLite client loads successfully but the plugin is nowhere to be seen?
+### Why is it that when I try to run the project, the RuneLite client loads successfully but the plugin is nowhere to be seen?
 
 This issue commonly occurs whenever there is a certain mismatch in RuneLite versions. Navigate to https://runelite.net/ and note the latest release version. Afterwards, open `build.gradle` and note the value for `runeLiteVersion`. When these two values do not match, the plugin will not appear when running the project. Update the value of `runeLiteVersion` to match the latest release version. After building and running the project again, the plugin should appear in the RuneLite client.
 
-#### Why are there two instances of the hydrate reminder plugin visible in the RuneLite client sidebar when I run the project?
+### Why are there two instances of the hydrate reminder plugin visible in the RuneLite client sidebar when I run the project?
 
 This usually indicates that you already have the hydrate reminder plugin installed on the RuneLite client from the PluginHub. This is usually not an issue however. If you do want to remove the duplicate plugin, open RuneLite independently and uninstalled the hydrate reminder plugin that was installed from the PluginHub. Afterwards, run the project again and there should only be one instance of the plugin visible.
 
-#### Where can I get additional help on any issues and/or development questions?
+### Where can I get additional help on any issues and/or development questions?
 
 Besides just leaving a comment on any GitHub issues or pull requests, the official RuneLite [Discord](https://discord.gg/ArdAhnN) server is an excellent place where you can ask any RuneLite based development questions you may have. Do note that the server is not for any hydrate reminder specific help but rather for RuneLite development help in general.
 
-**Does the project maintainer bite?**
+### Does the project maintainer bite?
 
 ~~maybe~~ I would never do such a thing (｡•̀ᴗ-)✧
