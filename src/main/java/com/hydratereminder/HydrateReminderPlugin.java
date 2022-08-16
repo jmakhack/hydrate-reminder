@@ -430,7 +430,7 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			commandList.append(arg.toString());
 		}
-		final String helpString = String.format("Available commands: ::%s %s",
+		final String helpString = String.format("Available commands: %s%s %s", RUNELITE_COMMAND_PREFIX,
 				HYDRATE_COMMAND_ALIAS, commandList);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
 	}
