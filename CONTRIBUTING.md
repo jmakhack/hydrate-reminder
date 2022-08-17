@@ -2,7 +2,7 @@
 
 Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle.
 
-Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue.
+Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue. If you plan to work on an issue, just leave a comment on the issue asking to pick it up and then you're free to work on it (unless someone previously commented the same).
 
 When making any code changes, please make sure to run the build using [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).
 
@@ -26,8 +26,27 @@ Always write a clear and concise commit message for your commits. One-line messa
     > A paragraph describing what changed and its impact."
 
 ## Coding Conventions
+
 When adding new classes, methods, and fields, please add the appropriate JavaDocs to keep the codebase in an easily maintainable state.
 
 [Codacy](https://app.codacy.com/gh/jmakhack/hydrate-reminder/dashboard) is used to measure the overall code quality of hydrate-reminder. The goal is to keep the code quality score at an A level, never allowing it to dip below B.
 
 Otherwise, there are no formal, documented coding conventions for this project to follow, but please take a look at the existing code under [src/main/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/main/java/com/hydratereminder) and follow the existing conventions.
+
+## Frequently Asked Questions
+
+### Why is it that when I try to run the project, the RuneLite client loads successfully but the plugin is nowhere to be seen?
+
+This issue commonly occurs whenever there is a certain mismatch in RuneLite versions. Navigate to https://runelite.net/ and note the latest release version. Afterwards, open `build.gradle` and note the value for `runeLiteVersion`. When these two values do not match, the plugin will not appear when running the project. Update the value of `runeLiteVersion` to match the latest release version. After building and running the project again, the plugin should appear in the RuneLite client.
+
+### Why are there two instances of the hydrate reminder plugin visible in the RuneLite client sidebar when I run the project?
+
+This usually indicates that you already have the hydrate reminder plugin installed on the RuneLite client from the PluginHub. This is usually not an issue however. If you do want to remove the duplicate plugin, open RuneLite independently and uninstalled the hydrate reminder plugin that was installed from the PluginHub. Afterwards, run the project again and there should only be one instance of the plugin visible.
+
+### Where can I get additional help on any issues and/or development questions?
+
+Besides just leaving a comment on any GitHub issues or pull requests, the official RuneLite [Discord](https://discord.gg/ArdAhnN) server is an excellent place where you can ask any RuneLite based development questions you may have. Do note that the server is not for any hydrate reminder specific help but rather for RuneLite development help in general.
+
+### Does the project maintainer bite?
+
+~~maybe~~ I would never do such a thing (｡•̀ᴗ-)✧
