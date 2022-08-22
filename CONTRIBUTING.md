@@ -9,9 +9,27 @@ When making any code changes, please make sure to run the build using [JDK 8](ht
 Make sure to ensure that no newly added functionality goes against [Jagex's rules](https://secure.runescape.com/m=news/another-message-about-unofficial-clients?oldschool=1).  
 If adding any third party dependencies, follow the guide found at [plugin-hub](https://github.com/runelite/plugin-hub#third-party-dependencies).
 
+## Setting Up and Building the Project
+
+The following steps go through how to setup the development environment and how to build and run the project. The [IntelliJ IDEA](https://www.jetbrains.com/idea/) development environment is recommended for use on this project. The community edition is free to download and use. For those who plan to use a different IDE, you may have to put in more work to figure out how to properly setup and build the project.
+
+1. Open a web browser to https://runelite.net/ and download the latest RuneLite client for your operating system. Try running the client and make sure that it runs properly on your device.
+
+2. Clone the GitHub project onto your computer by opening IntelliJ IDEA, navigating to `File > New > Project from Version Control...`, and inputting `https://github.com/jmakhack/hydrate-reminder` into the URL field. The directory field can be any directory you would like to save the project to. When done, click `Clone`.
+
+    ![image](https://user-images.githubusercontent.com/1442227/185886676-a5c03998-97b1-458f-87ba-c855c2fa0a9f.png)
+    
+3. Navigate to `Run > Edit Configurations...` and add `-ea` to VM options. Afterwards, click `OK`. (Step 5 of the plugin-hub [README](https://github.com/runelite/plugin-hub/blob/master/README.md#using-the-template-repository) has more info on this if there are any issues with this step)
+
+4. Open a web browser to https://runelite.net/ and note the `Latest release` version on the homepage. In IntelliJ IDEA, open the `build.gradle` file and change the `runeLiteVersion` to match that of the `Latest release` version from the website. After the change, there should be a small elephant icon that appears on the upper right. Click on it to ensure that the new gradle changes have been properly loaded.
+
+5. In IntelliJ IDEA, open up `src/test/java/com/hydratereminder/HydrateReminderTest.java` and run the class by clicking on the green play icon next to `public class HydrateReminderTest`. Another way to run the project is by right clicking the file in the project navigator and selecting `Run 'HydrateReminderTest'`. At this point, the RuneLite client should open and the plugin with the latest updates should be running there.
+
+If there are any issues setting up the development environment or running the project, feel free to ping @jmakhack in the comments of any issue for further help and debugging. Some additional helpful resources include the official [RuneLite wiki](https://github.com/runelite/runelite/wiki/Building-with-IntelliJ-IDEA) and the official [RuneLite Discord](https://discord.gg/ArdAhnN).
+
 ## Testing
 
-They hydrate-reminder project contains jUnit tests located in [src/test/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/test/java/com/hydratereminder). Please ensure that all the unit tests are passing before submitting a change. If the unit tests are failing as a result of a code change, identify why the test is failing and either fix the newly written code or update the test if it is no longer valid. Adding new unit tests for new features/enhancements is strongly encouraged but not strictly required (a separate testing task will be opened if not needed).
+The hydrate-reminder project contains jUnit tests located in [src/test/java/com/hydratereminder](https://github.com/jmakhack/hydrate-reminder/tree/master/src/test/java/com/hydratereminder). Please ensure that all the unit tests are passing before submitting a change. If the unit tests are failing as a result of a code change, identify why the test is failing and either fix the newly written code or update the test if it is no longer valid. Adding new unit tests for new features/enhancements is strongly encouraged but not strictly required (a separate testing task will be opened if not needed).
 
 When a new pull request is opened, the unit tests are run automatically as part of the pre-merge pipeline for every update to ensure that they are all passing before merging in the code. New code changes are not allowed to be merged into the master branch until all tests are passing. The unit tests are also run on a nightly basis to ensure the project's stable condition. The current build status can be viewed on the [README](https://github.com/jmakhack/hydrate-reminder/blob/master/README.md) as a badge. Manual testing is also done as a final step before every release as a sanity check of the plugin's quality.
 
