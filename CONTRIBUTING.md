@@ -13,17 +13,17 @@ If adding any third party dependencies, follow the guide found at [plugin-hub](h
 
 The following steps go through how to setup the development environment and how to build and run the project. The [IntelliJ IDEA](https://www.jetbrains.com/idea/) development environment is recommended for use on this project. The community edition is free to download and use. For those who plan to use a different IDE, you may have to put in more work to figure out how to properly setup and build the project.
 
-1. Open a web browser to https://runelite.net/ and download the latest RuneLite client for your operating system. Try running the client and make sure that it runs properly on your device.
+1.  Open a web browser to https://runelite.net/ and download the latest RuneLite client for your operating system. Try running the client and make sure that it runs properly on your device.
 
-2. Clone the GitHub project onto your computer by opening IntelliJ IDEA, navigating to `File > New > Project from Version Control...`, and inputting `https://github.com/jmakhack/hydrate-reminder` into the URL field. The directory field can be any directory you would like to save the project to. When done, click `Clone`.
+2.  Clone the GitHub project onto your computer by opening IntelliJ IDEA, navigating to `File > New > Project from Version Control...`, and inputting `https://github.com/jmakhack/hydrate-reminder` into the URL field. The directory field can be any directory you would like to save the project to. When done, click `Clone`.
 
-    ![image](https://user-images.githubusercontent.com/1442227/185886676-a5c03998-97b1-458f-87ba-c855c2fa0a9f.png)
+   ![image](https://user-images.githubusercontent.com/1442227/185886676-a5c03998-97b1-458f-87ba-c855c2fa0a9f.png)
     
-3. Navigate to `Run > Edit Configurations...` and add `-ea` to VM options. Afterwards, click `OK`. (Step 5 of the plugin-hub [README](https://github.com/runelite/plugin-hub/blob/master/README.md#using-the-template-repository) has more info on this if there are any issues with this step)
+3.  Navigate to `Run > Edit Configurations...` and add `-ea` to VM options. Afterwards, click `OK`. (Step 5 of the plugin-hub [README](https://github.com/runelite/plugin-hub/blob/master/README.md#using-the-template-repository) has more info on this if there are any issues with this step)
 
-4. Open a web browser to https://runelite.net/ and note the `Latest release` version on the homepage. In IntelliJ IDEA, open the `build.gradle` file and change the `runeLiteVersion` to match that of the `Latest release` version from the website. After the change, there should be a small elephant icon that appears on the upper right. Click on it to ensure that the new gradle changes have been properly loaded.
+4.  Open a web browser to https://runelite.net/ and note the `Latest release` version on the homepage. In IntelliJ IDEA, open the `build.gradle` file and change the `runeLiteVersion` to match that of the `Latest release` version from the website. After the change, there should be a small elephant icon that appears on the upper right. Click on it to ensure that the new gradle changes have been properly loaded.
 
-5. In IntelliJ IDEA, open up `src/test/java/com/hydratereminder/HydrateReminderTest.java` and run the class by clicking on the green play icon next to `public class HydrateReminderTest`. Another way to run the project is by right clicking the file in the project navigator and selecting `Run 'HydrateReminderTest'`. At this point, the RuneLite client should open and the plugin with the latest updates should be running there.
+5.  In IntelliJ IDEA, open up `src/test/java/com/hydratereminder/HydrateReminderTest.java` and run the class by clicking on the green play icon next to `public class HydrateReminderTest`. Another way to run the project is by right clicking the file in the project navigator and selecting `Run 'HydrateReminderTest'`. At this point, the RuneLite client should open and the plugin with the latest updates should be running there.
 
 If there are any issues setting up the development environment or running the project, feel free to ping @jmakhack in the comments of any issue for further help and debugging. Some additional helpful resources include the official [RuneLite wiki](https://github.com/runelite/runelite/wiki/Building-with-IntelliJ-IDEA) and the official [RuneLite Discord](https://discord.gg/ArdAhnN).
 
