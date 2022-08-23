@@ -29,3 +29,5 @@ A clear and concise description of any alternative solutions.
 Add any other context or screenshots about the feature request here.
 Info such as mockups and/or diagrams can be useful here.
 -->
+
+Please refer to [CONTRIBUTING.md](https://github.com/jmakhack/hydrate-reminder/blob/master/CONTRIBUTING.md) for info on how to setup, build, run, and test this project. Feel free to ping @jmakhack in the comments below with any questions if needed.

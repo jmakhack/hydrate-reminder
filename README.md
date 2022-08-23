@@ -100,7 +100,7 @@ Detailed instructions on how to achieve this can be found on the [RuneLite wiki]
 ## Contributing
 
 Anyone is welcome to contribute to this project repository in any capacity.  
-Before contributing to this project, please go through the [How to Contribute](CONTRIBUTING.md) guide to understand expectations for this project.
+Before contributing to this project, please go through the [How to Contribute](CONTRIBUTING.md) guide to understand expectations for this project and for info on how to properly setup and build the project.
 
 Other useful resources include the [RuneLite wiki](https://github.com/runelite/runelite/wiki) and [OSRSBox's Writing RuneLite Plugins](https://www.osrsbox.com/blog/2018/08/10/writing-runelite-plugins-part-1-building/) blog post.  
 It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) development environment for this project.
