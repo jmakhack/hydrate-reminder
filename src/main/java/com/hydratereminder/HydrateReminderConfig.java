@@ -185,7 +185,7 @@ public interface HydrateReminderConfig extends Config
 	 * @since 2.0.0
 	 */
 	@ConfigItem(
-			keyName = "hydrateReminderWelcomeMessageEnabled",
+			keyName = "hydrateAnimationEnabled",
 			name = "Hydrate animation",
 			description = "Sets whether or not the hydrate animation should be displayed",
 			position = 6,
