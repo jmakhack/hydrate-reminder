@@ -1,6 +1,8 @@
 package com.hydratereminder;
 
 import static org.junit.Assert.assertEquals;
+
+import com.hydratereminder.command.NotRecognizedCommandException;
 import org.junit.Test;
 
 public class HydrateReminderCommandArgsTest
@@ -52,13 +54,13 @@ public class HydrateReminderCommandArgsTest
         assertEquals(HydrateReminderCommandArgs.TOTAL, HydrateReminderCommandArgs.getValue("t"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NotRecognizedCommandException.class)
     public void testGetValueThrowsIfNullCommand()
     {
         HydrateReminderCommandArgs.getValue(null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NotRecognizedCommandException.class)
     public void testGetValueThrowsIfInvalidCommand()
     {
         HydrateReminderCommandArgs.getValue("dummy");

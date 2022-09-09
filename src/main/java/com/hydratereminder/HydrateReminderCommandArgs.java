@@ -25,6 +25,7 @@
 
 package com.hydratereminder;
 
+import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -79,6 +80,6 @@ public enum HydrateReminderCommandArgs
                 return enumValue;
             }
         }
-        throw new IllegalArgumentException();
+        throw new NotRecognizedCommandException(command);
     }
 }
