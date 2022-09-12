@@ -63,21 +63,21 @@ public class HydrateBreakMessageDictionary {
     private static final List<String> HYDRATE_BREAK_CARING_TEXT_LIST =
             Collections.unmodifiableList(
                     new ArrayList<String>() {{
-                        add("Drink water before it's too late.");
-                        add("Drink water and you shall be saved.");
-                        add("No matter how rich you are, remember to drink water.");
-                        add("Pure water = better life. Drink it!");
-                        add("A good day starts with water.");
-                        add("Don't be thirsty. Drink water!");
-                        add("Water is sacred! Drink it!");
-                        add("Water is a human right! Use it right now!");
-                        add("No water = no life! Bring yourself back to life!");
-                        add("Why are you dehydrated? Drink water!");
-                        add("Save yourself from being thirsty! Drink water!");
-                        add("Take care of your mental health! Drink some water!");
-                        add("Your future seems brighter when you drink water!");
-                        add("Clear your thoughts! Drink some water!");
-                        add("Take a sip of water because I care for you and want to see you healthy!");
+                        add("Drink water before it's too late");
+                        add("Drink water and you shall be saved");
+                        add("No matter how rich you are, remember to drink water");
+                        add("Pure water = better life. Drink it");
+                        add("A good day starts with water");
+                        add("Don't be thirsty. Drink water");
+                        add("Water is sacred! Drink it");
+                        add("Water is a human right! Use it right now");
+                        add("No water = no life! Bring yourself back to life");
+                        add("Why are you dehydrated? Drink water");
+                        add("Save yourself from being thirsty! Drink water");
+                        add("Take care of your mental health! Drink some water");
+                        add("Your future seems brighter when you drink water");
+                        add("Clear your thoughts! Drink some water");
+                        add("Take a sip of water because I care for you and want to see you healthy");
                     }}
             );
     
