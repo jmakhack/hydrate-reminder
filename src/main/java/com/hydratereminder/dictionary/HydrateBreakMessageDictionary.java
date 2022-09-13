@@ -81,6 +81,13 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
     
+    private static String getRandomMessage(List<String> hydrate_break_text_list)
+    {
+        SecureRandom randomGenerator = new SecureRandom();
+        int randomNumber = randomGenerator.nextInt(hydrate_break_text_list.size());
+        return hydrate_break_text_list.get(randomNumber);
+    }
+    
     public static String getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType personalityType)
     {
         String breakMessage;
@@ -90,14 +97,10 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = HYDRATE_BREAK_SIMPLE_TEXT_LIST.get(0);
                 break;
             case FUN:
-                final SecureRandom randomGenerator = new SecureRandom();
-                final int randomNumber = randomGenerator.nextInt(HYDRATE_BREAK_FUNNY_TEXT_LIST.size());
-                breakMessage = HYDRATE_BREAK_FUNNY_TEXT_LIST.get(randomNumber);
+                breakMessage = getRandomMessage(HYDRATE_BREAK_FUNNY_TEXT_LIST);
                 break;
             case CARING:
-                final SecureRandom randomGenerator = new SecureRandom();
-                final int randomNumber = randomGenerator.nextInt(HYDRATE_BREAK_CARING_TEXT_LIST.size());
-                breakMessage = HYDRATE_BREAK_CARING_TEXT_LIST.get(randomNumber);
+                breakMessage = getRandomMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
