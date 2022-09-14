@@ -97,10 +97,10 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = HYDRATE_BREAK_SIMPLE_TEXT_LIST.get(0);
                 break;
             case FUN:
-                breakMessage = getRandomMessage(HYDRATE_BREAK_FUNNY_TEXT_LIST);
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_FUNNY_TEXT_LIST);
                 break;
             case CARING:
-                breakMessage = getRandomMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
