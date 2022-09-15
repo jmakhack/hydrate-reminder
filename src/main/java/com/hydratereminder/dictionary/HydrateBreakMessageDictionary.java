@@ -81,11 +81,11 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
     
-    private static String getRandomBreakMessage(List<String> HydrateBreakTextList)
+    private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
         final SecureRandom randomGenerator = new SecureRandom();
-        final int randomNumber = randomGenerator.nextInt(HydrateBreakTextList.size());
-        return HydrateBreakTextList.get(randomNumber);
+        final int randomNumber = randomGenerator.nextInt(hydrateBreakTextList.size());
+        return hydrateBreakTextList.get(randomNumber);
     }
     
     public static String getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType personalityType)
