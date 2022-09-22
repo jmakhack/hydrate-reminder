@@ -218,6 +218,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "AlexMihalache99",
+      "name": "Alexandru Mihalache",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51009251?v=4",
+      "profile": "https://alexandrumihalache.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
