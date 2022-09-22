@@ -8,7 +8,8 @@ import lombok.Getter;
 public enum HydrateReminderPersonalityType
 {
     SIMPLE("Simple"),
-    FUN("Fun");
+    FUN("Fun"),
+    CARING("Caring");
 
     private final String personalityType;
 
