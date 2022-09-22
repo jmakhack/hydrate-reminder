@@ -26,6 +26,7 @@
 package com.hydratereminder;
 
 import com.google.inject.Provides;
+import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +51,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
+import static com.hydratereminder.Commons.HYDRATE_COMMAND_ALIAS;
+import static com.hydratereminder.Commons.HYDRATE_COMMAND_NAME;
+import static com.hydratereminder.Commons.RUNELITE_COMMAND_PREFIX;
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
 import static com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary.getRandomWelcomeMessage;
 
@@ -68,16 +72,7 @@ import static com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary.get
 )
 public class HydrateReminderPlugin extends Plugin
 {
-	/**
-	 * Prefix for all chat commands in RuneLite
-	 */
-	private static final String RUNELITE_COMMAND_PREFIX = "::";
 
-	/**
-	 * Main command name for the Hydrate Reminder plugin
-	 */
-	private static final String HYDRATE_COMMAND_NAME = "hydrate";
-	private static final String HYDRATE_COMMAND_ALIAS = "hr";
 
 	/**
 	 *  Number by which to increment the number of hydration breaks each time a break occurs
@@ -113,6 +108,9 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Inject
 	private InfoBoxManager infoBoxManager;
+
+//	@Inject
+//	private CommandInvoker commandDelegate;
 
 	/**
 	 * <p>The infobox timer that is rendered onto the overlay
@@ -287,7 +285,7 @@ public class HydrateReminderPlugin extends Plugin
 							throw new IllegalArgumentException();
 					}
 				}
-				catch (IllegalArgumentException e)
+				catch (IllegalArgumentException | NotRecognizedCommandException e)
 				{
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
 							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
@@ -296,6 +294,8 @@ public class HydrateReminderPlugin extends Plugin
 				}
 			}
 		}
+		// TODO: Uncomment when the commands will be refactored to com.hydratereminder.command
+		// commandDelegate.invokeCommand(commandExecuted);
 	}
 
 	/**
@@ -430,8 +430,10 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			commandList.append(arg.toString());
 		}
-		final String helpString = String.format("Available commands: %s%s %s", RUNELITE_COMMAND_PREFIX,
-				HYDRATE_COMMAND_ALIAS, commandList);
+		final String helpString = String.format(
+				"Available commands: %s%s %s",
+				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, commandList
+		);
 		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
 	}
 
