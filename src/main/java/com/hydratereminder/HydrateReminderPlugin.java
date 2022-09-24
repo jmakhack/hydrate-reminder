@@ -26,6 +26,8 @@
 package com.hydratereminder;
 
 import com.google.inject.Provides;
+import com.hydratereminder.command.chat.ChatMessageSender;
+import com.hydratereminder.command.chat.HydrateEmojiProvider;
 import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +43,6 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
-import net.runelite.client.util.ImageUtil;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.inject.Inject;
@@ -55,7 +56,6 @@ import static com.hydratereminder.Commons.HYDRATE_COMMAND_ALIAS;
 import static com.hydratereminder.Commons.HYDRATE_COMMAND_NAME;
 import static com.hydratereminder.Commons.RUNELITE_COMMAND_PREFIX;
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
-import static com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary.getRandomWelcomeMessage;
 
 /**
  * <p>The main plugin logic for the Hydrate Reminder plugin
@@ -109,6 +109,12 @@ public class HydrateReminderPlugin extends Plugin
 	@Inject
 	private InfoBoxManager infoBoxManager;
 
+	@Inject
+	private ChatMessageSender chatMessageSender;
+
+	@Inject
+	private HydrateEmojiProvider hydrateEmojiProvider;
+
 //	@Inject
 //	private CommandInvoker commandDelegate;
 
@@ -155,14 +161,6 @@ public class HydrateReminderPlugin extends Plugin
 	private boolean resetState = false;
 
 	/**
-	 * <p>The id of the hydrate emoji
-	 * </p>
-	 */
-	@Getter
-	@Setter
-	private Optional<Integer> hydrateEmojiId = Optional.empty();
-
-	/**
 	 * <p>True when game tick is the first one after login which is
 	 * used to check if welcome message should be sent
 	 * </p>
@@ -202,45 +200,6 @@ public class HydrateReminderPlugin extends Plugin
 			setLoginInstant(Instant.now());
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
-	}
-
-	/**
-	 * <p>Loads the hydrate emoji image and converts it into a sprite to be used for
-	 * chat messages
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void loadHydrateEmoji()
-	{
-		final IndexedSprite[] modIcons = client.getModIcons();
-		if (modIcons != null)
-		{
-			final IndexedSprite[] newModIcons = Arrays.copyOf(modIcons, modIcons.length + 1);
-			try
-			{
-				final BufferedImage hydrateIcon = ImageUtil.loadImageResource(getClass(), "water_icon.png");
-				final IndexedSprite hydrateSprite = ImageUtil.getImageIndexedSprite(hydrateIcon, client);
-				newModIcons[modIcons.length] = hydrateSprite;
-			}
-			catch (Exception e)
-			{
-				log.warn("Failed to load hydrate emoji sprite", e);
-			}
-			setHydrateEmojiId(Optional.of(modIcons.length));
-			client.setModIcons(newModIcons);
-			log.debug("Successfully loaded hydrate emoji sprite");
-		}
-	}
-
-	/**
-	 * <p>Sends a random hydrate welcome message in chat
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void sendHydrateWelcomeChatMessage()
-	{
-		final String hydrateWelcomeMessage = getRandomWelcomeMessage();
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydrateWelcomeMessage);
 	}
 
 	/**
@@ -289,7 +248,7 @@ public class HydrateReminderPlugin extends Plugin
 				{
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
 							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
-					sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, invalidArgString);
+					chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, invalidArgString);
 					handleHydrateHelpCommand();
 				}
 			}
@@ -310,7 +269,7 @@ public class HydrateReminderPlugin extends Plugin
 		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
 		final String timeString = getTimeDisplay(timeUntilNextBreak);
 		final String message = timeString + " until the next hydration break.";
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
+		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
 	}
 
 	/**
@@ -323,7 +282,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		final Optional<Duration> timeSinceLastBreak = getDurationSinceLastBreak(getLastHydrateInstant(), Instant.now());
 		final String message = formatHandleHydratePrevCommand(timeSinceLastBreak);
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
+		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
 	}
 
 	/**
@@ -396,7 +355,7 @@ public class HydrateReminderPlugin extends Plugin
 		resetHydrateReminderTimeInterval();
 		setResetState(true);
 		final String resetString = "Hydrate reminder interval has been successfully reset.";
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, resetString);
+		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, resetString);
 	}
 
 	/**
@@ -410,7 +369,7 @@ public class HydrateReminderPlugin extends Plugin
 		hydrateBetweenHydrationBreaks();
 		setResetState(true);
 		final String hydratedString = "Successfully hydrated before reminder interval finished";
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydratedString);
+		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydratedString);
 	}
 
 	/**
@@ -434,7 +393,7 @@ public class HydrateReminderPlugin extends Plugin
 				"Available commands: %s%s %s",
 				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, commandList
 		);
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
+		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
 	}
 
 	/**
@@ -449,7 +408,7 @@ public class HydrateReminderPlugin extends Plugin
 		final String breakText = numBreaks == 1 ? "break" : "breaks";
 		final String totalString = String.format("Current session: %d hydration %s.",
 				numBreaks, breakText);
-		sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, totalString);
+		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, totalString);
 	}
 
 	/**
@@ -464,13 +423,13 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		if (isFirstGameTick())
 		{
-			if (!getHydrateEmojiId().isPresent())
+			if (!hydrateEmojiProvider.getHydrateEmojiId().isPresent())
 			{
-				loadHydrateEmoji();
+				hydrateEmojiProvider.loadHydrateEmoji();
 			}
 			if (config.hydrateReminderWelcomeMessageEnabled())
 			{
-				sendHydrateWelcomeChatMessage();
+				chatMessageSender.sendHydrateWelcomeChatMessage();
 			}
 			setFirstGameTick(false);
 		}
@@ -560,7 +519,7 @@ public class HydrateReminderPlugin extends Plugin
 		final String hydrateReminderMessage = getHydrateReminderMessage();
 		if (config.hydrateReminderChatMessageEnabled())
 		{
-			sendHydrateReminderChatMessage(hydrateReminderMessage);
+			chatMessageSender.sendHydrateReminderChatMessage(hydrateReminderMessage);
 		}
 		if (config.hydrateReminderComputerNotificationEnabled())
 		{
@@ -584,48 +543,6 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Sends a hydrate reminder message to the player via the ingame chat box
-	 * </p>
-	 * @param message the hydrate reminder message to display to the player
-	 * @since 1.1.0
-	 */
-	private void sendHydrateReminderChatMessage(String message)
-	{
-		final ChatMessageType chatMessageType = getChatNotificationMessageType();
-		sendHydrateEmojiChatMessage(chatMessageType, message);
-		log.debug(String.format("Successfully sent chat notification of type: %s", chatMessageType.toString()));
-	}
-
-	/**
-	 * <p>Generates and sends a neatly formatted chat message prefixed by the
-	 * hydrate emoji to the player
-	 * </p>
-	 * @param type the type of chat message to send
-	 * @param message the hydrate reminder message to display to the player
-	 * @since 1.1.0
-	 */
-	private void sendHydrateEmojiChatMessage(ChatMessageType type, String message)
-	{
-		if (!getHydrateEmojiId().isPresent())
-		{
-			client.addChatMessage(type, "", message, null);
-			return;
-		}
-		final String hydrateEmoji = String.format("<img=%d>", getHydrateEmojiId().get());
-		final StringBuilder hydrateMessage = new StringBuilder();
-		String sender = hydrateEmoji;
-		if (type != ChatMessageType.FRIENDSCHAT)
-		{
-			hydrateMessage.append(hydrateEmoji);
-			hydrateMessage.append(" ");
-			sender = null;
-		}
-		hydrateMessage.append(message);
-		client.addChatMessage(type, "", hydrateMessage.toString(), sender);
-		log.debug("Successfully sent chat message");
-	}
-
-	/**
 	 * <p>Sends a hydrate reminder message to the player via computer tray notification
 	 * </p>
 	 * @param message the hydrate reminder message to display to the player
@@ -635,33 +552,6 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		notifier.notify(message);
 		log.debug("Successfully sent computer notification");
-	}
-
-	/**
-	 * <p>Generates the type of chat message to send to the player
-	 * </p>
-	 * @return the type of chat message to send to the player
-	 * @since 1.0.0
-	 */
-	private ChatMessageType getChatNotificationMessageType()
-	{
-		ChatMessageType chatMessageType;
-		switch (config.hydrateReminderChatMessageType())
-		{
-			case BROADCASTMESSAGE:
-				chatMessageType = ChatMessageType.BROADCAST;
-				break;
-			case PUBLICCHAT:
-				chatMessageType = ChatMessageType.PUBLICCHAT;
-				break;
-			case CLANCHAT:
-				chatMessageType = ChatMessageType.FRIENDSCHAT;
-				break;
-			default:
-				chatMessageType = ChatMessageType.GAMEMESSAGE;
-				break;
-		}
-		return chatMessageType;
 	}
 
 	/**
