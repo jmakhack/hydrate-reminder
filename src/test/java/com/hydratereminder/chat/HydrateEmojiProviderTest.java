@@ -1,4 +1,4 @@
-package com.hydratereminder.command.chat;
+package com.hydratereminder.chat;
 
 import junit.framework.TestCase;
 import net.runelite.api.Client;

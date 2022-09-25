@@ -26,8 +26,8 @@
 package com.hydratereminder;
 
 import com.google.inject.Provides;
-import com.hydratereminder.command.chat.ChatMessageSender;
-import com.hydratereminder.command.chat.HydrateEmojiProvider;
+import com.hydratereminder.chat.ChatMessageSender;
+import com.hydratereminder.chat.HydrateEmojiProvider;
 import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
@@ -248,7 +248,7 @@ public class HydrateReminderPlugin extends Plugin
 				{
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
 							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
-					chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, invalidArgString);
+					chatMessageSender.sendHydrateEmojiChatGameMessage(invalidArgString);
 					handleHydrateHelpCommand();
 				}
 			}
@@ -269,7 +269,7 @@ public class HydrateReminderPlugin extends Plugin
 		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
 		final String timeString = getTimeDisplay(timeUntilNextBreak);
 		final String message = timeString + " until the next hydration break.";
-		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
+		chatMessageSender.sendHydrateEmojiChatGameMessage(message);
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		final Optional<Duration> timeSinceLastBreak = getDurationSinceLastBreak(getLastHydrateInstant(), Instant.now());
 		final String message = formatHandleHydratePrevCommand(timeSinceLastBreak);
-		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, message);
+		chatMessageSender.sendHydrateEmojiChatGameMessage(message);
 	}
 
 	/**
@@ -355,7 +355,7 @@ public class HydrateReminderPlugin extends Plugin
 		resetHydrateReminderTimeInterval();
 		setResetState(true);
 		final String resetString = "Hydrate reminder interval has been successfully reset.";
-		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, resetString);
+		chatMessageSender.sendHydrateEmojiChatGameMessage(resetString);
 	}
 
 	/**
@@ -369,7 +369,7 @@ public class HydrateReminderPlugin extends Plugin
 		hydrateBetweenHydrationBreaks();
 		setResetState(true);
 		final String hydratedString = "Successfully hydrated before reminder interval finished";
-		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydratedString);
+		chatMessageSender.sendHydrateEmojiChatGameMessage(hydratedString);
 	}
 
 	/**
@@ -393,7 +393,7 @@ public class HydrateReminderPlugin extends Plugin
 				"Available commands: %s%s %s",
 				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, commandList
 		);
-		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, helpString);
+		chatMessageSender.sendHydrateEmojiChatGameMessage(helpString);
 	}
 
 	/**
@@ -408,7 +408,7 @@ public class HydrateReminderPlugin extends Plugin
 		final String breakText = numBreaks == 1 ? "break" : "breaks";
 		final String totalString = String.format("Current session: %d hydration %s.",
 				numBreaks, breakText);
-		chatMessageSender.sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, totalString);
+		chatMessageSender.sendHydrateEmojiChatGameMessage(totalString);
 	}
 
 	/**

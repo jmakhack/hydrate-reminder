@@ -1,4 +1,4 @@
-package com.hydratereminder.command.chat;
+package com.hydratereminder.chat;
 
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
@@ -23,28 +23,20 @@ public class ChatMessageSender {
     private HydrateEmojiProvider hydrateEmojiProvider;
 
     /**
-     * <p>Generates and sends a neatly formatted chat message prefixed by the
+     * <p>Generates and sends a neatly formatted chat GAME MESSAGE prefixed by the
      * hydrate emoji to the player
      * </p>
      *
-     * @param type    the type of chat message to send
      * @param message the hydrate reminder message to display to the player
      */
-    public void sendHydrateEmojiChatMessage(ChatMessageType type, String message) {
+    public void sendHydrateEmojiChatGameMessage(String message) {
         if (!hydrateEmojiProvider.getHydrateEmojiId().isPresent()) {
-            client.addChatMessage(type, "", message, null);
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", message, null);
             return;
         }
         final String hydrateEmoji = String.format("<img=%d>", hydrateEmojiProvider.getHydrateEmojiId().get());
-        final StringBuilder hydrateMessage = new StringBuilder();
-        String sender = hydrateEmoji;
-        if (type != ChatMessageType.FRIENDSCHAT) {
-            hydrateMessage.append(hydrateEmoji);
-            hydrateMessage.append(" ");
-            sender = null;
-        }
-        hydrateMessage.append(message);
-        client.addChatMessage(type, "", hydrateMessage.toString(), sender);
+        final String hydrateMessage = hydrateEmoji + " " + message;
+        client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", hydrateMessage, null);
         log.debug("Successfully sent chat message");
     }
 
@@ -66,8 +58,33 @@ public class ChatMessageSender {
      */
     public void sendHydrateWelcomeChatMessage() {
         final String hydrateWelcomeMessage = getRandomWelcomeMessage();
-        sendHydrateEmojiChatMessage(ChatMessageType.GAMEMESSAGE, hydrateWelcomeMessage);
+        sendHydrateEmojiChatGameMessage(hydrateWelcomeMessage);
     }
 
+    /**
+     * <p>Generates and sends a neatly formatted SPECIFIC TYPE chat message with prefixed by the
+     * hydrate emoji to the player
+     * </p>
+     *
+     * @param type    the type of chat message to send
+     * @param message the hydrate reminder message to display to the player
+     */
+    private void sendHydrateEmojiChatMessage(ChatMessageType type, String message) {
+        if (!hydrateEmojiProvider.getHydrateEmojiId().isPresent()) {
+            client.addChatMessage(type, "", message, null);
+            return;
+        }
+        final String hydrateEmoji = String.format("<img=%d>", hydrateEmojiProvider.getHydrateEmojiId().get());
+        final StringBuilder hydrateMessage = new StringBuilder();
+        String sender = hydrateEmoji;
+        if (type != ChatMessageType.FRIENDSCHAT) {
+            hydrateMessage.append(hydrateEmoji);
+            hydrateMessage.append(" ");
+            sender = null;
+        }
+        hydrateMessage.append(message);
+        client.addChatMessage(type, "", hydrateMessage.toString(), sender);
+        log.debug("Successfully sent chat message");
+    }
 }
 

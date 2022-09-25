@@ -1,4 +1,4 @@
-package com.hydratereminder.command.chat;
+package com.hydratereminder.chat;
 
 import com.hydratereminder.HydrateReminderConfig;
 import net.runelite.api.ChatMessageType;
