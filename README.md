@@ -3,6 +3,14 @@
 </p>
 
 <p align="center">
+    <a href="https://discord.gg/RTgxfFW9mS" alt="Discord">
+        <img src="https://img.shields.io/discord/1023562225790767175?color=%20%237289DA&label=discord&logo=discord&logoColor=%20%237289DA&style=for-the-badge" />
+    </a>
+</p>
+
+<br />
+
+<p align="center">
     <a href="https://runelite.net/plugin-hub/show/hydrate-reminder" alt="Plugin Rank">
         <img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fi.pluginhub.info%2Fshields%2Frank%2Fplugin%2Fhydrate-reminder" />
     </a>
@@ -48,7 +56,7 @@ Never forget to drink water while exploring the world of Old School RuneScape ev
 
 ![hydrate_water_dance](https://user-images.githubusercontent.com/1442227/125190916-7ff58a00-e1f4-11eb-8566-1a10561c7fee.gif)
 
-Any questions, comments, and/or feedback? Fill out this [form](https://forms.gle/aZrqFvTP8LWZ1toi9).
+Any questions, comments, and/or feedback? Fill out the [feedback form](https://forms.gle/aZrqFvTP8LWZ1toi9) or join the [Discord](https://discord.gg/RTgxfFW9mS).
 
 ## Plugin Features (v1.1.1)
 
@@ -100,7 +108,7 @@ Detailed instructions on how to achieve this can be found on the [RuneLite wiki]
 ## Contributing
 
 Anyone is welcome to contribute to this project repository in any capacity.  
-Before contributing to this project, please go through the [How to Contribute](CONTRIBUTING.md) guide to understand expectations for this project and for info on how to properly setup and build the project.
+Before contributing to this project, please go through the [How to Contribute](CONTRIBUTING.md) guide to understand expectations for this project and for info on how to properly setup and build the project. Also join the [Discord](https://discord.gg/RTgxfFW9mS) to ask any questions and engage with other project contributors.
 
 Other useful resources include the [RuneLite wiki](https://github.com/runelite/runelite/wiki) and [OSRSBox's Writing RuneLite Plugins](https://www.osrsbox.com/blog/2018/08/10/writing-runelite-plugins-part-1-building/) blog post.  
 It is recommended to use the [IntelliJ IDEA](https://www.jetbrains.com/idea/) development environment for this project.

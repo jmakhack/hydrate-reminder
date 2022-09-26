@@ -23,4 +23,6 @@ in order to consider this task completed.
 Add any other notes regarding the task if needed.
 -->
 
-Please refer to [CONTRIBUTING.md](https://github.com/jmakhack/hydrate-reminder/blob/master/CONTRIBUTING.md) for info on how to setup, build, run, and test this project. Feel free to ping @jmakhack in the comments below with any questions if needed.
+Please refer to [CONTRIBUTING.md](https://github.com/jmakhack/hydrate-reminder/blob/master/CONTRIBUTING.md) for info on how to setup, build, run, and test this project. Feel free to ping @jmakhack in the comments below with any questions if needed. Also, join the [Discord](https://discord.gg/RTgxfFW9mS) to meet and engage with other contributors!
+
+[<img src="https://img.shields.io/discord/1023562225790767175?color=%20%237289DA&label=discord&logo=discord&logoColor=%20%237289DA&style=for-the-badge" />](https://discord.gg/RTgxfFW9mS)
