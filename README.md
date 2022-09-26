@@ -3,6 +3,14 @@
 </p>
 
 <p align="center">
+    <a href="https://discord.gg/RTgxfFW9mS" alt="Discord">
+        <img src="https://img.shields.io/discord/1023562225790767175?color=%20%237289DA&label=discord&logo=discord&logoColor=%20%237289DA&style=for-the-badge" />
+    </a>
+</p>
+
+<br />
+
+<p align="center">
     <a href="https://runelite.net/plugin-hub/show/hydrate-reminder" alt="Plugin Rank">
         <img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fi.pluginhub.info%2Fshields%2Frank%2Fplugin%2Fhydrate-reminder" />
     </a>
@@ -35,9 +43,6 @@
     </a>
     <a href="https://github.com/jmakhack/hydrate-reminder/stargazers" alt="Stars">
         <img src="https://img.shields.io/github/stars/jmakhack/hydrate-reminder?color=orange&style=for-the-badge" />
-    </a>
-    <a href="https://discord.gg/RTgxfFW9mS" alt="Discord">
-        <img src="https://img.shields.io/discord/1023562225790767175?color=%20%237289DA&label=discord&logo=discord&logoColor=%20%237289DA&style=for-the-badge" />
     </a>
     <a href="https://youtu.be/3q5qD5Dv9_o" alt="Made With Love">
         <img src="https://img.shields.io/badge/Made%20With%20Love-(%E2%97%8F%E2%99%A1%E2%88%80%E2%99%A1))%E3%83%BE%E2%98%86*%E3%80%82-blueviolet?style=for-the-badge" />
