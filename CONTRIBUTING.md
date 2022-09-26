@@ -1,6 +1,6 @@
 # How to Contribute
 
-Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle. Come join the [Discord](https://discord.gg/RTgxfFW9mS) to meet fellow contributors and to discuss contributions to this project!
+Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle. Come join the [Discord](https://discord.gg/RTgxfFW9mS) to meet fellow contributors, to ask any questions, or to just say hi!
 
 Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue. If you plan to work on an issue, just leave a comment on the issue asking to pick it up and then you're free to work on it (unless someone previously commented the same).
 
