@@ -1,6 +1,6 @@
 # How to Contribute
 
-Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle.
+Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle. Come join the [Discord](https://discord.gg/RTgxfFW9mS) to meet fellow contributors and to discuss contributions to this project!
 
 Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue. If you plan to work on an issue, just leave a comment on the issue asking to pick it up and then you're free to work on it (unless someone previously commented the same).
 
@@ -63,7 +63,7 @@ This usually indicates that you already have the hydrate reminder plugin install
 
 ### Where can I get additional help on any issues and/or development questions?
 
-Besides just leaving a comment on any GitHub issues or pull requests, the official RuneLite [Discord](https://discord.gg/ArdAhnN) server is an excellent place where you can ask any RuneLite based development questions you may have. Do note that the server is not for any hydrate reminder specific help but rather for RuneLite development help in general.
+Besides just leaving a comment on any GitHub issues or pull requests, the [Discord](https://discord.gg/RTgxfFW9mS) server is an excellent place where you can ask any questions you may have. Even if there are no questions to ask, it is still a great community to join and say hi!
 
 ### Does the project maintainer bite?
 
