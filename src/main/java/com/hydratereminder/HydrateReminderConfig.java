@@ -187,7 +187,8 @@ public interface HydrateReminderConfig extends Config
 	@ConfigItem(
 			keyName = "hydrateAnimationEnabled",
 			name = "Hydrate animation",
-			description = "Sets whether or not the hydrate animation should be displayed",
+			description = "Enables a hydration animation that the player character performs every time the hydration " +
+					"interval completes",
 			position = 6,
 			section = hydrateReminderAnimationSection
 	)
