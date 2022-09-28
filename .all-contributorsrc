@@ -237,6 +237,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "Jacoberson",
+      "name": "Jacoberson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58759808?v=4",
+      "profile": "https://github.com/Jacoberson",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
