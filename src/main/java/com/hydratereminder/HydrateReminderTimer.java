@@ -46,6 +46,8 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxPriority;
 @ToString
 public class HydrateReminderTimer extends InfoBox
 {
+    private static final String TOOLTIP_INFORMATION = "Time until next hydration break";
+
     /**
      * <p>The text color to display in the hydrate reminder infobox
      * </p>
@@ -89,5 +91,15 @@ public class HydrateReminderTimer extends InfoBox
         final int seconds = (int) ((timeRemaining.toMillis() / 1000L) % 60);
         final int minutes = (int) (timeRemaining.toMillis() / 60000L);
         return String.format("%d:%02d", Math.max(minutes, 0), Math.max(seconds, 0));
+    }
+
+    /**
+     * <p>Gets the text that is displayed in the tooltip
+     * </p>
+     * @return text displayed when mouse cursor is hovered over infobox
+     */
+    @Override
+    public String getTooltip() {
+        return TOOLTIP_INFORMATION;
     }
 }
