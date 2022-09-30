@@ -57,20 +57,9 @@ public interface HydrateReminderConfig extends Config
 	@ConfigSection(
 			name = "Notification Settings",
 			description = "Settings for Hydrate Reminder Notifications",
-			position = 3
+			position = 10
 	)
 	String hydrateReminderNotificationsSection = "Hydrate Reminder Notification Settings";
-	/**
-	 * <p>Separates the overlay timer settings into its own config section
-	 * </p>
-	 * @since 1.2.0
-	 */
-	@ConfigSection(
-			name = "Overlay Timer Settings",
-			description = "Settings for Hydrate Reminder Overlay Timer",
-			position = 7
-	)
-	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
 
 	/**
 	 * <p>Separates the animation settings into its own config section
@@ -80,9 +69,21 @@ public interface HydrateReminderConfig extends Config
 	@ConfigSection(
 			name = "Animation Settings",
 			description = "Settings for Hydrate Reminder Animations",
-			position = 7
+			position = 20
 	)
 	String hydrateReminderAnimationSection = "Hydrate Reminder Animation Settings";
+
+	/**
+	 * <p>Separates the overlay timer settings into its own config section
+	 * </p>
+	 * @since 1.2.0
+	 */
+	@ConfigSection(
+			name = "Overlay Timer Settings",
+			description = "Settings for Hydrate Reminder Overlay Timer",
+			position = 30
+	)
+	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
 
 	/**
 	 * <p>Allows the player to enable/disable the hydrate login welcome message
@@ -134,7 +135,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageEnabled",
 		name = "Chat notification",
 		description = "Sets the hydrate reminder to be sent as a chat message",
-		position = 3,
+		position = 1,
 		section = hydrateReminderNotificationsSection
 	)
 	default boolean hydrateReminderChatMessageEnabled()
@@ -152,7 +153,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderChatMessageType",
 		name = "Chat type",
 		description = "Sets the type of chat message sent by hydrate reminder",
-		position = 4,
+		position = 2,
 		section = hydrateReminderNotificationsSection
 	)
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
@@ -170,7 +171,7 @@ public interface HydrateReminderConfig extends Config
 		keyName = "hydrateReminderComputerNotificationEnabled",
 		name = "Computer notification",
 		description = "Sets the hydrate reminder to be sent as a computer notification",
-		position = 5,
+		position = 3,
 		section = hydrateReminderNotificationsSection
 	)
 	default boolean hydrateReminderComputerNotificationEnabled()
@@ -189,7 +190,7 @@ public interface HydrateReminderConfig extends Config
 			name = "Hydrate animation",
 			description = "Enables a hydration animation that the player character performs every time the hydration " +
 					"interval completes",
-			position = 6,
+			position = 1,
 			section = hydrateReminderAnimationSection
 	)
 	default boolean hydrateAnimationEnabled()
@@ -207,7 +208,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerEnabled",
 			name = "Timer Display",
 			description = "Sets the hydrate reminder to be sent as a computer notification",
-			position = 8,
+			position = 1,
 			section = hydrateReminderTimerSection
 	)
 	default boolean hydrateReminderOverlayTimerEnabled()
@@ -226,7 +227,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerTextColor",
 			name = "Text Color",
 			description = "Sets the text color of the timer display",
-			position = 9,
+			position = 2,
 			section = hydrateReminderTimerSection
 	)
 	default Color hydrateReminderOverlayTimerTextColor()
@@ -244,7 +245,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerImage",
 			name = "Timer Image",
 			description = "Sets the background image of the timer display",
-			position = 10,
+			position = 3,
 			section = hydrateReminderTimerSection
 	)
 	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
