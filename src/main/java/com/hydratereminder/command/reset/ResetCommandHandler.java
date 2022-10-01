@@ -2,26 +2,28 @@ package com.hydratereminder.command.reset;
 
 import com.hydratereminder.HydrateReminderPlugin;
 import com.hydratereminder.chat.ChatMessageSender;
+import com.hydratereminder.command.CommandHandler;
 import java.time.Instant;
 import java.util.Optional;
-import javax.inject.Inject;
 import javax.inject.Singleton;
-
-import com.hydratereminder.command.CommandHandler;
 
 @Singleton
 public class ResetCommandHandler implements CommandHandler {
 
-    @Inject
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private final HydrateReminderPlugin hydrateReminderPlugin;
 
-    @Inject
-    private ChatMessageSender chatMessageSender;
+    private final ChatMessageSender chatMessageSender;
+
+    public ResetCommandHandler(HydrateReminderPlugin hydrateReminderPlugin, ChatMessageSender chatMessageSender) {
+        this.hydrateReminderPlugin = hydrateReminderPlugin;
+        this.chatMessageSender = chatMessageSender;
+    }
 
     /**
      * <p>Handle the hydrate reset command by resetting the current hydrate interval and displaying
      * a reset success message in chat
      * </p>
+     *
      * @since 1.1.0
      */
     @Override

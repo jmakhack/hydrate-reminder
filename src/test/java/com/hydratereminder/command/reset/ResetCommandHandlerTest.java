@@ -9,8 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyBoolean;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -18,20 +16,21 @@ import static org.mockito.Mockito.verify;
 public class ResetCommandHandlerTest {
 
     @Mock
-    ChatMessageSender chatMessageSender;
+    private ChatMessageSender chatMessageSender;
     @Mock
-    HydrateReminderPlugin hydrateReminderPlugin;
+    private HydrateReminderPlugin hydrateReminderPlugin;
     @InjectMocks
-    ResetCommandHandler resetCommandHandler;
+    private ResetCommandHandler resetCommandHandler;
 
     @Test
     public void shouldResetHydrate() {
-
         resetCommandHandler.handle();
 
+        final String resetString = "Hydrate reminder interval has been successfully reset.";
+
         verify(hydrateReminderPlugin, times(1)).setLastHydrateInstant(any());
-        verify(hydrateReminderPlugin, times(1)).setResetState(anyBoolean());
-        verify(chatMessageSender, times(1)).sendHydrateEmojiChatGameMessage(anyString());
+        verify(hydrateReminderPlugin, times(1)).setResetState(true);
+        verify(chatMessageSender, times(1)).sendHydrateEmojiChatGameMessage(resetString);
 
     }
 
