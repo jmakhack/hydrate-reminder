@@ -44,5 +44,4 @@ public class NextCommandHandlerTest {
         // then
         verify(chatMessageSender).sendHydrateEmojiChatGameMessage(expectedMessage);
     }
-
 }
