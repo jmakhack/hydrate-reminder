@@ -102,6 +102,29 @@ public class HydrateBreakMessageDictionary {
                 }}
             );
     
+    /**
+     * Hydrate Reminder interval break text to display in polite form
+     */
+    private static final List<String> HYDRATE_BREAK_POLITE_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Drinking water will boost your concentration. Kindly have a sip");
+                        add("Your beautiful skin will shine brighter when hydrated. Please go ahead");
+                        add("If you don't mind, please take a short break to hydrate");
+                        add("Hydration time! Please drink some water");
+                        add("Keep that smile on! Kindly have some water");
+                        add("Water is the best of all things. Please keep yourself hydrated");
+                        add("I'd prefer you to take a quick hydration break, please");
+                        add("Let your body sing you a lullaby. Please hydrate");
+                        add("It'll be great if you take a small hydration break");
+                        add("You seem dehydrated! Please drink some water");
+                        add("Please don't hesitate to take a small water break");
+                        add("Please take care of yourself! Drink some water");
+                        add("Your future seems brighter when you drink water. Please have a sip");
+                        add("To be honest, you really need a hydration break. Kindly grab a drink");                  
+                    }}
+            );
+    
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
         final SecureRandom randomGenerator = new SecureRandom();
@@ -125,6 +148,9 @@ public class HydrateBreakMessageDictionary {
                 break;
             case ROMANTIC:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+                break;
+            case POLITE:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
