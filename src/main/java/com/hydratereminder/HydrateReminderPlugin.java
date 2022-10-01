@@ -28,6 +28,7 @@ package com.hydratereminder;
 import com.google.inject.Provides;
 import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.chat.HydrateEmojiProvider;
+import com.hydratereminder.command.CommandInvoker;
 import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
@@ -115,8 +116,8 @@ public class HydrateReminderPlugin extends Plugin
 	@Inject
 	private HydrateEmojiProvider hydrateEmojiProvider;
 
-//	@Inject
-//	private CommandInvoker commandDelegate;
+	@Inject
+	private CommandInvoker commandDelegate;
 
 	/**
 	 * <p>The infobox timer that is rendered onto the overlay
@@ -229,7 +230,7 @@ public class HydrateReminderPlugin extends Plugin
 							handleHydratePrevCommand();
 							break;
 						case RESET:
-							handleHydrateResetCommand();
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						case HYDRATE:
 							handleHydrateHydrateCommand();
@@ -342,20 +343,6 @@ public class HydrateReminderPlugin extends Plugin
 		}
 		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds" : seconds + " second");
 		return timeDisplayBuilder.toString();
-	}
-
-	/**
-	 * <p>Handle the hydrate reset command by resetting the current hydrate interval and displaying
-	 * a reset success message in chat
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void handleHydrateResetCommand()
-	{
-		resetHydrateReminderTimeInterval();
-		setResetState(true);
-		final String resetString = "Hydrate reminder interval has been successfully reset.";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(resetString);
 	}
 
 	/**
