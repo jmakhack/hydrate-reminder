@@ -2,7 +2,6 @@ package com.hydratereminder.command.total;
 
 import com.hydratereminder.HydrateReminderPlugin;
 import com.hydratereminder.chat.ChatMessageSender;
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import com.hydratereminder.command.CommandHandler;
@@ -10,11 +9,14 @@ import com.hydratereminder.command.CommandHandler;
 @Singleton
 public class TotalCommandHandler implements CommandHandler {
 
-    @Inject
-    private ChatMessageSender chatMessageSender;
+    private final ChatMessageSender chatMessageSender;
 
-    @Inject
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private final HydrateReminderPlugin hydrateReminderPlugin;
+
+    public TotalCommandHandler(ChatMessageSender chatMessageSender, HydrateReminderPlugin hydrateReminderPlugin) {
+        this.chatMessageSender = chatMessageSender;
+        this.hydrateReminderPlugin = hydrateReminderPlugin;
+    }
 
     /**
      * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken

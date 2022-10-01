@@ -11,22 +11,35 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TotalCommandHandlerTest {
 
     @Mock
-    ChatMessageSender chatMessageSender;
+    private ChatMessageSender chatMessageSender;
     @Mock
-    HydrateReminderPlugin hydrateReminderPlugin;
+    private HydrateReminderPlugin hydrateReminderPlugin;
     @InjectMocks
-    TotalCommandHandler totalCommandHandler;
+    private TotalCommandHandler totalCommandHandler;
 
     @Test
-    public void shouldSendHydrate() {
+    public void shouldSendHydrateWithSingularBreak() {
+        when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(1);
         totalCommandHandler.handle();
 
+        final String expected = "Current session: 1 hydration break.";
         verify(hydrateReminderPlugin,times(1)).getCurrentSessionHydrationBreaks();
-        verify(chatMessageSender,times(1)).sendHydrateEmojiChatGameMessage(anyString());
+        verify(chatMessageSender,times(1)).sendHydrateEmojiChatGameMessage(expected);
+    }
+
+    @Test
+    public void shouldSendHydrateWithPluralBreak() {
+        when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(2);
+        totalCommandHandler.handle();
+
+        final String expected = "Current session: 2 hydration breaks.";
+        verify(hydrateReminderPlugin,times(1)).getCurrentSessionHydrationBreaks();
+        verify(chatMessageSender,times(1)).sendHydrateEmojiChatGameMessage(expected);
     }
 }

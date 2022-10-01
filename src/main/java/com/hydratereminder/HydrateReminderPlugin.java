@@ -255,7 +255,7 @@ public class HydrateReminderPlugin extends Plugin
 			}
 		}
 		// TODO: Uncomment when the commands will be refactored to com.hydratereminder.command
-//		 commandDelegate.invokeCommand(commandExecuted);
+		// commandDelegate.invokeCommand(commandExecuted);
 	}
 
 	/**
