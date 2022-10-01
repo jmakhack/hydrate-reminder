@@ -86,7 +86,7 @@ public class HydrateBreakMessageDictionary {
      */
     private static final List<String> HYDRATE_BREAK_ROMANTIC_TEXT_LIST =
             Collections.unmodifiableList(
-                new ArrayList<String>(){{
+                new ArrayList<String>() {{
                     add("Roses are red, violets are blue, this hydrate reminder is just for you");
                     add("You can keep my heart but bring me back to life by drinking some water!");
                     add("Stop making me think about you! I'm busy drinking water");
@@ -124,7 +124,7 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
                 break;
             case ROMANTIC:
-                breakMessage =  getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
