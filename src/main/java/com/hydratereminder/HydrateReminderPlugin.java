@@ -224,7 +224,7 @@ public class HydrateReminderPlugin extends Plugin
 					switch (arg)
 					{
 						case NEXT:
-							handleHydrateNextCommand();
+							commandDelegate.invokeCommand(commandExecuted);
 							break;
 						case PREV:
 							handleHydratePrevCommand();
@@ -256,21 +256,6 @@ public class HydrateReminderPlugin extends Plugin
 		}
 		// TODO: Uncomment when the commands will be refactored to com.hydratereminder.command
 		// commandDelegate.invokeCommand(commandExecuted);
-	}
-
-	/**
-	 * <p>Handle the hydrate next command by generating a chat message displaying the amount of time
-	 * until the next hydration break
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void handleHydrateNextCommand()
-	{
-		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
-		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
-		final String timeString = getTimeDisplay(timeUntilNextBreak);
-		final String message = timeString + " until the next hydration break.";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(message);
 	}
 
 	/**
@@ -327,7 +312,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * @return the time in string format
 	 * @since 1.1.1
 	 */
-	protected String getTimeDisplay(Duration duration)
+	public String getTimeDisplay(Duration duration)
 	{
 		final int hours = Math.toIntExact(duration.toHours());
 		final int minutes = Math.toIntExact(duration.toMinutes() % 60);
@@ -475,7 +460,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * @return the instant to send the next hydrate reminder on
 	 * @since 1.1.0
 	 */
-	protected Instant getNextHydrateReminderInstant()
+	public Instant getNextHydrateReminderInstant()
 	{
 		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
 		if(getLastHydrateInstant().isPresent())
