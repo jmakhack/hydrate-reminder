@@ -80,7 +80,10 @@ public class HydrateBreakMessageDictionary {
                         add("Take a sip of water because I care for you and want to see you healthy");
                     }}
             );
-    
+
+    /**
+     * Hydrate Reminder interval break text to display in romantic form
+     */
     private static final List<String> HYDRATE_BREAK_ROMANTIC_TEXT_LIST =
             Collections.unmodifiableList(
                 new ArrayList<String>(){{
@@ -97,7 +100,7 @@ public class HydrateBreakMessageDictionary {
                     add("My soul and your soul are forever tangled. Please drink some water");
                     add("Being with you makes my heart sing. Take a sip of water and keep it singing.");
                 }}
-            )
+            );
     
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
@@ -122,6 +125,7 @@ public class HydrateBreakMessageDictionary {
                 break;
             case ROMANTIC:
                 breakMessage =  getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+                break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
         }
