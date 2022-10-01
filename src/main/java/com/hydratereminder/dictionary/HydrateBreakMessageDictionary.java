@@ -80,7 +80,29 @@ public class HydrateBreakMessageDictionary {
                         add("Take a sip of water because I care for you and want to see you healthy");
                     }}
             );
-    
+    /**
+     * Hydrate Reminder interval break text to display in caring form
+     */
+    private static final List<String> HYDRATE_BREAK_NERDY_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Your body is 60% water, don't forget to maintain that percentage, it's time to hydrate");
+                        add("H₂O is the most neglected nutrient in your diet, but one of the most vital, it's time to drink some water");
+                        add("Adequate hydration is essential for the proper functioning of the brain, take a small water break.");
+                        add("Water has a high specific heat capacity, have some water to regulate that body temperature of yours");
+                        add("When dehydrated, the skin can become more vulnerable to skin disorders and wrinkling, it's time to rehydrate");
+                        add("Can the water from your faucet contain same molecules that once a dinosaurs drank?Could be! Anyways it is time to rehydrate");
+                        add("A person can live live only about a week without water, help yourself with a glass of water.");
+                        add("Your body constantly loses water through sweating and exhalation, drink a glass of water, and stay hydrated");
+                        add("Water consumption helps cushion your joints and tissues, protecting your body, drink water to stay protected");
+                        add("Globally,  about 748 million people have no access to safe and clean drinking water, drink water while you have it");
+                        add("Mild dehydration of about 1.4% can also impair your mood and concentration, stay hydrated to stay in the mood");
+                        add("Inadequate fluid consumption is a common culprit in constipation,therefore I recommend you grab a glass of water");
+                        add("Did you drink your 15.5 cups (3.7 liters) of fluids today, if not drink 1 cup of water right now");
+                        add("Did you know H₂O has a density of 997 kg/m³? Anyways, it's time to hydrate");
+                    }}
+            );
+  
     /**
      * Hydrate Reminder interval break text to display in polite form
      */
@@ -127,6 +149,9 @@ public class HydrateBreakMessageDictionary {
                 break;
             case POLITE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
+                break;
+            case NERDY:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_NERDY_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
