@@ -208,8 +208,10 @@ public class HydrateReminderPlugin extends Plugin
 					{
 						clientThread.invoke(() ->
 								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
-						break;
 					}
+					break;
+				default:
+					break;
 			}
 		}
 	}
