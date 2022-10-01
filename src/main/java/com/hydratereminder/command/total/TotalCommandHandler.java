@@ -13,12 +13,8 @@ public class TotalCommandHandler implements CommandHandler {
     @Inject
     private ChatMessageSender chatMessageSender;
 
-    private final HydrateReminderPlugin hydrateReminderPlugin;
-
     @Inject
-    public TotalCommandHandler(HydrateReminderPlugin hydrateReminderPlugin) {
-        this.hydrateReminderPlugin = hydrateReminderPlugin;
-    }
+    private HydrateReminderPlugin hydrateReminderPlugin;
 
     /**
      * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken
