@@ -88,6 +88,7 @@ public class HydrateReminderPlugin extends Plugin
 	@Inject
 	private Client client;
 
+	/** RuneLite client thread */
 	@Inject
 	private ClientThread clientThread;
 
@@ -188,6 +189,12 @@ public class HydrateReminderPlugin extends Plugin
 		return configManager.getConfig(HydrateReminderConfig.class);
 	}
 
+	/**
+	 * <p>Detects when a config item has been changed and will show an example Hydrate Reminder notification
+	 * based on the config that changed
+	 * </p>
+	 * @param event the config that has been changed
+	 */
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
@@ -196,13 +203,15 @@ public class HydrateReminderPlugin extends Plugin
 			switch (event.getKey())
 			{
 				case "hydrateReminderChatMessageEnabled":
-					if (event.getOldValue().equals("false")) {
-						clientThread.invoke(() -> chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
-					}
 				case "hydrateReminderChatMessageType":
-//					clientThread.invoke(() -> chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+					// only send example chat notification if chat messages are enabled and player is logged in
+					if (config.hydrateReminderChatMessageEnabled() && client.getGameState() == GameState.LOGGED_IN)
+					{
+						clientThread.invoke(() ->
+								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+						break;
+					}
 			}
-
 		}
 	}
 
