@@ -81,6 +81,24 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
     
+    private static final List<String> HYDRATE_BREAK_ROMANTIC_TEXT_LIST =
+            Collections.unmodifiableList(
+                new ArrayList<String>(){{
+                    add("Roses are red, violets are blue, this hydrate reminder is just for you");
+                    add("You can keep my heart but bring me back to life by drinking some water!");
+                    add("Stop making me think about you! I'm busy drinking water");
+                    add("You make my heart melt! Please drink some water");
+                    add("Just a note to remind you I'm thinking about you and drinkind some water");
+                    add("As the flower needs the sunshine, I need you in my life. Please drink some water");
+                    add("Your heart is so full of love, and I'm lucky enough to find a place there. Please drink some water");
+                    add("In all the world, there is no heart for me like yours. Drink some water to keep me in your heart.");
+                    add("Every time I think about you, my heart dances. Drink some water to keep it dancing.");
+                    add("You are artwork I could admire forever. Please drink some water");
+                    add("My soul and your soul are forever tangled. Please drink some water");
+                    add("Being with you makes my heart sing. Take a sip of water and keep it singing.");
+                }}
+            )
+    
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
         final SecureRandom randomGenerator = new SecureRandom();
@@ -102,6 +120,8 @@ public class HydrateBreakMessageDictionary {
             case CARING:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
                 break;
+            case ROMANTIC:
+                breakMessage =  getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST)
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
         }
