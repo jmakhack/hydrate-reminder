@@ -175,7 +175,7 @@ public class HydrateBreakMessageDictionary {
             case POLITE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
                 break;
-            case POLITE:
+            case PIRATE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_PIRATE_TEXT_LIST);
                 break;
             default:
