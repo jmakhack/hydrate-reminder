@@ -149,7 +149,31 @@ public class HydrateBreakMessageDictionary {
                         add("Thousands Have Lived Without Love, Not One Without Water. Take a sip");                  
                     }}
             );
-    
+
+    /**
+     * Hydrate Reminder interval break text to display in Aggressive form
+     */
+    private static final List<String> HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Go grab some Water NOW!");
+                        add("Water Now or Never , You need It!");
+                        add("You should be Hydrated , No questions asked!");
+                        add("I need to see you hydrating right here right now with no excuses");
+                        add("Hydration Time! You Gotta Enjoy it");
+                        add("Thirsty? We Know , All you want is Water");
+                        add("Your Body is made up of 70% water , Don't Drain that number to 0 , Go Drink Water");
+                        add("Do Yourself a Favor , Drink Some Water");
+                        add("Water Will never Leave you , So enjoy every sip of it");
+                        add("You gotta drink some Water , Yeah!");
+                        add("We all love Water , Dont We?");
+                        add("You just can't waste any Water , It Deserves your Body");
+                        add("Stop For a Moment , Enjoy every Sip of Water");
+                        add("Water We all Love it , Just Can't Deny");
+                    }}
+            );
+
+
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
         final SecureRandom randomGenerator = new SecureRandom();
@@ -179,6 +203,9 @@ public class HydrateBreakMessageDictionary {
                 break;
             case MOTIVATIONAL:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
+                break;
+            case AGGRESSIVE:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
