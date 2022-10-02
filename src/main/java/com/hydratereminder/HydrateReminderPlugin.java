@@ -197,7 +197,7 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if(event.getGroup().equals("hydratereminder"))
+		if (event.getGroup().equals("hydratereminder"))
 		{
 			switch (event.getKey())
 			{
@@ -208,6 +208,13 @@ public class HydrateReminderPlugin extends Plugin
 					{
 						clientThread.invoke(() ->
 								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+					}
+					break;
+				case "hydrateReminderComputerNotificationEnabled":
+					if (config.hydrateReminderComputerNotificationEnabled())
+					{
+						clientThread.invoke(() ->
+								sendHydrateReminderNotification("This is how hydrate reminder computer notifications will appear."));
 					}
 					break;
 				default:
