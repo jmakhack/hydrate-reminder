@@ -93,6 +93,8 @@ Use a variety of optional builtin chat commands to enhance the hydrate reminder 
     -   Displays the amount of time since the previous hydrate reminder
 -   `::hr reset`
     -   Resets the current hydrate reminder interval
+-   `::hr hydrate`
+    -   Resets the current hydrate reminder interval and increase hydration breaks
 -   `::hr total`
     -   Displays the number of hydration breaks taken
 
