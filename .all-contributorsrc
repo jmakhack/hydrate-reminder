@@ -264,6 +264,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "Zeesky-code",
+      "name": "Zainab Lawal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71593672?v=4",
+      "profile": "https://github.com/Zeesky-code",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
