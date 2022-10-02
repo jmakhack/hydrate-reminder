@@ -169,6 +169,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/aakash232"><img src="https://avatars.githubusercontent.com/u/67885496?v=4?s=100" width="100px;" alt="Aakash Tyagi"/><br /><sub><b>Aakash Tyagi</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=aakash232" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/Zeesky-code"><img src="https://avatars.githubusercontent.com/u/71593672?v=4?s=100" width="100px;" alt="Zainab Lawal"/><br /><sub><b>Zainab Lawal</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Zeesky-code" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
