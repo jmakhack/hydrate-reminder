@@ -80,6 +80,28 @@ public class HydrateBreakMessageDictionary {
                         add("Take a sip of water because I care for you and want to see you healthy");
                     }}
             );
+
+    /**
+     * Hydrate Reminder interval break text to display in romantic form
+     */
+    private static final List<String> HYDRATE_BREAK_ROMANTIC_TEXT_LIST =
+            Collections.unmodifiableList(
+                new ArrayList<String>() {{
+                    add("Roses are red, violets are blue, this hydrate reminder is just for you");
+                    add("You can keep my heart but bring me back to life by drinking some water!");
+                    add("Stop making me think about you! I'm busy drinking water");
+                    add("You make my heart melt! Please drink some water");
+                    add("Just a note to remind you I'm thinking about you and drinkind some water");
+                    add("As the flower needs the sunshine, I need you in my life. Please drink some water");
+                    add("Your heart is so full of love, and I'm lucky enough to find a place there. Please drink some water");
+                    add("In all the world, there is no heart for me like yours. Drink some water to keep me in your heart.");
+                    add("Every time I think about you, my heart dances. Drink some water to keep it dancing.");
+                    add("You are artwork I could admire forever. Please drink some water");
+                    add("My soul and your soul are forever tangled. Please drink some water");
+                    add("Being with you makes my heart sing. Take a sip of water and keep it singing.");
+                }}
+            );
+
     
     /**
      * Hydrate Reminder interval break text to display in polite form
@@ -101,6 +123,30 @@ public class HydrateBreakMessageDictionary {
                         add("Please take care of yourself! Drink some water");
                         add("Your future seems brighter when you drink water. Please have a sip");
                         add("To be honest, you really need a hydration break. Kindly grab a drink");                  
+                    }}
+            );
+
+    
+     /**
+     * Hydrate Reminder interval break text to display in motivational form
+     */
+    private static final List<String> HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Water is the Driving Force of All Nature. Grab some");
+                        add("Water is the Best Natural Remedy. Drink Your Way to Better Health");
+                        add("Drink Pure Water. Stay Healthy. Stay lively");
+                        add("Hydration time! Drink some water and keep going");
+                        add("There is No Small Pleasure in Pure Water. Enjoy it");
+                        add("Water is the best of all things. Stay hydrated and rule the day");
+                        add("When the Well is Dry, We’ll Know the Worth of Water. Drink well, live well");
+                        add("Do your body a favor, stay hydrated, stay healthy");
+                        add("Pure Water is the World’s First and Foremost Medicine. Use it");
+                        add("Water is Your Best Friend for Life. Catch up with a break");
+                        add("Keep Calm & Drink Water");
+                        add("Water is Life. Don’t Waste It. Drink it");
+                        add("It's time to rejuvinate your body with water for a better and healthier you");
+                        add("Thousands Have Lived Without Love, Not One Without Water. Take a sip");                  
                     }}
             );
     
@@ -125,8 +171,14 @@ public class HydrateBreakMessageDictionary {
             case CARING:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
                 break;
+            case ROMANTIC:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+                break;
             case POLITE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
+                break;
+            case MOTIVATIONAL:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
