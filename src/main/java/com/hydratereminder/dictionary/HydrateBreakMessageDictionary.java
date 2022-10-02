@@ -126,6 +126,27 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
 
+            /**
+     * Hydrate Reminder interval break text to display in pirate form
+     */
+    private static final List<String> HYDRATE_BREAK_PIRATE_TEXT_LIST =
+    Collections.unmodifiableList(
+            new ArrayList<String>() {{
+                add("Ahoy Matey! Sit down next to me and grab a drink!");
+                add("Aaarghh! You look as dry as a skull! Get some water now!");
+                add("Avast Ye! Haven't seen you drinking all day! Time to drink!");
+                add("Shiver me timbers, you better drink some water before you collapse!");
+                add("Yo-ho-ho, let's have a drink together!");
+                add("You better have a jug of water, or I will make you walk the plank!");
+                add("Arrr, the ocean reminds me, that you should take a water break!");
+                add("Avast! There's a storm coming up, better drink something to be ready!");
+                add("Ahoy, welcome on the ship! Let's get inside and have a drink together!");
+                add("Blimey, when was the last time you drank something? Better do it now!");
+                add("Great job catching all these fish, now grab a drink!");
+                add("Yo-ho-ho, you desperately need a water break!");
+                               
+            }}
+    );
     
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
@@ -153,6 +174,9 @@ public class HydrateBreakMessageDictionary {
                 break;
             case POLITE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
+                break;
+            case POLITE:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_PIRATE_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
