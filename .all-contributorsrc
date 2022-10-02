@@ -255,6 +255,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Kaushik-Iyer",
+      "name": "Kaushik-Iyer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84177184?v=4",
+      "profile": "https://github.com/Kaushik-Iyer",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 5,
