@@ -264,10 +264,8 @@ public class HydrateReminderPlugin extends Plugin
 							handleHydratePrevCommand();
 							break;
 						case RESET:
-							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
-							break;
 						case HYDRATE:
-							commandDelegate.invokeCommand(commandExecuted);
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						case HELP:
 							handleHydrateHelpCommand();
