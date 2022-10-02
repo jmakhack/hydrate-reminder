@@ -273,7 +273,7 @@ public class HydrateReminderPlugin extends Plugin
 							handleHydrateHelpCommand();
 							break;
 						case TOTAL:
-							handleHydrateTotalCommand();
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						default:
 							throw new IllegalArgumentException();
@@ -417,20 +417,6 @@ public class HydrateReminderPlugin extends Plugin
 		chatMessageSender.sendHydrateEmojiChatGameMessage(helpString);
 	}
 
-	/**
-	 * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken
-	 * </p>
-	 * @since 1.2.0
-	 */
-	private void handleHydrateTotalCommand()
-	{
-		// TODO: Output the overall total number of hydration breaks across sessions
-		final int numBreaks = getCurrentSessionHydrationBreaks();
-		final String breakText = numBreaks == 1 ? "break" : "breaks";
-		final String totalString = String.format("Current session: %d hydration %s.",
-				numBreaks, breakText);
-		chatMessageSender.sendHydrateEmojiChatGameMessage(totalString);
-	}
 
 	/**
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
