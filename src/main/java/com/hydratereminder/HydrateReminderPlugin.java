@@ -38,8 +38,10 @@ import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
+import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -85,6 +87,10 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Inject
 	private Client client;
+
+	/** RuneLite client thread */
+	@Inject
+	private ClientThread clientThread;
 
 	/**
 	 * Configuration settings for Hydrate Reminder plugin
@@ -181,6 +187,34 @@ public class HydrateReminderPlugin extends Plugin
 	protected HydrateReminderConfig provideConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(HydrateReminderConfig.class);
+	}
+
+	/**
+	 * <p>Detects when a config item has been changed and will show an example Hydrate Reminder notification
+	 * based on the config that changed
+	 * </p>
+	 * @param event the config that has been changed
+	 */
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if(event.getGroup().equals("hydratereminder"))
+		{
+			switch (event.getKey())
+			{
+				case "hydrateReminderChatMessageEnabled":
+				case "hydrateReminderChatMessageType":
+					// only send example chat notification if chat messages are enabled and player is logged in
+					if (config.hydrateReminderChatMessageEnabled() && client.getGameState() == GameState.LOGGED_IN)
+					{
+						clientThread.invoke(() ->
+								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+					}
+					break;
+				default:
+					break;
+			}
+		}
 	}
 
 	/**
