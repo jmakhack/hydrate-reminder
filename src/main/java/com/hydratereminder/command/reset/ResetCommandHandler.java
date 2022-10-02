@@ -5,6 +5,7 @@ import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.command.CommandHandler;
 import java.time.Instant;
 import java.util.Optional;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
@@ -14,6 +15,7 @@ public class ResetCommandHandler implements CommandHandler {
 
     private final ChatMessageSender chatMessageSender;
 
+    @Inject
     public ResetCommandHandler(HydrateReminderPlugin hydrateReminderPlugin, ChatMessageSender chatMessageSender) {
         this.hydrateReminderPlugin = hydrateReminderPlugin;
         this.chatMessageSender = chatMessageSender;

@@ -380,20 +380,6 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Handle the hydrate "hydrate" command by resetting the current hydrate interval, increasing
-	 * hydration breaks taken during the session and displaying a hydration success message in chat
-	 * </p>
-	 * @since 2.0.0
-	 */
-	private void handleHydrateHydrateCommand()
-	{
-		hydrateBetweenHydrationBreaks();
-		setResetState(true);
-		final String hydratedString = "Successfully hydrated before reminder interval finished";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(hydratedString);
-	}
-
-	/**
 	 * <p>Handle the hydrate help command by displaying all available command arguments
 	 * </p>
 	 * @since 1.1.0
