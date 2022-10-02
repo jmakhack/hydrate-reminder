@@ -9,11 +9,11 @@ public enum HydrateReminderPersonalityType
 {
     SIMPLE("Simple"),
     FUN("Fun"),
-    CARING("Caring"),
-    ROMANTIC("Romantic"),
     POLITE("Polite"),
+    MOTIVATIONAL("Motivational"),
+    ROMANTIC("Romantic"),
     PIRATE("Pirate");
-
+    CARING("Caring");  
 
     private final String personalityType;
 

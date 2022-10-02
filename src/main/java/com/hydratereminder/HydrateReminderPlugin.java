@@ -198,7 +198,7 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if(event.getGroup().equals("hydratereminder"))
+		if (event.getGroup().equals("hydratereminder"))
 		{
 			switch (event.getKey())
 			{
@@ -209,6 +209,13 @@ public class HydrateReminderPlugin extends Plugin
 					{
 						clientThread.invoke(() ->
 								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+					}
+					break;
+				case "hydrateReminderComputerNotificationEnabled":
+					if (config.hydrateReminderComputerNotificationEnabled())
+					{
+						clientThread.invoke(() ->
+								sendHydrateReminderNotification("This is how hydrate reminder computer notifications will appear."));
 					}
 					break;
 				default:
@@ -273,7 +280,7 @@ public class HydrateReminderPlugin extends Plugin
 							handleHydrateHelpCommand();
 							break;
 						case TOTAL:
-							handleHydrateTotalCommand();
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						default:
 							throw new IllegalArgumentException();
@@ -417,20 +424,6 @@ public class HydrateReminderPlugin extends Plugin
 		chatMessageSender.sendHydrateEmojiChatGameMessage(helpString);
 	}
 
-	/**
-	 * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken
-	 * </p>
-	 * @since 1.2.0
-	 */
-	private void handleHydrateTotalCommand()
-	{
-		// TODO: Output the overall total number of hydration breaks across sessions
-		final int numBreaks = getCurrentSessionHydrationBreaks();
-		final String breakText = numBreaks == 1 ? "break" : "breaks";
-		final String totalString = String.format("Current session: %d hydration %s.",
-				numBreaks, breakText);
-		chatMessageSender.sendHydrateEmojiChatGameMessage(totalString);
-	}
 
 	/**
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
