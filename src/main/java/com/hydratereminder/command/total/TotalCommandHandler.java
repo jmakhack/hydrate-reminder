@@ -2,6 +2,7 @@ package com.hydratereminder.command.total;
 
 import com.hydratereminder.HydrateReminderPlugin;
 import com.hydratereminder.chat.ChatMessageSender;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import com.hydratereminder.command.CommandHandler;
@@ -13,6 +14,7 @@ public class TotalCommandHandler implements CommandHandler {
 
     private final HydrateReminderPlugin hydrateReminderPlugin;
 
+    @Inject
     public TotalCommandHandler(ChatMessageSender chatMessageSender, HydrateReminderPlugin hydrateReminderPlugin) {
         this.chatMessageSender = chatMessageSender;
         this.hydrateReminderPlugin = hydrateReminderPlugin;
