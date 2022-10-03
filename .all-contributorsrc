@@ -235,7 +235,8 @@
       "profile": "https://github.com/macslowiak",
       "contributions": [
         "code",
-        "test"
+        "test",
+        "doc"
       ]
     },
     {
@@ -254,6 +255,34 @@
       "profile": "https://github.com/aakash232",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "Kaushik-Iyer",
+      "name": "Kaushik-Iyer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84177184?v=4",
+      "profile": "https://github.com/Kaushik-Iyer",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Zeesky-code",
+      "name": "Zainab Lawal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71593672?v=4",
+      "profile": "https://github.com/Zeesky-code",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "harikesh409",
+      "name": "Harikesh Pallantla",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3501554?v=4",
+      "profile": "https://harikesh409.github.io/",
+      "contributions": [
+        "code",
+        "test"
       ]
     }
   ],

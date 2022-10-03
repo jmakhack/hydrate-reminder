@@ -28,6 +28,7 @@ package com.hydratereminder;
 import com.google.inject.Provides;
 import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.chat.HydrateEmojiProvider;
+import com.hydratereminder.command.CommandInvoker;
 import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,8 +38,10 @@ import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
+import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -85,6 +88,10 @@ public class HydrateReminderPlugin extends Plugin
 	@Inject
 	private Client client;
 
+	/** RuneLite client thread */
+	@Inject
+	private ClientThread clientThread;
+
 	/**
 	 * Configuration settings for Hydrate Reminder plugin
 	 */
@@ -115,8 +122,8 @@ public class HydrateReminderPlugin extends Plugin
 	@Inject
 	private HydrateEmojiProvider hydrateEmojiProvider;
 
-//	@Inject
-//	private CommandInvoker commandDelegate;
+	@Inject
+	private CommandInvoker commandDelegate;
 
 	/**
 	 * <p>The infobox timer that is rendered onto the overlay
@@ -183,6 +190,41 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
+	 * <p>Detects when a config item has been changed and will show an example Hydrate Reminder notification
+	 * based on the config that changed
+	 * </p>
+	 * @param event the config that has been changed
+	 */
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (event.getGroup().equals("hydratereminder"))
+		{
+			switch (event.getKey())
+			{
+				case "hydrateReminderChatMessageEnabled":
+				case "hydrateReminderChatMessageType":
+					// only send example chat notification if chat messages are enabled and player is logged in
+					if (config.hydrateReminderChatMessageEnabled() && client.getGameState() == GameState.LOGGED_IN)
+					{
+						clientThread.invoke(() ->
+								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+					}
+					break;
+				case "hydrateReminderComputerNotificationEnabled":
+					if (config.hydrateReminderComputerNotificationEnabled())
+					{
+						clientThread.invoke(() ->
+								sendHydrateReminderNotification("This is how hydrate reminder computer notifications will appear."));
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
+	/**
 	 * <p>Detects when the player logs in and then starts the Hydrate Reminder interval and
 	 * displays the hydrate welcome message
 	 * </p>
@@ -223,22 +265,20 @@ public class HydrateReminderPlugin extends Plugin
 					switch (arg)
 					{
 						case NEXT:
-							handleHydrateNextCommand();
+							commandDelegate.invokeCommand(commandExecuted);
 							break;
 						case PREV:
 							handleHydratePrevCommand();
 							break;
 						case RESET:
-							handleHydrateResetCommand();
-							break;
 						case HYDRATE:
-							handleHydrateHydrateCommand();
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						case HELP:
 							handleHydrateHelpCommand();
 							break;
 						case TOTAL:
-							handleHydrateTotalCommand();
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						default:
 							throw new IllegalArgumentException();
@@ -255,21 +295,6 @@ public class HydrateReminderPlugin extends Plugin
 		}
 		// TODO: Uncomment when the commands will be refactored to com.hydratereminder.command
 		// commandDelegate.invokeCommand(commandExecuted);
-	}
-
-	/**
-	 * <p>Handle the hydrate next command by generating a chat message displaying the amount of time
-	 * until the next hydration break
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void handleHydrateNextCommand()
-	{
-		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
-		final Duration timeUntilNextBreak = Duration.between(Instant.now(), nextHydrateReminderInstant);
-		final String timeString = getTimeDisplay(timeUntilNextBreak);
-		final String message = timeString + " until the next hydration break.";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(message);
 	}
 
 	/**
@@ -326,7 +351,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * @return the time in string format
 	 * @since 1.1.1
 	 */
-	protected String getTimeDisplay(Duration duration)
+	public String getTimeDisplay(Duration duration)
 	{
 		final int hours = Math.toIntExact(duration.toHours());
 		final int minutes = Math.toIntExact(duration.toMinutes() % 60);
@@ -342,34 +367,6 @@ public class HydrateReminderPlugin extends Plugin
 		}
 		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds" : seconds + " second");
 		return timeDisplayBuilder.toString();
-	}
-
-	/**
-	 * <p>Handle the hydrate reset command by resetting the current hydrate interval and displaying
-	 * a reset success message in chat
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void handleHydrateResetCommand()
-	{
-		resetHydrateReminderTimeInterval();
-		setResetState(true);
-		final String resetString = "Hydrate reminder interval has been successfully reset.";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(resetString);
-	}
-
-	/**
-	 * <p>Handle the hydrate "hydrate" command by resetting the current hydrate interval, increasing
-	 * hydration breaks taken during the session and displaying a hydration success message in chat
-	 * </p>
-	 * @since 2.0.0
-	 */
-	private void handleHydrateHydrateCommand()
-	{
-		hydrateBetweenHydrationBreaks();
-		setResetState(true);
-		final String hydratedString = "Successfully hydrated before reminder interval finished";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(hydratedString);
 	}
 
 	/**
@@ -396,20 +393,6 @@ public class HydrateReminderPlugin extends Plugin
 		chatMessageSender.sendHydrateEmojiChatGameMessage(helpString);
 	}
 
-	/**
-	 * <p>Handle the hydrate total command by displaying the overall number of hydration breaks taken
-	 * </p>
-	 * @since 1.2.0
-	 */
-	private void handleHydrateTotalCommand()
-	{
-		// TODO: Output the overall total number of hydration breaks across sessions
-		final int numBreaks = getCurrentSessionHydrationBreaks();
-		final String breakText = numBreaks == 1 ? "break" : "breaks";
-		final String totalString = String.format("Current session: %d hydration %s.",
-				numBreaks, breakText);
-		chatMessageSender.sendHydrateEmojiChatGameMessage(totalString);
-	}
 
 	/**
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
@@ -488,7 +471,7 @@ public class HydrateReminderPlugin extends Plugin
 	 * @return the instant to send the next hydrate reminder on
 	 * @since 1.1.0
 	 */
-	protected Instant getNextHydrateReminderInstant()
+	public Instant getNextHydrateReminderInstant()
 	{
 		final Duration hydrateReminderDuration = Duration.ofMinutes(config.hydrateReminderInterval());
 		if(getLastHydrateInstant().isPresent())
