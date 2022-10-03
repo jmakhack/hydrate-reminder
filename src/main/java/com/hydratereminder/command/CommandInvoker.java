@@ -1,11 +1,11 @@
 package com.hydratereminder.command;
 
+import com.hydratereminder.HydrateReminderCommandArgs;
+import com.hydratereminder.chat.ChatMessageSender;
+import net.runelite.api.events.CommandExecuted;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
-import com.hydratereminder.HydrateReminderCommandArgs;
-import net.runelite.api.ChatMessageType;
-import net.runelite.api.events.CommandExecuted;
 
 import static com.hydratereminder.Commons.HYDRATE_COMMAND_ALIAS;
 import static com.hydratereminder.Commons.HYDRATE_COMMAND_NAME;
@@ -14,8 +14,14 @@ import static org.apache.commons.lang3.ArrayUtils.isNotEmpty;
 @Singleton
 public class CommandInvoker {
 
+    private final CommandCreator commandCreator;
+    private final ChatMessageSender chatMessageSender;
+
     @Inject
-    private CommandCreator commandCreator;
+    public CommandInvoker(CommandCreator commandCreator, ChatMessageSender chatMessageSender) {
+        this.commandCreator = commandCreator;
+        this.chatMessageSender = chatMessageSender;
+    }
 
     public void invokeCommand(CommandExecuted commandExecuted) {
         if (!isHydrateReminderCommand(commandExecuted)) {
@@ -37,14 +43,9 @@ public class CommandInvoker {
     }
 
     private void printHelpMessage(String problemReason) {
-        sendHydrateEmojiChatMessage(problemReason);
+        chatMessageSender.sendHydrateEmojiChatGameMessage(problemReason);
         final Command helpCommand = commandCreator.createFrom(HydrateReminderCommandArgs.HELP);
         helpCommand.execute();
-    }
-
-    private void sendHydrateEmojiChatMessage(String invalidArgString) {
-        final ChatMessageType chatMessageType = ChatMessageType.GAMEMESSAGE;
-        // TODO: Use proper implementation from HydrateReminderPlugin
     }
 
     private boolean isHydrateReminderCommand(CommandExecuted commandExecuted) {
