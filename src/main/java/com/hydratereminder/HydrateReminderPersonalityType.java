@@ -13,8 +13,10 @@ public enum HydrateReminderPersonalityType
     NERDY("Nerdy"),
     MOTIVATIONAL("Motivational"),
     ROMANTIC("Romantic"),
+    AGGRESSIVE("Aggressive"),
     PIRATE("Pirate"),
     CARING("Caring");  
+
 
 
     private final String personalityType;
