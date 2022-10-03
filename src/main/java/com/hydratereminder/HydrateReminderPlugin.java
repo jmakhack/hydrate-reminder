@@ -265,20 +265,14 @@ public class HydrateReminderPlugin extends Plugin
 					switch (arg)
 					{
 						case NEXT:
+						case RESET:
+						case HYDRATE:
+						case HELP:
+						case TOTAL:
 							commandDelegate.invokeCommand(commandExecuted);
 							break;
 						case PREV:
 							handleHydratePrevCommand();
-							break;
-						case RESET:
-						case HYDRATE:
-							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
-							break;
-						case HELP:
-							handleHydrateHelpCommand();
-							break;
-						case TOTAL:
-							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						default:
 							throw new IllegalArgumentException();
@@ -289,7 +283,8 @@ public class HydrateReminderPlugin extends Plugin
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
 							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
 					chatMessageSender.sendHydrateEmojiChatGameMessage(invalidArgString);
-					handleHydrateHelpCommand();
+					final CommandExecuted helpCommand = new CommandExecuted("hydrate", new String[]{"help"});
+					commandDelegate.invokeCommand(helpCommand);
 				}
 			}
 		}
@@ -368,31 +363,6 @@ public class HydrateReminderPlugin extends Plugin
 		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds" : seconds + " second");
 		return timeDisplayBuilder.toString();
 	}
-
-	/**
-	 * <p>Handle the hydrate help command by displaying all available command arguments
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void handleHydrateHelpCommand()
-	{
-		final StringBuilder commandList = new StringBuilder();
-		final String listSeparator = ", ";
-		for (HydrateReminderCommandArgs arg : HydrateReminderCommandArgs.values())
-		{
-			if (commandList.length() > 0)
-			{
-				commandList.append(listSeparator);
-			}
-			commandList.append(arg.toString());
-		}
-		final String helpString = String.format(
-				"Available commands: %s%s %s",
-				RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, commandList
-		);
-		chatMessageSender.sendHydrateEmojiChatGameMessage(helpString);
-	}
-
 
 	/**
 	 * <p>Detects if the Hydrate Reminder interval has been reached and runs the appropriate actions
