@@ -97,23 +97,6 @@ public class HydrateReminderPluginTest
     }
 
     @Test
-    public void shouldReturnDifferentMessageWhenThereIsNoTimeSinceLastBreak()
-    {
-        final Optional<Duration> timeSinceLastBreak = Optional.empty();
-        final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
-        assertEquals("No hydration breaks have been taken yet.", prevCommandMessage);
-    }
-
-    @Test
-    public void shouldReturnDifferentMessageWhenThereIsResetSinceLastBreak()
-    {
-        final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofSeconds(645));
-        hydrateReminderPlugin.setResetState(true);
-        final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
-        assertEquals("10 minutes 45 seconds since the last hydration interval reset.", prevCommandMessage);
-    }
-
-    @Test
     public void shouldReturnNoDurationWhenThereIsNoLastBreak()
     {
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty(), Instant.now());
@@ -126,14 +109,6 @@ public class HydrateReminderPluginTest
         final Optional<Instant> timeOfLastBreak = Optional.of(Instant.now());
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(timeOfLastBreak, Instant.now());
         assertTrue(timeSinceLastBreak.isPresent());
-    }
-
-    @Test
-    public void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage()
-    {
-        final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(130));
-        final String prevCommandMessage = hydrateReminderPlugin.formatHandleHydratePrevCommand(timeSinceLastBreak);
-        assertEquals("2 hours 10 minutes 0 seconds since the last hydration break.", prevCommandMessage);
     }
 
     @Test
