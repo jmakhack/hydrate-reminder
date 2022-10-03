@@ -9,7 +9,6 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.security.SecureRandom;
 
-import static com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary.getRandomWelcomeMessage;
 import static org.junit.Assert.*;
 
 @RunWith(PowerMockRunner.class)
@@ -22,7 +21,7 @@ public class HydrateWelcomeMessageDictionaryTest {
         PowerMockito.whenNew(SecureRandom.class).withNoArguments().thenReturn(mockRandom);
         Mockito.when(mockRandom.nextInt(Mockito.anyInt())).thenReturn(4);
 
-        String givenMessage = getRandomWelcomeMessage();
+        String givenMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
         String expectedMessage = "Cheers to staying hydrated!";
 
         assertEquals(givenMessage, expectedMessage);
