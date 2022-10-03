@@ -82,6 +82,31 @@ public class HydrateBreakMessageDictionary {
             );
 
     /**
+     * Hydrate Reminder interval break text to display in caring form
+     */
+    private static final List<String> HYDRATE_BREAK_NERDY_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Your body is 60% water, don't forget to maintain that percentage, it's time to hydrate");
+                        add("H₂O is the most neglected nutrient in your diet, but one of the most vital, it's time to drink some water");
+                        add("Adequate hydration is essential for the proper functioning of the brain, take a small water break.");
+                        add("Water has a high specific heat capacity, have some water to regulate that body temperature of yours");
+                        add("When dehydrated, the skin can become more vulnerable to skin disorders and wrinkling, it's time to rehydrate");
+                        add("Can the water from your faucet contain same molecules that once a dinosaurs drank?Could be! Anyways it is time to rehydrate");
+                        add("A person can live live only about a week without water, help yourself with a glass of water.");
+                        add("Your body constantly loses water through sweating and exhalation, drink a glass of water, and stay hydrated");
+                        add("Water consumption helps cushion your joints and tissues, protecting your body, drink water to stay protected");
+                        add("Globally,  about 748 million people have no access to safe and clean drinking water, drink water while you have it");
+                        add("Mild dehydration of about 1.4% can also impair your mood and concentration, stay hydrated to stay in the mood");
+                        add("Inadequate fluid consumption is a common culprit in constipation,therefore I recommend you grab a glass of water");
+                        add("Did you drink your 15.5 cups (3.7 liters) of fluids today, if not drink 1 cup of water right now");
+                        add("Did you know H₂O has a density of 997 kg/m³? Anyways, it's time to hydrate");
+                    }}
+            );
+  
+
+
+    /**
      * Hydrate Reminder interval break text to display in romantic form
      */
     private static final List<String> HYDRATE_BREAK_ROMANTIC_TEXT_LIST =
@@ -102,7 +127,7 @@ public class HydrateBreakMessageDictionary {
                 }}
             );
 
-    
+
     /**
      * Hydrate Reminder interval break text to display in polite form
      */
@@ -126,6 +151,27 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
 
+            /**
+     * Hydrate Reminder interval break text to display in pirate form
+     */
+    private static final List<String> HYDRATE_BREAK_PIRATE_TEXT_LIST =
+    Collections.unmodifiableList(
+            new ArrayList<String>() {{
+                add("Ahoy Matey! Sit down next to me and grab a drink!");
+                add("Aaarghh! You look as dry as a skull! Get some water now!");
+                add("Avast Ye! Haven't seen you drinking all day! Time to drink!");
+                add("Shiver me timbers, you better drink some water before you collapse!");
+                add("Yo-ho-ho, let's have a drink together!");
+                add("You better have a jug of water, or I will make you walk the plank!");
+                add("Arrr, the ocean reminds me, that you should take a water break!");
+                add("Avast! There's a storm coming up, better drink something to be ready!");
+                add("Ahoy, welcome on the ship! Let's get inside and have a drink together!");
+                add("Blimey, when was the last time you drank something? Better do it now!");
+                add("Great job catching all these fish, now grab a drink!");
+                add("Yo-ho-ho, you desperately need a water break!");
+                               
+            }}
+    );
     
      /**
      * Hydrate Reminder interval break text to display in motivational form
@@ -149,7 +195,31 @@ public class HydrateBreakMessageDictionary {
                         add("Thousands Have Lived Without Love, Not One Without Water. Take a sip");                  
                     }}
             );
-    
+
+    /**
+     * Hydrate Reminder interval break text to display in Aggressive form
+     */
+    private static final List<String> HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Go grab some Water NOW!");
+                        add("Water Now or Never, You need It!");
+                        add("You should be Hydrated, No questions asked!");
+                        add("I need to see you hydrating right here right now with no excuses");
+                        add("Hydration Time! You Gotta Enjoy it");
+                        add("Thirsty? We Know, All you want is Water");
+                        add("Your Body is made up of 70% water, Don't Drain that number to 0, Go Drink Water");
+                        add("Do Yourself a Favor, Drink Some Water");
+                        add("Water Will never Leave you, So enjoy every sip of it");
+                        add("You gotta drink some Water, Yeah!");
+                        add("We all love Water, Dont We?");
+                        add("You just can't waste any Water, It Deserves your Body");
+                        add("Stop For a Moment, Enjoy every Sip of Water");
+                        add("Water We all Love it, Just Can't Deny");
+                    }}
+            );
+
+
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
         final SecureRandom randomGenerator = new SecureRandom();
@@ -177,8 +247,17 @@ public class HydrateBreakMessageDictionary {
             case POLITE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
                 break;
+            case NERDY:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_NERDY_TEXT_LIST);
+                 break;
+            case PIRATE:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_PIRATE_TEXT_LIST);
+                break;
             case MOTIVATIONAL:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
+                break;
+            case AGGRESSIVE:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
