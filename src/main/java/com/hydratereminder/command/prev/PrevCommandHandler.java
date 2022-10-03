@@ -6,6 +6,7 @@ import com.hydratereminder.command.CommandHandler;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Optional;
@@ -15,12 +16,14 @@ public class PrevCommandHandler implements CommandHandler {
 
     private final ChatMessageSender chatMessageSender;
     private final HydrateReminderPlugin hydrateReminderPlugin;
+    private final Clock clock;
 
 
     @Inject
-    public PrevCommandHandler(ChatMessageSender chatMessageSender, HydrateReminderPlugin hydrateReminderPlugin) {
+    public PrevCommandHandler(ChatMessageSender chatMessageSender, HydrateReminderPlugin hydrateReminderPlugin, Clock clock) {
         this.chatMessageSender = chatMessageSender;
         this.hydrateReminderPlugin = hydrateReminderPlugin;
+        this.clock = clock;
     }
 
 
@@ -32,7 +35,7 @@ public class PrevCommandHandler implements CommandHandler {
     @Override
     public void handle() {
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin
-                .getDurationSinceLastBreak(hydrateReminderPlugin.getLastHydrateInstant(), Instant.now());
+                .getDurationSinceLastBreak(hydrateReminderPlugin.getLastHydrateInstant(), Instant.now(clock));
         final String message = formatHandleHydratePrevCommand(timeSinceLastBreak);
         chatMessageSender.sendHydrateEmojiChatGameMessage(message);
     }

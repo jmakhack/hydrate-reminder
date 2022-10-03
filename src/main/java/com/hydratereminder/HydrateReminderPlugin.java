@@ -51,6 +51,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import javax.inject.Inject;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -187,6 +188,16 @@ public class HydrateReminderPlugin extends Plugin
 	protected HydrateReminderConfig provideConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(HydrateReminderConfig.class);
+	}
+
+
+	/**
+	 * <p>Provides game clock witch makes it injectable and reusable in other classes
+	 * </p>
+	 */
+	@Provides
+	public Clock gameClock() {
+		return Clock.systemDefaultZone();
 	}
 
 	/**
