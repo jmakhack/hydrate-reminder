@@ -271,10 +271,8 @@ public class HydrateReminderPlugin extends Plugin
 							handleHydratePrevCommand();
 							break;
 						case RESET:
-							handleHydrateResetCommand();
-							break;
 						case HYDRATE:
-							commandDelegate.invokeCommand(commandExecuted);
+							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						case HELP:
 							handleHydrateHelpCommand();
@@ -384,20 +382,6 @@ public class HydrateReminderPlugin extends Plugin
 		}
 		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds" : seconds + " second");
 		return timeDisplayBuilder.toString();
-	}
-
-	/**
-	 * <p>Handle the hydrate reset command by resetting the current hydrate interval and displaying
-	 * a reset success message in chat
-	 * </p>
-	 * @since 1.1.0
-	 */
-	private void handleHydrateResetCommand()
-	{
-		resetHydrateReminderTimeInterval();
-		setResetState(true);
-		final String resetString = "Hydrate reminder interval has been successfully reset.";
-		chatMessageSender.sendHydrateEmojiChatGameMessage(resetString);
 	}
 
 	/**
