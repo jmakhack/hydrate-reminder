@@ -176,6 +176,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://harikesh409.github.io/"><img src="https://avatars.githubusercontent.com/u/3501554?v=4?s=100" width="100px;" alt="Harikesh Pallantla"/><br /><sub><b>Harikesh Pallantla</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=harikesh409" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=harikesh409" title="Tests">⚠️</a></td>
       <td align="center"><a href="http://www.youtube.com/lumary"><img src="https://avatars.githubusercontent.com/u/46068592?v=4?s=100" width="100px;" alt="Anja Bender"/><br /><sub><b>Anja Bender</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Lumary2" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/utsav82"><img src="https://avatars.githubusercontent.com/u/92868052?v=4?s=100" width="100px;" alt="utsav82"/><br /><sub><b>utsav82</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=utsav82" title="Code">💻</a></td>
+    </tr>
   </tbody>
   <tfoot>
     
