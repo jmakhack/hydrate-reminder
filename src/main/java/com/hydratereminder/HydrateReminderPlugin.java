@@ -265,20 +265,14 @@ public class HydrateReminderPlugin extends Plugin
 					switch (arg)
 					{
 						case NEXT:
+						case RESET:
+						case HYDRATE:
+						case HELP:
+						case TOTAL:
 							commandDelegate.invokeCommand(commandExecuted);
 							break;
 						case PREV:
 							handleHydratePrevCommand();
-							break;
-						case RESET:
-						case HYDRATE:
-							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
-							break;
-						case HELP:
-							commandDelegate.invokeCommand(commandExecuted);
-							break;
-						case TOTAL:
-							commandDelegate.invokeCommand(commandExecuted); // TODO remove this and use the generic invoke after all commands are refactored
 							break;
 						default:
 							throw new IllegalArgumentException();
@@ -289,7 +283,8 @@ public class HydrateReminderPlugin extends Plugin
 					final String invalidArgString = String.format("%s%s %s is not a valid command",
 							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
 					chatMessageSender.sendHydrateEmojiChatGameMessage(invalidArgString);
-					commandDelegate.invokeCommand(new CommandExecuted("hydrate", new String[]{"help"}));
+					final CommandExecuted helpCommand = new CommandExecuted("hydrate", new String[]{"help"});
+					commandDelegate.invokeCommand(helpCommand);
 				}
 			}
 		}
