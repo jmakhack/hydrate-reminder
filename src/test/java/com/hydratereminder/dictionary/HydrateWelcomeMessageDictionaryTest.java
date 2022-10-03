@@ -1,18 +1,31 @@
 package com.hydratereminder.dictionary;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import java.security.SecureRandom;
 
+import static org.junit.Assert.*;
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ SecureRandom.class, HydrateWelcomeMessageDictionary.class })
 public class HydrateWelcomeMessageDictionaryTest {
 
+    private HydrateWelcomeMessageDictionary welcomeMessageDictionary = new HydrateWelcomeMessageDictionary();
+
     @Test
-    public void shouldGetRandomWelcomeMessage(){
+    public void shouldGetRandomWelcomeMessage() throws Exception {
+        SecureRandom mockRandom = Mockito.mock(SecureRandom.class);
+        PowerMockito.whenNew(SecureRandom.class).withNoArguments().thenReturn(mockRandom);
+        Mockito.when(mockRandom.nextInt(Mockito.anyInt())).thenReturn(4);
 
-        final String welcomeMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
+        String givenMessage = welcomeMessageDictionary.getRandomWelcomeMessage();
+        String expectedMessage = "Cheers to staying hydrated!";
 
-        assertNotNull(welcomeMessage);
-        assertFalse(welcomeMessage.isEmpty());
+        assertEquals(givenMessage, expectedMessage);
     }
 }
