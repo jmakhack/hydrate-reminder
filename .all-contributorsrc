@@ -284,6 +284,24 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "Lumary2",
+      "name": "Anja Bender",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46068592?v=4",
+      "profile": "http://www.youtube.com/lumary",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "utsav82",
+      "name": "utsav82",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92868052?v=4",
+      "profile": "https://github.com/utsav82",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
