@@ -66,7 +66,7 @@ Get a friendly reminder every x minutes to take a quick hydration break.
 
 <hr/>
 
-Configure a variety of hydrate reminder settings such as:
+## Configure a variety of hydrate reminder settings such as:
 
 -   Welcome message
     -   Enable/Disable
@@ -84,7 +84,7 @@ Configure a variety of hydrate reminder settings such as:
 
 <hr/>
             
-Use a variety of optional builtin chat commands to enhance the hydrate reminder experience:
+## Use a variety of optional builtin chat commands to enhance the hydrate reminder experience:
 -   `::hr help`
     -   Displays the list of available commands
 -   `::hr next`
@@ -125,7 +125,7 @@ Hydrate Reminder is governed by the [Contributor Covenant v1.4](CODE_OF_CONDUCT.
 
 Hydrate Reminder is licensed under the [BSD-2-Clause License](LICENSE).
 
-## Contributors ✨
+## Made with ❤️ by Awesome Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
