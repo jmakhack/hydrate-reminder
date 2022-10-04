@@ -1,29 +1,29 @@
 package com.hydratereminder.dictionary;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import org.mockito.MockedConstruction;
 import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.security.SecureRandom;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ SecureRandom.class, HydrateWelcomeMessageDictionary.class })
+@ExtendWith(MockitoExtension.class)
 public class HydrateWelcomeMessageDictionaryTest {
 
     @Test
-    public void shouldGetRandomWelcomeMessage() throws Exception {
-        SecureRandom mockRandom = Mockito.mock(SecureRandom.class);
-        PowerMockito.whenNew(SecureRandom.class).withNoArguments().thenReturn(mockRandom);
-        Mockito.when(mockRandom.nextInt(Mockito.anyInt())).thenReturn(4);
+    public void shouldGetRandomWelcomeMessage() {
+        try (MockedConstruction<SecureRandom> mockRandom = Mockito.mockConstruction(SecureRandom.class, (mock, context) -> {
+            Mockito.when(mock.nextInt(Mockito.anyInt())).thenReturn(4);
+        })) {
+            String givenMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
+            String expectedMessage = "Cheers to staying hydrated!";
 
-        String givenMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
-        String expectedMessage = "Cheers to staying hydrated!";
-
-        assertEquals(givenMessage, expectedMessage);
+            assertEquals(givenMessage, expectedMessage);
+        }
     }
 }
+

@@ -1,11 +1,11 @@
 package com.hydratereminder.dictionary;
 
 import com.hydratereminder.HydrateReminderPersonalityType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class HydrateBreakMessageDictionaryTest {
 
