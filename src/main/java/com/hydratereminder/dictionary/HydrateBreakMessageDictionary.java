@@ -4,6 +4,8 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.hydratereminder.HydrateReminderPersonalityType;
 
@@ -206,6 +208,31 @@ public class HydrateBreakMessageDictionary {
                 break;
             case AGGRESSIVE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
+                break;
+            case RANDOM:
+                int randomNumber = ThreadLocalRandom.current().nextInt(1, 7);
+                switch (randomNumber) {
+                    case 1 :
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_FUNNY_TEXT_LIST);
+                        break;
+                    case 2 :
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
+                        break;
+                    case 3 :
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+                        break;
+                    case 4 :
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
+                        break;
+                    case 5 :
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
+                        break;
+                    case 6 :
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
+                        break;
+                    default:
+                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_SIMPLE_TEXT_LIST);
+                }
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
