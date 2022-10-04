@@ -3,25 +3,27 @@ package com.hydratereminder;
 import net.runelite.api.AnimationID;
 import net.runelite.api.Client;
 import net.runelite.api.Player;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.mock;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class HydrateReminderPluginTest
 {
     @Mock
@@ -31,7 +33,7 @@ public class HydrateReminderPluginTest
     @InjectMocks
     private HydrateReminderPlugin hydrateReminderPlugin;
 
-    @Before
+    @BeforeEach
     public void setup()
     {
         setupDefaultConfiguration();

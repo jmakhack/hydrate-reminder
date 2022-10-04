@@ -1,19 +1,19 @@
 package com.hydratereminder.chat;
 
-import junit.framework.TestCase;
 import net.runelite.api.Client;
 import net.runelite.api.IndexedSprite;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
-@RunWith(MockitoJUnitRunner.class)
-public class HydrateEmojiProviderTest extends TestCase {
+@ExtendWith(MockitoExtension.class)
+public class HydrateEmojiProviderTest {
 
     @Mock
     private Client client;
