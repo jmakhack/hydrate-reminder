@@ -1,9 +1,10 @@
 package com.hydratereminder;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.hydratereminder.command.NotRecognizedCommandException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class HydrateReminderCommandArgsTest
 {
@@ -54,15 +55,21 @@ public class HydrateReminderCommandArgsTest
         assertEquals(HydrateReminderCommandArgs.TOTAL, HydrateReminderCommandArgs.getValue("t"));
     }
 
-    @Test(expected = NotRecognizedCommandException.class)
+    @Test
     public void testGetValueThrowsIfNullCommand()
     {
-        HydrateReminderCommandArgs.getValue(null);
+        assertThrows(
+                NotRecognizedCommandException.class,
+                () -> HydrateReminderCommandArgs.getValue(null)
+        );
     }
 
-    @Test(expected = NotRecognizedCommandException.class)
+    @Test
     public void testGetValueThrowsIfInvalidCommand()
     {
-        HydrateReminderCommandArgs.getValue("dummy");
+        assertThrows(
+                NotRecognizedCommandException.class,
+                () -> HydrateReminderCommandArgs.getValue("dummy")
+        );
     }
 }
