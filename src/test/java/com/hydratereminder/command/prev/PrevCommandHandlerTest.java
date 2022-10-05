@@ -2,8 +2,11 @@ package com.hydratereminder.command.prev;
 
 import com.hydratereminder.HydrateReminderPlugin;
 import com.hydratereminder.chat.ChatMessageSender;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -11,10 +14,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
@@ -58,15 +58,21 @@ public class PrevCommandHandlerTest {
 
     @Test
     public void shouldReturnExpectedMessageWhenThereIsNoTimeSinceLastBreak() {
+        //given
         final Optional<Duration> timeSinceLastBreak = Optional.empty();
 
         String expectedMessage = "No hydration breaks have been taken yet.";
 
-        given(prevCommandHandler.formatHandleHydratePrevCommand(timeSinceLastBreak)).willReturn(expectedMessage);
+        //when
+        final String prevCommandMessage = prevCommandHandler.formatHandleHydratePrevCommand(timeSinceLastBreak);
+
+        //then
+        assertEquals(expectedMessage, prevCommandMessage);
     }
 
     @Test
     public void shouldReturnExpectedMessageWhenThereIsResetSinceLastBreak() {
+        //given
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofSeconds(645));
         final String timeSinceLastBreakAsString = "10 minutes 45 seconds";
 
@@ -75,11 +81,16 @@ public class PrevCommandHandlerTest {
 
         String expectedMessage = "10 minutes 45 seconds since the last hydration interval reset.";
 
-        given(prevCommandHandler.formatHandleHydratePrevCommand(timeSinceLastBreak)).willReturn(expectedMessage);
+        //when
+        final String prevCommandMessage = prevCommandHandler.formatHandleHydratePrevCommand(timeSinceLastBreak);
+
+        //then
+        assertEquals(expectedMessage, prevCommandMessage);
     }
 
     @Test
     public void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage() {
+        //given
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(130));
         final String timeSinceLastBreakAsString = "2 hours 10 minutes 0 seconds";
 
@@ -88,7 +99,11 @@ public class PrevCommandHandlerTest {
 
         String expectedStringFormat = "2 hours 10 minutes 0 seconds since the last hydration break.";
 
-        given(prevCommandHandler.formatHandleHydratePrevCommand(timeSinceLastBreak)).willReturn(expectedStringFormat);
+        //when
+        final String prevCommandMessage = prevCommandHandler.formatHandleHydratePrevCommand(timeSinceLastBreak);
+
+        //then
+        assertEquals(expectedStringFormat, prevCommandMessage);
     }
 
 }

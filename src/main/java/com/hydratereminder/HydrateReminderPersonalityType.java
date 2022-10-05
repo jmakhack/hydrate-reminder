@@ -14,6 +14,7 @@ public enum HydrateReminderPersonalityType
     MOTIVATIONAL("Motivational"),
     ROMANTIC("Romantic"),
     AGGRESSIVE("Aggressive"),
+    RANDOM("Random"),
     PIRATE("Pirate"),
     CARING("Caring");  
 

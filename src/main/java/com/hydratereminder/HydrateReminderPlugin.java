@@ -29,11 +29,13 @@ import com.google.inject.Provides;
 import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.chat.HydrateEmojiProvider;
 import com.hydratereminder.command.CommandInvoker;
-import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
+import net.runelite.api.AnimationID;
+import net.runelite.api.Client;
+import net.runelite.api.GameState;
+import net.runelite.api.Player;
 import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -46,7 +48,6 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
-import org.apache.commons.lang3.ArrayUtils;
 
 import javax.inject.Inject;
 import java.awt.*;
@@ -54,11 +55,9 @@ import java.awt.image.BufferedImage;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.Objects;
+import java.util.Optional;
 
-import static com.hydratereminder.Commons.HYDRATE_COMMAND_ALIAS;
-import static com.hydratereminder.Commons.HYDRATE_COMMAND_NAME;
-import static com.hydratereminder.Commons.RUNELITE_COMMAND_PREFIX;
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
 
 /**
@@ -256,49 +255,14 @@ public class HydrateReminderPlugin extends Plugin
 	}
 
 	/**
-	 * <p>Handles any chat commands inputted by the player, executed in the form of ::hr [args]
-	 * </p>
-	 * @param commandExecuted the chat executed command
-	 * @since 1.1.0
+	 * When a command is executed, invoke the command delegate
+	 *
+	 * @param commandExecuted The command that was executed.
 	 */
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
     {
-    	final String command = commandExecuted.getCommand();
-		if (command.equalsIgnoreCase(HYDRATE_COMMAND_NAME) || command.equalsIgnoreCase(HYDRATE_COMMAND_ALIAS))
-		{
-			final String[] args = commandExecuted.getArguments();
-			if (ArrayUtils.isNotEmpty(args))
-			{
-				try
-				{
-					final HydrateReminderCommandArgs arg = HydrateReminderCommandArgs.getValue(args[0].toLowerCase());
-					switch (arg)
-					{
-						case NEXT:
-						case RESET:
-						case HYDRATE:
-						case HELP:
-						case TOTAL:
-						case PREV:
-							commandDelegate.invokeCommand(commandExecuted);
-							break;
-						default:
-							throw new IllegalArgumentException();
-					}
-				}
-				catch (IllegalArgumentException | NotRecognizedCommandException e)
-				{
-					final String invalidArgString = String.format("%s%s %s is not a valid command",
-							RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, args[0]);
-					chatMessageSender.sendHydrateEmojiChatGameMessage(invalidArgString);
-					final CommandExecuted helpCommand = new CommandExecuted("hydrate", new String[]{"help"});
-					commandDelegate.invokeCommand(helpCommand);
-				}
-			}
-		}
-		// TODO: Uncomment when the commands will be refactored to com.hydratereminder.command
-		// commandDelegate.invokeCommand(commandExecuted);
+		commandDelegate.invokeCommand(commandExecuted);
 	}
 
 	/**
