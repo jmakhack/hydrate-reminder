@@ -261,14 +261,14 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
             case RANDOM:
-                RandomPersonality();
+                getRandomPersonality();
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
         }
         return breakMessage;
     }
 
-    public static void RandomPersonality()
+    public static void getRandomPersonality()
     {
             int randomNumber = ThreadLocalRandom.current().nextInt(1, 9);
             switch (randomNumber) {
