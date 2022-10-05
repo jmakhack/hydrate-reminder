@@ -2,11 +2,14 @@ package com.hydratereminder.dictionary;
 
 import com.hydratereminder.HydrateReminderPersonalityType;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+@ExtendWith(MockitoExtension.class)
 public class HydrateBreakMessageDictionaryTest {
 
     @Test
@@ -33,6 +36,11 @@ public class HydrateBreakMessageDictionaryTest {
 
         // then
         assertNotEquals(notExpectedMessage, message);
+    }
+
+    @Test
+    public void shouldChooseCaringMessageWhenThePersonalityTypeIsCaring() {
+
     }
 
 }
