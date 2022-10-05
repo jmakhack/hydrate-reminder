@@ -255,7 +255,6 @@ public class HydrateReminderPlugin extends Plugin
 		}
 	}
 
-
 	/**
 	 * When a command is executed, invoke the command delegate
 	 *
