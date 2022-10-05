@@ -270,7 +270,7 @@ public class HydrateBreakMessageDictionary {
 
     public static void RandomPersonality()
     {
-            int randomNumber = ThreadLocalRandom.current().nextInt(1, 10);
+            int randomNumber = ThreadLocalRandom.current().nextInt(1, 9);
             switch (randomNumber) {
                 case 1:
                     getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("SIMPLE"));
@@ -295,8 +295,7 @@ public class HydrateBreakMessageDictionary {
                     break;
                 case 8:
                     getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("AGGRESSIVE"));
-                default:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("SIMPLE"));
+                    break;
             }
     }
 
