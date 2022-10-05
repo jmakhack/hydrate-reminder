@@ -4,6 +4,7 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.hydratereminder.HydrateReminderPersonalityType;
 
@@ -226,7 +227,7 @@ public class HydrateBreakMessageDictionary {
         final int randomNumber = randomGenerator.nextInt(hydrateBreakTextList.size());
         return hydrateBreakTextList.get(randomNumber);
     }
-    
+
     public static String getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType personalityType)
     {
         String breakMessage;
@@ -259,10 +260,45 @@ public class HydrateBreakMessageDictionary {
             case AGGRESSIVE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
+            case RANDOM:
+                getRandomPersonality();
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
         }
         return breakMessage;
+    }
+
+    public static void getRandomPersonality()
+    {
+            int randomNumber = ThreadLocalRandom.current().nextInt(1, 9);
+            switch (randomNumber) {
+                case 1:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.SIMPLE);
+                    break;
+                case 2:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.CARING);
+                    break;
+                case 3:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.ROMANTIC);
+                    break;
+                case 4:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.POLITE);
+                    break;
+                case 5:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.NERDY);
+                    break;
+                case 6:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.PIRATE);
+                    break;
+                case 7:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.MOTIVATIONAL);
+                    break;
+                case 8:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.AGGRESSIVE);
+                    break;
+                default:
+                    throw new IllegalStateException("Not VALID" + randomNumber);
+            }
     }
 
 }
