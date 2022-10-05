@@ -227,7 +227,7 @@ public class HydrateBreakMessageDictionary {
         final int randomNumber = randomGenerator.nextInt(hydrateBreakTextList.size());
         return hydrateBreakTextList.get(randomNumber);
     }
-    
+
     public static String getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType personalityType)
     {
         String breakMessage;
@@ -261,34 +261,43 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
             case RANDOM:
-                int randomNumber = ThreadLocalRandom.current().nextInt(1, 7);
-                switch (randomNumber) {
-                    case 1 :
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_FUNNY_TEXT_LIST);
-                        break;
-                    case 2 :
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
-                        break;
-                    case 3 :
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
-                        break;
-                    case 4 :
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
-                        break;
-                    case 5 :
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
-                        break;
-                    case 6 :
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
-                        break;
-                    default:
-                        breakMessage = getRandomBreakMessage(HYDRATE_BREAK_SIMPLE_TEXT_LIST);
-                }
-                break;
+                RandomPersonality();
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
         }
         return breakMessage;
+    }
+
+    public static void RandomPersonality()
+    {
+            int randomNumber = ThreadLocalRandom.current().nextInt(1, 10);
+            switch (randomNumber) {
+                case 1:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("SIMPLE"));
+                    break;
+                case 2:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("CARING"));
+                    break;
+                case 3:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("ROMANTIC"));
+                    break;
+                case 4:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("POLITE"));
+                    break;
+                case 5:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("NERDY"));
+                    break;
+                case 6:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("PIRATE"));
+                    break;
+                case 7:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("MOTIVATIONAL"));
+                    break;
+                case 8:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("AGGRESSIVE"));
+                default:
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("SIMPLE"));
+            }
     }
 
 }
