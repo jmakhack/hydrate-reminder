@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class HydrateEmojiProviderTest {
@@ -23,11 +24,15 @@ public class HydrateEmojiProviderTest {
 
 
     @Test
-    public void shouldSetHydrateEmojiIdTo2WhenHydrateEmojiIsLoadedAndHave2Elements() {
+    public void shouldSetHydrateEmojiIdTo3WhenHydrateEmojiIsLoadedAndHave2Elements() {
         //given
         IndexedSprite indexedSprite = Mockito.mock(IndexedSprite.class);
+        IndexedSprite indexedSpriteToAdd = Mockito.mock(IndexedSprite.class);
         IndexedSprite[] indexedSprites = {indexedSprite, indexedSprite, indexedSprite};
         given(client.getModIcons()).willReturn(indexedSprites);
+        given(client.createIndexedSprite()).willReturn(indexedSpriteToAdd);
+
+        IndexedSprite[] expectedOutput = {indexedSprite, indexedSprite, indexedSprite, indexedSpriteToAdd};
 
         //when
         hydrateEmojiProvider.loadHydrateEmoji();
@@ -35,6 +40,7 @@ public class HydrateEmojiProviderTest {
 
         //then
         assertEquals(3, hydrateEmojiId);
+        verify(client).setModIcons(expectedOutput);
     }
 
 }
