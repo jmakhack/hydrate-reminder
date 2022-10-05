@@ -40,5 +40,4 @@ public class HydrateBreakMessageDictionaryTest {
                 assertEquals(givenMessage, expectedMessage);
             }
     }
-
 }
