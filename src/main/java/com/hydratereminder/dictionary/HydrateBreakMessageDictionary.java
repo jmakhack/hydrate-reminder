@@ -296,6 +296,8 @@ public class HydrateBreakMessageDictionary {
                 case 8:
                     getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.AGGRESSIVE);
                     break;
+                default:
+                    throw new IllegalStateException("Not VALID" + randomNumber);
             }
     }
 
