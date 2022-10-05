@@ -273,28 +273,28 @@ public class HydrateBreakMessageDictionary {
             int randomNumber = ThreadLocalRandom.current().nextInt(1, 9);
             switch (randomNumber) {
                 case 1:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("SIMPLE"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.SIMPLE);
                     break;
                 case 2:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("CARING"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.CARING);
                     break;
                 case 3:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("ROMANTIC"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.ROMANTIC);
                     break;
                 case 4:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("POLITE"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.POLITE);
                     break;
                 case 5:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("NERDY"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.NERDY);
                     break;
                 case 6:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("PIRATE"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.PIRATE);
                     break;
                 case 7:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("MOTIVATIONAL"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.MOTIVATIONAL);
                     break;
                 case 8:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.valueOf("AGGRESSIVE"));
+                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.AGGRESSIVE);
                     break;
             }
     }
