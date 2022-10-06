@@ -2,6 +2,7 @@ package com.hydratereminder.dictionary;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -261,44 +262,33 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
             case RANDOM:
-                getRandomPersonality();
+                breakMessage = getRandomPersonalityMessage();
+                break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
         }
         return breakMessage;
     }
 
-    public static void getRandomPersonality()
+    /**
+     * Selects random personality from {@link HydrateReminderPersonalityType} except
+     * {@link HydrateReminderPersonalityType#RANDOM} and returns message for it.
+     *
+     * @return message for random personality.
+     */
+    public static String getRandomPersonalityMessage()
     {
-            int randomNumber = ThreadLocalRandom.current().nextInt(1, 9);
-            switch (randomNumber) {
-                case 1:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.SIMPLE);
-                    break;
-                case 2:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.CARING);
-                    break;
-                case 3:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.ROMANTIC);
-                    break;
-                case 4:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.POLITE);
-                    break;
-                case 5:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.NERDY);
-                    break;
-                case 6:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.PIRATE);
-                    break;
-                case 7:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.MOTIVATIONAL);
-                    break;
-                case 8:
-                    getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType.AGGRESSIVE);
-                    break;
-                default:
-                    throw new IllegalStateException("Not VALID" + randomNumber);
-            }
+        final List<HydrateReminderPersonalityType> personalityTypes = getPersonalityTypesWithoutRandom();
+        final int randomNumber = ThreadLocalRandom.current().nextInt(0, personalityTypes.size());
+        final HydrateReminderPersonalityType personalityType = personalityTypes.get(randomNumber);
+        return getRandomHydrateBreakMessageForPersonality(personalityType);
+    }
+
+    private static List<HydrateReminderPersonalityType> getPersonalityTypesWithoutRandom()
+    {
+        final List<HydrateReminderPersonalityType> personalityTypes = Arrays.asList(HydrateReminderPersonalityType.values());
+        personalityTypes.remove(HydrateReminderPersonalityType.RANDOM);
+        return personalityTypes;
     }
 
 }
