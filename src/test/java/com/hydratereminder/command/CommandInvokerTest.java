@@ -16,7 +16,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.doNothing;
 
 @ExtendWith(MockitoExtension.class)
 public class CommandInvokerTest {
@@ -85,10 +84,10 @@ public class CommandInvokerTest {
         CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
 
         // when
-        Object result = commandInvoker.invokeCommand(commandToExecute);
+        final Object result = commandInvoker.invokeCommand(commandToExecute);
 
         // then
-        assertEquals(result, null);
+        assertEquals("Command should return null.", result, null);
     }
 
 }
