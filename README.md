@@ -181,6 +181,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/akshatjainei"><img src="https://avatars.githubusercontent.com/u/93882347?v=4?s=100" width="100px;" alt="Akshat Jain"/><br /><sub><b>Akshat Jain</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=akshatjainei" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/swatichauhan814"><img src="https://avatars.githubusercontent.com/u/9282752?v=4?s=100" width="100px;" alt="Swati Chauhan"/><br /><sub><b>Swati Chauhan</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=swatichauhan814" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/sanmay321"><img src="https://avatars.githubusercontent.com/u/85834440?v=4?s=100" width="100px;" alt="Sanmay Das"/><br /><sub><b>Sanmay Das</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sanmay321" title="Code">💻</a></td>
+      <td align="center"><a href="https://ginglis.me"><img src="https://avatars.githubusercontent.com/u/43075615?v=4?s=100" width="100px;" alt="Gavin Inglis"/><br /><sub><b>Gavin Inglis</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ginglis13" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
