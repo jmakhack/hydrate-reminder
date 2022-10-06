@@ -180,6 +180,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/utsav82"><img src="https://avatars.githubusercontent.com/u/92868052?v=4?s=100" width="100px;" alt="utsav82"/><br /><sub><b>utsav82</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=utsav82" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/akshatjainei"><img src="https://avatars.githubusercontent.com/u/93882347?v=4?s=100" width="100px;" alt="Akshat Jain"/><br /><sub><b>Akshat Jain</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=akshatjainei" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/swatichauhan814"><img src="https://avatars.githubusercontent.com/u/9282752?v=4?s=100" width="100px;" alt="Swati Chauhan"/><br /><sub><b>Swati Chauhan</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=swatichauhan814" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/sanmay321"><img src="https://avatars.githubusercontent.com/u/85834440?v=4?s=100" width="100px;" alt="Sanmay Das"/><br /><sub><b>Sanmay Das</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sanmay321" title="Code">💻</a></td>
+      <td align="center"><a href="https://ginglis.me"><img src="https://avatars.githubusercontent.com/u/43075615?v=4?s=100" width="100px;" alt="Gavin Inglis"/><br /><sub><b>Gavin Inglis</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ginglis13" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/jivjen"><img src="https://avatars.githubusercontent.com/u/25795490?v=4?s=100" width="100px;" alt="jivjen"/><br /><sub><b>jivjen</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jivjen" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/XoMute"><img src="https://avatars.githubusercontent.com/u/38501955?v=4?s=100" width="100px;" alt="Dmytro Khomutnyk"/><br /><sub><b>Dmytro Khomutnyk</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=XoMute" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/isurumaldeniya"><img src="https://avatars.githubusercontent.com/u/24438506?v=4?s=100" width="100px;" alt="Isuru Maldeniya"/><br /><sub><b>Isuru Maldeniya</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=isurumaldeniya" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>

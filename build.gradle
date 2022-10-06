@@ -10,7 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-def runeLiteVersion = '1.8.34.1'
+def runeLiteVersion = '1.9.0'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -19,6 +19,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.1'
 	testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
 
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion

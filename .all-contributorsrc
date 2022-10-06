@@ -321,6 +321,51 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sanmay321",
+      "name": "Sanmay Das",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85834440?v=4",
+      "profile": "https://github.com/sanmay321",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ginglis13",
+      "name": "Gavin Inglis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43075615?v=4",
+      "profile": "https://ginglis.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jivjen",
+      "name": "jivjen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25795490?v=4",
+      "profile": "https://github.com/jivjen",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "XoMute",
+      "name": "Dmytro Khomutnyk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38501955?v=4",
+      "profile": "https://github.com/XoMute",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "isurumaldeniya",
+      "name": "Isuru Maldeniya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24438506?v=4",
+      "profile": "https://github.com/isurumaldeniya",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,

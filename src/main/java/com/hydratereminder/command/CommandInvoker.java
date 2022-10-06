@@ -1,5 +1,7 @@
 package com.hydratereminder.command;
 
+import java.util.Locale;
+
 import com.hydratereminder.HydrateReminderCommandArgs;
 import com.hydratereminder.chat.ChatMessageSender;
 import net.runelite.api.events.CommandExecuted;
@@ -29,7 +31,7 @@ public class CommandInvoker {
         }
         final String[] commandArguments = commandExecuted.getArguments();
         if (isNotEmpty(commandArguments)) {
-            final String rawCommand = commandArguments[0].toLowerCase();
+            final String rawCommand = commandArguments[0].toLowerCase(Locale.getDefault());
             try {
                 final HydrateReminderCommandArgs commandType = getCommandType(rawCommand);
                 final Command command = commandCreator.createFrom(commandType);
