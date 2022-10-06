@@ -5,6 +5,7 @@ import static com.hydratereminder.Commons.RUNELITE_COMMAND_PREFIX;
 
 public class NotRecognizedCommandException extends RuntimeException {
     private final String reason;
+    private static final long serialVersionUID = 3907006L;
 
     public NotRecognizedCommandException(String unsupportedCommandName) {
         this.reason = String.format(
