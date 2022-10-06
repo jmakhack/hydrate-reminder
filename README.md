@@ -183,6 +183,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/sanmay321"><img src="https://avatars.githubusercontent.com/u/85834440?v=4?s=100" width="100px;" alt="Sanmay Das"/><br /><sub><b>Sanmay Das</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sanmay321" title="Code">💻</a></td>
       <td align="center"><a href="https://ginglis.me"><img src="https://avatars.githubusercontent.com/u/43075615?v=4?s=100" width="100px;" alt="Gavin Inglis"/><br /><sub><b>Gavin Inglis</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ginglis13" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/jivjen"><img src="https://avatars.githubusercontent.com/u/25795490?v=4?s=100" width="100px;" alt="jivjen"/><br /><sub><b>jivjen</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jivjen" title="Code">💻</a></td>
+    </tr>
   </tbody>
   <tfoot>
     
