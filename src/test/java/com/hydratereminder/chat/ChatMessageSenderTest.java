@@ -28,47 +28,46 @@ public class ChatMessageSenderTest {
     @InjectMocks
     private ChatMessageSender chatMessageSender;
 
+    private String testMessage = "Hello";
+
     @Test
     public void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
-        String message = "Hello";
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.empty());
 
         //when
-        chatMessageSender.sendHydrateEmojiChatGameMessage(message);
+        chatMessageSender.sendHydrateEmojiChatGameMessage(testMessage);
 
         //then
-        verify(client).addChatMessage(expectedChatMessageType, "", "Hello", null);
+        verify(client).addChatMessage(expectedChatMessageType, "", testMessage, null);
     }
 
     @Test
     public void shouldSendChatGameMessageWithEmojiWhenEmojiIsProvided() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
-        String message = "Hello";
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
 
         //when
-        chatMessageSender.sendHydrateEmojiChatGameMessage(message);
+        chatMessageSender.sendHydrateEmojiChatGameMessage(testMessage);
 
         //then
-        verify(client).addChatMessage(expectedChatMessageType, "", "<img=10> Hello", null);
+        verify(client).addChatMessage(expectedChatMessageType, "", "<img=10> " + testMessage, null);
     }
 
     @Test
     public void shouldSendChatMessageWithBroadcastTypeWhenThatTypeWasProvided() {
         //given
         ChatMessageType providedChatMessageType = ChatMessageType.BROADCAST;
-        String message = "Hello";
         given(chatMessageTypeProvider.getChatNotificationMessageType()).willReturn(providedChatMessageType);
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
 
         //when
-        chatMessageSender.sendHydrateReminderChatMessage(message);
+        chatMessageSender.sendHydrateReminderChatMessage(testMessage);
 
         //then
-        verify(client).addChatMessage(providedChatMessageType, "", "<img=10> Hello", null);
+        verify(client).addChatMessage(providedChatMessageType, "", "<img=10> " + testMessage, null);
     }
 }
 
