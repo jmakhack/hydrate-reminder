@@ -217,8 +217,13 @@ public class HydrateReminderPlugin extends Plugin
 					// only send example chat notification if chat messages are enabled and player is logged in
 					if (config.hydrateReminderChatMessageEnabled() && client.getGameState() == GameState.LOGGED_IN)
 					{
+						HydrateReminderChatMessageType chatType = config.hydrateReminderChatMessageType();
+
 						clientThread.invoke(() ->
-								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+								chatMessageSender.sendHydrateReminderChatMessage(
+										String.format(
+												"This is how %s hydrate reminder notifications will appear.", chatType
+								)));
 					}
 					break;
 				case "hydrateReminderComputerNotificationEnabled":
