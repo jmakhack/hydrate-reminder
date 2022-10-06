@@ -262,7 +262,7 @@ public class HydrateBreakMessageDictionary {
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
                 break;
             case RANDOM:
-                breakMessage = getRandomPersonality();
+                breakMessage = getRandomPersonalityMessage();
                 break;
             default:
                 throw new IllegalStateException("Provided personality type is not supported");
@@ -270,7 +270,13 @@ public class HydrateBreakMessageDictionary {
         return breakMessage;
     }
 
-    public static String getRandomPersonality()
+    /**
+     * Selects random personality from {@link HydrateReminderPersonalityType} except
+     * {@link HydrateReminderPersonalityType#RANDOM} and returns message for it.
+     *
+     * @return message for random personality.
+     */
+    public static String getRandomPersonalityMessage()
     {
         final List<HydrateReminderPersonalityType> personalityTypes = getPersonalityTypesWithoutRandom();
         final int randomNumber = ThreadLocalRandom.current().nextInt(0, personalityTypes.size());
