@@ -272,15 +272,15 @@ public class HydrateBreakMessageDictionary {
 
     public static String getRandomPersonality()
     {
-        List<HydrateReminderPersonalityType> personalityTypes = getPersonalityTypesWithoutRandom();
-        int randomNumber = ThreadLocalRandom.current().nextInt(0, personalityTypes.size());
-        HydrateReminderPersonalityType personalityType = personalityTypes.get(randomNumber);;
+        final List<HydrateReminderPersonalityType> personalityTypes = getPersonalityTypesWithoutRandom();
+        final int randomNumber = ThreadLocalRandom.current().nextInt(0, personalityTypes.size());
+        final HydrateReminderPersonalityType personalityType = personalityTypes.get(randomNumber);
         return getRandomHydrateBreakMessageForPersonality(personalityType);
     }
 
     private static List<HydrateReminderPersonalityType> getPersonalityTypesWithoutRandom()
     {
-        List<HydrateReminderPersonalityType> personalityTypes = Arrays.asList(HydrateReminderPersonalityType.values());
+        final List<HydrateReminderPersonalityType> personalityTypes = Arrays.asList(HydrateReminderPersonalityType.values());
         personalityTypes.remove(HydrateReminderPersonalityType.RANDOM);
         return personalityTypes;
     }
