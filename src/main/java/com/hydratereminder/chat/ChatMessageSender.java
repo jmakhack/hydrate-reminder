@@ -79,7 +79,7 @@ public class ChatMessageSender {
         String sender = hydrateEmoji;
         if (type != ChatMessageType.FRIENDSCHAT) {
             hydrateMessage.append(hydrateEmoji);
-            hydrateMessage.append(" ");
+            hydrateMessage.append(' ');
             sender = null;
         }
         hydrateMessage.append(message);
