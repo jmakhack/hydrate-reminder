@@ -87,7 +87,7 @@ public class CommandInvokerTest {
         commandInvoker.invokeCommand(commandToExecute);
 
         // then
-        verify(CommandCreator, times(0)).createFrom(any());
+        verify(commandCreator, times(0)).createFrom(any());
     }
 
 }
