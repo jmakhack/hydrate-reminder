@@ -78,5 +78,17 @@ public class CommandInvokerTest {
         verify(commandCreator).createFrom(HydrateReminderCommandArgs.HELP);
     }
 
+    @Test
+    public void ShouldNotCallCommandCreatorWhenIsNotHydrateCommand() {
+        // given
+        CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
+
+        // when
+        commandInvoker.invokeCommand(commandToExecute);
+
+        // then
+        verify(CommandCreator, times(0)).createFrom(any());
+    }
+
 }
 
