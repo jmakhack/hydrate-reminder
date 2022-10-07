@@ -19,7 +19,7 @@ public class ChatMessageTypeProviderTest {
     private transient HydrateReminderConfig config;
 
     @InjectMocks
-    private transient hatMessageTypeProvider chatMessageTypeProvider;
+    private transient ChatMessageTypeProvider chatMessageTypeProvider;
 
     @Test
     public void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected() {
