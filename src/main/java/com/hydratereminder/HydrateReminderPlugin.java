@@ -86,44 +86,44 @@ public class HydrateReminderPlugin extends Plugin
 	 * RuneLite client object
 	 */
 	@Inject
-	private Client client;
+	private transient Client client;
 
 	/** RuneLite client thread */
 	@Inject
-	private ClientThread clientThread;
+	private transient ClientThread clientThread;
 
 	/**
 	 * Configuration settings for Hydrate Reminder plugin
 	 */
 	@Inject
-	private HydrateReminderConfig config;
+	private transient HydrateReminderConfig config;
 
 	/**
 	 * Notifier object for managing computer tray notifications
 	 */
 	@Inject
-	private Notifier notifier;
+	private transient Notifier notifier;
 
 	/**
 	 * Manager for Old School Runescape item data
 	 */
 	@Inject
-	private ItemManager itemManager;
+	private transient ItemManager itemManager;
 
 	/**
 	 * Manager for infoboxes that appear on overlay
 	 */
 	@Inject
-	private InfoBoxManager infoBoxManager;
+	private transient InfoBoxManager infoBoxManager;
 
 	@Inject
-	private ChatMessageSender chatMessageSender;
+	private transient ChatMessageSender chatMessageSender;
 
 	@Inject
-	private HydrateEmojiProvider hydrateEmojiProvider;
+	private transient HydrateEmojiProvider hydrateEmojiProvider;
 
 	@Inject
-	private CommandInvoker commandDelegate;
+	private transient CommandInvoker commandDelegate;
 
 	/**
 	 * <p>The infobox timer that is rendered onto the overlay

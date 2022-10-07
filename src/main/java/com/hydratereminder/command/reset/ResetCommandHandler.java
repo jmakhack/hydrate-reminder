@@ -11,9 +11,9 @@ import javax.inject.Singleton;
 @Singleton
 public class ResetCommandHandler implements CommandHandler {
 
-    private final HydrateReminderPlugin hydrateReminderPlugin;
+    private final transient HydrateReminderPlugin hydrateReminderPlugin;
 
-    private final ChatMessageSender chatMessageSender;
+    private final transient ChatMessageSender chatMessageSender;
 
     @Inject
     public ResetCommandHandler(HydrateReminderPlugin hydrateReminderPlugin, ChatMessageSender chatMessageSender) {

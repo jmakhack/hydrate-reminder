@@ -21,11 +21,11 @@ import static org.mockito.Mockito.verify;
 public class CommandInvokerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
     @Mock
-    private CommandCreator commandCreator;
+    private transient CommandCreator commandCreator;
     @InjectMocks
-    private CommandInvoker commandInvoker;
+    private transient CommandInvoker commandInvoker;
 
     @Test
     public void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly() {

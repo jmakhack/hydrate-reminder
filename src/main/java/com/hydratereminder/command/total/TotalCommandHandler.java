@@ -10,9 +10,9 @@ import com.hydratereminder.command.CommandHandler;
 @Singleton
 public class TotalCommandHandler implements CommandHandler {
 
-    private final ChatMessageSender chatMessageSender;
+    private final transient ChatMessageSender chatMessageSender;
 
-    private final HydrateReminderPlugin hydrateReminderPlugin;
+    private final transient HydrateReminderPlugin hydrateReminderPlugin;
 
     @Inject
     public TotalCommandHandler(ChatMessageSender chatMessageSender, HydrateReminderPlugin hydrateReminderPlugin) {

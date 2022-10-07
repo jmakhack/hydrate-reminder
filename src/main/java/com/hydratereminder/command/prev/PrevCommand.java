@@ -4,7 +4,7 @@ import com.hydratereminder.command.Command;
 
 public class PrevCommand implements Command {
 
-    private final PrevCommandHandler prevCommandHandler;
+    private final transient PrevCommandHandler prevCommandHandler;
 
     public PrevCommand(PrevCommandHandler prevCommandHandler) {
         this.prevCommandHandler = prevCommandHandler;

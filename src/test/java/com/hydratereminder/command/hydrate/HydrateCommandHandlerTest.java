@@ -14,11 +14,11 @@ import static org.mockito.Mockito.verify;
 public class HydrateCommandHandlerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
     @Mock
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private transient HydrateReminderPlugin hydrateReminderPlugin;
     @InjectMocks
-    private HydrateCommandHandler hydrateCommandHandler;
+    private transient HydrateCommandHandler hydrateCommandHandler;
 
     @Test
     public void shouldResetCurrentHydrateIntervalAndIncreaseHydrationBreaksWhenHydrateCommandIsCalled() {

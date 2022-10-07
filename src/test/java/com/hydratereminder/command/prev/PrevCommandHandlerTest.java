@@ -22,16 +22,16 @@ import static org.mockito.Mockito.verify;
 public class PrevCommandHandlerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
 
     @Mock
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private transient HydrateReminderPlugin hydrateReminderPlugin;
 
     @Mock
-    private Clock clock;
+    private transient Clock clock;
 
     @InjectMocks
-    private PrevCommandHandler prevCommandHandler;
+    private transient PrevCommandHandler prevCommandHandler;
 
 
     @Test

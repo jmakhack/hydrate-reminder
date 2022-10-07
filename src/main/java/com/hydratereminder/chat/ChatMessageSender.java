@@ -14,13 +14,13 @@ import static com.hydratereminder.dictionary.HydrateWelcomeMessageDictionary.get
 public class ChatMessageSender {
 
     @Inject
-    private Client client;
+    private transient Client client;
 
     @Inject
-    private ChatMessageTypeProvider chatMessageTypeProvider;
+    private transient ChatMessageTypeProvider chatMessageTypeProvider;
 
     @Inject
-    private HydrateEmojiProvider hydrateEmojiProvider;
+    private transient HydrateEmojiProvider hydrateEmojiProvider;
 
     /**
      * <p>Generates and sends a neatly formatted chat GAME MESSAGE prefixed by the

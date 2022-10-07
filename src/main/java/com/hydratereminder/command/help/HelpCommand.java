@@ -4,7 +4,7 @@ import com.hydratereminder.command.Command;
 
 public class HelpCommand implements Command {
 
-    private final HelpCommandHandler helpCommandHandler;
+    private final transient HelpCommandHandler helpCommandHandler;
 
     public HelpCommand(HelpCommandHandler helpCommandHandler) {
         this.helpCommandHandler = helpCommandHandler;

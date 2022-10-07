@@ -16,10 +16,10 @@ import static org.mockito.BDDMockito.given;
 public class ChatMessageTypeProviderTest {
 
     @Mock
-    private HydrateReminderConfig config;
+    private transient HydrateReminderConfig config;
 
     @InjectMocks
-    private ChatMessageTypeProvider chatMessageTypeProvider;
+    private transient ChatMessageTypeProvider chatMessageTypeProvider;
 
     @Test
     public void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected() {
