@@ -25,7 +25,7 @@ class CommandCreator {
     @Inject
     private transient PrevCommandHandler prevCommandHandler;
     @Inject
-    private transient esetCommandHandler resetCommandHandler;
+    private transient ResetCommandHandler resetCommandHandler;
     @Inject
     private transient HelpCommandHandler helpCommandHandler;
     @Inject
