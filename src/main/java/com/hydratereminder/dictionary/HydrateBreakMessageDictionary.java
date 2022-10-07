@@ -153,7 +153,7 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
 
-            /**
+    /**
      * Hydrate Reminder interval break text to display in pirate form
      */
     private static final List<String> HYDRATE_BREAK_PIRATE_TEXT_LIST =
@@ -175,7 +175,28 @@ public class HydrateBreakMessageDictionary {
             }}
     );
     
-     /**
+    /**
+     * Hydrate Reminder interval break text to display in wizard form
+     */
+    private static final List<String> HYDRATE_BREAK_WIZARD_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("You'll only want for it if you haven't got it - refill your water reserves");
+                        add("YOU SHALL NOT PASS - until you take a sip of water");
+                        add("Your remembrall is turning red - don't forget to hydrate");
+                        add("Rest here weary traveler, for great adventures lie ahead - take a sip of water");
+                        add("The oracle forecasts peculiar times - partake in the steady comfort of water");
+                        add("On a quest young warrior? Take a sip of water before you set off");
+                        add("Take a swig of water for your health and one more for luck");
+                        add("There is a time for all things - now's the one for a water break");
+                        add("How fare ye, brave traveller? Art thou well fed and watered?");
+                        add("One can go for days without magic, but not one without water");
+                        add("Whether the way winds through marsh or mountain, the wise always hydrate");
+                        add("I've seen many a war waged and peace forged by the water you drink - savour it");
+                    }}
+            );
+    
+    /**
      * Hydrate Reminder interval break text to display in motivational form
      */
     private static final List<String> HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST =
@@ -254,6 +275,9 @@ public class HydrateBreakMessageDictionary {
                  break;
             case PIRATE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_PIRATE_TEXT_LIST);
+                break;
+            case WIZARD:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_WIZARD_TEXT_LIST);
                 break;
             case MOTIVATIONAL:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
