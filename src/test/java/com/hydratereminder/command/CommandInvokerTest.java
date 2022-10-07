@@ -78,17 +78,5 @@ public class CommandInvokerTest {
         verify(commandCreator).createFrom(HydrateReminderCommandArgs.HELP);
     }
 
-    @Test
-    public void shouldReturnNothingWhenIsNotHydrateCommand() {
-        // given
-        CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
-
-        // when
-        final Object result = commandInvoker.invokeCommand(commandToExecute);
-
-        // then
-        assertEquals("Command should return null.", result, null);
-    }
-
 }
 
