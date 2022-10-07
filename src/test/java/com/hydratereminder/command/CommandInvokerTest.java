@@ -79,7 +79,7 @@ public class CommandInvokerTest {
     }
 
     @Test
-    public void ShouldNotCallCommandCreatorWhenIsNotHydrateCommand() {
+    public void shouldNotCallCommandCreatorWhenIsNotHydrateCommand() {
         // given
         CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
 
