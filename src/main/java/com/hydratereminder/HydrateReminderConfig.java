@@ -25,9 +25,16 @@
 
 package com.hydratereminder;
 
-import net.runelite.client.config.*;
 
-import java.awt.*;
+import net.runelite.client.config.Alpha;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Range;
+import net.runelite.client.config.Units;
+
+import java.awt.Color;
 
 /**
  * <p>Configuration options interface for the Hydrate Reminder plugin
@@ -236,6 +243,21 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
+	 * <p>Adds title to the overlay timer
+	 * </p>
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderOverlayTimerImage",
+			name = "Timer Image",
+			description = "Sets the background image of the timer display",
+			position = 3,
+			section = hydrateReminderTimerSection
+	)
+	default void overlayTimerImageTitle() {
+		// Shows title above timer image names
+	}
+
+	/**
 	 * <p>Allows the player to set the image displayed on the overlay timer
 	 * </p>
 	 * @return the image to display on the overlay timer
@@ -245,7 +267,7 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderOverlayTimerImage",
 			name = "Timer Image",
 			description = "Sets the background image of the timer display",
-			position = 3,
+			position = 4,
 			section = hydrateReminderTimerSection
 	)
 	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
