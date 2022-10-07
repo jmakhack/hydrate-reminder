@@ -1,18 +1,29 @@
 package com.hydratereminder.dictionary;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.mockito.MockedConstruction;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.security.SecureRandom;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@ExtendWith(MockitoExtension.class)
 public class HydrateWelcomeMessageDictionaryTest {
 
     @Test
-    public void shouldGetRandomWelcomeMessage(){
+    public void shouldGetRandomWelcomeMessage() {
+        try (MockedConstruction<SecureRandom> mockRandom = Mockito.mockConstruction(SecureRandom.class, (mock, context) -> {
+            Mockito.when(mock.nextInt(Mockito.anyInt())).thenReturn(4);
+        })) {
+            String givenMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
+            String expectedMessage = "Cheers to staying hydrated!";
 
-        final String welcomeMessage = HydrateWelcomeMessageDictionary.getRandomWelcomeMessage();
-
-        assertNotNull(welcomeMessage);
-        assertFalse(welcomeMessage.isEmpty());
+            assertEquals(givenMessage, expectedMessage);
+        }
     }
 }
+

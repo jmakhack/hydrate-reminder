@@ -29,11 +29,13 @@ import com.google.inject.Provides;
 import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.chat.HydrateEmojiProvider;
 import com.hydratereminder.command.CommandInvoker;
-import com.hydratereminder.command.NotRecognizedCommandException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
+import net.runelite.api.AnimationID;
+import net.runelite.api.Client;
+import net.runelite.api.GameState;
+import net.runelite.api.Player;
 import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -46,7 +48,6 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
-import org.apache.commons.lang3.ArrayUtils;
 
 import javax.inject.Inject;
 import java.awt.*;
@@ -54,11 +55,9 @@ import java.awt.image.BufferedImage;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.Objects;
+import java.util.Optional;
 
-import static com.hydratereminder.Commons.HYDRATE_COMMAND_ALIAS;
-import static com.hydratereminder.Commons.HYDRATE_COMMAND_NAME;
-import static com.hydratereminder.Commons.RUNELITE_COMMAND_PREFIX;
 import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRandomHydrateBreakMessageForPersonality;
 
 /**
@@ -218,8 +217,13 @@ public class HydrateReminderPlugin extends Plugin
 					// only send example chat notification if chat messages are enabled and player is logged in
 					if (config.hydrateReminderChatMessageEnabled() && client.getGameState() == GameState.LOGGED_IN)
 					{
+						HydrateReminderChatMessageType chatType = config.hydrateReminderChatMessageType();
+
 						clientThread.invoke(() ->
-								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+								chatMessageSender.sendHydrateReminderChatMessage(
+										String.format(
+												"This is how %s hydrate reminder notifications will appear.", chatType
+								)));
 					}
 					break;
 				case "hydrateReminderComputerNotificationEnabled":

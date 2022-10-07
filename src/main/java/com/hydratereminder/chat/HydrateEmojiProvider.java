@@ -45,7 +45,7 @@ public class HydrateEmojiProvider {
                 final BufferedImage hydrateIcon = ImageUtil.loadImageResource(HydrateReminderPlugin.class, "water_icon.png");
                 final IndexedSprite hydrateSprite = ImageUtil.getImageIndexedSprite(hydrateIcon, client);
                 newModIcons[modIcons.length] = hydrateSprite;
-            } catch (Exception e) {
+            } catch (RuntimeException e) {
                 log.warn("Failed to load hydrate emoji sprite", e);
             }
             setHydrateEmojiId(Optional.of(modIcons.length));
