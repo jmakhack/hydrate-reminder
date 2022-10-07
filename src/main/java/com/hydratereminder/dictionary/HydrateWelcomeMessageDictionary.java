@@ -1,10 +1,13 @@
 package com.hydratereminder.dictionary;
 
+import lombok.experimental.UtilityClass;
+
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@UtilityClass
 public class HydrateWelcomeMessageDictionary {
 
     /**
