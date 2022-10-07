@@ -187,11 +187,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/jivjen"><img src="https://avatars.githubusercontent.com/u/25795490?v=4?s=100" width="100px;" alt="jivjen"/><br /><sub><b>jivjen</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jivjen" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/XoMute"><img src="https://avatars.githubusercontent.com/u/38501955?v=4?s=100" width="100px;" alt="Dmytro Khomutnyk"/><br /><sub><b>Dmytro Khomutnyk</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=XoMute" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/isurumaldeniya"><img src="https://avatars.githubusercontent.com/u/24438506?v=4?s=100" width="100px;" alt="Isuru Maldeniya"/><br /><sub><b>Isuru Maldeniya</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=isurumaldeniya" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/manish-singh-bisht"><img src="https://avatars.githubusercontent.com/u/114493480?v=4?s=100" width="100px;" alt="Manish Singh Bisht"/><br /><sub><b>Manish Singh Bisht</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=manish-singh-bisht" title="Code">💻</a></td>
     </tr>
   </tbody>
-  <tfoot>
-    
-  </tfoot>
 </table>
 
 <!-- markdownlint-restore -->
