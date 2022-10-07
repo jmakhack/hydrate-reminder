@@ -14,9 +14,9 @@ import java.util.Optional;
 @Singleton
 public class PrevCommandHandler implements CommandHandler {
 
-    private final ChatMessageSender chatMessageSender;
-    private final HydrateReminderPlugin hydrateReminderPlugin;
-    private final Clock clock;
+    private final transient ChatMessageSender chatMessageSender;
+    private final transient HydrateReminderPlugin hydrateReminderPlugin;
+    private final transient Clock clock;
 
 
     @Inject

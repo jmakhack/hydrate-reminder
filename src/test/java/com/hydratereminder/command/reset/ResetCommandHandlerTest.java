@@ -16,11 +16,11 @@ import static org.mockito.Mockito.verify;
 public class ResetCommandHandlerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
     @Mock
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private transient HydrateReminderPlugin hydrateReminderPlugin;
     @InjectMocks
-    private ResetCommandHandler resetCommandHandler;
+    private transient ResetCommandHandler resetCommandHandler;
 
     @Test
     public void shouldResetHydrate() {

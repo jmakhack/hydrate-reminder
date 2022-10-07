@@ -25,11 +25,11 @@ import static org.mockito.Mockito.verifyNoInteractions;
 @ExtendWith(MockitoExtension.class)
 public class HydrateReminderPluginTest {
     @Mock
-    private Client client;
+    private transient Client client;
     @Mock
-    private HydrateReminderConfig config;
+    private transient HydrateReminderConfig config;
     @InjectMocks
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private transient HydrateReminderPlugin hydrateReminderPlugin;
 
     @Test
     public void initShouldReturnZeroHydrationBreaksForTheCurrentSession() {

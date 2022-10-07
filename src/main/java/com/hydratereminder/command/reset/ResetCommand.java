@@ -4,7 +4,7 @@ import com.hydratereminder.command.Command;
 
 public class ResetCommand implements Command {
 
-    private final ResetCommandHandler resetCommandHandler;
+    private final transient ResetCommandHandler resetCommandHandler;
 
     public ResetCommand(ResetCommandHandler resetCommandHandler) {
         this.resetCommandHandler = resetCommandHandler;

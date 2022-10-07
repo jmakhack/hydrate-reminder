@@ -13,8 +13,8 @@ import com.hydratereminder.command.CommandHandler;
 @Singleton
 public class NextCommandHandler implements CommandHandler {
 
-    private final ChatMessageSender chatMessageSender;
-    private final HydrateReminderPlugin hydrateReminderPlugin;
+    private final transient ChatMessageSender chatMessageSender;
+    private final transient HydrateReminderPlugin hydrateReminderPlugin;
 
     @Inject
     public NextCommandHandler(ChatMessageSender chatMessageSender, HydrateReminderPlugin hydrateReminderPlugin) {

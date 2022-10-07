@@ -16,11 +16,11 @@ import static org.mockito.Mockito.when;
 public class TotalCommandHandlerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
     @Mock
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private transient HydrateReminderPlugin hydrateReminderPlugin;
     @InjectMocks
-    private TotalCommandHandler totalCommandHandler;
+    private transient TotalCommandHandler totalCommandHandler;
 
     @Test
     public void shouldSendHydrateWithSingularBreak() {

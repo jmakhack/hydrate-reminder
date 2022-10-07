@@ -13,9 +13,9 @@ import static org.mockito.Mockito.verify;
 public class HelpCommandHandlerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
     @InjectMocks
-    private HelpCommandHandler helpCommandHandler;
+    private transient HelpCommandHandler helpCommandHandler;
 
     @Test
     public void shouldHandleHelpCommand() {

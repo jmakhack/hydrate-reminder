@@ -22,7 +22,7 @@ public class HydrateEmojiProvider {
      * RuneLite client object
      */
     @Inject
-    private Client client;
+    private transient Client client;
 
     /**
      * <p>The id of the hydrate emoji
