@@ -84,7 +84,7 @@ public class CommandInvokerTest {
 
         // when and then
         commandInvoker.invokeCommand(commandToExecute);
-        verify(commandCreator,never()).createFrom(any());
+        verify(commandCreator,never()).createFrom(any()); // used verify to assert 
 
     }
 
