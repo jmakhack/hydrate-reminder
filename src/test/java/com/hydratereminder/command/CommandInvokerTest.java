@@ -14,8 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class CommandInvokerTest {
@@ -85,6 +84,7 @@ public class CommandInvokerTest {
 
         // when and then
         commandInvoker.invokeCommand(commandToExecute);
+        verify(commandCreator,never()).createFrom(any());
 
     }
 
