@@ -147,6 +147,15 @@ public class HydrateReminderPlugin extends Plugin
 	private int currentSessionHydrationBreaks;
 
 	/**
+	 * <p>The number of hydration breaks that have occurred
+	 * for all time. It has a default value of zero (0).
+	 * </p>
+	 */
+	@Getter
+	@Setter
+	private int totalSessionHydrationBreaks;
+
+	/**
 	 * <p>The last instant at which a hydrate reminder was dispatched
 	 * </p>
 	 */
@@ -253,13 +262,18 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		if (gameStateChanged.getGameState() == GameState.LOGGING_IN)
+		switch (gameStateChanged.getGameState())
 		{
-			setFirstGameTick(true);
-			setResetState(false);
-			setLastHydrateInstant(Optional.empty());
-			setLoginInstant(Instant.now());
-			log.debug("Hydrate Reminder plugin interval timer started");
+			case LOGGING_IN:
+				setFirstGameTick(true);
+				setResetState(false);
+				setLastHydrateInstant(Optional.empty());
+				setLoginInstant(Instant.now());
+				log.debug("Hydrate Reminder plugin interval timer started");
+				break;
+			case LOGGED_IN:
+				setTotalSessionHydrationBreaks(breakWriter.loadTotalBreakFile());
+				break;
 		}
 	}
 

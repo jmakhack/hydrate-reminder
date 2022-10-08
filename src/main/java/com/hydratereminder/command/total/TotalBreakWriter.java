@@ -9,29 +9,34 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import static net.runelite.client.RuneLite.RUNELITE_DIR;
 
 @Slf4j
 public class TotalBreakWriter {
     private static final String FILE_EXTENSION = ".log";
-    private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "totalHydrationBreaks");
+    private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
     private static int totalBreaks = 0;
 
     @Inject
-    public TotalBreakWriter() {
+    public TotalBreakWriter()
+    {
         if (!HYDRATION_REMINDER_DIR.exists())
         {
-            boolean mkDirs = HYDRATION_REMINDER_DIR.mkdirs();
+            boolean mkDir = HYDRATION_REMINDER_DIR.mkdir();
 
-            if (!mkDirs)
+            if(!mkDir)
                 log.warn("Directory creation failed");
         }
     }
 
-    public synchronized int loadTotalBreakFile() {
-        final String fileName = "totalBreaks" + FILE_EXTENSION;
-        final File totalBreakFile = new File(HYDRATION_REMINDER_DIR, fileName);
+
+    public synchronized int loadTotalBreakFile()
+    {
+        final String totalBreakFileName = "totalHydrationBreaks" + FILE_EXTENSION;
+        final File totalBreakFile = new File (HYDRATION_REMINDER_DIR, totalBreakFileName);
+
+        if (!totalBreakFile.exists())
+            return 0;
 
         try (final BufferedReader reader = new BufferedReader(new FileReader(totalBreakFile)))
         {
@@ -39,18 +44,19 @@ public class TotalBreakWriter {
         }
         catch (IOException e)
         {
-            log.warn("IOException for file {}: {}", fileName, e.getMessage());
+            log.warn("IOException for file {}: {}", totalBreakFile, e.getMessage());
         }
 
         return totalBreaks;
     }
 
-    public synchronized void writeTotalBreakFile(final int totalHydrationBreaks) {
-        final File totalBreakFile = new File(HYDRATION_REMINDER_DIR + FILE_EXTENSION);
+    public synchronized void writeTotalBreakFile(final int totalHydrationBreaks)
+    {
+        final File breakFile = new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks" + FILE_EXTENSION);
 
         try
         {
-            final BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(totalBreakFile), false));
+            final BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(breakFile), false));
 
             final String breaksAsString = String.valueOf(totalHydrationBreaks);
             writer.append(breaksAsString);
@@ -59,7 +65,7 @@ public class TotalBreakWriter {
         }
         catch (IOException e)
         {
-            log.warn("IOException for file {}: {}", totalBreakFile, e.getMessage());
+            log.warn("IOException for file {}: {}", breakFile, e.getMessage());
         }
     }
 }
