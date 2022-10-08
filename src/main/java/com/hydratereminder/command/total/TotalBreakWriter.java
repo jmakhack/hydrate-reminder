@@ -12,6 +12,11 @@ import java.nio.file.Paths;
 
 import static net.runelite.client.RuneLite.RUNELITE_DIR;
 
+/**
+ * <p> This class writes and reads a file related to total hydration
+ * breaks for all time
+ * </p>
+ */
 @Slf4j
 public class TotalBreakWriter {
     /**
@@ -24,11 +29,6 @@ public class TotalBreakWriter {
      */
     private static final String HYDRATION_REMINDER_BREAKS_FILE_NAME =
             new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.log").toString();
-
-    /**
-     * <p>Total number of breaks of all time</p>
-     */
-    private transient int totalBreaks;
 
     /**
      * <p> Upon initialization, creates a directory in the RuneLite directory
@@ -55,6 +55,7 @@ public class TotalBreakWriter {
      */
     public int loadTotalBreakFile()
     {
+        int totalBreaks = 0;
         synchronized (this)
         {
             try (BufferedReader reader = Files.newBufferedReader(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))

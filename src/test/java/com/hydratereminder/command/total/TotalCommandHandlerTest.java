@@ -25,7 +25,7 @@ public class TotalCommandHandlerTest {
     private transient TotalCommandHandler totalCommandHandler;
 
     @Test
-    public void shouldSendHydrateWithSingularBreak() {
+    void shouldSendHydrateWithSingularBreak() {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(1);
         totalCommandHandler.handle();
 
@@ -46,7 +46,7 @@ public class TotalCommandHandlerTest {
     }
 
     @Test
-    public void shouldSendHydrateWithPluralBreak() {
+    void shouldSendHydrateWithPluralBreak() {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(2);
         totalCommandHandler.handle();
 
