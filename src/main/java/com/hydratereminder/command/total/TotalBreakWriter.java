@@ -6,8 +6,6 @@ import javax.inject.Inject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,7 +16,7 @@ import static net.runelite.client.RuneLite.RUNELITE_DIR;
 public class TotalBreakWriter {
     private static final String FILE_EXTENSION = ".log";
     private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
-    private transient int totalBreaks = 0;
+    private transient int totalBreaks;
 
     /**
      * <p> Upon initialization, creates a directory in the RuneLite directory
@@ -50,7 +48,7 @@ public class TotalBreakWriter {
             final String totalBreakFileName = "totalHydrationBreaks" + FILE_EXTENSION;
             final File totalBreakFile = new File (HYDRATION_REMINDER_DIR, totalBreakFileName);
 
-            try (final BufferedReader reader = Files.newBufferedReader(Paths.get(totalBreakFileName)))
+            try (BufferedReader reader = Files.newBufferedReader(Paths.get(totalBreakFileName)))
             {
                 totalBreaks += Integer.parseInt(reader.readLine());
             }
@@ -67,7 +65,8 @@ public class TotalBreakWriter {
     }
 
     /**
-     * <p> Updates the total hydration break file with the current session hydration breaks
+     * <p> Updates the total hydration break file with the current session
+     * hydration breaks
      * </p>
      * @param totalHydrationBreaks current session hydration breaks
      */
@@ -77,7 +76,7 @@ public class TotalBreakWriter {
         {
             final File breakFile = new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks" + FILE_EXTENSION);
 
-            try (final BufferedWriter writer = Files.newBufferedWriter(Paths.get("totalHydrationBreaks.log")))
+            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("totalHydrationBreaks.log")))
             {
                 final String breaksAsString = String.valueOf(totalHydrationBreaks);
                 writer.append(breaksAsString);

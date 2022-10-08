@@ -274,7 +274,9 @@ public class HydrateReminderPlugin extends Plugin
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
+		{
 			setAllTimeHydrationBreaks(breakWriter.loadTotalBreakFile());
+		}
 	}
 
 	/**
