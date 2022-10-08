@@ -361,7 +361,7 @@ public class HydrateReminderPlugin extends Plugin
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
 			incrementCurrentSessionHydrationBreaks();
-			breakWriter.writeTotalBreakFile(getCurrentSessionHydrationBreaks());
+			breakWriter.writeTotalBreakFile(getAllTimeHydrationBreaks() + getCurrentSessionHydrationBreaks());
 		}
 	}
 

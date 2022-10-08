@@ -15,7 +15,7 @@ import static net.runelite.client.RuneLite.RUNELITE_DIR;
 public class TotalBreakWriter {
     private static final String FILE_EXTENSION = ".log";
     private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
-    private static int totalBreaks = 0;
+    private int totalBreaks = 0;
 
     @Inject
     public TotalBreakWriter()

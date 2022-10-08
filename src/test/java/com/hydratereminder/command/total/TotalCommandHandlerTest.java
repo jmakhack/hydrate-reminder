@@ -33,6 +33,16 @@ public class TotalCommandHandlerTest {
     }
 
     @Test
+    public void shouldSendBreaksForAllTime() {
+        when(hydrateReminderPlugin.getAllTimeHydrationBreaks()).thenReturn(4);
+        totalCommandHandler.handle();
+
+        final String expected = "All time: 4 hydration breaks.";
+        verify(hydrateReminderPlugin).getAllTimeHydrationBreaks();
+        verify(chatMessageSender).sendHydrateEmojiChatGameMessage(expected);
+    }
+
+    @Test
     public void shouldSendHydrateWithPluralBreak() {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(2);
         totalCommandHandler.handle();
