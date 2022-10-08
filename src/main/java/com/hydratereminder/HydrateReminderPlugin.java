@@ -126,6 +126,9 @@ public class HydrateReminderPlugin extends Plugin
 	@Inject
 	private transient CommandInvoker commandDelegate;
 
+	/**
+	 * Writer/reader for total hydration breaks
+	 */
 	@Inject
 	private transient TotalBreakWriter breakWriter;
 
@@ -262,19 +265,16 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		switch (gameStateChanged.getGameState())
+		if (gameStateChanged.getGameState() == GameState.LOGGING_IN)
 		{
-			case LOGGING_IN:
-				setFirstGameTick(true);
-				setResetState(false);
-				setLastHydrateInstant(Optional.empty());
-				setLoginInstant(Instant.now());
-				log.debug("Hydrate Reminder plugin interval timer started");
-				break;
-			case LOGGED_IN:
-				setAllTimeHydrationBreaks(breakWriter.loadTotalBreakFile());
-				break;
+			setFirstGameTick(true);
+			setResetState(false);
+			setLastHydrateInstant(Optional.empty());
+			setLoginInstant(Instant.now());
+			log.debug("Hydrate Reminder plugin interval timer started");
 		}
+		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
+			setAllTimeHydrationBreaks(breakWriter.loadTotalBreakFile());
 	}
 
 	/**

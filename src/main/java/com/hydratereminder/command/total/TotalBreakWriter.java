@@ -9,63 +9,86 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static net.runelite.client.RuneLite.RUNELITE_DIR;
 
 @Slf4j
 public class TotalBreakWriter {
     private static final String FILE_EXTENSION = ".log";
     private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
-    private int totalBreaks = 0;
+    private transient int totalBreaks = 0;
 
+    /**
+     * <p> Upon initialization, creates a directory in the RuneLite directory
+     * for total hydration breaks.
+     * </p>
+     */
     @Inject
     public TotalBreakWriter()
     {
-        if (!HYDRATION_REMINDER_DIR.exists())
-        {
-            boolean mkDir = HYDRATION_REMINDER_DIR.mkdir();
+        if (!HYDRATION_REMINDER_DIR.exists()) {
+            final boolean mkDir = HYDRATION_REMINDER_DIR.mkdir();
 
-            if(!mkDir)
+            if (!mkDir)
+            {
                 log.warn("Directory creation failed");
+            }
         }
     }
 
-
-    public synchronized int loadTotalBreakFile()
+    /**
+     * <p>Loads the total hydration break file if it exists and 0 if not
+     * </p>
+     * @return total hydration breaks for all sessions
+     */
+    public int loadTotalBreakFile()
     {
-        final String totalBreakFileName = "totalHydrationBreaks" + FILE_EXTENSION;
-        final File totalBreakFile = new File (HYDRATION_REMINDER_DIR, totalBreakFileName);
-
-        if (!totalBreakFile.exists())
-            return 0;
-
-        try (final BufferedReader reader = new BufferedReader(new FileReader(totalBreakFile)))
+        synchronized (this)
         {
+            final String totalBreakFileName = "totalHydrationBreaks" + FILE_EXTENSION;
+            final File totalBreakFile = new File (HYDRATION_REMINDER_DIR, totalBreakFileName);
+
+            try (final BufferedReader reader = Files.newBufferedReader(Paths.get(totalBreakFileName)))
+            {
                 totalBreaks += Integer.parseInt(reader.readLine());
-        }
-        catch (IOException e)
-        {
-            log.warn("IOException for file {}: {}", totalBreakFile, e.getMessage());
-        }
+            }
+            catch (IOException e)
+            {
+                if (log.isWarnEnabled())
+                {
+                    log.warn("IOException for file {}: {}", totalBreakFile, e.getMessage());
+                }
+            }
 
-        return totalBreaks;
+            return totalBreaks;
+        }
     }
 
-    public synchronized void writeTotalBreakFile(final int totalHydrationBreaks)
+    /**
+     * <p> Updates the total hydration break file with the current session hydration breaks
+     * </p>
+     * @param totalHydrationBreaks current session hydration breaks
+     */
+    public void writeTotalBreakFile(final int totalHydrationBreaks)
     {
-        final File breakFile = new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks" + FILE_EXTENSION);
-
-        try
+        synchronized (this)
         {
-            final BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(breakFile), false));
+            final File breakFile = new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks" + FILE_EXTENSION);
 
-            final String breaksAsString = String.valueOf(totalHydrationBreaks);
-            writer.append(breaksAsString);
-
-            writer.close();
-        }
-        catch (IOException e)
-        {
-            log.warn("IOException for file {}: {}", breakFile, e.getMessage());
+            try (final BufferedWriter writer = Files.newBufferedWriter(Paths.get("totalHydrationBreaks.log")))
+            {
+                final String breaksAsString = String.valueOf(totalHydrationBreaks);
+                writer.append(breaksAsString);
+            }
+            catch (IOException e)
+            {
+                if (log.isWarnEnabled())
+                {
+                    log.warn("IOException for file {}: {}", breakFile, e.getMessage());
+                }
+            }
         }
     }
 }
