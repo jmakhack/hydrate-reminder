@@ -4,6 +4,8 @@ import com.hydratereminder.HydrateReminderPlugin;
 import com.hydratereminder.chat.ChatMessageSender;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -32,12 +34,13 @@ public class TotalCommandHandlerTest {
         verify(chatMessageSender,times(1)).sendHydrateEmojiChatGameMessage(expected);
     }
 
-    @Test
-    public void shouldSendBreaksForAllTime() {
-        when(hydrateReminderPlugin.getAllTimeHydrationBreaks()).thenReturn(4);
+    @ParameterizedTest
+    @ValueSource(ints = {4, 7, 20})
+    public void shouldSendBreaksForAllTime(int totalBreaks) {
+        when(hydrateReminderPlugin.getAllTimeHydrationBreaks()).thenReturn(totalBreaks);
         totalCommandHandler.handle();
 
-        final String expected = "All time: 4 hydration breaks.";
+        final String expected = String.format("All time: %d hydration breaks.", totalBreaks);
         verify(hydrateReminderPlugin).getAllTimeHydrationBreaks();
         verify(chatMessageSender).sendHydrateEmojiChatGameMessage(expected);
     }
