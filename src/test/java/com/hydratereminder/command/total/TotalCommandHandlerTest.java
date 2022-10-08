@@ -36,7 +36,7 @@ public class TotalCommandHandlerTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 7, 20})
-    void shouldSendBreaksForAllTime(int totalBreaks) {
+    void shouldSendBreaksForAllTime(final int totalBreaks) {
         when(hydrateReminderPlugin.getAllTimeHydrationBreaks()).thenReturn(totalBreaks);
         totalCommandHandler.handle();
 

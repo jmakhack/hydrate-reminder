@@ -14,8 +14,20 @@ import static net.runelite.client.RuneLite.RUNELITE_DIR;
 
 @Slf4j
 public class TotalBreakWriter {
-    private static final String FILE_EXTENSION = ".log";
+    /**
+     * <p>Directory for Hydrate Reminder</p>
+     */
     private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
+
+    /**
+     * <p>File for total hydration breaks</p>
+     */
+    private static final String HYDRATION_REMINDER_BREAKS_FILE_NAME =
+            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.log").toString();
+
+    /**
+     * <p>Total number of breaks of all time</p>
+     */
     private transient int totalBreaks;
 
     /**
@@ -45,18 +57,15 @@ public class TotalBreakWriter {
     {
         synchronized (this)
         {
-            final String totalBreakFileName = "totalHydrationBreaks" + FILE_EXTENSION;
-            final File totalBreakFile = new File (HYDRATION_REMINDER_DIR, totalBreakFileName);
-
-            try (BufferedReader reader = Files.newBufferedReader(Paths.get(totalBreakFileName)))
+            try (BufferedReader reader = Files.newBufferedReader(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))
             {
-                totalBreaks += Integer.parseInt(reader.readLine());
+                totalBreaks = Integer.parseInt(reader.readLine());
             }
             catch (IOException e)
             {
                 if (log.isWarnEnabled())
                 {
-                    log.warn("IOException for file {}: {}", totalBreakFile, e.getMessage());
+                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE_NAME, e.getMessage());
                 }
             }
 
@@ -74,9 +83,7 @@ public class TotalBreakWriter {
     {
         synchronized (this)
         {
-            final File breakFile = new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks" + FILE_EXTENSION);
-
-            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("totalHydrationBreaks.log")))
+            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))
             {
                 final String breaksAsString = String.valueOf(totalHydrationBreaks);
                 writer.append(breaksAsString);
@@ -85,7 +92,7 @@ public class TotalBreakWriter {
             {
                 if (log.isWarnEnabled())
                 {
-                    log.warn("IOException for file {}: {}", breakFile, e.getMessage());
+                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE_NAME, e.getMessage());
                 }
             }
         }
