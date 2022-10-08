@@ -16,28 +16,26 @@ import static net.runelite.client.RuneLite.RUNELITE_DIR;
 public class TotalBreakWriter {
     private static final String FILE_EXTENSION = ".log";
     private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "totalHydrationBreaks");
+    private static int totalBreaks = 0;
 
     @Inject
     public TotalBreakWriter() {
         if (!HYDRATION_REMINDER_DIR.exists())
         {
-            boolean mkDir = HYDRATION_REMINDER_DIR.mkdir();
+            boolean mkDirs = HYDRATION_REMINDER_DIR.mkdirs();
 
-            if (!mkDir)
+            if (!mkDirs)
                 log.warn("Directory creation failed");
         }
     }
 
     public synchronized int loadTotalBreakFile() {
-        int totalBreaks = 0;
         final String fileName = "totalBreaks" + FILE_EXTENSION;
         final File totalBreakFile = new File(HYDRATION_REMINDER_DIR, fileName);
-        if (!totalBreakFile.exists())
-            return totalBreaks;
 
-        try (final BufferedReader br = new BufferedReader(new FileReader(totalBreakFile)))
+        try (final BufferedReader reader = new BufferedReader(new FileReader(totalBreakFile)))
         {
-                totalBreaks += Integer.parseInt(br.readLine());
+                totalBreaks += Integer.parseInt(reader.readLine());
         }
         catch (IOException e)
         {
@@ -50,14 +48,17 @@ public class TotalBreakWriter {
     public synchronized void writeTotalBreakFile(final int totalHydrationBreaks) {
         final File totalBreakFile = new File(HYDRATION_REMINDER_DIR + FILE_EXTENSION);
 
-        try {
+        try
+        {
             final BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(totalBreakFile), false));
 
             final String breaksAsString = String.valueOf(totalHydrationBreaks);
             writer.append(breaksAsString);
 
             writer.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             log.warn("IOException for file {}: {}", totalBreakFile, e.getMessage());
         }
     }

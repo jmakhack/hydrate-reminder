@@ -29,6 +29,7 @@ import com.google.inject.Provides;
 import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.chat.HydrateEmojiProvider;
 import com.hydratereminder.command.CommandInvoker;
+import com.hydratereminder.command.total.TotalBreakWriter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -124,6 +125,9 @@ public class HydrateReminderPlugin extends Plugin
 
 	@Inject
 	private transient CommandInvoker commandDelegate;
+
+	@Inject
+	private transient TotalBreakWriter breakWriter;
 
 	/**
 	 * <p>The infobox timer that is rendered onto the overlay
@@ -343,6 +347,7 @@ public class HydrateReminderPlugin extends Plugin
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
 			incrementCurrentSessionHydrationBreaks();
+			breakWriter.writeTotalBreakFile(getCurrentSessionHydrationBreaks());
 		}
 	}
 
