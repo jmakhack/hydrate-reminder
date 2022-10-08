@@ -190,6 +190,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/manish-singh-bisht"><img src="https://avatars.githubusercontent.com/u/114493480?v=4?s=100" width="100px;" alt="Manish Singh Bisht"/><br /><sub><b>Manish Singh Bisht</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=manish-singh-bisht" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/Akshu-on-github"><img src="https://avatars.githubusercontent.com/u/61582763?v=4?s=100" width="100px;" alt="Akshaya Kulasekaran"/><br /><sub><b>Akshaya Kulasekaran</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Akshu-on-github" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/NNRepos"><img src="https://avatars.githubusercontent.com/u/45516943?v=4?s=100" width="100px;" alt="nn"/><br /><sub><b>nn</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=NNRepos" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
