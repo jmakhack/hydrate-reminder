@@ -28,13 +28,21 @@ public class TotalCommandHandler implements CommandHandler {
     @Override
     public void handle() {
         final int numCurrentBreaks = hydrateReminderPlugin.getCurrentSessionHydrationBreaks();
-        final int numTotalBreaks = hydrateReminderPlugin.getTotalSessionHydrationBreaks();
-        final String currentBreakText = numCurrentBreaks == 1 ? "break" : "breaks";
-        final String totalBreakText = numTotalBreaks == 1 ? "break" : "breaks";
+        final int numAllTimeBreaks = hydrateReminderPlugin.getAllTimeHydrationBreaks() + numCurrentBreaks;
         final String currentTotalString = String.format("Current session: %d hydration %s.",
-                numCurrentBreaks, currentBreakText);
-        final String totalBreakString = String.format("All time: %d hydration %s.", numTotalBreaks, totalBreakText);
+                numCurrentBreaks, getBreakText(numCurrentBreaks));
+        final String totalBreakString = String.format("All time: %d hydration %s.",
+                numAllTimeBreaks, getBreakText(numAllTimeBreaks));
         chatMessageSender.sendHydrateEmojiChatGameMessage(currentTotalString);
         chatMessageSender.sendHydrateEmojiChatGameMessage(totalBreakString);
+    }
+
+    /**
+     * <p>Return 'break' if number of breaks is 1 and 'breaks' otherwise</p>
+     * @param numBreaks number of hydration breaks
+     * @return
+     */
+    private String getBreakText(int numBreaks) {
+        return numBreaks == 1 ? "break" : "breaks";
     }
 }

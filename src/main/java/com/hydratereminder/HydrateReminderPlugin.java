@@ -153,7 +153,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Getter
 	@Setter
-	private int totalSessionHydrationBreaks;
+	private int allTimeHydrationBreaks;
 
 	/**
 	 * <p>The last instant at which a hydrate reminder was dispatched
@@ -272,7 +272,7 @@ public class HydrateReminderPlugin extends Plugin
 				log.debug("Hydrate Reminder plugin interval timer started");
 				break;
 			case LOGGED_IN:
-				setTotalSessionHydrationBreaks(breakWriter.loadTotalBreakFile());
+				setAllTimeHydrationBreaks(breakWriter.loadTotalBreakFile());
 				break;
 		}
 	}
