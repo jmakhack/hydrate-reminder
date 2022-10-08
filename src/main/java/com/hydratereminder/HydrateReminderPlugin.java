@@ -140,7 +140,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Getter
 	@Setter
-	private int currentSessionHydrationBreaks = 0;
+	private int currentSessionHydrationBreaks;
 
 	/**
 	 * <p>The last instant at which a hydrate reminder was dispatched
@@ -165,7 +165,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Getter
 	@Setter
-	private boolean resetState = false;
+	private boolean resetState;
 
 	/**
 	 * <p>True when game tick is the first one after login which is
