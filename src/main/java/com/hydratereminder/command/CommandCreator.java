@@ -21,17 +21,17 @@ import com.hydratereminder.command.total.TotalCommandHandler;
 class CommandCreator {
 
     @Inject
-    private NextCommandHandler nextCommandHandler;
+    private transient NextCommandHandler nextCommandHandler;
     @Inject
-    private PrevCommandHandler prevCommandHandler;
+    private transient PrevCommandHandler prevCommandHandler;
     @Inject
-    private ResetCommandHandler resetCommandHandler;
+    private transient ResetCommandHandler resetCommandHandler;
     @Inject
-    private HelpCommandHandler helpCommandHandler;
+    private transient HelpCommandHandler helpCommandHandler;
     @Inject
-    private TotalCommandHandler totalCommandHandler;
+    private transient TotalCommandHandler totalCommandHandler;
     @Inject
-    private HydrateCommandHandler hydrateCommandHandler;
+    private transient HydrateCommandHandler hydrateCommandHandler;
 
     Command createFrom(HydrateReminderCommandArgs commandType) {
         switch (commandType) {

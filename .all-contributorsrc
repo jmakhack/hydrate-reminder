@@ -366,6 +366,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "manish-singh-bisht",
+      "name": "Manish Singh Bisht",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114493480?v=4",
+      "profile": "https://github.com/manish-singh-bisht",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Akshu-on-github",
+      "name": "Akshaya Kulasekaran",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61582763?v=4",
+      "profile": "https://github.com/Akshu-on-github",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "NNRepos",
+      "name": "nn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45516943?v=4",
+      "profile": "https://github.com/NNRepos",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
@@ -373,5 +400,6 @@
   "projectOwner": "jmakhack",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }

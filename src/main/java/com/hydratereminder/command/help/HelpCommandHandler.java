@@ -13,7 +13,7 @@ import static com.hydratereminder.Commons.RUNELITE_COMMAND_PREFIX;
 @Singleton
 public class HelpCommandHandler implements CommandHandler {
 
-    private final ChatMessageSender chatMessageSender;
+    private final transient ChatMessageSender chatMessageSender;
 
     @Inject
     public HelpCommandHandler(ChatMessageSender chatMessageSender) {

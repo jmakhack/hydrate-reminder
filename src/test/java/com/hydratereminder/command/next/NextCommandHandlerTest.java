@@ -20,11 +20,11 @@ import static org.mockito.Mockito.verify;
 public class NextCommandHandlerTest {
 
     @Mock
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
     @Mock
-    private HydrateReminderPlugin hydrateReminderPlugin;
+    private transient  HydrateReminderPlugin hydrateReminderPlugin;
     @InjectMocks
-    private NextCommandHandler nextCommandHandler;
+    private transient NextCommandHandler nextCommandHandler;
 
     @Test
     public void shouldHandleNextCommand() {

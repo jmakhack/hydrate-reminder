@@ -86,44 +86,44 @@ public class HydrateReminderPlugin extends Plugin
 	 * RuneLite client object
 	 */
 	@Inject
-	private Client client;
+	private transient Client client;
 
 	/** RuneLite client thread */
 	@Inject
-	private ClientThread clientThread;
+	private transient ClientThread clientThread;
 
 	/**
 	 * Configuration settings for Hydrate Reminder plugin
 	 */
 	@Inject
-	private HydrateReminderConfig config;
+	private transient HydrateReminderConfig config;
 
 	/**
 	 * Notifier object for managing computer tray notifications
 	 */
 	@Inject
-	private Notifier notifier;
+	private transient Notifier notifier;
 
 	/**
 	 * Manager for Old School Runescape item data
 	 */
 	@Inject
-	private ItemManager itemManager;
+	private transient ItemManager itemManager;
 
 	/**
 	 * Manager for infoboxes that appear on overlay
 	 */
 	@Inject
-	private InfoBoxManager infoBoxManager;
+	private transient InfoBoxManager infoBoxManager;
 
 	@Inject
-	private ChatMessageSender chatMessageSender;
+	private transient ChatMessageSender chatMessageSender;
 
 	@Inject
-	private HydrateEmojiProvider hydrateEmojiProvider;
+	private transient HydrateEmojiProvider hydrateEmojiProvider;
 
 	@Inject
-	private CommandInvoker commandDelegate;
+	private transient CommandInvoker commandDelegate;
 
 	/**
 	 * <p>The infobox timer that is rendered onto the overlay
@@ -140,7 +140,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Getter
 	@Setter
-	private int currentSessionHydrationBreaks = 0;
+	private int currentSessionHydrationBreaks;
 
 	/**
 	 * <p>The last instant at which a hydrate reminder was dispatched
@@ -165,7 +165,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Getter
 	@Setter
-	private boolean resetState = false;
+	private boolean resetState;
 
 	/**
 	 * <p>True when game tick is the first one after login which is
@@ -217,8 +217,13 @@ public class HydrateReminderPlugin extends Plugin
 					// only send example chat notification if chat messages are enabled and player is logged in
 					if (config.hydrateReminderChatMessageEnabled() && client.getGameState() == GameState.LOGGED_IN)
 					{
+						HydrateReminderChatMessageType chatType = config.hydrateReminderChatMessageType();
+
 						clientThread.invoke(() ->
-								chatMessageSender.sendHydrateReminderChatMessage("This is how hydrate reminder chat notifications will appear."));
+								chatMessageSender.sendHydrateReminderChatMessage(
+										String.format(
+												"This is how %s hydrate reminder notifications will appear.", chatType
+								)));
 					}
 					break;
 				case "hydrateReminderComputerNotificationEnabled":

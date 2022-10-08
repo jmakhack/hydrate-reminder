@@ -4,7 +4,7 @@ import com.hydratereminder.command.Command;
 
 public class TotalCommand implements Command {
 
-    private final TotalCommandHandler totalCommandHandler;
+    private final transient TotalCommandHandler totalCommandHandler;
 
     public TotalCommand(TotalCommandHandler totalCommandHandler) {
         this.totalCommandHandler = totalCommandHandler;

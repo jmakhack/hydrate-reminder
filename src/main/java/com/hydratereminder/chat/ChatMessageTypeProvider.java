@@ -12,7 +12,7 @@ import static net.runelite.api.ChatMessageType.PUBLICCHAT;
 public class ChatMessageTypeProvider {
 
     @Inject
-    private HydrateReminderConfig config;
+    private transient HydrateReminderConfig config;
 
     /**
      * <p>Generates the type of chat message to send to the player

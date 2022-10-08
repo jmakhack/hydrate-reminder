@@ -17,10 +17,10 @@ import static org.mockito.Mockito.verify;
 public class HydrateEmojiProviderTest {
 
     @Mock
-    private Client client;
+    private transient Client client;
 
     @InjectMocks
-    private HydrateEmojiProvider hydrateEmojiProvider;
+    private transient HydrateEmojiProvider hydrateEmojiProvider;
 
 
     @Test

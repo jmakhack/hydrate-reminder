@@ -16,8 +16,8 @@ import static org.apache.commons.lang3.ArrayUtils.isNotEmpty;
 @Singleton
 public class CommandInvoker {
 
-    private final CommandCreator commandCreator;
-    private final ChatMessageSender chatMessageSender;
+    private final transient CommandCreator commandCreator;
+    private final transient ChatMessageSender chatMessageSender;
 
     @Inject
     public CommandInvoker(CommandCreator commandCreator, ChatMessageSender chatMessageSender) {

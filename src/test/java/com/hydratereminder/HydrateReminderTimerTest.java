@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MockHydrateReminderPlugin extends HydrateReminderPlugin
 {
-    public Instant instant;
+    public transient Instant instant;
 
     @Override
     public Instant getNextHydrateReminderInstant()
@@ -26,9 +26,9 @@ class MockHydrateReminderPlugin extends HydrateReminderPlugin
 
 public class HydrateReminderTimerTest
 {
-    private MockHydrateReminderPlugin mockHydrateReminderPlugin;
+    private transient MockHydrateReminderPlugin mockHydrateReminderPlugin;
 
-    private HydrateReminderTimer hydrateReminderTimer;
+    private transient HydrateReminderTimer hydrateReminderTimer;
 
     @BeforeEach
     public void setupHydrateReminderPlugin()

@@ -17,16 +17,16 @@ import static org.mockito.Mockito.verify;
 public class ChatMessageSenderTest {
 
     @Mock
-    private Client client;
+    private transient Client client;
 
     @Mock
-    private HydrateEmojiProvider hydrateEmojiProvider;
+    private transient HydrateEmojiProvider hydrateEmojiProvider;
 
     @Mock
-    private ChatMessageTypeProvider chatMessageTypeProvider;
+    private transient ChatMessageTypeProvider chatMessageTypeProvider;
 
     @InjectMocks
-    private ChatMessageSender chatMessageSender;
+    private transient ChatMessageSender chatMessageSender;
 
     @Test
     public void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
