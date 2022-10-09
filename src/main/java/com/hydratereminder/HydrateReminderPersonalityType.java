@@ -17,7 +17,8 @@ public enum HydrateReminderPersonalityType
     RANDOM("Random"),
     PIRATE("Pirate"),
     WIZARD("Wizard"),
-    CARING("Caring");  
+    CARING("Caring"),
+    SANTA("Santa");
 
 
 
