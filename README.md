@@ -192,6 +192,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/NNRepos"><img src="https://avatars.githubusercontent.com/u/45516943?v=4?s=100" width="100px;" alt="nn"/><br /><sub><b>nn</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=NNRepos" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/kat-kan"><img src="https://avatars.githubusercontent.com/u/17500766?v=4?s=100" width="100px;" alt="Katarzyna"/><br /><sub><b>Katarzyna</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=kat-kan" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
