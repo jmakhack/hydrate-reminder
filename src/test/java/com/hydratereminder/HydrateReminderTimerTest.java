@@ -13,52 +13,44 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class MockHydrateReminderPlugin extends HydrateReminderPlugin
-{
+class MockHydrateReminderPlugin extends HydrateReminderPlugin {
     public transient Instant instant;
 
     @Override
-    public Instant getNextHydrateReminderInstant()
-    {
+    public Instant getNextHydrateReminderInstant() {
         return instant;
     }
 }
 
-public class HydrateReminderTimerTest
-{
+class HydrateReminderTimerTest {
     private transient MockHydrateReminderPlugin mockHydrateReminderPlugin;
 
     private transient HydrateReminderTimer hydrateReminderTimer;
 
     @BeforeEach
-    public void setupHydrateReminderPlugin()
-    {
+    void setupHydrateReminderPlugin() {
         mockHydrateReminderPlugin = new MockHydrateReminderPlugin();
         final BufferedImage timerImage = ImageUtil.loadImageResource(getClass(), "water_icon.png");
         hydrateReminderTimer = new HydrateReminderTimer(mockHydrateReminderPlugin, timerImage, WHITE);
     }
 
     @Test
-    public void shouldSetInitializedTextColor()
-    {
+    void shouldSetInitializedTextColor() {
         assertEquals(hydrateReminderTimer.getTextColor(), WHITE);
     }
 
     @Test
-    public void shouldReturnTrueOnRender()
-    {
+    void shouldReturnTrueOnRender() {
         assertTrue(hydrateReminderTimer.render());
     }
 
     @Test
-    public void shouldReturnFalseOnCull()
-    {
+    void shouldReturnFalseOnCull() {
         assertFalse(hydrateReminderTimer.cull());
     }
 
     @Test
-    public void shouldHaveNameBasedOnPluginAndClassName()
-    {
+    void shouldHaveNameBasedOnPluginAndClassName() {
         final String pluginName = "MockHydrateReminderPlugin";
         final String className = "HydrateReminderTimer";
         final String finalName = String.join("_", pluginName, className);
@@ -66,22 +58,19 @@ public class HydrateReminderTimerTest
     }
 
     @Test
-    public void shouldDisplayMinutesAndSecondsWhenTimeLeftIsOverAMinute()
-    {
+    void shouldDisplayMinutesAndSecondsWhenTimeLeftIsOverAMinute() {
         mockHydrateReminderPlugin.instant = Instant.now().plus(Duration.ofMinutes(90));
         assertTrue(hydrateReminderTimer.getText().matches("^\\d{2}:\\d{2}$"));
     }
 
     @Test
-    public void shouldDisplayZeroMinutesWhenTimeLeftIsUnderAMinute()
-    {
+    void shouldDisplayZeroMinutesWhenTimeLeftIsUnderAMinute() {
         mockHydrateReminderPlugin.instant = Instant.now().plus(Duration.ofSeconds(45));
         assertTrue(hydrateReminderTimer.getText().matches("^0:\\d{2}$"));
     }
 
     @Test
-    public void shouldDisplayZeroMinutesAndSecondsWhenTimeLeftIsNegative()
-    {
+    void shouldDisplayZeroMinutesAndSecondsWhenTimeLeftIsNegative() {
         mockHydrateReminderPlugin.instant = Instant.now().minus(Duration.ofSeconds(150));
         assertEquals(hydrateReminderTimer.getText(), "0:00");
     }

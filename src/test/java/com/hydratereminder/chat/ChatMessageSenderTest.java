@@ -14,7 +14,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class ChatMessageSenderTest {
+class ChatMessageSenderTest {
 
     @Mock
     private transient Client client;
@@ -29,7 +29,7 @@ public class ChatMessageSenderTest {
     private transient ChatMessageSender chatMessageSender;
 
     @Test
-    public void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
+    void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         String message = "Hello";
@@ -43,7 +43,7 @@ public class ChatMessageSenderTest {
     }
 
     @Test
-    public void shouldSendChatGameMessageWithEmojiWhenEmojiIsProvided() {
+    void shouldSendChatGameMessageWithEmojiWhenEmojiIsProvided() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         String message = "Hello";
@@ -57,7 +57,7 @@ public class ChatMessageSenderTest {
     }
 
     @Test
-    public void shouldSendChatMessageWithBroadcastTypeWhenThatTypeWasProvided() {
+    void shouldSendChatMessageWithBroadcastTypeWhenThatTypeWasProvided() {
         //given
         ChatMessageType providedChatMessageType = ChatMessageType.BROADCAST;
         String message = "Hello";
