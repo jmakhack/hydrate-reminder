@@ -13,7 +13,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class ResetCommandHandlerTest {
+class ResetCommandHandlerTest {
 
     @Mock
     private transient ChatMessageSender chatMessageSender;
@@ -23,7 +23,7 @@ public class ResetCommandHandlerTest {
     private transient ResetCommandHandler resetCommandHandler;
 
     @Test
-    public void shouldResetHydrate() {
+    void shouldResetHydrate() {
         resetCommandHandler.handle();
 
         final String resetString = "Hydrate reminder interval has been successfully reset.";

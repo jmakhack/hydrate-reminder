@@ -19,7 +19,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class PrevCommandHandlerTest {
+class PrevCommandHandlerTest {
 
     @Mock
     private transient ChatMessageSender chatMessageSender;
@@ -35,7 +35,7 @@ public class PrevCommandHandlerTest {
 
 
     @Test
-    public void shouldSendMessageSinceLastHydrationInterval() {
+    void shouldSendMessageSinceLastHydrationInterval() {
         //given
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(100));
         final String timeSinceLastBreakAsString = "1 hours 40 minutes 0 seconds";
@@ -57,7 +57,7 @@ public class PrevCommandHandlerTest {
     }
 
     @Test
-    public void shouldReturnExpectedMessageWhenThereIsNoTimeSinceLastBreak() {
+    void shouldReturnExpectedMessageWhenThereIsNoTimeSinceLastBreak() {
         //given
         final Optional<Duration> timeSinceLastBreak = Optional.empty();
 
@@ -71,7 +71,7 @@ public class PrevCommandHandlerTest {
     }
 
     @Test
-    public void shouldReturnExpectedMessageWhenThereIsResetSinceLastBreak() {
+    void shouldReturnExpectedMessageWhenThereIsResetSinceLastBreak() {
         //given
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofSeconds(645));
         final String timeSinceLastBreakAsString = "10 minutes 45 seconds";
@@ -89,7 +89,7 @@ public class PrevCommandHandlerTest {
     }
 
     @Test
-    public void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage() {
+    void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage() {
         //given
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(130));
         final String timeSinceLastBreakAsString = "2 hours 10 minutes 0 seconds";

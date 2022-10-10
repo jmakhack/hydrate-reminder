@@ -14,7 +14,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class HydrateEmojiProviderTest {
+class HydrateEmojiProviderTest {
 
     @Mock
     private transient Client client;
@@ -24,7 +24,7 @@ public class HydrateEmojiProviderTest {
 
 
     @Test
-    public void shouldSetHydrateEmojiIdTo3WhenHydrateEmojiIsLoadedAndHave2Elements() {
+    void shouldSetHydrateEmojiIdTo3WhenHydrateEmojiIsLoadedAndHave2Elements() {
         //given
         IndexedSprite indexedSprite = Mockito.mock(IndexedSprite.class);
         IndexedSprite indexedSpriteToAdd = Mockito.mock(IndexedSprite.class);

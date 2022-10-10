@@ -14,7 +14,7 @@ import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRa
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class HydrateBreakMessageDictionaryTest {
+class HydrateBreakMessageDictionaryTest {
 
     @ParameterizedTest
     @CsvSource(delimiter = '|', value = {
@@ -28,16 +28,14 @@ public class HydrateBreakMessageDictionaryTest {
             "MOTIVATIONAL | Thousands Have Lived Without Love, Not One Without Water. Take a sip | 13",
             "AGGRESSIVE | You gotta drink some Water, Yeah! | 9",
     })
-    public void shouldChooseCorrectMessageBasedOnPersonalityType (
-            HydrateReminderPersonalityType personalityType, String expectedMessage, int value)
-    {
-            try (MockedConstruction<SecureRandom> ignored = Mockito.mockConstruction(SecureRandom.class, (mock, context) ->
-                    Mockito.when(mock.nextInt(Mockito.anyInt())).thenReturn(value)
-            ))
-            {
-                String givenMessage = getRandomHydrateBreakMessageForPersonality(personalityType);
+    void shouldChooseCorrectMessageBasedOnPersonalityType(
+            HydrateReminderPersonalityType personalityType, String expectedMessage, int value) {
+        try (MockedConstruction<SecureRandom> ignored = Mockito.mockConstruction(SecureRandom.class, (mock, context) ->
+                Mockito.when(mock.nextInt(Mockito.anyInt())).thenReturn(value)
+        )) {
+            String givenMessage = getRandomHydrateBreakMessageForPersonality(personalityType);
 
-                assertEquals(givenMessage, expectedMessage);
-            }
+            assertEquals(givenMessage, expectedMessage);
+        }
     }
 }
