@@ -42,7 +42,7 @@ import static net.runelite.api.ItemID.*;
 public enum HydrateReminderImages
 {
     // WATER
-    BLESSED_WATER_IMAGE("Blessed Water", BLESSED_WATER, WATER, WATER),
+    BLESSED_WATER_IMAGE("Blessed Water", BLESSED_WATER, WATER),
     BOTTLED_WATER_IMAGE("Bottled Water", BOTTLED_WATER, WATER),
     BOWL_OF_BLUE_WATER_IMAGE("Bowl of Blue Water", BOWL_OF_BLUE_WATER, WATER),
     BOWL_OF_HOT_WATER_IMAGE("Bowl of Hot Water", BOWL_OF_HOT_WATER, WATER),
@@ -463,5 +463,5 @@ public enum HydrateReminderImages
      * </p>
      * @return image category
      */
-    public ImageCategories getCategory() { return getImageCategory() }
+    public ImageCategories getCategory() { return getImageCategory(); }
 }

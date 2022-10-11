@@ -11,7 +11,7 @@ import static net.runelite.api.ItemID.TEAPOT;
 import static net.runelite.api.ItemID.WATERMELON_SLICE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class HydrateReminderTimerImagesTest {
+class HydrateReminderImagesTest {
     @Test
     void testTimerImagesToString() {
         assertEquals("Cup of Water", HydrateReminderImages.CUP_OF_WATER_IMAGE.toString());
