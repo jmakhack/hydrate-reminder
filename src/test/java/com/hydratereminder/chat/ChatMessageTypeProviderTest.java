@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-public class ChatMessageTypeProviderTest {
+class ChatMessageTypeProviderTest {
 
     @Mock
     private transient HydrateReminderConfig config;
@@ -22,7 +22,7 @@ public class ChatMessageTypeProviderTest {
     private transient ChatMessageTypeProvider chatMessageTypeProvider;
 
     @Test
-    public void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected() {
+    void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         given(config.hydrateReminderChatMessageType()).willReturn(HydrateReminderChatMessageType.GAMEMESSAGE);
@@ -35,7 +35,7 @@ public class ChatMessageTypeProviderTest {
     }
 
     @Test
-    public void shouldReturnBroadCastMessageTypeWhenProvideBroadCastMessage() {
+    void shouldReturnBroadCastMessageTypeWhenProvideBroadCastMessage() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.BROADCAST;
         given(config.hydrateReminderChatMessageType()).willReturn(HydrateReminderChatMessageType.BROADCASTMESSAGE);
