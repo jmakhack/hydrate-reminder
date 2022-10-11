@@ -1,16 +1,14 @@
 package com.hydratereminder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import com.hydratereminder.command.NotRecognizedCommandException;
 import org.junit.jupiter.api.Test;
 
-public class HydrateReminderCommandArgsTest
-{
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class HydrateReminderCommandArgsTest {
     @Test
-    public void testCommandArgsToString()
-    {
+    void testCommandArgsToString() {
         assertEquals("next", HydrateReminderCommandArgs.NEXT.toString());
         assertEquals("prev", HydrateReminderCommandArgs.PREV.toString());
         assertEquals("reset", HydrateReminderCommandArgs.RESET.toString());
@@ -20,8 +18,7 @@ public class HydrateReminderCommandArgsTest
     }
 
     @Test
-    public void testAliases()
-    {
+    void testAliases() {
         assertEquals("next", HydrateReminderCommandArgs.NEXT.getCommandArg());
         assertEquals("prev", HydrateReminderCommandArgs.PREV.getCommandArg());
         assertEquals("reset", HydrateReminderCommandArgs.RESET.getCommandArg());
@@ -38,8 +35,7 @@ public class HydrateReminderCommandArgsTest
     }
 
     @Test
-    public void testGetValue()
-    {
+    void testGetValue() {
         assertEquals(HydrateReminderCommandArgs.NEXT, HydrateReminderCommandArgs.getValue("next"));
         assertEquals(HydrateReminderCommandArgs.PREV, HydrateReminderCommandArgs.getValue("prev"));
         assertEquals(HydrateReminderCommandArgs.RESET, HydrateReminderCommandArgs.getValue("reset"));
@@ -56,8 +52,7 @@ public class HydrateReminderCommandArgsTest
     }
 
     @Test
-    public void testGetValueThrowsIfNullCommand()
-    {
+    void testGetValueThrowsIfNullCommand() {
         assertThrows(
                 NotRecognizedCommandException.class,
                 () -> HydrateReminderCommandArgs.getValue(null)
@@ -65,8 +60,7 @@ public class HydrateReminderCommandArgsTest
     }
 
     @Test
-    public void testGetValueThrowsIfInvalidCommand()
-    {
+    void testGetValueThrowsIfInvalidCommand() {
         assertThrows(
                 NotRecognizedCommandException.class,
                 () -> HydrateReminderCommandArgs.getValue("dummy")

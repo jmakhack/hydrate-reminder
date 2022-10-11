@@ -29,6 +29,7 @@ import com.google.inject.Provides;
 import com.hydratereminder.chat.ChatMessageSender;
 import com.hydratereminder.chat.HydrateEmojiProvider;
 import com.hydratereminder.command.CommandInvoker;
+import com.hydratereminder.command.total.TotalBreakWriter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -126,6 +127,12 @@ public class HydrateReminderPlugin extends Plugin
 	private transient CommandInvoker commandDelegate;
 
 	/**
+	 * Writer/reader for total hydration breaks
+	 */
+	@Inject
+	private transient TotalBreakWriter breakWriter;
+
+	/**
 	 * <p>The infobox timer that is rendered onto the overlay
 	 * </p>
 	 */
@@ -141,6 +148,15 @@ public class HydrateReminderPlugin extends Plugin
 	@Getter
 	@Setter
 	private int currentSessionHydrationBreaks;
+
+	/**
+	 * <p>The number of hydration breaks that have occurred
+	 * for all time. It has a default value of zero (0).
+	 * </p>
+	 */
+	@Getter
+	@Setter
+	private int allTimeHydrationBreaks;
 
 	/**
 	 * <p>The last instant at which a hydrate reminder was dispatched
@@ -257,6 +273,10 @@ public class HydrateReminderPlugin extends Plugin
 			setLoginInstant(Instant.now());
 			log.debug("Hydrate Reminder plugin interval timer started");
 		}
+		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
+		{
+			setAllTimeHydrationBreaks(breakWriter.loadTotalBreakFile());
+		}
 	}
 
 	/**
@@ -343,6 +363,7 @@ public class HydrateReminderPlugin extends Plugin
 			handleHydrateReminderDispatch();
 			resetHydrateReminderTimeInterval();
 			incrementCurrentSessionHydrationBreaks();
+			breakWriter.writeTotalBreakFile(getAllTimeHydrationBreaks() + getCurrentSessionHydrationBreaks());
 		}
 	}
 

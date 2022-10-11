@@ -4,6 +4,8 @@ import com.hydratereminder.HydrateReminderPlugin;
 import com.hydratereminder.chat.ChatMessageSender;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,7 +25,7 @@ public class TotalCommandHandlerTest {
     private transient TotalCommandHandler totalCommandHandler;
 
     @Test
-    public void shouldSendHydrateWithSingularBreak() {
+    void shouldSendHydrateWithSingularBreak() {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(1);
         totalCommandHandler.handle();
 
@@ -32,8 +34,19 @@ public class TotalCommandHandlerTest {
         verify(chatMessageSender,times(1)).sendHydrateEmojiChatGameMessage(expected);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {4, 7, 20})
+    void shouldSendBreaksForAllTime(final int totalBreaks) {
+        when(hydrateReminderPlugin.getAllTimeHydrationBreaks()).thenReturn(totalBreaks);
+        totalCommandHandler.handle();
+
+        final String expected = String.format("All time: %d hydration breaks.", totalBreaks);
+        verify(hydrateReminderPlugin).getAllTimeHydrationBreaks();
+        verify(chatMessageSender).sendHydrateEmojiChatGameMessage(expected);
+    }
+
     @Test
-    public void shouldSendHydrateWithPluralBreak() {
+    void shouldSendHydrateWithPluralBreak() {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(2);
         totalCommandHandler.handle();
 
