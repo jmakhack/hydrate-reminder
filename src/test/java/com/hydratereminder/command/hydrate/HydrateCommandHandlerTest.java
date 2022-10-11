@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class HydrateCommandHandlerTest {
+class HydrateCommandHandlerTest {
 
     @Mock
     private transient ChatMessageSender chatMessageSender;
@@ -21,7 +21,7 @@ public class HydrateCommandHandlerTest {
     private transient HydrateCommandHandler hydrateCommandHandler;
 
     @Test
-    public void shouldResetCurrentHydrateIntervalAndIncreaseHydrationBreaksWhenHydrateCommandIsCalled() {
+    void shouldResetCurrentHydrateIntervalAndIncreaseHydrationBreaksWhenHydrateCommandIsCalled() {
         //given and then
         hydrateCommandHandler.handle();
 
@@ -31,7 +31,7 @@ public class HydrateCommandHandlerTest {
     }
 
     @Test
-    public void shouldSendProperMessageWhenHydrateCommandIsCalled() {
+    void shouldSendProperMessageWhenHydrateCommandIsCalled() {
         //given
         String message = "Successfully hydrated before reminder interval finished";
 

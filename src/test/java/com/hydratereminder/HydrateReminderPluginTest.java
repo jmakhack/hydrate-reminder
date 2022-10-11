@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-public class HydrateReminderPluginTest {
+class HydrateReminderPluginTest {
     @Mock
     private transient Client client;
     @Mock
@@ -32,12 +32,12 @@ public class HydrateReminderPluginTest {
     private transient HydrateReminderPlugin hydrateReminderPlugin;
 
     @Test
-    public void initShouldReturnZeroHydrationBreaksForTheCurrentSession() {
+    void initShouldReturnZeroHydrationBreaksForTheCurrentSession() {
         assertEquals(0, hydrateReminderPlugin.getCurrentSessionHydrationBreaks());
     }
 
     @Test
-    public void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession() {
+    void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession() {
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
@@ -45,7 +45,7 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldIncrementNumberOfHydrationBreaksTakenByHydrateForTheCurrentSession() {
+    void shouldIncrementNumberOfHydrationBreaksTakenByHydrateForTheCurrentSession() {
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
@@ -53,12 +53,12 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void initShouldSetTheCorrectResetState() {
+    void initShouldSetTheCorrectResetState() {
         assertFalse(hydrateReminderPlugin.isResetState());
     }
 
     @Test
-    public void shouldSetTheCorrectResetState() {
+    void shouldSetTheCorrectResetState() {
         hydrateReminderPlugin.setResetState(true);
         assertTrue(hydrateReminderPlugin.isResetState());
         hydrateReminderPlugin.setResetState(false);
@@ -66,7 +66,7 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldReturnCorrectStringFormatOfTheTime() {
+    void shouldReturnCorrectStringFormatOfTheTime() {
         assertEquals("1 hour 1 minute 1 second",
                 hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(3661)));
         assertEquals("19 hours 15 minutes 39 seconds",
@@ -80,34 +80,34 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldReturnNoDurationWhenThereIsNoLastBreak() {
+    void shouldReturnNoDurationWhenThereIsNoLastBreak() {
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty(), Instant.now());
         assertFalse(timeSinceLastBreak.isPresent());
     }
 
     @Test
-    public void shouldReturnDurationWhenThereIsLastBreak() {
+    void shouldReturnDurationWhenThereIsLastBreak() {
         final Optional<Instant> timeOfLastBreak = Optional.of(Instant.now());
         final Optional<Duration> timeSinceLastBreak = hydrateReminderPlugin.getDurationSinceLastBreak(timeOfLastBreak, Instant.now());
         assertTrue(timeSinceLastBreak.isPresent());
     }
 
     @Test
-    public void shouldSetLastHydrateInstantAfterHydrateResetHasOccurred() {
+    void shouldSetLastHydrateInstantAfterHydrateResetHasOccurred() {
         assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
         hydrateReminderPlugin.resetHydrateReminderTimeInterval();
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
     }
 
     @Test
-    public void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred() {
+    void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred() {
         assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent());
     }
 
     @Test
-    public void shoudldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak() {
+    void shouldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak() {
         Instant nowInstant = Instant.now();
         Instant lastBreakInstant = nowInstant.minus(1, ChronoUnit.HOURS);
 
@@ -120,7 +120,7 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigEnabled() {
+    void shouldPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigEnabled() {
         // given
         final Player playerMock = mock(Player.class);
         given(config.hydrateAnimationEnabled()).willReturn(true);
@@ -135,7 +135,7 @@ public class HydrateReminderPluginTest {
     }
 
     @Test
-    public void shouldNotPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigDisabled() {
+    void shouldNotPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigDisabled() {
         // given
         given(config.hydrateAnimationEnabled()).willReturn(false);
 

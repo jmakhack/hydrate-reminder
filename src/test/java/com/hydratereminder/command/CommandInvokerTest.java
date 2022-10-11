@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
 
 @ExtendWith(MockitoExtension.class)
-public class CommandInvokerTest {
+class CommandInvokerTest {
 
     @Mock
     private transient ChatMessageSender chatMessageSender;
@@ -29,7 +29,7 @@ public class CommandInvokerTest {
     private transient CommandInvoker commandInvoker;
 
     @Test
-    public void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly() {
+    void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly() {
         // given
         HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
         Command hydrateCommand = Mockito.mock(HydrateCommand.class);
@@ -45,7 +45,7 @@ public class CommandInvokerTest {
     }
 
     @Test
-    public void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown() {
+    void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown() {
         // given
         String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getReason();
         Command helpCommand = Mockito.mock(HelpCommand.class);
@@ -62,7 +62,7 @@ public class CommandInvokerTest {
     }
 
     @Test
-    public void shouldCallCommandCreatorTwiceWhenNotSupportedCommandExceptionIsThrown() {
+    void shouldCallCommandCreatorTwiceWhenNotSupportedCommandExceptionIsThrown() {
         // given
         HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
         CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
@@ -80,7 +80,7 @@ public class CommandInvokerTest {
     }
 
     @Test
-    public void shouldReturnNothingWhenIsNotHydrateCommand() {
+    void shouldReturnNothingWhenIsNotHydrateCommand() {
         // given
         CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
 
@@ -91,4 +91,3 @@ public class CommandInvokerTest {
     }
 
 }
-

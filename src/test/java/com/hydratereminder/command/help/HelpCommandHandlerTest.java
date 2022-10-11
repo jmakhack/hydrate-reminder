@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class HelpCommandHandlerTest {
+class HelpCommandHandlerTest {
 
     @Mock
     private transient ChatMessageSender chatMessageSender;
@@ -18,7 +18,7 @@ public class HelpCommandHandlerTest {
     private transient HelpCommandHandler helpCommandHandler;
 
     @Test
-    public void shouldHandleHelpCommand() {
+    void shouldHandleHelpCommand() {
         // given
         final String possibleCommands = "next, prev, reset, hydrate, help, total";
         final String expectedMessage = "Available commands: ::hr " + possibleCommands;

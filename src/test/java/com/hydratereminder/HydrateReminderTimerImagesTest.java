@@ -2,14 +2,17 @@ package com.hydratereminder;
 
 import org.junit.jupiter.api.Test;
 
-import static net.runelite.api.ItemID.*;
+import static net.runelite.api.ItemID.BOTTLED_WATER;
+import static net.runelite.api.ItemID.COCONUT_MILK;
+import static net.runelite.api.ItemID.PURPLE_DYE;
+import static net.runelite.api.ItemID.RUM;
+import static net.runelite.api.ItemID.TEAPOT;
+import static net.runelite.api.ItemID.WATERMELON_SLICE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HydrateReminderTimerImagesTest
-{
+class HydrateReminderTimerImagesTest {
     @Test
-    public void testTimerImagesToString()
-    {
+    void testTimerImagesToString() {
         assertEquals("Cup of Water", HydrateReminderTimerImages.CUP_OF_WATER_IMAGE.toString());
         assertEquals("Cup of Tea", HydrateReminderTimerImages.CUP_OF_TEA_IMAGE.toString());
         assertEquals("Beer", HydrateReminderTimerImages.BEER_IMAGE.toString());
@@ -19,8 +22,7 @@ public class HydrateReminderTimerImagesTest
     }
 
     @Test
-    public void testTimerImagesGetID()
-    {
+    void testTimerImagesGetID() {
         assertEquals(BOTTLED_WATER, HydrateReminderTimerImages.BOTTLED_WATER_IMAGE.getID());
         assertEquals(TEAPOT, HydrateReminderTimerImages.TEAPOT_IMAGE.getID());
         assertEquals(RUM, HydrateReminderTimerImages.RUM_IMAGE.getID());
