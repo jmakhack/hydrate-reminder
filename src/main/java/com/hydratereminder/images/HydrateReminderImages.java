@@ -23,11 +23,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.hydratereminder;
+package com.hydratereminder.images;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import static com.hydratereminder.images.ImageCategories.*;
 import static net.runelite.api.ItemID.*;
 
 /**
@@ -38,48 +39,48 @@ import static net.runelite.api.ItemID.*;
  */
 @Getter
 @AllArgsConstructor
-public enum HydrateReminderTimerImages
+public enum HydrateReminderImages
 {
     // WATER
-    BLESSED_WATER_IMAGE("Blessed Water", BLESSED_WATER),
-    BOTTLED_WATER_IMAGE("Bottled Water", BOTTLED_WATER),
-    BOWL_OF_BLUE_WATER_IMAGE("Bowl of Blue Water", BOWL_OF_BLUE_WATER),
-    BOWL_OF_HOT_WATER_IMAGE("Bowl of Hot Water", BOWL_OF_HOT_WATER),
-    BOWL_OF_RED_WATER_IMAGE("Bowl of Red Water", BOWL_OF_RED_WATER),
-    BOWL_OF_WATER_IMAGE("Bowl of Water", BOWL_OF_WATER),
-    BUCKET_OF_WATER_COOKOUT_IMAGE("Bucket of Water (Cookout)", BUCKET_OF_WATER_COOKOUT),
-    BUCKET_OF_WATER_IMAGE("Bucket of Water", BUCKET_OF_WATER),
-    CIRCLET_OF_WATER_IMAGE("Circlet of Water", CIRCLET_OF_WATER),
-    CUP_OF_HOT_WATER_IMAGE("Cup of Hot Water", CUP_OF_HOT_WATER),
-    CUP_OF_WATER_IMAGE("Cup of Water", CUP_OF_WATER),
-    FULL_BUCKET_IMAGE("Full Bucket", FULL_BUCKET),
-    FULL_JUG_IMAGE("Full Jug", FULL_JUG),
-    GOLDEN_BOWL_IMAGE("Golden Bowl", GOLDEN_BOWL_724),
-    GOLD_SINK_IMAGE("Gold Sink", GOLD_SINK),
-    HOLY_WATER_IMAGE("Holy Water", HOLY_WATER),
-    JUG_OF_WATER_IMAGE("Jug of Water", JUG_OF_WATER),
-    LARGE_FOUNTAIN_IMAGE("Large Fountain", LARGE_FOUNTAIN),
-    MURKY_WATER_IMAGE("Murky Water", MURKY_WATER),
-    NETTLEWATER_IMAGE("Nettle-water", NETTLEWATER),
-    POND_IMAGE("Pond", POND),
-    PORTAL_TALISMAN_WATER_IMAGE("Portal Talisman (Water)", PORTAL_TALISMAN_WATER),
-    POSH_FOUNTAIN_IMAGE("Posh Fountain", POSH_FOUNTAIN),
-    SINK_IMAGE("Sink", SINK),
-    SMALL_FOUNTAIN_IMAGE("Small Fountain", SMALL_FOUNTAIN),
-    TOME_OF_WATER_IMAGE("Tome of Water", TOME_OF_WATER),
-    VASE_OF_WATER_IMAGE("Vase of Water", VASE_OF_WATER),
-    VIAL_OF_SORROW_IMAGE("Vial of Sorrow", VIAL_OF_SORROW),
-    VIAL_OF_TEARS_IMAGE("Vial of Tears", VIAL_OF_TEARS_FULL),
-    VIAL_OF_WATER_IMAGE("Vial of Water", VIAL_OF_WATER),
-    WAKING_SLEEP_VIAL_IMAGE("Waking Sleep Vial", WAKING_SLEEP_VIAL),
-    WATERFILLED_GOURD_VIAL_IMAGE("Water-filled Gourd Vial", WATERFILLED_GOURD_VIAL),
-    WATERFILLED_VIAL_IMAGE("Water-filled Vial", WATERFILLED_VIAL),
-    WATERSKIN_IMAGE("Waterskin", WATERSKIN4),
-    WATER_CONTAINER_IMAGE("Water Container", WATER_CONTAINER),
-    WATER_ORB_IMAGE("Water Orb", WATER_ORB),
-    WATER_RUNE_IMAGE("Water Rune", WATER_RUNE),
-    WATER_TALISMAN_IMAGE("Water Talisman", WATER_TALISMAN),
-    WATER_TIARA_IMAGE("Water Tiara", WATER_TIARA),
+    BLESSED_WATER_IMAGE("Blessed Water", BLESSED_WATER, WATER, WATER),
+    BOTTLED_WATER_IMAGE("Bottled Water", BOTTLED_WATER, WATER),
+    BOWL_OF_BLUE_WATER_IMAGE("Bowl of Blue Water", BOWL_OF_BLUE_WATER, WATER),
+    BOWL_OF_HOT_WATER_IMAGE("Bowl of Hot Water", BOWL_OF_HOT_WATER, WATER),
+    BOWL_OF_RED_WATER_IMAGE("Bowl of Red Water", BOWL_OF_RED_WATER, WATER),
+    BOWL_OF_WATER_IMAGE("Bowl of Water", BOWL_OF_WATER, WATER),
+    BUCKET_OF_WATER_COOKOUT_IMAGE("Bucket of Water (Cookout)", BUCKET_OF_WATER_COOKOUT, WATER),
+    BUCKET_OF_WATER_IMAGE("Bucket of Water", BUCKET_OF_WATER, WATER),
+    CIRCLET_OF_WATER_IMAGE("Circlet of Water", CIRCLET_OF_WATER, WATER),
+    CUP_OF_HOT_WATER_IMAGE("Cup of Hot Water", CUP_OF_HOT_WATER, WATER),
+    CUP_OF_WATER_IMAGE("Cup of Water", CUP_OF_WATER, WATER),
+    FULL_BUCKET_IMAGE("Full Bucket", FULL_BUCKET, WATER),
+    FULL_JUG_IMAGE("Full Jug", FULL_JUG, WATER),
+    GOLDEN_BOWL_IMAGE("Golden Bowl", GOLDEN_BOWL_724, WATER),
+    GOLD_SINK_IMAGE("Gold Sink", GOLD_SINK, WATER),
+    HOLY_WATER_IMAGE("Holy Water", HOLY_WATER, WATER),
+    JUG_OF_WATER_IMAGE("Jug of Water", JUG_OF_WATER, WATER),
+    LARGE_FOUNTAIN_IMAGE("Large Fountain", LARGE_FOUNTAIN, WATER),
+    MURKY_WATER_IMAGE("Murky Water", MURKY_WATER, WATER),
+    NETTLEWATER_IMAGE("Nettle-water", NETTLEWATER, WATER),
+    POND_IMAGE("Pond", POND, WATER),
+    PORTAL_TALISMAN_WATER_IMAGE("Portal Talisman (Water)", PORTAL_TALISMAN_WATER, WATER),
+    POSH_FOUNTAIN_IMAGE("Posh Fountain", POSH_FOUNTAIN, WATER),
+    SINK_IMAGE("Sink", SINK, WATER),
+    SMALL_FOUNTAIN_IMAGE("Small Fountain", SMALL_FOUNTAIN, WATER),
+    TOME_OF_WATER_IMAGE("Tome of Water", TOME_OF_WATER, WATER),
+    VASE_OF_WATER_IMAGE("Vase of Water", VASE_OF_WATER, WATER),
+    VIAL_OF_SORROW_IMAGE("Vial of Sorrow", VIAL_OF_SORROW, WATER),
+    VIAL_OF_TEARS_IMAGE("Vial of Tears", VIAL_OF_TEARS_FULL, WATER),
+    VIAL_OF_WATER_IMAGE("Vial of Water", VIAL_OF_WATER, WATER),
+    WAKING_SLEEP_VIAL_IMAGE("Waking Sleep Vial", WAKING_SLEEP_VIAL, WATER),
+    WATERFILLED_GOURD_VIAL_IMAGE("Water-filled Gourd Vial", WATERFILLED_GOURD_VIAL, WATER),
+    WATERFILLED_VIAL_IMAGE("Water-filled Vial", WATERFILLED_VIAL, WATER),
+    WATERSKIN_IMAGE("Waterskin", WATERSKIN4, WATER),
+    WATER_CONTAINER_IMAGE("Water Container", WATER_CONTAINER, WATER),
+    WATER_ORB_IMAGE("Water Orb", WATER_ORB, WATER),
+    WATER_RUNE_IMAGE("Water Rune", WATER_RUNE, WATER),
+    WATER_TALISMAN_IMAGE("Water Talisman", WATER_TALISMAN, WATER),
+    WATER_TIARA_IMAGE("Water Tiara", WATER_TIARA, WATER),
 
     // TEA
     CLAY_CUP_OF_TEA_IMAGE("Clay Cup of Tea", CUP_OF_TEA_7730),
@@ -430,6 +431,11 @@ public enum HydrateReminderTimerImages
     private final int imageID;
 
     /**
+     * Category of the image
+     */
+    private final ImageCategories imageCategory;
+
+    /**
      * <p>Get the description of the image
      * </p>
      * @return image description
@@ -451,4 +457,11 @@ public enum HydrateReminderTimerImages
     {
         return getImageID();
     }
+
+    /**
+     * <p>Get the category of the image
+     * </p>
+     * @return image category
+     */
+    public ImageCategories getCategory() { return getImageCategory() }
 }
