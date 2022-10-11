@@ -40,11 +40,11 @@ class HydrateReminderImagesTest {
 
     @Test
     void testImagesGetCategory() {
-        assertEquals(WATER, HydrateReminderImages.CIRCLET_OF_WATER_IMAGE.getImageCategory());
-        assertEquals(TEA, HydrateReminderImages.NETTLE_TEA_IMAGE.getImageCategory());
-        assertEquals(ALCOHOL, HydrateReminderImages.VODKA_IMAGE.getImageCategory());
-        assertEquals(DRINKCONTAINERS, HydrateReminderImages.ICE_COOLER_IMAGE.getImageCategory());
-        assertEquals(POTIONCATEGORY, HydrateReminderImages.PRAYER_MIX_IMAGE.getImageCategory());
-        assertEquals(OTHER, HydrateReminderImages.FROZEN_JUG_IMAGE.getImageCategory());
+        assertEquals(WATER, HydrateReminderImages.CIRCLET_OF_WATER_IMAGE.getCategory());
+        assertEquals(TEA, HydrateReminderImages.NETTLE_TEA_IMAGE.getCategory());
+        assertEquals(ALCOHOL, HydrateReminderImages.VODKA_IMAGE.getCategory());
+        assertEquals(DRINKCONTAINERS, HydrateReminderImages.ICE_COOLER_IMAGE.getCategory());
+        assertEquals(POTIONCATEGORY, HydrateReminderImages.PRAYER_MIX_IMAGE.getCategory());
+        assertEquals(OTHER, HydrateReminderImages.FROZEN_JUG_IMAGE.getCategory());
     }
 }
