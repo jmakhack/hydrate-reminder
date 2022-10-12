@@ -420,6 +420,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mohitkumaragrawal",
+      "name": "mohitkumaragrawal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44193587?v=4",
+      "profile": "https://github.com/mohitkumaragrawal",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 5,
