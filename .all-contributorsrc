@@ -402,6 +402,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "AbbasSalloum",
+      "name": "AbbasSalloum",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63022908?v=4",
+      "profile": "https://github.com/AbbasSalloum",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
