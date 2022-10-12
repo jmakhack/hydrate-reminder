@@ -16,6 +16,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.never;
 
 @ExtendWith(MockitoExtension.class)
 class CommandInvokerTest {
@@ -83,8 +84,9 @@ class CommandInvokerTest {
         // given
         CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
 
-        // when and then
+        //when and then
         commandInvoker.invokeCommand(commandToExecute);
+        verify(commandCreator, never()).createFrom(any());
 
     }
 
