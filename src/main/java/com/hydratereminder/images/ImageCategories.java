@@ -13,9 +13,9 @@ public enum ImageCategories {
     TEA("Tea"),
     ALCOHOL("Alcohol"),
     DRINK("Drink"),
-    DRINKCONTAINERS("Drink Containers"),
+    DRINKCONTAINERS("Container"),
     FOOD("Food"),
-    POTIONCATEGORY("PotionCategory"),
+    POTIONCATEGORY("Potion"),
     DYE("Dye"),
     CHEMICAL("Chemical"),
     OTHER("Other");
