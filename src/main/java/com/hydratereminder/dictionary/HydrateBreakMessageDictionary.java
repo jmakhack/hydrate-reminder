@@ -330,7 +330,7 @@ public class HydrateBreakMessageDictionary {
     public static String getRandomPersonalityMessage()
     {
         final List<HydrateReminderPersonalityType> personalityTypes = getPersonalityTypesWithoutRandom();
-        final int randomNumber = ThreadLocalRandom.current().nextInt(0, personalityTypes.size());
+        final int randomNumber = ThreadLocalRandom.current().nextInt(0,5);
         final HydrateReminderPersonalityType personalityType = personalityTypes.get(randomNumber);
         return getRandomHydrateBreakMessageForPersonality(personalityType);
     }
