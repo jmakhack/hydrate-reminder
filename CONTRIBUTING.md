@@ -17,7 +17,7 @@ The following steps go through how to setup the development environment and how 
 
 2.  Clone the GitHub project onto your computer by opening IntelliJ IDEA, navigating to `File > New > Project from Version Control...`, and inputting `https://github.com/jmakhack/hydrate-reminder` into the URL field. The directory field can be any directory you would like to save the project to. When done, click `Clone`.
 
-   ![image](https://user-images.githubusercontent.com/1442227/185886676-a5c03998-97b1-458f-87ba-c855c2fa0a9f.png)
+![image](https://user-images.githubusercontent.com/1442227/185886676-a5c03998-97b1-458f-87ba-c855c2fa0a9f.png)
     
 3.  Navigate to `Run > Edit Configurations...` and add `-ea` to VM options. Afterwards, click `OK`. (Step 5 of the plugin-hub [README](https://github.com/runelite/plugin-hub/blob/master/README.md#using-the-template-repository) has more info on this if there are any issues with this step)
 
