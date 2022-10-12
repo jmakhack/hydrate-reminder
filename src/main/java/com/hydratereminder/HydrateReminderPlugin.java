@@ -318,13 +318,13 @@ public class HydrateReminderPlugin extends Plugin
 		final StringBuilder timeDisplayBuilder = new StringBuilder();
 		if (hours > 0)
 		{
-			timeDisplayBuilder.append(hours != 1 ? hours + " hours " : hours + " hour ");
+			timeDisplayBuilder.append(hours + " hour").append(hours > 1 ? "s " : " ");
 		}
 		if (minutes > 0 || hours > 0)
 		{
-			timeDisplayBuilder.append(minutes != 1 ? minutes + " minutes " : minutes + " minute ");
+			timeDisplayBuilder.append(minutes + " minute").append(minutes > 1 ? "s " : " ");
 		}
-		timeDisplayBuilder.append(seconds != 1 ? seconds + " seconds" : seconds + " second");
+		timeDisplayBuilder.append(seconds + " second").append(seconds > 1 ? "s " : "");
 		return timeDisplayBuilder.toString();
 	}
 
