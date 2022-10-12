@@ -86,7 +86,7 @@ public class HydrateBreakMessageDictionary {
             );
 
     /**
-     * Hydrate Reminder interval break text to display in caring form
+     * Hydrate Reminder interval break text to display in nerdy form
      */
     private static final List<String> HYDRATE_BREAK_NERDY_TEXT_LIST =
             Collections.unmodifiableList(
@@ -120,7 +120,7 @@ public class HydrateBreakMessageDictionary {
                     add("You can keep my heart but bring me back to life by drinking some water!");
                     add("Stop making me think about you! I'm busy drinking water");
                     add("You make my heart melt! Please drink some water");
-                    add("Just a note to remind you I'm thinking about you and drinkind some water");
+                    add("Just a note to remind you I'm thinking about you and drinking some water");
                     add("As the flower needs the sunshine, I need you in my life. Please drink some water");
                     add("Your heart is so full of love, and I'm lucky enough to find a place there. Please drink some water");
                     add("In all the world, there is no heart for me like yours. Drink some water to keep me in your heart.");
@@ -244,6 +244,30 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
 
+    /**
+     * Hydrate Reminder interval break text to display in Santa form
+     */
+    private static final List<String> HYDRATE_BREAK_SANTA_TEXT_LIST =
+            Collections.unmodifiableList(
+                    new ArrayList<String>() {{
+                        add("Smile and drink some water! Santa's coming to town");
+                        add("All I want for Christmas is you....drinking enough water");
+                        add("Ho ho ho! Time to drink");
+                        add("My elves are really busy but always remember to drink water. What about you?");
+                        add("Let's sit around the Christmas tree and drink some water together");
+                        add("Last year I gave you a cup...so fill it with water and drink some right now...");
+                        add("Have you been naughty and kept forgetting about hydration breaks?");
+                        add("I brought you some presents and bottles of water, let's drink");
+                        add("Don't be shy kiddo, come and have a drink with Santa");
+                        add("I still have a lot of chimneys to visit, but first, let's have a little hydration break together");
+                        add("You know, Mrs. Claus gets really mad at me when I forget about water breaks");
+                        add("Ho, ho, ho! Hydration break");
+                        add("Look at my Rudolph here, he's always hydrated! Are you?");
+                        add("Here is your Christmas gift, but remember - the best gift for future you is drinking enough water");
+                        add("Please drink a glass of water. Merry Christmas");
+                    }}
+            );
+
 
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
@@ -286,6 +310,9 @@ public class HydrateBreakMessageDictionary {
                 break;
             case AGGRESSIVE:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
+                break;
+            case SANTA:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_SANTA_TEXT_LIST);
                 break;
             case RANDOM:
                 breakMessage = getRandomPersonalityMessage();
