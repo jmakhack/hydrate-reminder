@@ -195,6 +195,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/kat-kan"><img src="https://avatars.githubusercontent.com/u/17500766?v=4?s=100" width="100px;" alt="Katarzyna"/><br /><sub><b>Katarzyna</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=kat-kan" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/AbbasSalloum"><img src="https://avatars.githubusercontent.com/u/63022908?v=4?s=100" width="100px;" alt="AbbasSalloum"/><br /><sub><b>AbbasSalloum</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=AbbasSalloum" title="Tests">⚠️</a></td>
       <td align="center"><a href="https://pwnb0y.medium.com/"><img src="https://avatars.githubusercontent.com/u/96813659?v=4?s=100" width="100px;" alt="Vicky Aryan"/><br /><sub><b>Vicky Aryan</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=pwnb0y" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/mohitkumaragrawal"><img src="https://avatars.githubusercontent.com/u/44193587?v=4?s=100" width="100px;" alt="mohitkumaragrawal"/><br /><sub><b>mohitkumaragrawal</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=mohitkumaragrawal" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
