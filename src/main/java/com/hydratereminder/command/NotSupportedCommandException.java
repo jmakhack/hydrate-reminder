@@ -10,6 +10,7 @@ public class NotSupportedCommandException extends RuntimeException {
     private static final long serialVersionUID = 4328741L;
 
     public NotSupportedCommandException(HydrateReminderCommandArgs unrecognizedCommandName) {
+        super();
         this.reason = String.format(
                 "%s%s %s is not a valid command",
                 RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, unrecognizedCommandName
