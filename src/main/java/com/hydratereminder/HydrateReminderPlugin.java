@@ -224,7 +224,7 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (event.getGroup().equals("hydratereminder"))
+		if ("hydratereminder".equals(event.getGroup()))
 		{
 			switch (event.getKey())
 			{
