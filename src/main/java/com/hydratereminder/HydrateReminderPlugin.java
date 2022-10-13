@@ -322,9 +322,9 @@ public class HydrateReminderPlugin extends Plugin
 		}
 		if (minutes > 0 || hours > 0)
 		{
-			timeDisplayBuilder.append(minutes + " minute").append(minutes > 1 ? "s " : " ");
+			timeDisplayBuilder.append(minutes + " minute").append(minutes == 1 ? " " : "s ");
 		}
-		timeDisplayBuilder.append(seconds + " second").append(seconds > 1 ? "s " : "");
+		timeDisplayBuilder.append(seconds + " second").append(seconds == 1 ? "" : "s");
 		return timeDisplayBuilder.toString();
 	}
 
