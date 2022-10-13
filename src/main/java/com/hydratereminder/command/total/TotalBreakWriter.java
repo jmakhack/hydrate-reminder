@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +51,19 @@ public class TotalBreakWriter {
     }
 
     /**
+     * <p>Gets String of bytes from hydration breaks file
+     * </p>
+     * @return string of bytes
+     * @throws IOException
+     */
+    private static String getFileContent() throws IOException
+    {
+        Path filePath = Paths.get(HYDRATION_REMINDER_BREAKS_FILE.toString());
+        byte[] fileBytes = Files.readAllBytes(filePath);
+        return new String(fileBytes);
+    }
+
+    /**
      * <p>Loads the total hydration break file if it exists and 0 if not
      * </p>
      * @return total hydration breaks for all sessions
@@ -56,22 +71,26 @@ public class TotalBreakWriter {
     public int loadTotalBreakFile()
     {
         int totalBreaks = 0;
-//        synchronized (this)
-//        {
-//            try (BufferedReader reader = Files.newBufferedReader(Paths.get(HYDRATION_REMINDER_BREAKS_FILE)))
-//            {
-//                totalBreaks = Integer.parseInt(reader.readLine());
-//            }
-//            catch (IOException e)
-//            {
-//                if (log.isWarnEnabled())
-//                {
-//                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE, e.getMessage());
-//                }
-//            }
+        synchronized (this)
+        {
+            try
+            {
+                Map<String, String> map = new HashMap<>();
+                final Gson gson = new Gson();
+                String jsonString = getFileContent();
+                Map<String, String> data = gson.fromJson(jsonString, map.getClass());
+                totalBreaks = Integer.parseInt(data.get("totalHydrateCount"));
+            }
+            catch (IOException e)
+            {
+                if (log.isWarnEnabled())
+                {
+                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE, e.getMessage());
+                }
+            }
+        }
 
-            return totalBreaks;
-//        }
+        return totalBreaks;
     }
 
     /**
@@ -86,8 +105,8 @@ public class TotalBreakWriter {
         {
             try
             {
-                Map<String, Integer> data = new HashMap<>();
-                data.put("totalHydrateCount", totalHydrationBreaks);
+                Map<String, String> data = new HashMap<>();
+                data.put("totalHydrateCount", String.valueOf(totalHydrationBreaks));
 
                 final Gson gson = new Gson();
                 final String json = gson.toJson(data);
