@@ -70,7 +70,7 @@ class HydrateReminderPluginTest {
         assertEquals("1 hour 1 minute 1 second",
                 hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(3661)));
         assertEquals("19 hours 15 minutes 39 seconds",
-                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(69339)));
+                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(69_339)));
         assertEquals("15 minutes 39 seconds",
                 hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(939)));
         assertEquals("1 hour 0 minutes 0 seconds",

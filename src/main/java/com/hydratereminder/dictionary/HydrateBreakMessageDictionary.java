@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.hydratereminder.HydrateReminderPersonalityType;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class HydrateBreakMessageDictionary {
 
     /**

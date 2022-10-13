@@ -429,6 +429,42 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "A-5ingh",
+      "name": "A. Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32884734?v=4",
+      "profile": "https://github.com/A-5ingh",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "90r1ll4",
+      "name": "G0R1LL4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45795129?v=4",
+      "profile": "https://github.com/90r1ll4",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "akshat-rawat",
+      "name": "Akshat Rawat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78139798?v=4",
+      "profile": "http://akshat-rawat.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "vikash485",
+      "name": "Vikash",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114328709?v=4",
+      "profile": "https://github.com/vikash485",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,

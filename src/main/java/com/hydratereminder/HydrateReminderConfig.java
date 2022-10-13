@@ -26,6 +26,7 @@
 package com.hydratereminder;
 
 
+import com.hydratereminder.images.HydrateReminderImages;
 import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
@@ -66,7 +67,7 @@ public interface HydrateReminderConfig extends Config
 			description = "Settings for Hydrate Reminder Notifications",
 			position = 10
 	)
-	String hydrateReminderNotificationsSection = "Hydrate Reminder Notification Settings";
+	String HYDRATE_REMINDER_NOTIFICATIONS_SECTION = "Hydrate Reminder Notification Settings";
 
 	/**
 	 * <p>Separates the animation settings into its own config section
@@ -78,7 +79,7 @@ public interface HydrateReminderConfig extends Config
 			description = "Settings for Hydrate Reminder Animations",
 			position = 20
 	)
-	String hydrateReminderAnimationSection = "Hydrate Reminder Animation Settings";
+	String HYDRATE_REMINDER_ANIMATION_SECTION = "Hydrate Reminder Animation Settings";
 
 	/**
 	 * <p>Separates the overlay timer settings into its own config section
@@ -90,7 +91,7 @@ public interface HydrateReminderConfig extends Config
 			description = "Settings for Hydrate Reminder Overlay Timer",
 			position = 30
 	)
-	String hydrateReminderTimerSection = "Hydrate Reminder Overlay Timer Settings";
+	String HYDRATE_REMINDER_TIMER_SECTION = "Hydrate Reminder Overlay Timer Settings";
 
 	/**
 	 * <p>Allows the player to enable/disable the hydrate login welcome message
@@ -143,7 +144,7 @@ public interface HydrateReminderConfig extends Config
 		name = "Chat notification",
 		description = "Sets the hydrate reminder to be sent as a chat message",
 		position = 1,
-		section = hydrateReminderNotificationsSection
+		section = HYDRATE_REMINDER_NOTIFICATIONS_SECTION
 	)
 	default boolean hydrateReminderChatMessageEnabled()
 	{
@@ -161,7 +162,7 @@ public interface HydrateReminderConfig extends Config
 		name = "Chat type",
 		description = "Sets the type of chat message sent by hydrate reminder",
 		position = 2,
-		section = hydrateReminderNotificationsSection
+		section = HYDRATE_REMINDER_NOTIFICATIONS_SECTION
 	)
 	default HydrateReminderChatMessageType hydrateReminderChatMessageType()
 	{
@@ -179,7 +180,7 @@ public interface HydrateReminderConfig extends Config
 		name = "Computer notification",
 		description = "Sets the hydrate reminder to be sent as a computer notification",
 		position = 3,
-		section = hydrateReminderNotificationsSection
+		section = HYDRATE_REMINDER_NOTIFICATIONS_SECTION
 	)
 	default boolean hydrateReminderComputerNotificationEnabled()
 	{
@@ -198,7 +199,7 @@ public interface HydrateReminderConfig extends Config
 			description = "Enables a hydration animation that the player character performs every time the hydration " +
 					"interval completes",
 			position = 1,
-			section = hydrateReminderAnimationSection
+			section = HYDRATE_REMINDER_ANIMATION_SECTION
 	)
 	default boolean hydrateAnimationEnabled()
 	{
@@ -216,7 +217,7 @@ public interface HydrateReminderConfig extends Config
 			name = "Timer Display",
 			description = "Sets the hydrate reminder to be sent as a computer notification",
 			position = 1,
-			section = hydrateReminderTimerSection
+			section = HYDRATE_REMINDER_TIMER_SECTION
 	)
 	default boolean hydrateReminderOverlayTimerEnabled()
 	{
@@ -235,7 +236,7 @@ public interface HydrateReminderConfig extends Config
 			name = "Text Color",
 			description = "Sets the text color of the timer display",
 			position = 2,
-			section = hydrateReminderTimerSection
+			section = HYDRATE_REMINDER_TIMER_SECTION
 	)
 	default Color hydrateReminderOverlayTimerTextColor()
 	{
@@ -251,7 +252,7 @@ public interface HydrateReminderConfig extends Config
 			name = "Timer Image",
 			description = "Sets the background image of the timer display",
 			position = 3,
-			section = hydrateReminderTimerSection
+			section = HYDRATE_REMINDER_TIMER_SECTION
 	)
 	default void overlayTimerImageTitle() {
 		// Shows title above timer image names
@@ -268,11 +269,11 @@ public interface HydrateReminderConfig extends Config
 			name = "Timer Image",
 			description = "Sets the background image of the timer display",
 			position = 4,
-			section = hydrateReminderTimerSection
+			section = HYDRATE_REMINDER_TIMER_SECTION
 	)
-	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
+	default HydrateReminderImages hydrateReminderOverlayTimerImage()
 	{
-		return HydrateReminderTimerImages.CUP_OF_WATER_IMAGE;
+		return HydrateReminderImages.CUP_OF_WATER_IMAGE;
 	}
 
 	/**

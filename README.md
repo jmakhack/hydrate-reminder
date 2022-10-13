@@ -197,6 +197,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://pwnb0y.medium.com/"><img src="https://avatars.githubusercontent.com/u/96813659?v=4?s=100" width="100px;" alt="Vicky Aryan"/><br /><sub><b>Vicky Aryan</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=pwnb0y" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/mohitkumaragrawal"><img src="https://avatars.githubusercontent.com/u/44193587?v=4?s=100" width="100px;" alt="mohitkumaragrawal"/><br /><sub><b>mohitkumaragrawal</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=mohitkumaragrawal" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/A-5ingh"><img src="https://avatars.githubusercontent.com/u/32884734?v=4?s=100" width="100px;" alt="A. Singh"/><br /><sub><b>A. Singh</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=A-5ingh" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/90r1ll4"><img src="https://avatars.githubusercontent.com/u/45795129?v=4?s=100" width="100px;" alt="G0R1LL4"/><br /><sub><b>G0R1LL4</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=90r1ll4" title="Code">💻</a></td>
+      <td align="center"><a href="http://akshat-rawat.github.io/"><img src="https://avatars.githubusercontent.com/u/78139798?v=4?s=100" width="100px;" alt="Akshat Rawat"/><br /><sub><b>Akshat Rawat</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=akshat-rawat" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/vikash485"><img src="https://avatars.githubusercontent.com/u/114328709?v=4?s=100" width="100px;" alt="Vikash"/><br /><sub><b>Vikash</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=vikash485" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
