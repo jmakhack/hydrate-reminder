@@ -36,9 +36,7 @@ public class CommandInvoker {
                 final HydrateReminderCommandArgs commandType = getCommandType(rawCommand);
                 final Command command = commandCreator.createFrom(commandType);
                 command.execute();
-            } catch (NotSupportedCommandException exception) {
-                printHelpMessage(exception.getReason());
-            } catch (NotRecognizedCommandException exception) {
+            } catch (NotSupportedCommandException | NotRecognizedCommandException exception) {
                 printHelpMessage(exception.getReason());
             }
         }
