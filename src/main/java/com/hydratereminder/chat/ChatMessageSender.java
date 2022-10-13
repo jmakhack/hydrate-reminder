@@ -49,7 +49,9 @@ public class ChatMessageSender {
     public void sendHydrateReminderChatMessage(String message) {
         final ChatMessageType chatMessageType = chatMessageTypeProvider.getChatNotificationMessageType();
         sendHydrateEmojiChatMessage(chatMessageType, message);
-        log.debug(String.format("Successfully sent chat notification of type: %s", chatMessageType.toString()));
+        if(log.isDebugEnabled()){
+            log.debug(String.format("Successfully sent chat notification of type: %s", chatMessageType.toString()));
+        }
     }
 
     /**
