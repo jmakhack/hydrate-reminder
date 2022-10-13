@@ -89,7 +89,7 @@ public class HydrateReminderTimer extends InfoBox
         final Instant endTime = hydrateReminderPlugin.getNextHydrateReminderInstant();
         final Duration timeRemaining = Duration.between(Instant.now(), endTime);
         final int seconds = (int) ((timeRemaining.toMillis() / 1000L) % 60);
-        final int minutes = (int) (timeRemaining.toMillis() / 60000L);
+        final int minutes = (int) (timeRemaining.toMillis() / 60_000L);
         return String.format("%d:%02d", Math.max(minutes, 0), Math.max(seconds, 0));
     }
 
