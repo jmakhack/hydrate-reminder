@@ -26,6 +26,7 @@
 package com.hydratereminder;
 
 
+import com.hydratereminder.images.HydrateReminderImages;
 import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
@@ -270,9 +271,9 @@ public interface HydrateReminderConfig extends Config
 			position = 4,
 			section = HYDRATE_REMINDER_TIMER_SECTION
 	)
-	default HydrateReminderTimerImages hydrateReminderOverlayTimerImage()
+	default HydrateReminderImages hydrateReminderOverlayTimerImage()
 	{
-		return HydrateReminderTimerImages.CUP_OF_WATER_IMAGE;
+		return HydrateReminderImages.CUP_OF_WATER_IMAGE;
 	}
 
 	/**
