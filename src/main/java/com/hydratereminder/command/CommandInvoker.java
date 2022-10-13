@@ -37,7 +37,7 @@ public class CommandInvoker {
                 final Command command = commandCreator.createFrom(commandType);
                 command.execute();
             } catch (NotSupportedCommandException | NotRecognizedCommandException exception) {
-                printHelpMessage(exception.getReason());
+                printHelpMessage(exception.getMessage());
             }
         }
     }
