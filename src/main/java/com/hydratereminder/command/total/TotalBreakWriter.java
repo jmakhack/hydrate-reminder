@@ -1,14 +1,14 @@
 package com.hydratereminder.command.total;
 
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static net.runelite.client.RuneLite.RUNELITE_DIR;
 
@@ -27,8 +27,8 @@ public class TotalBreakWriter {
     /**
      * <p>File for total hydration breaks</p>
      */
-    private static final String HYDRATION_REMINDER_BREAKS_FILE_NAME =
-            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.json").toString();
+    private static final File HYDRATION_REMINDER_BREAKS_FILE =
+            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.json");
 
     /**
      * <p> Upon initialization, creates a directory in the RuneLite directory
@@ -56,22 +56,22 @@ public class TotalBreakWriter {
     public int loadTotalBreakFile()
     {
         int totalBreaks = 0;
-        synchronized (this)
-        {
-            try (BufferedReader reader = Files.newBufferedReader(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))
-            {
-                totalBreaks = Integer.parseInt(reader.readLine());
-            }
-            catch (IOException e)
-            {
-                if (log.isWarnEnabled())
-                {
-                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE_NAME, e.getMessage());
-                }
-            }
+//        synchronized (this)
+//        {
+//            try (BufferedReader reader = Files.newBufferedReader(Paths.get(HYDRATION_REMINDER_BREAKS_FILE)))
+//            {
+//                totalBreaks = Integer.parseInt(reader.readLine());
+//            }
+//            catch (IOException e)
+//            {
+//                if (log.isWarnEnabled())
+//                {
+//                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE, e.getMessage());
+//                }
+//            }
 
             return totalBreaks;
-        }
+//        }
     }
 
     /**
@@ -84,16 +84,20 @@ public class TotalBreakWriter {
     {
         synchronized (this)
         {
-            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))
+            try
             {
-                final String breaksAsString = String.valueOf(totalHydrationBreaks);
-                writer.append(breaksAsString);
+                Map<String, Integer> data = new HashMap<>();
+                data.put("totalHydrateCount", totalHydrationBreaks);
+
+                final Gson gson = new Gson();
+                final String json = gson.toJson(data);
+                Files.write(HYDRATION_REMINDER_BREAKS_FILE.toPath(), json.getBytes());
             }
             catch (IOException e)
             {
                 if (log.isWarnEnabled())
                 {
-                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE_NAME, e.getMessage());
+                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE, e.getMessage());
                 }
             }
         }
