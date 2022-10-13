@@ -28,7 +28,7 @@ public class TotalBreakWriter {
      * <p>File for total hydration breaks</p>
      */
     private static final String HYDRATION_REMINDER_BREAKS_FILE_NAME =
-            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.log").toString();
+            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.json").toString();
 
     /**
      * <p> Upon initialization, creates a directory in the RuneLite directory
