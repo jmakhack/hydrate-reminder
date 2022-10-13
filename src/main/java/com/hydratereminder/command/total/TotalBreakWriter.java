@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static net.runelite.client.RuneLite.RUNELITE_DIR;
 
@@ -58,8 +59,8 @@ public class TotalBreakWriter {
      */
     private static String getFileContent() throws IOException
     {
-        Path filePath = Paths.get(HYDRATION_REMINDER_BREAKS_FILE.toString());
-        byte[] fileBytes = Files.readAllBytes(filePath);
+        final Path filePath = Paths.get(HYDRATION_REMINDER_BREAKS_FILE.toString());
+        final byte[] fileBytes = Files.readAllBytes(filePath);
         return new String(fileBytes);
     }
 
@@ -75,10 +76,10 @@ public class TotalBreakWriter {
         {
             try
             {
-                Map<String, String> map = new HashMap<>();
+                final Map<String, String> map = new ConcurrentHashMap<>();
                 final Gson gson = new Gson();
-                String jsonString = getFileContent();
-                Map<String, String> data = gson.fromJson(jsonString, map.getClass());
+                final String jsonString = getFileContent();
+                final Map<String, String> data = gson.fromJson(jsonString, map.getClass());
                 totalBreaks = Integer.parseInt(data.get("totalHydrateCount"));
             }
             catch (IOException e)
@@ -105,7 +106,7 @@ public class TotalBreakWriter {
         {
             try
             {
-                Map<String, String> data = new HashMap<>();
+                final Map<String, String> data = new ConcurrentHashMap<>();
                 data.put("totalHydrateCount", String.valueOf(totalHydrationBreaks));
 
                 final Gson gson = new Gson();
