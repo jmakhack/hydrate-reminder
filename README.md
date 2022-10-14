@@ -70,7 +70,7 @@ Configure a variety of hydrate reminder settings such as:
 
 -   Welcome message
     -   Enable/Disable
-   
+ 
 -   Hydrate reminder interval length
     -   Between 1 - 90 minutes
  
