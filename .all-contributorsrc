@@ -474,6 +474,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "manaslohani",
+      "name": "spacecowboy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51227394?v=4",
+      "profile": "https://github.com/manaslohani",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 5,
