@@ -202,6 +202,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/90r1ll4"><img src="https://avatars.githubusercontent.com/u/45795129?v=4?s=100" width="100px;" alt="G0R1LL4"/><br /><sub><b>G0R1LL4</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=90r1ll4" title="Code">💻</a></td>
       <td align="center"><a href="http://akshat-rawat.github.io/"><img src="https://avatars.githubusercontent.com/u/78139798?v=4?s=100" width="100px;" alt="Akshat Rawat"/><br /><sub><b>Akshat Rawat</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=akshat-rawat" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/vikash485"><img src="https://avatars.githubusercontent.com/u/114328709?v=4?s=100" width="100px;" alt="Vikash"/><br /><sub><b>Vikash</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=vikash485" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/jhonDoe15"><img src="https://avatars.githubusercontent.com/u/62393042?v=4?s=100" width="100px;" alt="jhonDoe15"/><br /><sub><b>jhonDoe15</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jhonDoe15" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
