@@ -70,14 +70,17 @@ Configure a variety of hydrate reminder settings such as:
 
 -   Welcome message
     -   Enable/Disable
+ 
 -   Hydrate reminder interval length
     -   Between 1 - 90 minutes
+ 
 -   Notification types
     -   Chat message notification
         -   Game message notification
         -   Broadcast message notification
         -   Public chat notification
         -   Clan chat notification
+
     -   Computer tray notification
 
 ![Screen Shot 2021-07-19 at 7 46 18 PM](https://user-images.githubusercontent.com/1442227/126261031-6f1938fd-97bb-47b8-a2d1-3e7bfb64d038.png)
@@ -87,14 +90,19 @@ Configure a variety of hydrate reminder settings such as:
 Use a variety of optional builtin chat commands to enhance the hydrate reminder experience:
 -   `::hr help`
     -   Displays the list of available commands
+   
 -   `::hr next`
     -   Displays the amount of time until the next hydrate reminder
+   
 -   `::hr prev`
     -   Displays the amount of time since the previous hydrate reminder
+   
 -   `::hr reset`
     -   Resets the current hydrate reminder interval
+   
 -   `::hr hydrate`
     -   Resets the current hydrate reminder interval and increase hydration breaks
+    
 -   `::hr total`
     -   Displays the number of hydration breaks taken
 
