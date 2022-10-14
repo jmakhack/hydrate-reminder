@@ -8,6 +8,7 @@ public class NotRecognizedCommandException extends RuntimeException {
     private static final long serialVersionUID = 4328743L;
 
     public NotRecognizedCommandException(String unsupportedCommandName) {
+        super();
         this.reason = String.format(
                 "%s%s %s is not supported command",
                 RUNELITE_COMMAND_PREFIX, HYDRATE_COMMAND_ALIAS, unsupportedCommandName
