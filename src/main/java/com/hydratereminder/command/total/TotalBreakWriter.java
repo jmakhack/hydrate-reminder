@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +11,8 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static net.runelite.client.RuneLite.RUNELITE_DIR;
+import static com.hydratereminder.Commons.HYDRATION_REMINDER_BREAKS_FILE;
+import static com.hydratereminder.Commons.HYDRATION_REMINDER_DIR;
 
 /**
  * <p> This class writes and reads a file related to total hydration
@@ -21,16 +21,6 @@ import static net.runelite.client.RuneLite.RUNELITE_DIR;
  */
 @Slf4j
 public class TotalBreakWriter {
-    /**
-     * <p>Directory for Hydrate Reminder</p>
-     */
-    private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
-
-    /**
-     * <p>File for total hydration breaks</p>
-     */
-    private static final File HYDRATION_REMINDER_BREAKS_FILE =
-            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.json");
 
     /**
      * <p> Upon initialization, creates a directory in the RuneLite directory
