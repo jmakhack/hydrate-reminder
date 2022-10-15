@@ -14,9 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CommandInvokerTest {
@@ -47,7 +45,7 @@ class CommandInvokerTest {
     @Test
     void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown() {
         // given
-        String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getReason();
+        String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getMessage();
         Command helpCommand = Mockito.mock(HelpCommand.class);
         CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"wrong"});
 
