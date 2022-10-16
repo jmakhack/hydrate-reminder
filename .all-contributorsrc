@@ -483,6 +483,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ron-huberfeld",
+      "name": "Ron Huberfeld",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32178925?v=4",
+      "profile": "https://github.com/ron-huberfeld",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
