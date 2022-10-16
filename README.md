@@ -215,6 +215,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center"><a href="https://github.com/manaslohani"><img src="https://avatars.githubusercontent.com/u/51227394?v=4?s=100" width="100px;" alt="spacecowboy"/><br /><sub><b>spacecowboy</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=manaslohani" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/ron-huberfeld"><img src="https://avatars.githubusercontent.com/u/32178925?v=4?s=100" width="100px;" alt="Ron Huberfeld"/><br /><sub><b>Ron Huberfeld</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ron-huberfeld" title="Code">💻</a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/arsh-ergon/"><img src="https://avatars.githubusercontent.com/u/40994679?v=4?s=100" width="100px;" alt="Mohd Arsh Ali "/><br /><sub><b>Mohd Arsh Ali </b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ArshErgon" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
