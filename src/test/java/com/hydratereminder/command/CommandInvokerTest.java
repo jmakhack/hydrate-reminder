@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -17,6 +16,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
 class CommandInvokerTest {
@@ -32,7 +32,7 @@ class CommandInvokerTest {
     void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly() {
         // given
         HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
-        Command hydrateCommand = Mockito.mock(HydrateCommand.class);
+        Command hydrateCommand = mock(HydrateCommand.class);
         CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
 
         given(commandCreator.createFrom(commandArgs)).willReturn(hydrateCommand);
@@ -47,8 +47,8 @@ class CommandInvokerTest {
     @Test
     void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown() {
         // given
-        String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getReason();
-        Command helpCommand = Mockito.mock(HelpCommand.class);
+        String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getMessage();
+        Command helpCommand = mock(HelpCommand.class);
         CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"wrong"});
 
         given(commandCreator.createFrom(HydrateReminderCommandArgs.HELP)).willReturn(helpCommand);
@@ -66,7 +66,7 @@ class CommandInvokerTest {
         // given
         HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
         CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
-        Command helpCommand = Mockito.mock(HelpCommand.class);
+        Command helpCommand = mock(HelpCommand.class);
 
         given(commandCreator.createFrom(commandArgs)).willThrow(NotSupportedCommandException.class);
         given(commandCreator.createFrom(HydrateReminderCommandArgs.HELP)).willReturn(helpCommand);
