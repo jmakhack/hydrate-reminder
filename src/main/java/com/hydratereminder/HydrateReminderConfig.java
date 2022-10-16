@@ -207,6 +207,23 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
+	 * <p>Allows player to see the animation types
+	 * </p>
+	 * @return true if the hydrate animation is to be enabled
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderAnimationType",
+			name = "Animation type",
+			description = "Sets the type of animation by which different animation will be displayed when hydrating",
+			position = 2,
+			section = HYDRATE_REMINDER_ANIMATION_SECTION
+	)
+	default HydrateReminderAnimationType hydrateReminderAnimationType() {
+		return HydrateReminderAnimationType.TYPEONE;
+	}
+
+	/**
 	 * <p>Allows the player to enable/disable the overlay timer
 	 * </p>
 	 * @return true if the overlay timer is enabled
