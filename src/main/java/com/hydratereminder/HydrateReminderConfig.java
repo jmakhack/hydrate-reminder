@@ -286,7 +286,8 @@ public interface HydrateReminderConfig extends Config
 			keyName = "hydrateReminderPersonalityType",
 			name = "Personality type",
 			description = "Sets the type of personality by which different messages will be displayed when hydrating",
-			position = 11
+			position = 11,
+			section = HYDRATE_REMINDER_NOTIFICATIONS_SECTION
 	)
 	default HydrateReminderPersonalityType hydrateReminderPersonalityType()
 	{
