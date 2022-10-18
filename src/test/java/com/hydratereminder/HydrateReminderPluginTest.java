@@ -5,6 +5,8 @@ import net.runelite.api.Client;
 import net.runelite.api.Player;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -65,18 +67,16 @@ class HydrateReminderPluginTest {
         assertFalse(hydrateReminderPlugin.isResetState());
     }
 
-    @Test
-    void shouldReturnCorrectStringFormatOfTheTime() {
-        assertEquals("1 hour 1 minute 1 second",
-                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(3661)));
-        assertEquals("19 hours 15 minutes 39 seconds",
-                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(69_339)));
-        assertEquals("15 minutes 39 seconds",
-                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(939)));
-        assertEquals("1 hour 0 minutes 0 seconds",
-                hydrateReminderPlugin.getTimeDisplay(Duration.ofHours(1)));
-        assertEquals("0 seconds",
-                hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(0)));
+    @ParameterizedTest
+    @CsvSource({
+            "1 hour 1 minute 1 second, 3661",
+            "19 hours 15 minutes 39 seconds, 69_339",
+            "15 minutes 39 seconds, 939",
+            "1 hour 0 minutes 0 seconds, 3600",
+            "0 seconds, 0"
+    })
+    void shouldReturnCorrectStringFormatOfTheTime(String expectedString, long seconds) {
+        assertEquals(expectedString, hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(seconds)));
     }
 
     @Test
