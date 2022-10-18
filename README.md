@@ -70,14 +70,17 @@ Configure a variety of hydrate reminder settings such as:
 
 -   Welcome message
     -   Enable/Disable
+ 
 -   Hydrate reminder interval length
     -   Between 1 - 90 minutes
+ 
 -   Notification types
     -   Chat message notification
         -   Game message notification
         -   Broadcast message notification
         -   Public chat notification
         -   Clan chat notification
+
     -   Computer tray notification
 
 ![Screen Shot 2021-07-19 at 7 46 18 PM](https://user-images.githubusercontent.com/1442227/126261031-6f1938fd-97bb-47b8-a2d1-3e7bfb64d038.png)
@@ -87,14 +90,19 @@ Configure a variety of hydrate reminder settings such as:
 Use a variety of optional builtin chat commands to enhance the hydrate reminder experience:
 -   `::hr help`
     -   Displays the list of available commands
+   
 -   `::hr next`
     -   Displays the amount of time until the next hydrate reminder
+   
 -   `::hr prev`
     -   Displays the amount of time since the previous hydrate reminder
+   
 -   `::hr reset`
     -   Resets the current hydrate reminder interval
+   
 -   `::hr hydrate`
     -   Resets the current hydrate reminder interval and increase hydration breaks
+    
 -   `::hr total`
     -   Displays the number of hydration breaks taken
 
@@ -202,6 +210,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/90r1ll4"><img src="https://avatars.githubusercontent.com/u/45795129?v=4?s=100" width="100px;" alt="G0R1LL4"/><br /><sub><b>G0R1LL4</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=90r1ll4" title="Code">💻</a></td>
       <td align="center"><a href="http://akshat-rawat.github.io/"><img src="https://avatars.githubusercontent.com/u/78139798?v=4?s=100" width="100px;" alt="Akshat Rawat"/><br /><sub><b>Akshat Rawat</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=akshat-rawat" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/vikash485"><img src="https://avatars.githubusercontent.com/u/114328709?v=4?s=100" width="100px;" alt="Vikash"/><br /><sub><b>Vikash</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=vikash485" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/jhonDoe15"><img src="https://avatars.githubusercontent.com/u/62393042?v=4?s=100" width="100px;" alt="jhonDoe15"/><br /><sub><b>jhonDoe15</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=jhonDoe15" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/manaslohani"><img src="https://avatars.githubusercontent.com/u/51227394?v=4?s=100" width="100px;" alt="spacecowboy"/><br /><sub><b>spacecowboy</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=manaslohani" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/ron-huberfeld"><img src="https://avatars.githubusercontent.com/u/32178925?v=4?s=100" width="100px;" alt="Ron Huberfeld"/><br /><sub><b>Ron Huberfeld</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ron-huberfeld" title="Code">💻</a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/arsh-ergon/"><img src="https://avatars.githubusercontent.com/u/40994679?v=4?s=100" width="100px;" alt="Mohd Arsh Ali "/><br /><sub><b>Mohd Arsh Ali </b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ArshErgon" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

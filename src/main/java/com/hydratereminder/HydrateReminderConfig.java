@@ -215,7 +215,7 @@ public interface HydrateReminderConfig extends Config
 	@ConfigItem(
 			keyName = "hydrateReminderOverlayTimerEnabled",
 			name = "Timer Display",
-			description = "Sets the hydrate reminder to be sent as a computer notification",
+			description = "Sets whether or not the timer display should be displayed",
 			position = 1,
 			section = HYDRATE_REMINDER_TIMER_SECTION
 	)

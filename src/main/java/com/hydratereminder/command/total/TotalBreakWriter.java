@@ -1,16 +1,18 @@
 package com.hydratereminder.command.total;
 
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-import static net.runelite.client.RuneLite.RUNELITE_DIR;
+import static com.hydratereminder.Commons.HYDRATION_REMINDER_BREAKS_FILE;
+import static com.hydratereminder.Commons.HYDRATION_REMINDER_DIR;
 
 /**
  * <p> This class writes and reads a file related to total hydration
@@ -19,16 +21,6 @@ import static net.runelite.client.RuneLite.RUNELITE_DIR;
  */
 @Slf4j
 public class TotalBreakWriter {
-    /**
-     * <p>Directory for Hydrate Reminder</p>
-     */
-    private static final File HYDRATION_REMINDER_DIR = new File(RUNELITE_DIR, "hydrateReminder");
-
-    /**
-     * <p>File for total hydration breaks</p>
-     */
-    private static final String HYDRATION_REMINDER_BREAKS_FILE_NAME =
-            new File(HYDRATION_REMINDER_DIR, "totalHydrationBreaks.log").toString();
 
     /**
      * <p> Upon initialization, creates a directory in the RuneLite directory
@@ -49,6 +41,19 @@ public class TotalBreakWriter {
     }
 
     /**
+     * <p>Gets String of bytes from hydration breaks file
+     * </p>
+     * @return string of bytes
+     * @throws IOException
+     */
+    private static String getFileContent() throws IOException
+    {
+        final Path filePath = Paths.get(HYDRATION_REMINDER_BREAKS_FILE.toString());
+        final byte[] fileBytes = Files.readAllBytes(filePath);
+        return new String(fileBytes);
+    }
+
+    /**
      * <p>Loads the total hydration break file if it exists and 0 if not
      * </p>
      * @return total hydration breaks for all sessions
@@ -58,20 +63,24 @@ public class TotalBreakWriter {
         int totalBreaks = 0;
         synchronized (this)
         {
-            try (BufferedReader reader = Files.newBufferedReader(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))
+            try
             {
-                totalBreaks = Integer.parseInt(reader.readLine());
+                final Map<String, String> map = new ConcurrentHashMap<>();
+                final Gson gson = new Gson();
+                final String jsonString = getFileContent();
+                final Map<String, String> data = gson.fromJson(jsonString, map.getClass());
+                totalBreaks = Integer.parseInt(data.get("totalHydrateCount"));
             }
             catch (IOException e)
             {
                 if (log.isWarnEnabled())
                 {
-                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE_NAME, e.getMessage());
+                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE, e.getMessage());
                 }
             }
-
-            return totalBreaks;
         }
+
+        return totalBreaks;
     }
 
     /**
@@ -84,16 +93,20 @@ public class TotalBreakWriter {
     {
         synchronized (this)
         {
-            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(HYDRATION_REMINDER_BREAKS_FILE_NAME)))
+            try
             {
-                final String breaksAsString = String.valueOf(totalHydrationBreaks);
-                writer.append(breaksAsString);
+                final Map<String, String> data = new ConcurrentHashMap<>();
+                data.put("totalHydrateCount", String.valueOf(totalHydrationBreaks));
+
+                final Gson gson = new Gson();
+                final String json = gson.toJson(data);
+                Files.write(HYDRATION_REMINDER_BREAKS_FILE.toPath(), json.getBytes());
             }
             catch (IOException e)
             {
                 if (log.isWarnEnabled())
                 {
-                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE_NAME, e.getMessage());
+                    log.warn("IOException for file {}: {}", HYDRATION_REMINDER_BREAKS_FILE, e.getMessage());
                 }
             }
         }
