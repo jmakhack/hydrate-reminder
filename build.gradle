@@ -26,7 +26,7 @@ dependencies {
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 	testImplementation 'org.mockito:mockito-core:4.8.0'
-	testImplementation 'org.mockito:mockito-inline:4.8.0'
+	testImplementation 'org.mockito:mockito-inline:4.8.1'
 }
 
 group = 'com.hydratereminder'
