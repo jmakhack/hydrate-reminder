@@ -25,7 +25,7 @@ class HydrateReminderImagesTest {
             "Super Restore, SUPER_RESTORE_IMAGE",
             "Holy Elixir, HOLY_ELIXIR_IMAGE"
     })
-    void testImagesToString(String expectedString, HydrateReminderImages image) {
+    void testImagesToString(final String expectedString, final HydrateReminderImages image) {
         assertEquals(expectedString, image.toString());
     }
 
@@ -48,7 +48,7 @@ class HydrateReminderImagesTest {
             "POTIONCATEGORY, PRAYER_MIX_IMAGE",
             "OTHER, FROZEN_JUG_IMAGE"
     })
-    void testImagesGetCategory(ImageCategories category, HydrateReminderImages image) {
+    void testImagesGetCategory(final ImageCategories category, final HydrateReminderImages image) {
         assertEquals(category, image.getCategory());
     }
 }

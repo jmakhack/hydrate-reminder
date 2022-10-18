@@ -18,7 +18,7 @@ class HydrateReminderCommandArgsTest {
             "help, HELP",
             "total, TOTAL"
     })
-    void testCommandArgsToString(String expectedString, HydrateReminderCommandArgs commandArg) {
+    void testCommandArgsToString(final String expectedString, final HydrateReminderCommandArgs commandArg) {
         assertEquals(expectedString, commandArg.toString());
     }
 
@@ -31,7 +31,7 @@ class HydrateReminderCommandArgsTest {
             "h, HELP",
             "t, TOTAL"
     })
-    void testCommandArgAbbrToString(String expectedAbbr, HydrateReminderCommandArgs commandArg) {
+    void testCommandArgAbbrToString(final String expectedAbbr, final HydrateReminderCommandArgs commandArg) {
         assertEquals(expectedAbbr, commandArg.getCommandArgAbbr());
     }
 
@@ -50,7 +50,7 @@ class HydrateReminderCommandArgsTest {
             "h, HELP",
             "t, TOTAL"
     })
-    void testGetValue(String expectedValue, HydrateReminderCommandArgs commandArg) {
+    void testGetValue(final String expectedValue, final HydrateReminderCommandArgs commandArg) {
         assertEquals(HydrateReminderCommandArgs.getValue(expectedValue), commandArg);
     }
 

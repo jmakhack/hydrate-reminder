@@ -75,7 +75,7 @@ class HydrateReminderPluginTest {
             "1 hour 0 minutes 0 seconds, 3600",
             "0 seconds, 0"
     })
-    void shouldReturnCorrectStringFormatOfTheTime(String expectedString, long seconds) {
+    void shouldReturnCorrectStringFormatOfTheTime(final String expectedString, final long seconds) {
         assertEquals(expectedString, hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(seconds)));
     }
 
