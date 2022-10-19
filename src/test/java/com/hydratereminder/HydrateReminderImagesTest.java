@@ -1,14 +1,12 @@
 package com.hydratereminder;
 
 import com.hydratereminder.images.HydrateReminderImages;
+import com.hydratereminder.images.ImageCategories;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
-import static com.hydratereminder.images.ImageCategories.WATER;
-import static com.hydratereminder.images.ImageCategories.TEA;
-import static com.hydratereminder.images.ImageCategories.ALCOHOL;
-import static com.hydratereminder.images.ImageCategories.DRINKCONTAINERS;
-import static com.hydratereminder.images.ImageCategories.POTIONCATEGORY;
-import static com.hydratereminder.images.ImageCategories.OTHER;
+import org.junit.jupiter.params.provider.CsvSource;
+
 import static net.runelite.api.ItemID.BOTTLED_WATER;
 import static net.runelite.api.ItemID.COCONUT_MILK;
 import static net.runelite.api.ItemID.PURPLE_DYE;
@@ -18,14 +16,17 @@ import static net.runelite.api.ItemID.WATERMELON_SLICE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HydrateReminderImagesTest {
-    @Test
-    void testImagesToString() {
-        assertEquals("Cup of Water", HydrateReminderImages.CUP_OF_WATER_IMAGE.toString());
-        assertEquals("Cup of Tea", HydrateReminderImages.CUP_OF_TEA_IMAGE.toString());
-        assertEquals("Beer", HydrateReminderImages.BEER_IMAGE.toString());
-        assertEquals("Redberry Juice", HydrateReminderImages.REDBERRY_JUICE_IMAGE.toString());
-        assertEquals("Super Restore", HydrateReminderImages.SUPER_RESTORE_IMAGE.toString());
-        assertEquals("Holy Elixir", HydrateReminderImages.HOLY_ELIXIR_IMAGE.toString());
+    @ParameterizedTest
+    @CsvSource({
+            "Cup of Water, CUP_OF_WATER_IMAGE",
+            "Cup of Tea, CUP_OF_TEA_IMAGE",
+            "Beer, BEER_IMAGE",
+            "Redberry Juice, REDBERRY_JUICE_IMAGE",
+            "Super Restore, SUPER_RESTORE_IMAGE",
+            "Holy Elixir, HOLY_ELIXIR_IMAGE"
+    })
+    void testImagesToString(final String expectedString, final HydrateReminderImages image) {
+        assertEquals(expectedString, image.toString());
     }
 
     @Test
@@ -38,13 +39,16 @@ class HydrateReminderImagesTest {
         assertEquals(PURPLE_DYE, HydrateReminderImages.PURPLE_DYE_IMAGE.getID());
     }
 
-    @Test
-    void testImagesGetCategory() {
-        assertEquals(WATER, HydrateReminderImages.CIRCLET_OF_WATER_IMAGE.getCategory());
-        assertEquals(TEA, HydrateReminderImages.NETTLE_TEA_IMAGE.getCategory());
-        assertEquals(ALCOHOL, HydrateReminderImages.VODKA_IMAGE.getCategory());
-        assertEquals(DRINKCONTAINERS, HydrateReminderImages.ICE_COOLER_IMAGE.getCategory());
-        assertEquals(POTIONCATEGORY, HydrateReminderImages.PRAYER_MIX_IMAGE.getCategory());
-        assertEquals(OTHER, HydrateReminderImages.FROZEN_JUG_IMAGE.getCategory());
+    @ParameterizedTest
+    @CsvSource({
+            "WATER, CIRCLET_OF_WATER_IMAGE",
+            "TEA, NETTLE_TEA_IMAGE",
+            "ALCOHOL, VODKA_IMAGE",
+            "DRINKCONTAINERS, ICE_COOLER_IMAGE",
+            "POTIONCATEGORY, PRAYER_MIX_IMAGE",
+            "OTHER, FROZEN_JUG_IMAGE"
+    })
+    void testImagesGetCategory(final ImageCategories category, final HydrateReminderImages image) {
+        assertEquals(category, image.getCategory());
     }
 }
