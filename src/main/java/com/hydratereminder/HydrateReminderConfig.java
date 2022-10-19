@@ -152,24 +152,6 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
-	 * <p>Allows the player to set the type of his personality based on which he will receive personalized messages
-	 * </p>
-	 * @return the type of personality
-	 * @since 2.0.0
-	 */
-	@ConfigItem(
-			keyName = "hydrateReminderPersonalityType",
-			name = "Personality type",
-			description = "Sets the type of personality by which different messages will be displayed when hydrating",
-			section = HYDRATE_REMINDER_NOTIFICATIONS_SECTION,
-			position = +1
-	)
-	default HydrateReminderPersonalityType hydrateReminderPersonalityType()
-	{
-		return HydrateReminderPersonalityType.FUN;
-	}
-
-	/**
 	 * <p>Allows the player to set the type of chat message reminder
 	 * </p>
 	 * @return the type of chat message to send reminders with
@@ -203,6 +185,24 @@ public interface HydrateReminderConfig extends Config
 	default boolean hydrateReminderComputerNotificationEnabled()
 	{
 		return false;
+	}
+
+	/**
+	 * <p>Allows the player to set the type of his personality based on which he will receive personalized messages
+	 * </p>
+	 * @return the type of personality
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateReminderPersonalityType",
+			name = "Personality type",
+			description = "Sets the type of personality by which different messages will be displayed when hydrating",
+			section = HYDRATE_REMINDER_NOTIFICATIONS_SECTION,
+			position = 4
+	)
+	default HydrateReminderPersonalityType hydrateReminderPersonalityType()
+	{
+		return HydrateReminderPersonalityType.FUN;
 	}
 
 	/**
