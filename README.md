@@ -217,6 +217,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/ron-huberfeld"><img src="https://avatars.githubusercontent.com/u/32178925?v=4?s=100" width="100px;" alt="Ron Huberfeld"/><br /><sub><b>Ron Huberfeld</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ron-huberfeld" title="Code">💻</a></td>
       <td align="center"><a href="https://www.linkedin.com/in/arsh-ergon/"><img src="https://avatars.githubusercontent.com/u/40994679?v=4?s=100" width="100px;" alt="Mohd Arsh Ali "/><br /><sub><b>Mohd Arsh Ali </b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ArshErgon" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/sanjeev0210"><img src="https://avatars.githubusercontent.com/u/70718662?v=4?s=100" width="100px;" alt="Sanjeev Bengeri"/><br /><sub><b>Sanjeev Bengeri</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sanjeev0210" title="Tests">⚠️</a></td>
+      <td align="center"><a href="https://github.com/SaranshBaniyal"><img src="https://avatars.githubusercontent.com/u/23008139?v=4?s=100" width="100px;" alt="AstroITNinja"/><br /><sub><b>AstroITNinja</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=SaranshBaniyal" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
