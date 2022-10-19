@@ -510,6 +510,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "SaranshBaniyal",
+      "name": "AstroITNinja",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23008139?v=4",
+      "profile": "https://github.com/SaranshBaniyal",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
