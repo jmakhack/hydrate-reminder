@@ -268,6 +268,24 @@ public class HydrateBreakMessageDictionary {
                     }}
             );
 
+    private static final List<String> HYDRATE_BREAK_KAWAII_TEXT_LIST = 
+            Collections.unmodifiableList(
+                new ArrayList<String>() {{
+                    add("UwU It's time for your hydration break");
+                    add("Akiramenaide! Drink up");
+                    add("sugoii ne!, let's celebrate by taking a sip");
+                    add("Please have a glass of water, senpai!");
+                    add("You forgot to drink water, bakayaroo");
+                    add("Onii-chan is always is hydrated, are you?");
+                    add("Daijouba ka?, you forgot to drink water");
+                    add("Let's finish this mission, ikuze! drink up!");
+                    add("Jōdanjanai yo! Drink your water");
+                    add("Sumimasen! you forgot to drink water");
+                    add("nodo ga kawaita, please drink some water for me");
+                    add("Tasukete kudesai by drinking water now!")
+                }}
+            );
+
 
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
@@ -313,6 +331,8 @@ public class HydrateBreakMessageDictionary {
                 break;
             case SANTA:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_SANTA_TEXT_LIST);
+            case KAWAII:
+                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_KAWAII_TEXT_LIST);
                 break;
             case RANDOM:
                 breakMessage = getRandomPersonalityMessage();
