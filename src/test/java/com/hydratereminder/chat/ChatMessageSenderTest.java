@@ -28,7 +28,7 @@ class ChatMessageSenderTest {
     @InjectMocks
     private transient ChatMessageSender chatMessageSender;
 
-    private static String  message = "Hello";
+    private static final String  message = "Hello";
 
     @Test
     void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
