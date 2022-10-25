@@ -28,39 +28,38 @@ class ChatMessageSenderTest {
     @InjectMocks
     private transient ChatMessageSender chatMessageSender;
 
+    private  String  message= "Hello";
+
     @Test
     void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
-        String message = "Hello";
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.empty());
 
         //when
         chatMessageSender.sendHydrateEmojiChatGameMessage(message);
 
         //then
-        verify(client).addChatMessage(expectedChatMessageType, "", "Hello", null);
+        verify(client).addChatMessage(expectedChatMessageType, "", message, null);
     }
 
     @Test
     void shouldSendChatGameMessageWithEmojiWhenEmojiIsProvided() {
         //given
         ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
-        String message = "Hello";
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
 
         //when
         chatMessageSender.sendHydrateEmojiChatGameMessage(message);
 
         //then
-        verify(client).addChatMessage(expectedChatMessageType, "", "<img=10> Hello", null);
+        verify(client).addChatMessage(expectedChatMessageType, "", String.format("<img=10> %s", message), null);
     }
 
     @Test
     void shouldSendChatMessageWithBroadcastTypeWhenThatTypeWasProvided() {
         //given
         ChatMessageType providedChatMessageType = ChatMessageType.BROADCAST;
-        String message = "Hello";
         given(chatMessageTypeProvider.getChatNotificationMessageType()).willReturn(providedChatMessageType);
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
 
@@ -68,7 +67,7 @@ class ChatMessageSenderTest {
         chatMessageSender.sendHydrateReminderChatMessage(message);
 
         //then
-        verify(client).addChatMessage(providedChatMessageType, "", "<img=10> Hello", null);
+        verify(client).addChatMessage(providedChatMessageType, "", String.format("<img=10> %s", message), null);
     }
 }
 
