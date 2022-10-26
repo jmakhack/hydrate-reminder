@@ -27,6 +27,8 @@ class HydrateBreakMessageDictionaryTest {
             "PIRATE | Arrr, the ocean reminds me, that you should take a water break! | 6",
             "MOTIVATIONAL | Thousands Have Lived Without Love, Not One Without Water. Take a sip | 13",
             "AGGRESSIVE | You gotta drink some Water, Yeah! | 9",
+            "SANTA | All I want for Christmas is you....drinking enough water | 1",
+            "KAWAII | Sumimasen! you forgot to drink water | 9"
     })
     void shouldChooseCorrectMessageBasedOnPersonalityType(
             HydrateReminderPersonalityType personalityType, String expectedMessage, int value) {
