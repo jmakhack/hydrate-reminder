@@ -529,6 +529,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "ZarakiKanzaki",
+      "name": "Davide Donadio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19550424?v=4",
+      "profile": "https://www.linkedin.com/in/davide-donadio-404-not-found/",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
