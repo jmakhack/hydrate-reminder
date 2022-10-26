@@ -296,7 +296,7 @@ public class HydrateBreakMessageDictionary {
      */
     private static final Map<HydrateReminderPersonalityType, List<String>> HYDRATE_REMINDER_PERSONALITY_MAP;
     static {
-        Map<HydrateReminderPersonalityType, List<String>> mutableMap = new ConcurrentHashMap<>();
+        final Map<HydrateReminderPersonalityType, List<String>> mutableMap = new ConcurrentHashMap<>();
         mutableMap.put(HydrateReminderPersonalityType.SIMPLE, HYDRATE_BREAK_SIMPLE_TEXT_LIST);
         mutableMap.put(HydrateReminderPersonalityType.FUN, HYDRATE_BREAK_FUNNY_TEXT_LIST);
         mutableMap.put(HydrateReminderPersonalityType.CARING, HYDRATE_BREAK_CARING_TEXT_LIST);
