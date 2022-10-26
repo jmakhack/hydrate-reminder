@@ -282,7 +282,7 @@ public class HydrateBreakMessageDictionary {
                     add("Jōdanjanai yo! Drink your water");
                     add("Sumimasen! you forgot to drink water");
                     add("nodo ga kawaita, please drink some water for me");
-                    add("Tasukete kudesai by drinking water now!")
+                    add("Tasukete kudesai by drinking water now!");
                 }}
             );
 
@@ -331,6 +331,7 @@ public class HydrateBreakMessageDictionary {
                 break;
             case SANTA:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_SANTA_TEXT_LIST);
+                break;
             case KAWAII:
                 breakMessage = getRandomBreakMessage(HYDRATE_BREAK_KAWAII_TEXT_LIST);
                 break;
