@@ -219,6 +219,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/sanjeev0210"><img src="https://avatars.githubusercontent.com/u/70718662?v=4?s=100" width="100px;" alt="Sanjeev Bengeri"/><br /><sub><b>Sanjeev Bengeri</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=sanjeev0210" title="Tests">⚠️</a></td>
       <td align="center"><a href="https://github.com/SaranshBaniyal"><img src="https://avatars.githubusercontent.com/u/23008139?v=4?s=100" width="100px;" alt="AstroITNinja"/><br /><sub><b>AstroITNinja</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=SaranshBaniyal" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/Aravind22"><img src="https://avatars.githubusercontent.com/u/16496982?v=4?s=100" width="100px;" alt="Aravind"/><br /><sub><b>Aravind</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Aravind22" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Aravind22" title="Tests">⚠️</a></td>
+    </tr>
   </tbody>
 </table>
 
