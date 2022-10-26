@@ -4,7 +4,9 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.hydratereminder.HydrateReminderPersonalityType;
@@ -288,6 +290,22 @@ public class HydrateBreakMessageDictionary {
                 }}
             );
 
+  private static final Map<HydrateReminderPersonalityType, List<String>> hydratePersonalityMap =
+      Collections.unmodifiableMap(
+          new HashMap<HydrateReminderPersonalityType, List<String>>() {{
+              put(HydrateReminderPersonalityType.SIMPLE, HYDRATE_BREAK_SIMPLE_TEXT_LIST);
+              put(HydrateReminderPersonalityType.FUN, HYDRATE_BREAK_FUNNY_TEXT_LIST);
+              put(HydrateReminderPersonalityType.CARING, HYDRATE_BREAK_CARING_TEXT_LIST);
+              put(HydrateReminderPersonalityType.ROMANTIC, HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+              put(HydrateReminderPersonalityType.POLITE, HYDRATE_BREAK_POLITE_TEXT_LIST);
+              put(HydrateReminderPersonalityType.NERDY, HYDRATE_BREAK_NERDY_TEXT_LIST);
+              put(HydrateReminderPersonalityType.PIRATE, HYDRATE_BREAK_PIRATE_TEXT_LIST);
+              put(HydrateReminderPersonalityType.WIZARD, HYDRATE_BREAK_WIZARD_TEXT_LIST);
+              put(HydrateReminderPersonalityType.MOTIVATIONAL, HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
+              put(HydrateReminderPersonalityType.AGGRESSIVE, HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
+              put(HydrateReminderPersonalityType.SANTA, HYDRATE_BREAK_SANTA_TEXT_LIST);
+              put(HydrateReminderPersonalityType.KAWAII, HYDRATE_BREAK_KAWAII_TEXT_LIST);
+          }});
 
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
     {
@@ -298,52 +316,10 @@ public class HydrateBreakMessageDictionary {
 
     public static String getRandomHydrateBreakMessageForPersonality(HydrateReminderPersonalityType personalityType)
     {
-        String breakMessage;
-        switch (personalityType)
-        {
-            case SIMPLE:
-                breakMessage = HYDRATE_BREAK_SIMPLE_TEXT_LIST.get(0);
-                break;
-            case FUN:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_FUNNY_TEXT_LIST);
-                break;
-            case CARING:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_CARING_TEXT_LIST);
-                break;
-            case ROMANTIC:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
-                break;
-            case POLITE:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_POLITE_TEXT_LIST);
-                break;
-            case NERDY:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_NERDY_TEXT_LIST);
-                 break;
-            case PIRATE:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_PIRATE_TEXT_LIST);
-                break;
-            case WIZARD:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_WIZARD_TEXT_LIST);
-                break;
-            case MOTIVATIONAL:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
-                break;
-            case AGGRESSIVE:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
-                break;
-            case SANTA:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_SANTA_TEXT_LIST);
-                break;
-            case KAWAII:
-                breakMessage = getRandomBreakMessage(HYDRATE_BREAK_KAWAII_TEXT_LIST);
-                break;
-            case RANDOM:
-                breakMessage = getRandomPersonalityMessage();
-                break;
-            default:
-                throw new IllegalStateException("Provided personality type is not supported");
-        }
-        return breakMessage;
+        if (personalityType == HydrateReminderPersonalityType.RANDOM)
+            return getRandomPersonalityMessage();
+        else
+            return getRandomBreakMessage(hydratePersonalityMap.get(personalityType));
     }
 
     /**
