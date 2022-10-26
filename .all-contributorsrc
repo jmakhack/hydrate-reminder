@@ -519,6 +519,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Aravind22",
+      "name": "Aravind",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16496982?v=4",
+      "profile": "https://github.com/Aravind22",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
