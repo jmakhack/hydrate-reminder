@@ -221,6 +221,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/Aravind22"><img src="https://avatars.githubusercontent.com/u/16496982?v=4?s=100" width="100px;" alt="Aravind"/><br /><sub><b>Aravind</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Aravind22" title="Code">💻</a> <a href="https://github.com/jmakhack/hydrate-reminder/commits?author=Aravind22" title="Tests">⚠️</a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/davide-donadio-404-not-found/"><img src="https://avatars.githubusercontent.com/u/19550424?v=4?s=100" width="100px;" alt="Davide Donadio"/><br /><sub><b>Davide Donadio</b></sub></a><br /><a href="https://github.com/jmakhack/hydrate-reminder/commits?author=ZarakiKanzaki" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
