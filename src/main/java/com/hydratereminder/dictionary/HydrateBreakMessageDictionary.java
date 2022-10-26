@@ -267,7 +267,9 @@ public class HydrateBreakMessageDictionary {
                         add("Please drink a glass of water. Merry Christmas");
                     }}
             );
-
+    /**
+     * Hydrate Reminder interval break text to display in Kawaii form
+     */
     private static final List<String> HYDRATE_BREAK_KAWAII_TEXT_LIST = 
             Collections.unmodifiableList(
                 new ArrayList<String>() {{
