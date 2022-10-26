@@ -28,7 +28,7 @@ class ChatMessageSenderTest {
     @InjectMocks
     private transient ChatMessageSender chatMessageSender;
 
-    private static final String  message = "Hello";
+    private static final String chatMessageToSend = "Hello";
 
     @Test
     void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided() {
@@ -37,10 +37,10 @@ class ChatMessageSenderTest {
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.empty());
 
         //when
-        chatMessageSender.sendHydrateEmojiChatGameMessage(message);
+        chatMessageSender.sendHydrateEmojiChatGameMessage(chatMessageToSend);
 
         //then
-        verify(client).addChatMessage(expectedChatMessageType, "", message, null);
+        verify(client).addChatMessage(expectedChatMessageType, "", chatMessageToSend, null);
     }
 
     @Test
@@ -50,10 +50,10 @@ class ChatMessageSenderTest {
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
 
         //when
-        chatMessageSender.sendHydrateEmojiChatGameMessage(message);
+        chatMessageSender.sendHydrateEmojiChatGameMessage(chatMessageToSend);
 
         //then
-        verify(client).addChatMessage(expectedChatMessageType, "", String.format("<img=10> %s", message), null);
+        verify(client).addChatMessage(expectedChatMessageType, "", String.format("<img=10> %s", chatMessageToSend), null);
     }
 
     @Test
@@ -64,10 +64,10 @@ class ChatMessageSenderTest {
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
 
         //when
-        chatMessageSender.sendHydrateReminderChatMessage(message);
+        chatMessageSender.sendHydrateReminderChatMessage(chatMessageToSend);
 
         //then
-        verify(client).addChatMessage(providedChatMessageType, "", String.format("<img=10> %s", message), null);
+        verify(client).addChatMessage(providedChatMessageType, "", String.format("<img=10> %s", chatMessageToSend), null);
     }
 }
 
