@@ -538,6 +538,16 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "Prajwalrayal",
+      "name": "Prajwal Rayal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97100770?v=4",
+      "profile": "https://www.stopstalk.com/user/profile/PrajwalRayal",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
