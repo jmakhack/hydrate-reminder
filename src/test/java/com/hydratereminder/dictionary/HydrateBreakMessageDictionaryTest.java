@@ -28,7 +28,8 @@ class HydrateBreakMessageDictionaryTest {
             "MOTIVATIONAL | Thousands Have Lived Without Love, Not One Without Water. Take a sip | 13",
             "AGGRESSIVE | You gotta drink some Water, Yeah! | 9",
             "SANTA | All I want for Christmas is you....drinking enough water | 1",
-            "KAWAII | Sumimasen! you forgot to drink water | 9"
+            "KAWAII | Sumimasen! you forgot to drink water | 9",
+            "HYPE | The sun believes you'll be dehydrated soon , Go prove it wrong!! | 2"
     })
     void shouldChooseCorrectMessageBasedOnPersonalityType(
             HydrateReminderPersonalityType personalityType, String expectedMessage, int value) {
