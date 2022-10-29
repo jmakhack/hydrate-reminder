@@ -289,6 +289,26 @@ public class HydrateBreakMessageDictionary {
                     add("Tasukete kudesai by drinking water now!");
                 }}
             );
+    /**
+     * Hydrate Reminder interval break text to display in Hype form
+     */        
+    private static final List<String> HYDRATE_BREAK_HYPE_TEXT_LIST =
+            Collections.unmodifiableList(
+                new ArrayList<String>() {{
+                    add("Drink! Drink! Drink! that's what will make your body go Shrink Shrink Shrink");
+                    add("Hey! It's time to level up wih some hydrant");
+                    add("The sun believes you'll be dehydrated soon , Go prove it wrong!!");
+                    add("Breakkk time! Go grab your favourite hydrant");
+                    add("Wait! Wait! Wait! treat yourself with a glass of water");
+                    add("It's your time to shine! but wait have some water first instead of wine!");
+                    add("Are you still waiting for the Hype? Be quick grab some fresh lime");
+                    add("All work & no water makes Jack a sick boy");
+                    add("If exhaustion is what you feel, a water break is what you need!");
+                    add("Ready Set Go!! Waterrrr");
+                    add("Miles to go before you sleep! Fill your engine with some H₂O");
+                    add("Guess what? It's another water break!!");
+            }}
+    );
 
     /**
      * Mapping of {@link HydrateReminderPersonalityType} to the corresponding
@@ -309,6 +329,7 @@ public class HydrateBreakMessageDictionary {
         mutableMap.put(HydrateReminderPersonalityType.AGGRESSIVE, HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
         mutableMap.put(HydrateReminderPersonalityType.SANTA, HYDRATE_BREAK_SANTA_TEXT_LIST);
         mutableMap.put(HydrateReminderPersonalityType.KAWAII, HYDRATE_BREAK_KAWAII_TEXT_LIST);
+        mutableMap.put(HydrateReminderPersonalityType.HYPE, HYDRATE_BREAK_HYPE_TEXT_LIST);
         HYDRATE_REMINDER_PERSONALITY_MAP = Collections.unmodifiableMap(mutableMap);
     }
 

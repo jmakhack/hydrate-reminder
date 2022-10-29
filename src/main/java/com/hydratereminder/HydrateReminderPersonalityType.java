@@ -19,7 +19,8 @@ public enum HydrateReminderPersonalityType
     WIZARD("Wizard"),
     CARING("Caring"),
     SANTA("Santa"),
-    KAWAII("Kawaii");
+    KAWAII("Kawaii"),
+    HYPE("Hype");
 
 
 
