@@ -192,9 +192,13 @@ public class HydrateReminderPlugin extends Plugin
 	@Setter
 	private boolean firstGameTick = true;
 
+	/**
+	 * <p>True when overlay timer has already been created
+	 * </p>
+	 */
 	@Getter
 	@Setter
-	private boolean overlayIsPresent = false;
+	private boolean overlayIsPresent;
 
 	/**
 	 * <p>Provides the configuration for the Hydrate Reminder plugin
