@@ -70,9 +70,9 @@ import static com.hydratereminder.dictionary.HydrateBreakMessageDictionary.getRa
  */
 @Slf4j
 @PluginDescriptor(
-	name = "Hydrate Reminder",
-	description = "Reminds players to stay hydrated during their adventures",
-	tags = { "hydrate", "health", "reminder", "hydration", "water", "break", "notification" }
+		name = "Hydrate Reminder",
+		description = "Reminds players to stay hydrated during their adventures",
+		tags = { "hydrate", "health", "reminder", "hydration", "water", "break", "notification" }
 )
 public class HydrateReminderPlugin extends Plugin
 {
@@ -192,6 +192,10 @@ public class HydrateReminderPlugin extends Plugin
 	@Setter
 	private boolean firstGameTick = true;
 
+	@Getter
+	@Setter
+	private boolean overlayIsPresent = false;
+
 	/**
 	 * <p>Provides the configuration for the Hydrate Reminder plugin
 	 * </p>
@@ -224,6 +228,8 @@ public class HydrateReminderPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
+		removeHydrateReminderOverlayTimer();
+		createHydrateReminderOverlayTimer();
 		if ("hydratereminder".equals(event.getGroup()))
 		{
 			switch (event.getKey())
@@ -239,7 +245,7 @@ public class HydrateReminderPlugin extends Plugin
 								chatMessageSender.sendHydrateReminderChatMessage(
 										String.format(
 												"This is how %s hydrate reminder notifications will appear.", chatType
-								)));
+										)));
 					}
 					break;
 				case "hydrateReminderComputerNotificationEnabled":
@@ -286,7 +292,7 @@ public class HydrateReminderPlugin extends Plugin
 	 */
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
-    {
+	{
 		commandDelegate.invokeCommand(commandExecuted);
 	}
 
@@ -350,12 +356,14 @@ public class HydrateReminderPlugin extends Plugin
 			}
 			setFirstGameTick(false);
 		}
-		// TODO: Improve resource management & performance by not having to remove and create the overlay timer on every game tick to apply updates
-		removeHydrateReminderOverlayTimer();
-		if (config.hydrateReminderOverlayTimerEnabled())
-		{
+
+		if (config.hydrateReminderOverlayTimerEnabled() && !isOverlayIsPresent()) {
 			createHydrateReminderOverlayTimer();
 		}
+		else if (!config.hydrateReminderOverlayTimerEnabled() && isOverlayIsPresent()) {
+			removeHydrateReminderOverlayTimer();
+		}
+
 		final Instant nextHydrateReminderInstant = getNextHydrateReminderInstant();
 		if (nextHydrateReminderInstant.compareTo(Instant.now()) < 0)
 		{
@@ -377,6 +385,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		if (!getHydrateReminderTimer().isPresent())
 		{
+			setOverlayIsPresent(true);
 			final int imageID = config.hydrateReminderOverlayTimerImage().getID();
 			final BufferedImage timerImage = itemManager.getImage(imageID);
 			final Color timerColor = config.hydrateReminderOverlayTimerTextColor();
@@ -395,6 +404,7 @@ public class HydrateReminderPlugin extends Plugin
 	{
 		if (getHydrateReminderTimer().isPresent())
 		{
+			setOverlayIsPresent(false);
 			infoBoxManager.removeInfoBox(getHydrateReminderTimer().get());
 			hydrateReminderTimer = Optional.empty();
 		}
