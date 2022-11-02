@@ -548,6 +548,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "MrinaliniU",
+      "name": "Mrinalini Upadhya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9332293?v=4",
+      "profile": "https://github.com/MrinaliniU",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
