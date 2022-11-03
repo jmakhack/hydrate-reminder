@@ -557,6 +557,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "PetraJankurova",
+      "name": "PetraJankurova",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97254662?v=4",
+      "profile": "https://github.com/PetraJankurova",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
