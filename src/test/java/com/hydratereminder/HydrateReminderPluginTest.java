@@ -134,7 +134,7 @@ class HydrateReminderPluginTest
      */
     @ParameterizedTest
     @CsvSource({
-            "1 hour 1 minute 1 second, 3_661",
+            "1 hour 1 minute 192857 second, 3_661",
             "19 hours 15 minutes 39 seconds, 69_339",
             "15 minutes 39 seconds, 939",
             "1 hour 0 minutes 0 seconds, 3_600",
