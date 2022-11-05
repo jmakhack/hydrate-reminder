@@ -8,14 +8,22 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static net.runelite.api.ItemID.BOTTLED_WATER;
-import static net.runelite.api.ItemID.COCONUT_MILK;
-import static net.runelite.api.ItemID.PURPLE_DYE;
-import static net.runelite.api.ItemID.RUM;
-import static net.runelite.api.ItemID.TEAPOT;
-import static net.runelite.api.ItemID.WATERMELON_SLICE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class HydrateReminderImagesTest {
+/**
+ * <p>The unit tests for the hydrate reminder images logic
+ * </p>
+ */
+class HydrateReminderImagesTest
+{
+
+    /**
+     * <p>Tests that the correct string display is generated for a
+     * variety of different images
+     * </p>
+     * @param expectedString the expected display string
+     * @param image the image to get the string value of
+     */
     @ParameterizedTest
     @CsvSource({
             "Cup of Water, CUP_OF_WATER_IMAGE",
@@ -25,20 +33,29 @@ class HydrateReminderImagesTest {
             "Super Restore, SUPER_RESTORE_IMAGE",
             "Holy Elixir, HOLY_ELIXIR_IMAGE"
     })
-    void testImagesToString(final String expectedString, final HydrateReminderImages image) {
-        assertEquals(expectedString, image.toString());
+    void testImagesToString(final String expectedString, final HydrateReminderImages image)
+    {
+        assertEquals(expectedString, image.toString(), "Unexpected string value received for image");
     }
 
+    /**
+     * <p>Tests that the correct ID is generated for an image
+     * </p>
+     */
     @Test
-    void testImagesGetID() {
-        assertEquals(BOTTLED_WATER, HydrateReminderImages.BOTTLED_WATER_IMAGE.getID());
-        assertEquals(TEAPOT, HydrateReminderImages.TEAPOT_IMAGE.getID());
-        assertEquals(RUM, HydrateReminderImages.RUM_IMAGE.getID());
-        assertEquals(COCONUT_MILK, HydrateReminderImages.COCONUT_MILK_IMAGE.getID());
-        assertEquals(WATERMELON_SLICE, HydrateReminderImages.WATERMELON_SLICE_IMAGE.getID());
-        assertEquals(PURPLE_DYE, HydrateReminderImages.PURPLE_DYE_IMAGE.getID());
+    void testImagesGetID()
+    {
+        assertEquals(BOTTLED_WATER, HydrateReminderImages.BOTTLED_WATER_IMAGE.getID(),
+                "Unexpected id received for image");
     }
 
+    /**
+     * <p>Tests that the correct category is returned for a variety
+     * of different images
+     * </p>
+     * @param category the image category
+     * @param image the image to get the string value of
+     */
     @ParameterizedTest
     @CsvSource({
             "WATER, CIRCLET_OF_WATER_IMAGE",
@@ -48,7 +65,8 @@ class HydrateReminderImagesTest {
             "POTIONCATEGORY, PRAYER_MIX_IMAGE",
             "OTHER, FROZEN_JUG_IMAGE"
     })
-    void testImagesGetCategory(final ImageCategories category, final HydrateReminderImages image) {
-        assertEquals(category, image.getCategory());
+    void testImagesGetCategory(final ImageCategories category, final HydrateReminderImages image)
+    {
+        assertEquals(category, image.getCategory(), "Unexpected category received for image");
     }
 }

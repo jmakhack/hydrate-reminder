@@ -8,7 +8,20 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class HydrateReminderCommandArgsTest {
+/**
+ * <p>The unit tests for the hydrate reminder command args logic
+ * </p>
+ */
+class HydrateReminderCommandArgsTest
+{
+
+    /**
+     * <p>Tests that the correct string is returned for a variety
+     * of command arguments
+     * </p>
+     * @param expectedString expected string value for command
+     * @param commandArg command argument to get string value of
+     */
     @ParameterizedTest
     @CsvSource({
             "next, NEXT",
@@ -18,10 +31,18 @@ class HydrateReminderCommandArgsTest {
             "help, HELP",
             "total, TOTAL"
     })
-    void testCommandArgsToString(final String expectedString, final HydrateReminderCommandArgs commandArg) {
-        assertEquals(expectedString, commandArg.toString());
+    void testCommandArgsToString(final String expectedString, final HydrateReminderCommandArgs commandArg)
+    {
+        assertEquals(expectedString, commandArg.toString(), "Unexpected command arg string received");
     }
 
+    /**
+     * <p>Tests that the correct alias is returned for a variety
+     * of command arguments
+     * </p>
+     * @param expectedAbbr expected string value for command alias
+     * @param commandArg command argument to get string value of
+     */
     @ParameterizedTest
     @CsvSource({
             "n, NEXT",
@@ -31,10 +52,19 @@ class HydrateReminderCommandArgsTest {
             "h, HELP",
             "t, TOTAL"
     })
-    void testCommandArgAbbrToString(final String expectedAbbr, final HydrateReminderCommandArgs commandArg) {
-        assertEquals(expectedAbbr, commandArg.getCommandArgAbbr());
+    void testCommandArgAbbrToString(final String expectedAbbr, final HydrateReminderCommandArgs commandArg)
+    {
+        assertEquals(expectedAbbr, commandArg.getCommandArgAbbr(),
+                "Unexpected command arg alias string received");
     }
 
+    /**
+     * <p>Tests that the correct command argument is returned for
+     * a variety of values
+     * </p>
+     * @param value value to get command argument of
+     * @param expectedCommandArg expected command argument
+     */
     @ParameterizedTest
     @CsvSource({
             "next, NEXT",
@@ -50,23 +80,39 @@ class HydrateReminderCommandArgsTest {
             "h, HELP",
             "t, TOTAL"
     })
-    void testGetValue(final String expectedValue, final HydrateReminderCommandArgs commandArg) {
-        assertEquals(HydrateReminderCommandArgs.getValue(expectedValue), commandArg);
+    void testGetValue(final String value, final HydrateReminderCommandArgs expectedCommandArg)
+    {
+        assertEquals(HydrateReminderCommandArgs.getValue(value), expectedCommandArg,
+                "Unexpected command arg value received");
     }
 
+    /**
+     * <p>Tests that the proper exception is thrown when the command
+     * argument is null
+     * </p>
+     */
     @Test
-    void testGetValueThrowsIfNullCommand() {
+    void testGetValueThrowsIfNullCommand()
+    {
         assertThrows(
                 NotRecognizedCommandException.class,
-                () -> HydrateReminderCommandArgs.getValue(null)
+                () -> HydrateReminderCommandArgs.getValue(null),
+                "Expected NotRecognizedCommandException to be thrown"
         );
     }
 
+    /**
+     * <p>Tests that the proper exception is thrown when the command
+     * argument is invalid
+     * </p>
+     */
     @Test
-    void testGetValueThrowsIfInvalidCommand() {
+    void testGetValueThrowsIfInvalidCommand()
+    {
         assertThrows(
                 NotRecognizedCommandException.class,
-                () -> HydrateReminderCommandArgs.getValue("dummy")
+                () -> HydrateReminderCommandArgs.getValue("dummy"),
+                "Expected NotRecognizedCommandException to be thrown"
         );
     }
 }
