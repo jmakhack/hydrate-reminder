@@ -9,25 +9,36 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.verify;
 
+/**
+ * <p>The unit tests for the help command handler logic
+ * </p>
+ */
 @ExtendWith(MockitoExtension.class)
-class HelpCommandHandlerTest {
+class HelpCommandHandlerTest
+{
 
+    /**
+     * Mock chat message sender
+     */
     @Mock
     private transient ChatMessageSender chatMessageSender;
+
+    /**
+     * Mock help command handler
+     */
     @InjectMocks
     private transient HelpCommandHandler helpCommandHandler;
 
+    /**
+     * <p>Tests that the help command outputs the proper message
+     * </p>
+     */
     @Test
-    void shouldHandleHelpCommand() {
-        // given
+    /* default */ void shouldHandleHelpCommand()
+    {
         final String possibleCommands = "next, prev, reset, hydrate, help, total";
         final String expectedMessage = "Available commands: ::hr " + possibleCommands;
-
-        // when
         helpCommandHandler.handle();
-
-        // then
         verify(chatMessageSender).sendHydrateEmojiChatGameMessage(expectedMessage);
     }
-
 }

@@ -12,40 +12,51 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
+/**
+ * <p>The unit tests for the chat message type provider logic
+ * </p>
+ */
 @ExtendWith(MockitoExtension.class)
-class ChatMessageTypeProviderTest {
+class ChatMessageTypeProviderTest
+{
 
+    /**
+     * Mock chat message sender
+     */
     @Mock
     private transient HydrateReminderConfig config;
 
+    /**
+     * Mock chat message type provider
+     */
     @InjectMocks
     private transient ChatMessageTypeProvider chatMessageTypeProvider;
 
+    /**
+     * <p>Tests that the chat message type provider defaults to returning the
+     * game message type when unknown chat message type is provided
+     * </p>
+     */
     @Test
-    void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected() {
-        //given
-        ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
+    /* default */ void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected()
+    {
+        final ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         given(config.hydrateReminderChatMessageType()).willReturn(HydrateReminderChatMessageType.GAMEMESSAGE);
-
-        //when
-        ChatMessageType chatMessageType = chatMessageTypeProvider.getChatNotificationMessageType();
-
-        //then
-        assertEquals(expectedChatMessageType, chatMessageType);
+        final ChatMessageType chatMessageType = chatMessageTypeProvider.getChatNotificationMessageType();
+        assertEquals(expectedChatMessageType, chatMessageType, "Expected chat message type to be GAMEMESSAGE");
     }
 
+    /**
+     * <p>Tests that the broadcast chat message type is returned when the
+     * broadcast chat message type is provided
+     * </p>
+     */
     @Test
-    void shouldReturnBroadCastMessageTypeWhenProvideBroadCastMessage() {
-        //given
-        ChatMessageType expectedChatMessageType = ChatMessageType.BROADCAST;
+    /* default */ void shouldReturnBroadCastMessageTypeWhenProvideBroadCastMessage()
+    {
+        final ChatMessageType expectedChatMessageType = ChatMessageType.BROADCAST;
         given(config.hydrateReminderChatMessageType()).willReturn(HydrateReminderChatMessageType.BROADCASTMESSAGE);
-
-        //when
-        ChatMessageType chatMessageType = chatMessageTypeProvider.getChatNotificationMessageType();
-
-        //then
-        assertEquals(expectedChatMessageType, chatMessageType);
+        final ChatMessageType chatMessageType = chatMessageTypeProvider.getChatNotificationMessageType();
+        assertEquals(expectedChatMessageType, chatMessageType, "Expected chat message type to be BROADCAST");
     }
-
 }
-

@@ -18,76 +18,93 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.mock;
 
+/**
+ * <p>The unit tests for the command invoker logic
+ * </p>
+ */
 @ExtendWith(MockitoExtension.class)
-class CommandInvokerTest {
+class CommandInvokerTest
+{
 
+    /**
+     * Mock chat message sender
+     */
     @Mock
     private transient ChatMessageSender chatMessageSender;
+
+    /**
+     * Mock command creator
+     */
     @Mock
     private transient CommandCreator commandCreator;
+
+    /**
+     * Mock command invoker
+     */
     @InjectMocks
     private transient CommandInvoker commandInvoker;
 
+    /**
+     * <p>Tests that the command creator gets called only once when a
+     * command has been executed successfully
+     * </p>
+     */
     @Test
-    void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly() {
-        // given
-        HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
-        Command hydrateCommand = mock(HydrateCommand.class);
-        CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
-
+    /* default */ void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly()
+    {
+        final HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
+        final Command hydrateCommand = mock(HydrateCommand.class);
+        final CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
         given(commandCreator.createFrom(commandArgs)).willReturn(hydrateCommand);
-
-        // when
         commandInvoker.invokeCommand(commandToExecute);
-
-        // then
         verify(commandCreator, times(1)).createFrom(any());
     }
 
+    /**
+     * <p>Tests that the proper message is generated and displayed when a
+     * not recognized command exception is thrown
+     * </p>
+     */
     @Test
-    void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown() {
-        // given
-        String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getMessage();
-        Command helpCommand = mock(HelpCommand.class);
-        CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"wrong"});
-
+    /* default */ void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown()
+    {
+        final String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getMessage();
+        final Command helpCommand = mock(HelpCommand.class);
+        final CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"wrong"});
         given(commandCreator.createFrom(HydrateReminderCommandArgs.HELP)).willReturn(helpCommand);
-
-        // when
         commandInvoker.invokeCommand(commandToExecute);
-
-        // then
         verify(chatMessageSender).sendHydrateEmojiChatGameMessage(expectedExceptionMessage);
         verify(commandCreator).createFrom(HydrateReminderCommandArgs.HELP);
     }
 
+    /**
+     * <p>Tests that the command creator is called twice whenever a not
+     * supported command exception is thrown
+     * </p>
+     */
     @Test
-    void shouldCallCommandCreatorTwiceWhenNotSupportedCommandExceptionIsThrown() {
-        // given
-        HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
-        CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
-        Command helpCommand = mock(HelpCommand.class);
-
+    /* default */ void shouldCallCommandCreatorTwiceWhenNotSupportedCommandExceptionIsThrown()
+    {
+        final HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
+        final CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
+        final Command helpCommand = mock(HelpCommand.class);
         given(commandCreator.createFrom(commandArgs)).willThrow(NotSupportedCommandException.class);
         given(commandCreator.createFrom(HydrateReminderCommandArgs.HELP)).willReturn(helpCommand);
-
-        // when
         commandInvoker.invokeCommand(commandToExecute);
-
-        // then
         verify(commandCreator).createFrom(commandArgs);
         verify(commandCreator).createFrom(HydrateReminderCommandArgs.HELP);
     }
 
+    /**
+     * <p>Tests that the proper message is generated and displayed when a
+     * not recognized command exception is thrown
+     * </p>
+     */
     @Test
-    void shouldReturnNothingWhenIsNotHydrateCommand() {
-        // given
-        CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
-
-        //when and then
+    /* default */ void shouldReturnNothingWhenIsNotHydrateCommand()
+    {
+        final CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
         commandInvoker.invokeCommand(commandToExecute);
         verify(commandCreator, never()).createFrom(any());
-
     }
-
 }
