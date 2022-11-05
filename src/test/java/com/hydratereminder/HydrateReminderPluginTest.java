@@ -56,7 +56,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void initShouldReturnZeroHydrationBreaksForTheCurrentSession()
+    /* default */ void initShouldReturnZeroHydrationBreaksForTheCurrentSession()
     {
         assertEquals(0, hydrateReminderPlugin.getCurrentSessionHydrationBreaks(),
                 "Expected number of current session hydration breaks to equal 0");
@@ -68,7 +68,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession()
+    /* default */ void shouldIncrementNumberOfHydrationBreaksForTheCurrentSession()
     {
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();
@@ -83,7 +83,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldIncrementNumberOfHydrationBreaksTakenByHydrateForTheCurrentSession()
+    /* default */ void shouldIncrementNumberOfHydrationBreaksTakenByHydrateForTheCurrentSession()
     {
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
@@ -98,7 +98,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void initShouldSetTheCorrectResetState()
+    /* default */ void initShouldSetTheCorrectResetState()
     {
         assertFalse(hydrateReminderPlugin.isResetState(), "Expected reset state to be false initially");
     }
@@ -108,7 +108,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldBeAbleToSetResetStateToTrue()
+    /* default */ void shouldBeAbleToSetResetStateToTrue()
     {
         hydrateReminderPlugin.setResetState(true);
         assertTrue(hydrateReminderPlugin.isResetState(), "Expected reset state to be true");
@@ -119,7 +119,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldBeAbleToSetResetStateToFalse()
+    /* default */ void shouldBeAbleToSetResetStateToFalse()
     {
         hydrateReminderPlugin.setResetState(false);
         assertFalse(hydrateReminderPlugin.isResetState(), "Expected reset state to be false");
@@ -140,7 +140,7 @@ class HydrateReminderPluginTest
             "1 hour 0 minutes 0 seconds, 3_600",
             "0 seconds, 0"
     })
-    void shouldReturnCorrectStringFormatOfTheTime(final String expectedString, final long seconds)
+    /* default */ void shouldReturnCorrectStringFormatOfTheTime(final String expectedString, final long seconds)
     {
         assertEquals(expectedString, hydrateReminderPlugin.getTimeDisplay(Duration.ofSeconds(seconds)),
                 "Unexpected time format received");
@@ -152,7 +152,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldReturnNoDurationWhenThereIsNoLastBreak()
+    /* default */ void shouldReturnNoDurationWhenThereIsNoLastBreak()
     {
         final Optional<Duration> timeSinceLastBreak =
                 hydrateReminderPlugin.getDurationSinceLastBreak(Optional.empty(), Instant.now());
@@ -165,7 +165,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldReturnDurationWhenThereIsLastBreak()
+    /* default */ void shouldReturnDurationWhenThereIsLastBreak()
     {
         final Optional<Instant> timeOfLastBreak = Optional.of(Instant.now());
         final Optional<Duration> timeSinceLastBreak =
@@ -178,7 +178,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldSetLastHydrateInstantToFalseInitially()
+    /* default */ void shouldSetLastHydrateInstantToFalseInitially()
     {
         assertFalse(hydrateReminderPlugin.getLastHydrateInstant().isPresent(),
                 "Expected last hydrate instant to not exist initially");
@@ -190,7 +190,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldSetLastHydrateInstantAfterHydrateResetHasOccurred()
+    /* default */ void shouldSetLastHydrateInstantAfterHydrateResetHasOccurred()
     {
         hydrateReminderPlugin.resetHydrateReminderTimeInterval();
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent(),
@@ -203,7 +203,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred()
+    /* default */ void shouldSetLastHydrateInstantAfterHydrateBreakHasOccurred()
     {
         hydrateReminderPlugin.hydrateBetweenHydrationBreaks();
         assertTrue(hydrateReminderPlugin.getLastHydrateInstant().isPresent(),
@@ -216,7 +216,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak()
+    /* default */ void shouldGetCorrectDurationFromLastBreakTillNowWhenThereIsLastBreak()
     {
         final Instant nowInstant = Instant.now();
         final Instant lastBreakInstant = nowInstant.minus(1, ChronoUnit.HOURS);
@@ -233,7 +233,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigEnabled()
+    /* default */ void shouldPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigEnabled()
     {
         final Player playerMock = mock(Player.class);
         given(config.hydrateAnimationEnabled()).willReturn(true);
@@ -249,7 +249,7 @@ class HydrateReminderPluginTest
      * </p>
      */
     @Test
-    void shouldNotPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigDisabled()
+    /* default */ void shouldNotPlayAnimationWhenIncrementingNumberOfHydrationBreaksAndConfigDisabled()
     {
         given(config.hydrateAnimationEnabled()).willReturn(false);
         hydrateReminderPlugin.incrementCurrentSessionHydrationBreaks();

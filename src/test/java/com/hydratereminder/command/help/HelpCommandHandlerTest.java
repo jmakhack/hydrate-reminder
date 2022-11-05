@@ -34,7 +34,7 @@ class HelpCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldHandleHelpCommand()
+    /* default */ void shouldHandleHelpCommand()
     {
         final String possibleCommands = "next, prev, reset, hydrate, help, total";
         final String expectedMessage = "Available commands: ::hr " + possibleCommands;

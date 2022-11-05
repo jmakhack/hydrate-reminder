@@ -50,7 +50,7 @@ class CommandInvokerTest
      * </p>
      */
     @Test
-    void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly()
+    /* default */ void shouldCallCommandCreatorOnlyOnceWhenCommandWasExecutedProperly()
     {
         final HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
         final Command hydrateCommand = mock(HydrateCommand.class);
@@ -66,7 +66,7 @@ class CommandInvokerTest
      * </p>
      */
     @Test
-    void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown()
+    /* default */ void shouldSendProperMessageWhenNotRecognizedCommandExceptionIsThrown()
     {
         final String expectedExceptionMessage = new NotRecognizedCommandException("wrong").getMessage();
         final Command helpCommand = mock(HelpCommand.class);
@@ -83,7 +83,7 @@ class CommandInvokerTest
      * </p>
      */
     @Test
-    void shouldCallCommandCreatorTwiceWhenNotSupportedCommandExceptionIsThrown()
+    /* default */ void shouldCallCommandCreatorTwiceWhenNotSupportedCommandExceptionIsThrown()
     {
         final HydrateReminderCommandArgs commandArgs = HydrateReminderCommandArgs.HYDRATE;
         final CommandExecuted commandToExecute = new CommandExecuted("hr", new String[]{"hydrate"});
@@ -101,7 +101,7 @@ class CommandInvokerTest
      * </p>
      */
     @Test
-    void shouldReturnNothingWhenIsNotHydrateCommand()
+    /* default */ void shouldReturnNothingWhenIsNotHydrateCommand()
     {
         final CommandExecuted commandToExecute = new CommandExecuted("aa", new String[]{"hydrate"});
         commandInvoker.invokeCommand(commandToExecute);

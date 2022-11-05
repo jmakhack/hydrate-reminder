@@ -43,7 +43,7 @@ class ResetCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldResetHydrate()
+    /* default */ void shouldResetHydrate()
     {
         resetCommandHandler.handle();
         final String resetString = "Hydrate reminder interval has been successfully reset.";

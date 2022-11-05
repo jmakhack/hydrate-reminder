@@ -47,7 +47,7 @@ class NextCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldHandleNextCommand()
+    /* default */ void shouldHandleNextCommand()
     {
         final String expectedMessage = "5 hours until the next hydration break.";
         final Instant nextHydrateBreak = LocalDateTime.now().plusHours(5).toInstant(ZoneOffset.UTC);

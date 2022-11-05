@@ -59,7 +59,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @BeforeEach
-    void setupHydrateReminderPlugin()
+    /* default */ void setupHydrateReminderPlugin()
     {
         mockHydrateReminderPlugin = new MockHydrateReminderPlugin();
         final BufferedImage timerImage = ImageUtil.loadImageResource(getClass(), "water_icon.png");
@@ -71,7 +71,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldSetInitializedTextColor()
+    /* default */ void shouldSetInitializedTextColor()
     {
         assertEquals(hydrateReminderTimer.getTextColor(), WHITE, "Expected text color to be set to WHITE");
     }
@@ -81,7 +81,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldReturnTrueOnRender()
+    /* default */ void shouldReturnTrueOnRender()
     {
         assertTrue(hydrateReminderTimer.render(), "Expected render method to return true");
     }
@@ -91,7 +91,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldReturnFalseOnCull()
+    /* default */ void shouldReturnFalseOnCull()
     {
         assertFalse(hydrateReminderTimer.cull(), "Expected cull method to return false");
     }
@@ -101,7 +101,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldHaveNameBasedOnPluginAndClassName()
+    /* default */ void shouldHaveNameBasedOnPluginAndClassName()
     {
         final String pluginName = "MockHydrateReminderPlugin";
         final String className = "HydrateReminderTimer";
@@ -114,7 +114,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldDisplayMinutesAndSecondsWhenTimeLeftIsOverAMinute()
+    /* default */ void shouldDisplayMinutesAndSecondsWhenTimeLeftIsOverAMinute()
     {
         mockHydrateReminderPlugin.instant = Instant.now().plus(Duration.ofMinutes(90));
         assertTrue(hydrateReminderTimer.getText().matches("^\\d{2}:\\d{2}$"),
@@ -127,7 +127,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldDisplayZeroMinutesWhenTimeLeftIsUnderAMinute()
+    /* default */ void shouldDisplayZeroMinutesWhenTimeLeftIsUnderAMinute()
     {
         mockHydrateReminderPlugin.instant = Instant.now().plus(Duration.ofSeconds(45));
         assertTrue(hydrateReminderTimer.getText().matches("^0:\\d{2}$"),
@@ -139,7 +139,7 @@ class HydrateReminderTimerTest
      * </p>
      */
     @Test
-    void shouldDisplayZeroMinutesAndSecondsWhenTimeLeftIsNegative()
+    /* default */ void shouldDisplayZeroMinutesAndSecondsWhenTimeLeftIsNegative()
     {
         mockHydrateReminderPlugin.instant = Instant.now().minus(Duration.ofSeconds(150));
         assertEquals("0:00", hydrateReminderTimer.getText(), "Expected timer text to read 0:00");

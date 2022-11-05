@@ -42,7 +42,7 @@ class HydrateCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldResetCurrentHydrateIntervalAndIncreaseHydrationBreaksWhenHydrateCommandIsCalled()
+    /* default */ void shouldResetCurrentHydrateIntervalAndIncreaseHydrationBreaksWhenHydrateCommandIsCalled()
     {
         hydrateCommandHandler.handle();
         verify(hydrateReminderPlugin).hydrateBetweenHydrationBreaks();
@@ -55,7 +55,7 @@ class HydrateCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldSendProperMessageWhenHydrateCommandIsCalled()
+    /* default */ void shouldSendProperMessageWhenHydrateCommandIsCalled()
     {
         final String message = "Successfully hydrated before reminder interval finished";
         hydrateCommandHandler.handle();

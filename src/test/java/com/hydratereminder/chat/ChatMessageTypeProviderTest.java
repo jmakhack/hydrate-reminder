@@ -38,7 +38,7 @@ class ChatMessageTypeProviderTest
      * </p>
      */
     @Test
-    void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected()
+    /* default */ void shouldReturnGameMessageTypeWhenHydrateReminderChatMessageIsDifferentThanExpected()
     {
         final ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         given(config.hydrateReminderChatMessageType()).willReturn(HydrateReminderChatMessageType.GAMEMESSAGE);
@@ -52,7 +52,7 @@ class ChatMessageTypeProviderTest
      * </p>
      */
     @Test
-    void shouldReturnBroadCastMessageTypeWhenProvideBroadCastMessage()
+    /* default */ void shouldReturnBroadCastMessageTypeWhenProvideBroadCastMessage()
     {
         final ChatMessageType expectedChatMessageType = ChatMessageType.BROADCAST;
         given(config.hydrateReminderChatMessageType()).willReturn(HydrateReminderChatMessageType.BROADCASTMESSAGE);

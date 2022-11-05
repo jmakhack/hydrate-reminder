@@ -23,7 +23,7 @@ class HydrateWelcomeMessageDictionaryTest
      * </p>
      */
     @Test
-    void shouldGetRandomWelcomeMessage()
+    /* default */ void shouldGetRandomWelcomeMessage()
     {
         try (MockedConstruction<SecureRandom> mockRandom = Mockito.mockConstruction(SecureRandom.class,
                 (mock, context) -> Mockito.when(mock.nextInt(Mockito.anyInt())).thenReturn(4)

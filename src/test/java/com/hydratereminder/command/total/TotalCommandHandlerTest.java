@@ -46,7 +46,7 @@ class TotalCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldSendHydrateWithSingularBreak()
+    /* default */ void shouldSendHydrateWithSingularBreak()
     {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(1);
         totalCommandHandler.handle();
@@ -63,7 +63,7 @@ class TotalCommandHandlerTest
      */
     @ParameterizedTest
     @ValueSource(ints = {4, 7, 20})
-    void shouldSendBreaksForAllTime(final int totalBreaks)
+    /* default */ void shouldSendBreaksForAllTime(final int totalBreaks)
     {
         when(hydrateReminderPlugin.getAllTimeHydrationBreaks()).thenReturn(totalBreaks);
         totalCommandHandler.handle();
@@ -78,7 +78,7 @@ class TotalCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldSendHydrateWithPluralBreak()
+    /* default */ void shouldSendHydrateWithPluralBreak()
     {
         when(hydrateReminderPlugin.getCurrentSessionHydrationBreaks()).thenReturn(2);
         totalCommandHandler.handle();

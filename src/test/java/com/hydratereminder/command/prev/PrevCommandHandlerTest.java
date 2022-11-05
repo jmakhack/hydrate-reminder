@@ -56,7 +56,7 @@ class PrevCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldSendMessageSinceLastHydrationInterval()
+    /* default */ void shouldSendMessageSinceLastHydrationInterval()
     {
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(100));
         final String timeSinceLastBreakAsString = "1 hours 40 minutes 0 seconds";
@@ -79,7 +79,7 @@ class PrevCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldReturnExpectedMessageWhenThereIsNoTimeSinceLastBreak()
+    /* default */ void shouldReturnExpectedMessageWhenThereIsNoTimeSinceLastBreak()
     {
         final Optional<Duration> timeSinceLastBreak = Optional.empty();
         final String expectedMessage = "No hydration breaks have been taken yet.";
@@ -94,7 +94,7 @@ class PrevCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldReturnExpectedMessageWhenThereIsResetSinceLastBreak()
+    /* default */ void shouldReturnExpectedMessageWhenThereIsResetSinceLastBreak()
     {
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofSeconds(645));
         final String timeSinceLastBreakAsString = "10 minutes 45 seconds";
@@ -112,7 +112,7 @@ class PrevCommandHandlerTest
      * </p>
      */
     @Test
-    void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage()
+    /* default */ void shouldReturnCorrectStringFormatOfHandleHydratePrevCommandMessage()
     {
         final Optional<Duration> timeSinceLastBreak = Optional.of(Duration.ofMinutes(130));
         final String timeSinceLastBreakAsString = "2 hours 10 minutes 0 seconds";

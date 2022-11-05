@@ -31,7 +31,7 @@ class HydrateReminderCommandArgsTest
             "help, HELP",
             "total, TOTAL"
     })
-    void testCommandArgsToString(final String expectedString, final HydrateReminderCommandArgs commandArg)
+    /* default */ void testCommandArgsToString(final String expectedString, final HydrateReminderCommandArgs commandArg)
     {
         assertEquals(expectedString, commandArg.toString(), "Unexpected command arg string received");
     }
@@ -52,7 +52,7 @@ class HydrateReminderCommandArgsTest
             "h, HELP",
             "t, TOTAL"
     })
-    void testCommandArgAbbrToString(final String expectedAbbr, final HydrateReminderCommandArgs commandArg)
+    /* default */ void testCommandArgAbbrToString(final String expectedAbbr, final HydrateReminderCommandArgs commandArg)
     {
         assertEquals(expectedAbbr, commandArg.getCommandArgAbbr(),
                 "Unexpected command arg alias string received");
@@ -80,7 +80,7 @@ class HydrateReminderCommandArgsTest
             "h, HELP",
             "t, TOTAL"
     })
-    void testGetValue(final String value, final HydrateReminderCommandArgs expectedCommandArg)
+    /* default */ void testGetValue(final String value, final HydrateReminderCommandArgs expectedCommandArg)
     {
         assertEquals(HydrateReminderCommandArgs.getValue(value), expectedCommandArg,
                 "Unexpected command arg value received");
@@ -92,7 +92,7 @@ class HydrateReminderCommandArgsTest
      * </p>
      */
     @Test
-    void testGetValueThrowsIfNullCommand()
+    /* default */ void testGetValueThrowsIfNullCommand()
     {
         assertThrows(
                 NotRecognizedCommandException.class,
@@ -107,7 +107,7 @@ class HydrateReminderCommandArgsTest
      * </p>
      */
     @Test
-    void testGetValueThrowsIfInvalidCommand()
+    /* default */ void testGetValueThrowsIfInvalidCommand()
     {
         assertThrows(
                 NotRecognizedCommandException.class,

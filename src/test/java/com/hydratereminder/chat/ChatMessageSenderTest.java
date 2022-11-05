@@ -55,7 +55,7 @@ class ChatMessageSenderTest
      * </p>
      */
     @Test
-    void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided()
+    /* default */ void shouldSendChatGameMessageWithoutEmojiWhenEmojiIsNotProvided()
     {
         final ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.empty());
@@ -68,7 +68,7 @@ class ChatMessageSenderTest
      * </p>
      */
     @Test
-    void shouldSendChatGameMessageWithEmojiWhenEmojiIsProvided()
+    /* default */ void shouldSendChatGameMessageWithEmojiWhenEmojiIsProvided()
     {
         final ChatMessageType expectedChatMessageType = ChatMessageType.GAMEMESSAGE;
         given(hydrateEmojiProvider.getHydrateEmojiId()).willReturn(Optional.of(10));
@@ -82,7 +82,7 @@ class ChatMessageSenderTest
      * </p>
      */
     @Test
-    void shouldSendChatMessageWithBroadcastTypeWhenThatTypeWasProvided()
+    /* default */ void shouldSendChatMessageWithBroadcastTypeWhenThatTypeWasProvided()
     {
         final ChatMessageType providedChatMessageType = ChatMessageType.BROADCAST;
         given(chatMessageTypeProvider.getChatNotificationMessageType()).willReturn(providedChatMessageType);

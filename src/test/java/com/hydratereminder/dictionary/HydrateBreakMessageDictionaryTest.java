@@ -45,7 +45,7 @@ class HydrateBreakMessageDictionaryTest
             "KAWAII | Sumimasen! you forgot to drink water | 9",
             "HYPE | The sun believes you'll be dehydrated soon , Go prove it wrong!! | 2"
     })
-    void shouldChooseCorrectMessageBasedOnPersonalityType(
+    /* default */ void shouldChooseCorrectMessageBasedOnPersonalityType(
             final HydrateReminderPersonalityType personalityType, final String expectedMessage, final int value)
     {
         try (MockedConstruction<SecureRandom> ignored = Mockito.mockConstruction(SecureRandom.class,

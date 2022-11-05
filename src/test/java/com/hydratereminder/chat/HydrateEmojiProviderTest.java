@@ -39,7 +39,7 @@ class HydrateEmojiProviderTest
      * </p>
      */
     @Test
-    void shouldSetHydrateEmojiIdTo3WhenHydrateEmojiIsLoadedAndHave2Elements()
+    /* default */ void shouldSetHydrateEmojiIdTo3WhenHydrateEmojiIsLoadedAndHave2Elements()
     {
         final IndexedSprite indexedSprite = Mockito.mock(IndexedSprite.class);
         final IndexedSprite indexedSpriteToAdd = Mockito.mock(IndexedSprite.class);

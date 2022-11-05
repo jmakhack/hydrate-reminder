@@ -33,7 +33,7 @@ class HydrateReminderImagesTest
             "Super Restore, SUPER_RESTORE_IMAGE",
             "Holy Elixir, HOLY_ELIXIR_IMAGE"
     })
-    void testImagesToString(final String expectedString, final HydrateReminderImages image)
+    /* default */ void testImagesToString(final String expectedString, final HydrateReminderImages image)
     {
         assertEquals(expectedString, image.toString(), "Unexpected string value received for image");
     }
@@ -43,7 +43,7 @@ class HydrateReminderImagesTest
      * </p>
      */
     @Test
-    void testImagesGetID()
+    /* default */ void testImagesGetID()
     {
         assertEquals(BOTTLED_WATER, HydrateReminderImages.BOTTLED_WATER_IMAGE.getID(),
                 "Unexpected id received for image");
@@ -65,7 +65,7 @@ class HydrateReminderImagesTest
             "POTIONCATEGORY, PRAYER_MIX_IMAGE",
             "OTHER, FROZEN_JUG_IMAGE"
     })
-    void testImagesGetCategory(final ImageCategories category, final HydrateReminderImages image)
+    /* default */ void testImagesGetCategory(final ImageCategories category, final HydrateReminderImages image)
     {
         assertEquals(category, image.getCategory(), "Unexpected category received for image");
     }

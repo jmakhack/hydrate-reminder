@@ -26,7 +26,7 @@ class HydrateReminderChatMessageTypeTest
             "Public Chat, PUBLICCHAT",
             "Clan Chat, CLANCHAT"
     })
-    void testChatMessageTypeToString(final String expectedString,
+    /* default */ void testChatMessageTypeToString(final String expectedString,
                                      final HydrateReminderChatMessageType chatMessageType)
     {
         assertEquals(expectedString, chatMessageType.toString(),
