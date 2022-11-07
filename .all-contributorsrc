@@ -566,6 +566,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ddanishkhan",
+      "name": "Danish Ayub Khan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34853491?v=4",
+      "profile": "http://linkedin.com/in/danishayubkhan/",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
