@@ -38,6 +38,8 @@ class HydrateReminderImagesTest
     /**
      * <p>Tests that the correct ID is generated for an image
      * </p>
+     * @param expectedItemID the expected Item ID of the image
+     * @param image the image to get the string value of
      */
     @ParameterizedTest
     @CsvSource({
