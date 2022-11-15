@@ -2,7 +2,6 @@ package com.hydratereminder.dictionary;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -315,22 +314,23 @@ public class HydrateBreakMessageDictionary {
      * Hydrate Reminder interval break text to be displayed
      */
     private static final Map<HydrateReminderPersonalityType, List<String>> HYDRATE_REMINDER_PERSONALITY_MAP;
-    static {
-        final Map<HydrateReminderPersonalityType, List<String>> mutableMap = new ConcurrentHashMap<>();
-        mutableMap.put(HydrateReminderPersonalityType.SIMPLE, HYDRATE_BREAK_SIMPLE_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.FUN, HYDRATE_BREAK_FUNNY_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.CARING, HYDRATE_BREAK_CARING_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.ROMANTIC, HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.POLITE, HYDRATE_BREAK_POLITE_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.NERDY, HYDRATE_BREAK_NERDY_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.PIRATE, HYDRATE_BREAK_PIRATE_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.WIZARD, HYDRATE_BREAK_WIZARD_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.MOTIVATIONAL, HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.AGGRESSIVE, HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.SANTA, HYDRATE_BREAK_SANTA_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.KAWAII, HYDRATE_BREAK_KAWAII_TEXT_LIST);
-        mutableMap.put(HydrateReminderPersonalityType.HYPE, HYDRATE_BREAK_HYPE_TEXT_LIST);
-        HYDRATE_REMINDER_PERSONALITY_MAP = Collections.unmodifiableMap(mutableMap);
+    static
+    {
+        final Map<HydrateReminderPersonalityType, List<String>> personalityTextListMap = new ConcurrentHashMap<>();
+        personalityTextListMap.put(HydrateReminderPersonalityType.SIMPLE, HYDRATE_BREAK_SIMPLE_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.FUN, HYDRATE_BREAK_FUNNY_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.CARING, HYDRATE_BREAK_CARING_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.ROMANTIC, HYDRATE_BREAK_ROMANTIC_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.POLITE, HYDRATE_BREAK_POLITE_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.NERDY, HYDRATE_BREAK_NERDY_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.PIRATE, HYDRATE_BREAK_PIRATE_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.WIZARD, HYDRATE_BREAK_WIZARD_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.MOTIVATIONAL, HYDRATE_BREAK_MOTIVATIONAL_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.AGGRESSIVE, HYDRATE_BREAK_AGGRESSIVE_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.SANTA, HYDRATE_BREAK_SANTA_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.KAWAII, HYDRATE_BREAK_KAWAII_TEXT_LIST);
+        personalityTextListMap.put(HydrateReminderPersonalityType.HYPE, HYDRATE_BREAK_HYPE_TEXT_LIST);
+        HYDRATE_REMINDER_PERSONALITY_MAP = Collections.unmodifiableMap(personalityTextListMap);
     }
 
     private static String getRandomBreakMessage(List<String> hydrateBreakTextList)
@@ -360,17 +360,10 @@ public class HydrateBreakMessageDictionary {
      */
     public static String getRandomPersonalityMessage()
     {
-        final List<HydrateReminderPersonalityType> personalityTypes = getPersonalityTypesWithoutRandom();
+        final List<HydrateReminderPersonalityType> personalityTypes =
+                new ArrayList<>(HYDRATE_REMINDER_PERSONALITY_MAP.keySet());
         final int randomNumber = ThreadLocalRandom.current().nextInt(0, personalityTypes.size());
         final HydrateReminderPersonalityType personalityType = personalityTypes.get(randomNumber);
         return getRandomHydrateBreakMessageForPersonality(personalityType);
     }
-
-    private static List<HydrateReminderPersonalityType> getPersonalityTypesWithoutRandom()
-    {
-        final List<HydrateReminderPersonalityType> personalityTypes = Arrays.asList(HydrateReminderPersonalityType.values());
-        personalityTypes.remove(HydrateReminderPersonalityType.RANDOM);
-        return personalityTypes;
-    }
-
 }
