@@ -520,6 +520,7 @@ public class HydrateReminderPlugin extends Plugin
 		{
 			final Player localPlayer = client.getLocalPlayer();
 			localPlayer.setAnimation(AnimationID.CONSUMING);
+			localPlayer.setAnimationFrame(0);
 		}
 	}
 
