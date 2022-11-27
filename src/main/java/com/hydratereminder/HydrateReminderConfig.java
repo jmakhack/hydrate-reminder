@@ -82,6 +82,18 @@ public interface HydrateReminderConfig extends Config
 	String HYDRATE_REMINDER_ANIMATION_SECTION = "Hydrate Reminder Animation Settings";
 
 	/**
+	 * <p>Separates the sound effect settings into its own config section
+	 * </p>
+	 * @since 2.0.0
+	 */
+	@ConfigSection(
+			name = "Sound Effect Settings",
+			description = "Settings for Hydrate Reminder Sound Effects",
+			position = 30
+	)
+	String HYDRATE_REMINDER_SOUND_EFFECT_SECTION = "Hydrate Reminder Sound Effect Settings";
+
+	/**
 	 * <p>Separates the overlay timer settings into its own config section
 	 * </p>
 	 * @since 1.2.0
@@ -89,7 +101,7 @@ public interface HydrateReminderConfig extends Config
 	@ConfigSection(
 			name = "Overlay Timer Settings",
 			description = "Settings for Hydrate Reminder Overlay Timer",
-			position = 30
+			position = 40
 	)
 	String HYDRATE_REMINDER_TIMER_SECTION = "Hydrate Reminder Overlay Timer Settings";
 
