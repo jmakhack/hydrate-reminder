@@ -237,6 +237,25 @@ public interface HydrateReminderConfig extends Config
 	}
 
 	/**
+	 * <p>Allows the player to enable/disable the hydrate sound effects
+	 * </p>
+	 * @return true if the hydrate sound effect is to be enabled
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateSoundEffectEnabled",
+			name = "Hydrate sound effect",
+			description = "Enables a hydration sound effect that plays every time the hydration " +
+					"interval completes",
+			position = 1,
+			section = HYDRATE_REMINDER_SOUND_EFFECT_SECTION
+	)
+	default boolean hydrateSoundEffectEnabled()
+	{
+		return true;
+	}
+
+	/**
 	 * <p>Allows the player to enable/disable the overlay timer
 	 * </p>
 	 * @return true if the overlay timer is enabled
