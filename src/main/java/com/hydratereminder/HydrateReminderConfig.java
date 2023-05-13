@@ -82,6 +82,18 @@ public interface HydrateReminderConfig extends Config
 	String HYDRATE_REMINDER_ANIMATION_SECTION = "Hydrate Reminder Animation Settings";
 
 	/**
+	 * <p>Separates the sound effect settings into its own config section
+	 * </p>
+	 * @since 2.0.0
+	 */
+	@ConfigSection(
+			name = "Sound Effect Settings",
+			description = "Settings for Hydrate Reminder Sound Effects",
+			position = 30
+	)
+	String HYDRATE_REMINDER_SOUND_EFFECT_SECTION = "Hydrate Reminder Sound Effect Settings";
+
+	/**
 	 * <p>Separates the overlay timer settings into its own config section
 	 * </p>
 	 * @since 1.2.0
@@ -89,7 +101,7 @@ public interface HydrateReminderConfig extends Config
 	@ConfigSection(
 			name = "Overlay Timer Settings",
 			description = "Settings for Hydrate Reminder Overlay Timer",
-			position = 30
+			position = 40
 	)
 	String HYDRATE_REMINDER_TIMER_SECTION = "Hydrate Reminder Overlay Timer Settings";
 
@@ -220,6 +232,25 @@ public interface HydrateReminderConfig extends Config
 			section = HYDRATE_REMINDER_ANIMATION_SECTION
 	)
 	default boolean hydrateAnimationEnabled()
+	{
+		return true;
+	}
+
+	/**
+	 * <p>Allows the player to enable/disable the hydrate sound effects
+	 * </p>
+	 * @return true if the hydrate sound effect is to be enabled
+	 * @since 2.0.0
+	 */
+	@ConfigItem(
+			keyName = "hydrateSoundEffectEnabled",
+			name = "Hydrate sound effect",
+			description = "Enables a hydration sound effect that plays every time the hydration " +
+					"interval completes",
+			position = 1,
+			section = HYDRATE_REMINDER_SOUND_EFFECT_SECTION
+	)
+	default boolean hydrateSoundEffectEnabled()
 	{
 		return true;
 	}

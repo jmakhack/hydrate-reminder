@@ -34,6 +34,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.AnimationID;
+import net.runelite.api.SoundEffectID;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
@@ -494,6 +495,7 @@ public class HydrateReminderPlugin extends Plugin
 	public void incrementCurrentSessionHydrationBreaks()
 	{
 		playAnimationForLocalPlayer();
+		playSoundEffect();
 		setCurrentSessionHydrationBreaks(getCurrentSessionHydrationBreaks() + HYDRATION_BREAK_INCREMENT);
 	}
 
@@ -521,6 +523,20 @@ public class HydrateReminderPlugin extends Plugin
 			final Player localPlayer = client.getLocalPlayer();
 			localPlayer.setAnimation(AnimationID.CONSUMING);
 			localPlayer.setAnimationFrame(0);
+		}
+	}
+
+	/**
+	 *
+	 * <p> Plays sound for player with given AnimationID
+	 * </p>
+	 * @since 2.0.0
+	 */
+	private void playSoundEffect()
+	{
+		if (config.hydrateSoundEffectEnabled())
+		{
+			client.playSoundEffect(SoundEffectID.PICK_PLANT_BLOOP);
 		}
 	}
 
