@@ -1,6 +1,6 @@
 # How to Contribute
 
-Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle. Come join the [Discord](https://discord.gg/RTgxfFW9mS) to meet fellow contributors, to ask any questions, or to just say hi!
+Hey, it's nice to see fellow software developers interested in contributing to a project that aims to assist OSRS players in living a healthy lifestyle.
 
 Before contributing to a bugfix or feature, please search [Issues](https://github.com/jmakhack/hydrate-reminder/issues) to see if the request already exists and/or is currently being worked on. If not, create a [New Issue](https://github.com/jmakhack/hydrate-reminder/issues/new/choose) describing the enhancement or bugfix for the plugin. No pull requests should be created without an associated issue. If you plan to work on an issue, just leave a comment on the issue asking to pick it up and then you're free to work on it (unless someone previously commented the same).
 
@@ -55,11 +55,3 @@ This issue commonly occurs whenever there is a certain mismatch in RuneLite vers
 ### Why are there two instances of the hydrate reminder plugin visible in the RuneLite client sidebar when I run the project?
 
 This usually indicates that you already have the hydrate reminder plugin installed on the RuneLite client from the PluginHub. This is usually not an issue however. If you do want to remove the duplicate plugin, open RuneLite independently and uninstalled the hydrate reminder plugin that was installed from the PluginHub. Afterwards, run the project again and there should only be one instance of the plugin visible.
-
-### Where can I get additional help on any issues and/or development questions?
-
-Besides just leaving a comment on any GitHub issues or pull requests, the [Discord](https://discord.gg/RTgxfFW9mS) server is an excellent place where you can ask any questions you may have. Even if there are no questions to ask, it is still a great community to join and say hi!
-
-### Does the project maintainer bite?
-
-~~maybe~~ I would never do such a thing (｡•̀ᴗ-)✧
